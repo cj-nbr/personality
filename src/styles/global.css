@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* Method 2: Dark mode is the default.
+   Method 1: Auto-detect device via prefers-color-scheme when no explicit choice.
+   Implemented with a class-based `dark` variant (`.dark`). The inline
+   boot script in the layout sets the right mode before paint to avoid FOUC. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Brand ink + surface palette (from DESIGN.md) */
+  --color-primary: #171717;
+  --color-on-primary: #ffffff;
+  --color-ink: #171717;
+  --color-body: #4d4d4d;
+  --color-mute: #888888;
+  --color-hairline: #ebebeb;
+  --color-hairline-strong: #a1a1a1;
+  --color-canvas: #ffffff;
+  --color-canvas-soft: #fafafa;
+  --color-canvas-soft-2: #f5f5f5;
+  --color-link: #0070f3;
+  --color-link-deep: #0761d1;
+  --color-link-bg-soft: #d3e5ff;
+
+  /* Brand gradient stops (the only decorative chrome) */
+  --color-gradient-develop-start: #007cf0;
+  --color-gradient-develop-end: #00dfd8;
+  --color-gradient-preview-start: #7928ca;
+  --color-gradient-preview-end: #ff0080;
+  --color-gradient-ship-start: #ff4d4d;
+  --color-gradient-ship-end: #f9cb28;
+  --color-cyan: #50e3c2;
+  --color-violet: #7928ca;
+  --color-highlight-pink: #ff0080;
+
+  /* Typography — geometric sans (Inter as Geist substitute) + mono */
+  --font-sans: "Inter", "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill-sm: 64px;
+  --radius-pill: 100px;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+/* Light surfaces (default tokens reused in light mode) */
+html {
+  background-color: var(--color-canvas-soft);
+  color: var(--color-ink);
+}
+
+/* Dark mode (default + when device prefers dark) */
+html.dark {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* Mesh gradient — the brand's signature atmospheric backdrop */
+.mesh-gradient {
+  background-image:
+    radial-gradient(at 18% 22%, rgba(0, 124, 240, 0.55) 0px, transparent 55%),
+    radial-gradient(at 82% 18%, rgba(121, 40, 202, 0.50) 0px, transparent 55%),
+    radial-gradient(at 75% 78%, rgba(255, 0, 128, 0.50) 0px, transparent 55%),
+    radial-gradient(at 22% 82%, rgba(0, 223, 216, 0.50) 0px, transparent 55%),
+    radial-gradient(at 50% 50%, rgba(249, 203, 40, 0.32) 0px, transparent 60%);
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+html.dark ::selection {
+  background-color: var(--color-on-primary);
+  color: var(--color-primary);
+}
+
+/* Visible focus for all interactive elements */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-link);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
