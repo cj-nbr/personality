@@ -25,23 +25,15 @@ const { question, selectedAnswer, onSelect } = Astro.props;
     {question.text}
   </h2>
 
-  <div class="grid gap-4">
+  <div class="grid gap-4" id={`question-${question.id}`}>
     <button
       type="button"
-      onclick="this.parentElement.nextElementSibling.querySelector('button').classList.remove('ring-2','ring-primary','dark:ring-on-primary'); this.classList.add('ring-2','ring-primary','dark:ring-on-primary'); window.dispatchEvent(new CustomEvent('answer-selected', { detail: { value: this.dataset.value } }))"
       data-value={question.optionA.value}
-      class={`group relative rounded-lg border p-6 text-left transition-all duration-200 hover:border-hairline-strong ${
-        selectedAnswer === question.optionA.value
-          ? 'border-primary bg-canvas-soft dark:border-on-primary dark:bg-white/5'
-          : 'border-hairline bg-canvas dark:border-white/15 dark:bg-primary'
-      }`}
+      data-question={question.id}
+      class="option-btn group relative rounded-lg border p-6 text-left transition-all duration-200 hover:border-hairline-strong border-hairline bg-canvas dark:border-white/15 dark:bg-primary"
     >
       <span class="flex items-start gap-4">
-        <span class={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold transition-colors ${
-          selectedAnswer === question.optionA.value
-            ? 'border-primary bg-primary text-on-primary dark:border-on-primary dark:bg-on-primary dark:text-primary'
-            : 'border-hairline-strong text-mute group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary'
-        }`}>
+        <span class="option-indicator flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold transition-colors border-hairline-strong text-mute group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary">
           A
         </span>
         <span class="text-base text-ink dark:text-on-primary">{question.optionA.text}</span>
@@ -50,20 +42,12 @@ const { question, selectedAnswer, onSelect } = Astro.props;
 
     <button
       type="button"
-      onclick="this.parentElement.previousElementSibling.querySelector('button').classList.remove('ring-2','ring-primary','dark:ring-on-primary'); this.classList.add('ring-2','ring-primary','dark:ring-on-primary'); window.dispatchEvent(new CustomEvent('answer-selected', { detail: { value: this.dataset.value } }))"
       data-value={question.optionB.value}
-      class={`group relative rounded-lg border p-6 text-left transition-all duration-200 hover:border-hairline-strong ${
-        selectedAnswer === question.optionB.value
-          ? 'border-primary bg-canvas-soft dark:border-on-primary dark:bg-white/5'
-          : 'border-hairline bg-canvas dark:border-white/15 dark:bg-primary'
-      }`}
+      data-question={question.id}
+      class="option-btn group relative rounded-lg border p-6 text-left transition-all duration-200 hover:border-hairline-strong border-hairline bg-canvas dark:border-white/15 dark:bg-primary"
     >
       <span class="flex items-start gap-4">
-        <span class={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold transition-colors ${
-          selectedAnswer === question.optionB.value
-            ? 'border-primary bg-primary text-on-primary dark:border-on-primary dark:bg-on-primary dark:text-primary'
-            : 'border-hairline-strong text-mute group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary'
-        }`}>
+        <span class="option-indicator flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold transition-colors border-hairline-strong text-mute group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary">
           B
         </span>
         <span class="text-base text-ink dark:text-on-primary">{question.optionB.text}</span>
@@ -71,3 +55,49 @@ const { question, selectedAnswer, onSelect } = Astro.props;
     </button>
   </div>
 </div>
+
+<script is:inline>
+  (function() {
+    const container = document.getElementById(`question-${question.id}`);
+    if (!container) return;
+    
+    const buttons = container.querySelectorAll('.option-btn');
+    
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const value = parseInt(this.dataset.value);
+        
+        buttons.forEach(b => {
+          b.classList.remove('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5', 'ring-2', 'ring-primary', 'dark:ring-on-primary');
+          const indicator = b.querySelector('.option-indicator');
+          indicator.classList.remove('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
+          indicator.classList.add('border-hairline-strong', 'text-mute');
+        });
+        
+        this.classList.add('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5');
+        const selectedIndicator = this.querySelector('.option-indicator');
+        selectedIndicator.classList.remove('border-hairline-strong', 'text-mute');
+        selectedIndicator.classList.add('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
+        
+        if (typeof onSelect === 'function') {
+          onSelect(value);
+        }
+        
+        window.dispatchEvent(new CustomEvent('answer-selected', { 
+          detail: { value: value, questionId: question.id } 
+        }));
+      });
+    });
+    
+    if (selectedAnswer !== undefined) {
+      buttons.forEach(btn => {
+        if (parseInt(btn.dataset.value) === selectedAnswer) {
+          btn.classList.add('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5');
+          const indicator = btn.querySelector('.option-indicator');
+          indicator.classList.remove('border-hairline-strong', 'text-mute');
+          indicator.classList.add('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
+        }
+      });
+    }
+  })();
+</script>

@@ -86,11 +86,10 @@ const selectedAnswer = state.answers[num];
 <script is:inline>
   document.addEventListener('answer-selected', (e) => {
     const value = parseInt(e.detail.value);
-    const url = window.location.pathname;
-    const num = parseInt(url.split('/').pop() || '1');
+    const questionId = parseInt(e.detail.questionId);
     let state = JSON.parse(localStorage.getItem('personality_test_state') || '{}');
     state.answers = state.answers || {};
-    state.answers[num] = value;
+    state.answers[questionId] = value;
     if (!state.startTime) state.startTime = Date.now();
     localStorage.setItem('personality_test_state', JSON.stringify(state));
   });
