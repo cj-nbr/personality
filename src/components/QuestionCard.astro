@@ -71,13 +71,36 @@ const { question, selectedAnswer, onSelect } = Astro.props;
       var selectedAnswer = container.getAttribute('data-selected-answer');
       var labels = container.querySelectorAll('.option-label');
       
+      function selectLabel(label) {
+        labels.forEach(function(l) {
+          l.style.border = '';
+          l.style.backgroundColor = '';
+          l.style.boxShadow = '';
+          var ind = l.querySelector('.option-indicator');
+          ind.style.border = '';
+          ind.style.backgroundColor = '';
+          ind.style.color = '';
+        });
+        
+        var isDark = document.documentElement.classList.contains('dark');
+        var borderColor = isDark ? '#4ade80' : '#22c55e';
+        var bgColor = isDark ? 'rgba(74, 222, 128, 0.1)' : '#f0fdf4';
+        var glow = '0 0 15px rgba(34, 197, 94, 0.4), 0 0 30px rgba(34, 197, 94, 0.2)';
+        
+        label.style.border = '2px solid ' + borderColor;
+        label.style.backgroundColor = bgColor;
+        label.style.boxShadow = glow;
+        
+        var selectedIndicator = label.querySelector('.option-indicator');
+        selectedIndicator.style.border = '2px solid ' + borderColor;
+        selectedIndicator.style.backgroundColor = borderColor;
+        selectedIndicator.style.color = '#ffffff';
+      }
+      
       if (selectedAnswer && selectedAnswer !== '') {
         labels.forEach(function(label) {
           if (label.getAttribute('data-value') === selectedAnswer) {
-            label.classList.add('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5');
-            var indicator = label.querySelector('.option-indicator');
-            indicator.classList.remove('border-hairline-strong', 'text-mute');
-            indicator.classList.add('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
+            selectLabel(label);
           }
         });
       }
@@ -85,18 +108,7 @@ const { question, selectedAnswer, onSelect } = Astro.props;
       labels.forEach(function(label) {
         label.addEventListener('click', function() {
           var value = this.getAttribute('data-value');
-          
-          labels.forEach(function(l) {
-            l.classList.remove('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5');
-            var ind = l.querySelector('.option-indicator');
-            ind.classList.remove('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
-            ind.classList.add('border-hairline-strong', 'text-mute');
-          });
-          
-          this.classList.add('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5');
-          var selectedIndicator = this.querySelector('.option-indicator');
-          selectedIndicator.classList.remove('border-hairline-strong', 'text-mute');
-          selectedIndicator.classList.add('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
+          selectLabel(this);
           
           document.dispatchEvent(new CustomEvent('answer-selected', { 
             detail: { value: value, questionId: questionId } 
