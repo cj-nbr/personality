@@ -1,0 +1,61 @@
+---
+interface Props {
+  scores: {
+    EI: number;
+    SN: number;
+    TF: number;
+    JP: number;
+  };
+}
+
+const { scores } = Astro.props;
+
+const dimensions = [
+  { key: 'EI', label: 'Energy Direction', left: 'Introversion', right: 'Extraversion', leftScore: scores.EI },
+  { key: 'SN', label: 'Information', left: 'Sensing', right: 'Intuition', leftScore: scores.SN },
+  { key: 'TF', label: 'Decisions', left: 'Thinking', right: 'Feeling', leftScore: scores.TF },
+  { key: 'JP', label: 'Lifestyle', left: 'Judging', right: 'Perceiving', leftScore: scores.JP }
+];
+
+function getPercentage(score: number): number {
+  const normalized = Math.min(Math.abs(score), 24);
+  return Math.round((normalized / 24) * 100);
+}
+
+function getSide(score: number): 'left' | 'right' | 'balanced' {
+  if (score > 6) return 'right';
+  if (score < -6) return 'left';
+  return 'balanced';
+}
+---
+
+<div class="w-full space-y-6">
+  {dimensions.map(dim => {
+    const percentage = getPercentage(dim.leftScore);
+    const side = getSide(dim.leftScore);
+    
+    return (
+      <div class="space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-medium text-ink dark:text-on-primary">{dim.label}</span>
+          <span class="text-xs font-mono text-mute">
+            {side === 'balanced' ? 'Balanced' : side === 'left' ? dim.left : dim.right}
+          </span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-16 text-right text-xs font-mono text-mute">{dim.left}</span>
+          <div class="flex-1 h-3 overflow-hidden rounded-full bg-canvas-soft dark:bg-white/10">
+            {side === 'right' ? (
+              <div class="ml-auto h-full rounded-full bg-primary transition-all duration-1000 ease-out dark:bg-on-primary" style="width: {percentage}%" />
+            ) : side === 'left' ? (
+              <div class="h-full rounded-full bg-primary transition-all duration-1000 ease-out dark:bg-on-primary" style="width: {percentage}%" />
+            ) : (
+              <div class="mx-auto h-full w-2 rounded-full bg-mute transition-all duration-1000 ease-out" />
+            )}
+          </div>
+          <span class="w-16 text-left text-xs font-mono text-mute">{dim.right}</span>
+        </div>
+      </div>
+    );
+  })}
+</div>

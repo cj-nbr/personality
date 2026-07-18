@@ -1,0 +1,27 @@
+---
+interface Props {
+  current: number;
+  total: number;
+  showPercentage?: boolean;
+  showCounter?: boolean;
+}
+
+const { current, total, showPercentage = true, showCounter = true } = Astro.props;
+
+const progress = Math.round((current / total) * 100);
+---
+
+<div class="w-full">
+  {showCounter && (
+    <div class="mb-2 flex items-center justify-between text-sm font-mono text-body dark:text-mute">
+      <span>Question {current} of {total}</span>
+      {showPercentage && <span>{progress}%</span>}
+    </div>
+  )}
+  <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft dark:bg-white/10" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100} aria-label="Test progress">
+    <div 
+      class="h-full rounded-full bg-primary transition-all duration-500 ease-out dark:bg-on-primary"
+      style="width: {progress}%"
+    />
+  </div>
+</div>

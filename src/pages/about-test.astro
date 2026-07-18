@@ -1,0 +1,55 @@
+---
+import TestLayout from "../layouts/TestLayout.astro";
+import { personalityTypes } from "../data/personality-types";
+---
+
+<TestLayout 
+  title="About the Personality Test | How It Works" 
+  description="Learn how our 16 personality test works, how we calculate results, and the science behind personality assessment."
+>
+  <div class="mx-auto max-w-[800px] px-6 py-12 sm:py-20">
+    <h1 class="text-4xl font-semibold tracking-[-2.4px] text-ink sm:text-5xl dark:text-on-primary">
+      About the Personality Test
+    </h1>
+    
+    <div class="mt-8 space-y-8 text-body dark:text-mute">
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">How the Test Works</h2>
+        <p class="mt-4">Our personality assessment consists of 48 carefully crafted questions designed to explore your natural preferences across four key dimensions. Each question presents two options, and you choose the one that feels most authentic to your natural tendencies.</p>
+        <p class="mt-4">The test measures where you fall on four spectrums: Introversion versus Extraversion, Sensing versus Intuition, Thinking versus Feeling, and Judging versus Perceiving. Your answers are scored to determine your unique personality type.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">How We Calculate Results</h2>
+        <p class="mt-4">Each question is weighted equally within its dimension. After completing all questions, we calculate your score for each of the four dimensions. A higher score indicates a stronger preference toward one end of the spectrum.</p>
+        <p class="mt-4">If your score is close to the middle on any dimension, you may see a balanced result, indicating you can comfortably use both preferences depending on the situation. This is completely normal and reflects the flexibility of human personality.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">The Science Behind It</h2>
+        <p class="mt-4">Our assessment is inspired by the Myers-Briggs Type Indicator framework, which has been used for decades to help people understand their personality preferences. While no test can capture the full complexity of human personality, this framework provides a useful lens for self-reflection and personal growth.</p>
+        <p class="mt-4">The questions are designed to be clear, relatable, and professionally written to ensure accurate results. We recommend using your results as a starting point for self-discovery rather than as a definitive label.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">Tips for Accurate Results</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-5">
+          <li>Answer based on your natural preferences, not how you think you should behave</li>
+          <li>There are no right or wrong answers</li>
+          <li>Choose the option that feels most like you in most situations</li>
+          <li>Don't overthink your answers - go with your first instinct</li>
+          <li>Be honest with yourself for the most accurate results</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a 
+        href="/personality-test"
+        class="rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+      >
+        Take the Test
+      </a>
+    </div>
+  </div>
+</TestLayout>

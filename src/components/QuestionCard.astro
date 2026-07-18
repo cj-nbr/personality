@@ -1,0 +1,73 @@
+---
+interface Props {
+  question: {
+    id: number;
+    dimension: string;
+    text: string;
+    optionA: { text: string; value: number };
+    optionB: { text: string; value: number };
+  };
+  selectedAnswer?: number;
+  onSelect: (value: number) => void;
+}
+
+const { question, selectedAnswer, onSelect } = Astro.props;
+---
+
+<div class="w-full">
+  <p class="mb-4 font-mono text-xs uppercase tracking-wide text-mute">
+    {question.dimension === 'EI' ? 'Energy Direction' : 
+     question.dimension === 'SN' ? 'Information Gathering' : 
+     question.dimension === 'TF' ? 'Decision Making' : 'Lifestyle'}
+  </p>
+  
+  <h2 class="mb-8 text-balance font-semibold text-2xl text-ink sm:text-3xl dark:text-on-primary">
+    {question.text}
+  </h2>
+
+  <div class="grid gap-4">
+    <button
+      type="button"
+      onclick="this.parentElement.nextElementSibling.querySelector('button').classList.remove('ring-2','ring-primary','dark:ring-on-primary'); this.classList.add('ring-2','ring-primary','dark:ring-on-primary'); window.dispatchEvent(new CustomEvent('answer-selected', { detail: { value: this.dataset.value } }))"
+      data-value={question.optionA.value}
+      class={`group relative rounded-lg border p-6 text-left transition-all duration-200 hover:border-hairline-strong ${
+        selectedAnswer === question.optionA.value
+          ? 'border-primary bg-canvas-soft dark:border-on-primary dark:bg-white/5'
+          : 'border-hairline bg-canvas dark:border-white/15 dark:bg-primary'
+      }`}
+    >
+      <span class="flex items-start gap-4">
+        <span class={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold transition-colors ${
+          selectedAnswer === question.optionA.value
+            ? 'border-primary bg-primary text-on-primary dark:border-on-primary dark:bg-on-primary dark:text-primary'
+            : 'border-hairline-strong text-mute group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary'
+        }`}>
+          A
+        </span>
+        <span class="text-base text-ink dark:text-on-primary">{question.optionA.text}</span>
+      </span>
+    </button>
+
+    <button
+      type="button"
+      onclick="this.parentElement.previousElementSibling.querySelector('button').classList.remove('ring-2','ring-primary','dark:ring-on-primary'); this.classList.add('ring-2','ring-primary','dark:ring-on-primary'); window.dispatchEvent(new CustomEvent('answer-selected', { detail: { value: this.dataset.value } }))"
+      data-value={question.optionB.value}
+      class={`group relative rounded-lg border p-6 text-left transition-all duration-200 hover:border-hairline-strong ${
+        selectedAnswer === question.optionB.value
+          ? 'border-primary bg-canvas-soft dark:border-on-primary dark:bg-white/5'
+          : 'border-hairline bg-canvas dark:border-white/15 dark:bg-primary'
+      }`}
+    >
+      <span class="flex items-start gap-4">
+        <span class={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold transition-colors ${
+          selectedAnswer === question.optionB.value
+            ? 'border-primary bg-primary text-on-primary dark:border-on-primary dark:bg-on-primary dark:text-primary'
+            : 'border-hairline-strong text-mute group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary'
+        }`}>
+          B
+        </span>
+        <span class="text-base text-ink dark:text-on-primary">{question.optionB.text}</span>
+      </span>
+    </button>
+  </div>
+</div>

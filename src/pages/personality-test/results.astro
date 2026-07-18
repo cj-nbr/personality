@@ -1,0 +1,113 @@
+---
+import TestLayout from "../../layouts/TestLayout.astro";
+import TestProgress from "../../components/TestProgress.astro";
+import DimensionChart from "../../components/DimensionChart.astro";
+import RelatedTypes from "../../components/RelatedTypes.astro";
+import { questions } from "../../data/questions";
+import { loadProgress, getInitialState, clearProgress, calculateResult, getTypeFromScores, getTotalQuestions } from "../../test/test-engine";
+import { getTypeByCode, personalityTypes } from "../../data/personality-types";
+
+const state = loadProgress();
+if (!state || !state.completed) {
+  return Astro.redirect('/personality-test');
+}
+
+const result = calculateResult(state, questions);
+const type = getTypeByCode(result.code);
+
+if (!type) {
+  return Astro.redirect('/personality-test');
+}
+---
+
+<TestLayout title={`${result.code} Personality | ${type.name}`} description={`Your personality type is ${result.code} - ${type.name}. ${type.summary}`}>
+  <div class="mx-auto max-w-[1000px] px-6 py-12 sm:py-20">
+    <div class="text-center">
+      <span class="inline-flex items-center rounded-full bg-canvas-soft px-4 py-2 font-mono text-sm text-body dark:bg-white/10 dark:text-mute">
+        Your Personality Type
+      </span>
+      <h1 class="mt-4 text-5xl font-semibold tracking-[-2.4px] text-ink sm:text-6xl dark:text-on-primary">
+        {result.code}
+      </h1>
+      <p class="mt-2 text-xl text-body dark:text-mute">{type.name}</p>
+      <p class="mt-4 max-w-2xl mx-auto font-mono text-base leading-7 text-body dark:text-mute">
+        {type.summary}
+      </p>
+      
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a 
+          href={`/personality-type/${result.code.toLowerCase()}`}
+          class="rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+        >
+          View Full Profile
+        </a>
+        <button 
+          onclick="if(confirm('Start a new test? Your current results will be cleared.')) { localStorage.removeItem('personality_test_state'); window.location.href='/personality-test/question/1'; }"
+          class="rounded-pill border border-hairline px-8 py-3 text-base font-medium text-ink transition hover:bg-canvas-soft-2 dark:border-white/15 dark:text-on-primary dark:hover:bg-white/10"
+        >
+          Retake Test
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-16 rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+      <h2 class="mb-6 text-xl font-semibold text-ink dark:text-on-primary">Your Dimension Scores</h2>
+      <DimensionChart scores={result.scores} />
+      
+      <div class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div class="text-center">
+          <div class="text-2xl font-semibold text-ink dark:text-on-primary">
+            {Math.abs(result.scores.EI)}%
+          </div>
+          <div class="text-xs font-mono text-mute">Introversion</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-semibold text-ink dark:text-on-primary">
+            {Math.abs(result.scores.SN)}%
+          </div>
+          <div class="text-xs font-mono text-mute">Intuition</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-semibold text-ink dark:text-on-primary">
+            {Math.abs(result.scores.TF)}%
+          </div>
+          <div class="text-xs font-mono text-mute">Feeling</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-semibold text-ink dark:text-on-primary">
+            {Math.abs(result.scores.JP)}%
+          </div>
+          <div class="text-xs font-mono text-mute">Perceiving</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12">
+      <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Understanding Your Result</h2>
+      <div class="space-y-4 text-body dark:text-mute">
+        <p>Your result shows a preference for {result.code.replace('X', 'balanced')} across the four personality dimensions. This means you naturally lean toward certain ways of perceiving the world and making decisions.</p>
+        {result.balancedDimensions.length > 0 && (
+          <p>You scored particularly balanced on the {result.balancedDimensions.map(d => d === 'EI' ? 'Introversion-Extraversion' : d === 'SN' ? 'Sensing-Intuition' : d === 'TF' ? 'Thinking-Feeling' : 'Judging-Perceiving').join(' and ')} dimension. This suggests you can comfortably adapt between both preferences depending on the situation.</p>
+        )}
+        <p>Remember that personality types are frameworks for understanding preferences, not rigid boxes. You may find that different situations bring out different aspects of your personality.</p>
+      </div>
+    </div>
+
+    <div class="mt-12">
+      <h2 class="mb-6 text-xl font-semibold text-ink dark:text-on-primary">Related Personality Types</h2>
+      <RelatedTypes types={type.relatedTypes.map(code => {
+        const t = personalityTypes.find(pt => pt.code === code);
+        return { code, name: t?.name || code, tagline: t?.tagline || '' };
+      })} />
+    </div>
+
+    <div class="mt-12 text-center">
+      <a 
+        href="/personality-types"
+        class="rounded-pill border border-hairline px-8 py-3 text-base font-medium text-ink transition hover:bg-canvas-soft-2 dark:border-white/15 dark:text-on-primary dark:hover:bg-white/10"
+      >
+        Explore All 16 Types
+      </a>
+    </div>
+  </div>
+</TestLayout>

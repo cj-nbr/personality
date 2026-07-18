@@ -1,0 +1,46 @@
+---
+import TestLayout from "../layouts/TestLayout.astro";
+import { personalityTypes } from "../data/personality-types";
+---
+
+<TestLayout 
+  title="Personality Dimensions Explained | E-I, S-N, T-F, J-P" 
+  description="Learn about the four personality dimensions: Introversion vs Extraversion, Sensing vs Intuition, Thinking vs Feeling, Judging vs Perceiving."
+>
+  <div class="mx-auto max-w-[800px] px-6 py-12 sm:py-20">
+    <h1 class="text-4xl font-semibold tracking-[-2.4px] text-ink sm:text-5xl dark:text-on-primary">
+      Personality Dimensions
+    </h1>
+    
+    <div class="mt-8 space-y-8 text-body dark:text-mute">
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">Introversion vs Extraversion</h2>
+        <p class="mt-4">This dimension describes where you focus your energy and how you recharge. Extraverts gain energy from external stimulation and social interaction. Introverts recharge through solitude and internal reflection. Most people fall somewhere between the two extremes.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">Sensing vs Intuition</h2>
+        <p class="mt-4">This dimension describes how you gather information. Sensing types prefer concrete, factual information and trust experience. Intuitive types prefer abstract patterns, possibilities, and future implications. Both styles are valuable in different situations.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">Thinking vs Feeling</h2>
+        <p class="mt-4">This dimension describes how you make decisions. Thinking types prioritize objective logic, consistency, and principles. Feeling types prioritize personal values, harmony, and the impact on people. Both approaches lead to sound decisions when applied appropriately.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">Judging vs Perceiving</h2>
+        <p class="mt-4">This dimension describes your approach to structure and flexibility. Judging types prefer order, planning, and clear decisions. Perceiving types prefer flexibility, spontaneity, and keeping options open. Both approaches have strengths depending on the context.</p>
+      </section>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a 
+        href="/personality-test"
+        class="rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+      >
+        Take the Test
+      </a>
+    </div>
+  </div>
+</TestLayout>

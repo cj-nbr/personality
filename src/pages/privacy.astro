@@ -1,0 +1,36 @@
+---
+import TestLayout from "../layouts/TestLayout.astro";
+---
+
+<TestLayout 
+  title="Privacy Policy | 16 Personality Test" 
+  description="Learn how we protect your privacy and handle your personality test data."
+>
+  <div class="mx-auto max-w-[800px] px-6 py-12 sm:py-20">
+    <h1 class="text-4xl font-semibold tracking-[-2.4px] text-ink sm:text-5xl dark:text-on-primary">
+      Privacy Policy
+    </h1>
+    
+    <div class="mt-8 space-y-6 text-body dark:text-mute">
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">Data We Collect</h2>
+        <p class="mt-4">Our personality test is designed to work entirely in your browser. Your test answers and results are stored locally on your device using browser storage. We do not collect, transmit, or store your personal information on any server.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">How We Use Data</h2>
+        <p class="mt-4">Since all data stays on your device, there is no data transmission. Your test progress and results are only accessible to you on the device where you took the test. You can clear this data at any time by clearing your browser storage or using the restart option in the test.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">Third-Party Services</h2>
+        <p class="mt-4">This website may use standard web analytics to understand overall traffic patterns. These analytics do not track individual test results or personal information.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold text-ink dark:text-on-primary">Your Choices</h2>
+        <p class="mt-4">You can clear your test data at any time. You can also choose not to save your progress by disabling local storage in your browser settings. The test is designed to work fully without storing any data.</p>
+      </section>
+    </div>
+  </div>
+</TestLayout>

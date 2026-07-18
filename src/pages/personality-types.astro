@@ -1,0 +1,42 @@
+---
+import TestLayout from "../layouts/TestLayout.astro";
+import { personalityTypes } from "../data/personality-types";
+---
+
+<TestLayout 
+  title="All 16 Personality Types | Complete Guide" 
+  description="Explore all 16 personality types. Learn about each Myers-Briggs type including INTJ, INFP, ENFJ, ENFP and more."
+>
+  <div class="mx-auto max-w-[1200px] px-6 py-12 sm:py-20">
+    <div class="text-center">
+      <h1 class="text-4xl font-semibold tracking-[-2.4px] text-ink sm:text-5xl dark:text-on-primary">
+        All 16 Personality Types
+      </h1>
+      <p class="mt-4 max-w-2xl mx-auto font-mono text-base leading-7 text-body dark:text-mute">
+        Explore the complete guide to all 16 personality types. Each type has unique strengths, preferences, and ways of engaging with the world.
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {personalityTypes.map(type => (
+        <a 
+          href={`/personality-type/${type.code.toLowerCase()}`}
+          class="group rounded-lg border border-hairline bg-canvas p-6 transition hover:border-hairline-strong dark:border-white/15 dark:bg-primary dark:hover:border-white/30"
+        >
+          <span class="font-mono text-xs uppercase tracking-wide text-link">{type.code}</span>
+          <h3 class="mt-2 font-semibold text-ink group-hover:text-link dark:text-on-primary dark:group-hover:text-link">{type.name}</h3>
+          <p class="mt-1 text-sm text-body dark:text-mute">{type.tagline}</p>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center">
+      <a 
+        href="/personality-test"
+        class="rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+      >
+        Take the Test
+      </a>
+    </div>
+  </div>
+</TestLayout>

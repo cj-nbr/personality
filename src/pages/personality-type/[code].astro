@@ -1,0 +1,179 @@
+---
+import TestLayout from "../../layouts/TestLayout.astro";
+import DimensionChart from "../../components/DimensionChart.astro";
+import RelatedTypes from "../../components/RelatedTypes.astro";
+import { getTypeByCode, personalityTypes } from "../../data/personality-types";
+import { questions, getTotalQuestions } from "../../data/questions";
+import { loadProgress, calculateResult, getTypeFromScores } from "../../test/test-engine";
+
+export function getStaticPaths() {
+  return personalityTypes.map(type => ({ params: { code: type.code.toLowerCase() } }));
+}
+
+const code = Astro.params.code?.toUpperCase();
+const type = getTypeByCode(code);
+
+if (!type) {
+  return Astro.redirect('/personality-types');
+}
+
+const resultState = loadProgress();
+let result = null;
+if (resultState && resultState.completed) {
+  result = calculateResult(resultState, questions);
+}
+---
+
+<TestLayout 
+  title={`${type.code} Personality Type | ${type.name}`} 
+  description={`${type.name}: ${type.summary} Learn about ${type.code} strengths, weaknesses, career fit, and relationships.`}
+>
+  <div class="mx-auto max-w-[1000px] px-6 py-12 sm:py-20">
+    <div class="text-center">
+      <span class="inline-flex items-center rounded-full bg-canvas-soft px-4 py-2 font-mono text-sm text-body dark:bg-white/10 dark:text-mute">
+        Personality Type
+      </span>
+      <h1 class="mt-4 text-5xl font-semibold tracking-[-2.4px] text-ink sm:text-6xl dark:text-on-primary">
+        {type.code}
+      </h1>
+      <p class="mt-2 text-xl text-body dark:text-mute">{type.name}</p>
+      <p class="mt-2 text-base font-mono text-mute">{type.tagline}</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <div class="lg:col-span-2 space-y-8">
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Overview</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.description}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Key Strengths</h2>
+          <ul class="grid grid-cols-2 gap-2">
+            {type.strengths.map(s => (
+              <li class="flex items-center gap-2 text-sm text-body dark:text-mute">
+                <span class="h-1.5 w-1.5 rounded-full bg-primary dark:bg-on-primary"></span>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Common Challenges</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.commonChallenges.join('. ')}.</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Communication Style</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.communicationStyle}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Leadership Style</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.leadershipStyle}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Learning Style</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.learningStyle}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Work Style</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.workStyle}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Decision Making</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.decisionMaking}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Stress Behavior</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.stressBehavior}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Friendships</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.friendships}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Family Relationships</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.familyRelationships}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Romantic Relationships</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.romanticRelationships}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Parenting</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.parenting}</p>
+        </section>
+
+        <section>
+          <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Teamwork</h2>
+          <p class="text-body leading-7 dark:text-mute">{type.teamwork}</p>
+        </section>
+      </div>
+
+      <aside class="space-y-8">
+        {result && (
+          <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+            <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Your Dimension Scores</h3>
+            <div class="mt-4">
+              <DimensionChart scores={result.scores} />
+            </div>
+          </div>
+        )}
+
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Career Preferences</h3>
+          <ul class="mt-4 space-y-2">
+            {type.careerPreferences.map(c => (
+              <li class="text-sm text-body dark:text-mute">• {c}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Personal Growth</h3>
+          <ul class="mt-4 space-y-2">
+            {type.personalGrowth.map(g => (
+              <li class="text-sm text-body dark:text-mute">• {g}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Famous Examples</h3>
+          <ul class="mt-4 space-y-2">
+            {type.famousExamples.map(f => (
+              <li class="text-sm text-body dark:text-mute">• {f}</li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="mt-16">
+      <h2 class="mb-6 text-xl font-semibold text-ink dark:text-on-primary">Related Personality Types</h2>
+      <RelatedTypes types={type.relatedTypes.map(code => {
+        const t = personalityTypes.find(pt => pt.code === code);
+        return { code, name: t?.name || code, tagline: t?.tagline || '' };
+      })} />
+    </div>
+
+    <div class="mt-12 text-center">
+      <a 
+        href="/personality-test"
+        class="rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+      >
+        Take the Test
+      </a>
+    </div>
+  </div>
+</TestLayout>
