@@ -1,0 +1,20 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+  "model": "google/gemini-2.0-flash",
+  "small_model": "google/gemini-2.0-flash-lite",
+  "provider": {
+    "options": {
+      "timeout": 60000
+    }
+  },
+  "disabled_providers": ["openai", "kilo"],
+  "mcp": {
+    "astro": {
+      "enabled": true
+    }
+  }
+}
