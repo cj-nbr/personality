@@ -25,79 +25,84 @@ const { question, selectedAnswer, onSelect } = Astro.props;
     {question.text}
   </h2>
 
-  <div class="grid gap-4" id={`question-${question.id}`}>
-    <button
-      type="button"
-      data-value={question.optionA.value}
-      data-question={question.id}
-      class="option-btn group relative rounded-lg border p-6 text-left transition-all duration-200 hover:border-hairline-strong border-hairline bg-canvas dark:border-white/15 dark:bg-primary"
-    >
+  <div 
+    class="question-container grid gap-4" 
+    data-question-id={question.id}
+    data-selected-answer={selectedAnswer ?? ''}
+  >
+    <label class="option-label group relative cursor-pointer rounded-lg border border-hairline bg-canvas p-6 text-left transition-all duration-200 hover:border-hairline-strong dark:border-white/15 dark:bg-primary" data-value={question.optionA.value}>
+      <input 
+        type="radio" 
+        name={`question-${question.id}`} 
+        value={question.optionA.value} 
+        class="sr-only"
+      />
       <span class="flex items-start gap-4">
-        <span class="option-indicator flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold transition-colors border-hairline-strong text-mute group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary">
+        <span class="option-indicator flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-hairline-strong text-sm font-semibold text-mute transition-colors group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary">
           A
         </span>
         <span class="text-base text-ink dark:text-on-primary">{question.optionA.text}</span>
       </span>
-    </button>
+    </label>
 
-    <button
-      type="button"
-      data-value={question.optionB.value}
-      data-question={question.id}
-      class="option-btn group relative rounded-lg border p-6 text-left transition-all duration-200 hover:border-hairline-strong border-hairline bg-canvas dark:border-white/15 dark:bg-primary"
-    >
+    <label class="option-label group relative cursor-pointer rounded-lg border border-hairline bg-canvas p-6 text-left transition-all duration-200 hover:border-hairline-strong dark:border-white/15 dark:bg-primary" data-value={question.optionB.value}>
+      <input 
+        type="radio" 
+        name={`question-${question.id}`} 
+        value={question.optionB.value} 
+        class="sr-only"
+      />
       <span class="flex items-start gap-4">
-        <span class="option-indicator flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold transition-colors border-hairline-strong text-mute group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary">
+        <span class="option-indicator flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-hairline-strong text-sm font-semibold text-mute transition-colors group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary">
           B
         </span>
         <span class="text-base text-ink dark:text-on-primary">{question.optionB.text}</span>
       </span>
-    </button>
+    </label>
   </div>
 </div>
 
 <script is:inline>
   (function() {
-    const container = document.getElementById(`question-${question.id}`);
-    if (!container) return;
+    var containers = document.querySelectorAll('.question-container');
     
-    const buttons = container.querySelectorAll('.option-btn');
-    
-    buttons.forEach(btn => {
-      btn.addEventListener('click', function() {
-        const value = parseInt(this.dataset.value);
-        
-        buttons.forEach(b => {
-          b.classList.remove('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5', 'ring-2', 'ring-primary', 'dark:ring-on-primary');
-          const indicator = b.querySelector('.option-indicator');
-          indicator.classList.remove('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
-          indicator.classList.add('border-hairline-strong', 'text-mute');
+    containers.forEach(function(container) {
+      var questionId = container.getAttribute('data-question-id');
+      var selectedAnswer = container.getAttribute('data-selected-answer');
+      var labels = container.querySelectorAll('.option-label');
+      
+      if (selectedAnswer && selectedAnswer !== '') {
+        labels.forEach(function(label) {
+          if (label.getAttribute('data-value') === selectedAnswer) {
+            label.classList.add('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5');
+            var indicator = label.querySelector('.option-indicator');
+            indicator.classList.remove('border-hairline-strong', 'text-mute');
+            indicator.classList.add('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
+          }
         });
-        
-        this.classList.add('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5');
-        const selectedIndicator = this.querySelector('.option-indicator');
-        selectedIndicator.classList.remove('border-hairline-strong', 'text-mute');
-        selectedIndicator.classList.add('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
-        
-        if (typeof onSelect === 'function') {
-          onSelect(value);
-        }
-        
-        window.dispatchEvent(new CustomEvent('answer-selected', { 
-          detail: { value: value, questionId: question.id } 
-        }));
+      }
+      
+      labels.forEach(function(label) {
+        label.addEventListener('click', function() {
+          var value = this.getAttribute('data-value');
+          
+          labels.forEach(function(l) {
+            l.classList.remove('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5');
+            var ind = l.querySelector('.option-indicator');
+            ind.classList.remove('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
+            ind.classList.add('border-hairline-strong', 'text-mute');
+          });
+          
+          this.classList.add('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5');
+          var selectedIndicator = this.querySelector('.option-indicator');
+          selectedIndicator.classList.remove('border-hairline-strong', 'text-mute');
+          selectedIndicator.classList.add('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
+          
+          document.dispatchEvent(new CustomEvent('answer-selected', { 
+            detail: { value: value, questionId: questionId } 
+          }));
+        });
       });
     });
-    
-    if (selectedAnswer !== undefined) {
-      buttons.forEach(btn => {
-        if (parseInt(btn.dataset.value) === selectedAnswer) {
-          btn.classList.add('border-primary', 'bg-canvas-soft', 'dark:border-on-primary', 'dark:bg-white/5');
-          const indicator = btn.querySelector('.option-indicator');
-          indicator.classList.remove('border-hairline-strong', 'text-mute');
-          indicator.classList.add('border-primary', 'bg-primary', 'text-on-primary', 'dark:border-on-primary', 'dark:bg-on-primary', 'dark:text-primary');
-        }
-      });
-    }
   })();
 </script>
