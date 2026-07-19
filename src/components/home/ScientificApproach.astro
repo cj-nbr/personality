@@ -1,0 +1,86 @@
+---
+interface Dimension {
+  code: string;
+  label: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  dimensions?: Dimension[];
+}
+
+const defaultDimensions = [
+  {
+    code: "EI",
+    label: "Energy Direction",
+    title: "Introversion vs Extraversion",
+    description: "Where you focus your energy and how you recharge. Extraverts gain energy from external stimulation and social interaction. Introverts recharge through solitude and internal reflection.",
+  },
+  {
+    code: "SN",
+    label: "Information Gathering",
+    title: "Sensing vs Intuition",
+    description: "How you take in information and what you trust. Sensing types prefer concrete, factual information and experience. Intuitive types prefer abstract patterns, possibilities, and future implications.",
+  },
+  {
+    code: "TF",
+    label: "Decision Making",
+    title: "Thinking vs Feeling",
+    description: "What you prioritize when choices get hard. Thinking types prioritize objective logic and principles. Feeling types prioritize personal values, harmony, and the impact on people.",
+  },
+  {
+    code: "JP",
+    label: "Lifestyle",
+    title: "Judging vs Perceiving",
+    description: "How you structure your world and handle change. Judging types prefer order, planning, and clear decisions. Perceiving types prefer flexibility, spontaneity, and keeping options open.",
+  },
+];
+
+const { dimensions = defaultDimensions } = Astro.props;
+---
+
+<section class="border-y border-hairline bg-canvas dark:border-white/10 dark:bg-primary">
+  <div class="mx-auto max-w-[1000px] px-6 py-20 sm:py-28">
+    <div class="text-center">
+      <h2 class="text-balance font-semibold tracking-[-1.2px] text-ink text-[32px] leading-[1.1] sm:text-[40px] dark:text-on-primary">
+        A Framework With Decades of Research Behind It.
+      </h2>
+      <p class="mt-6 max-w-2xl mx-auto font-mono text-base leading-7 text-body dark:text-mute">
+        Our assessment is inspired by the Myers-Briggs Type Indicator framework and built on four well-established personality dimensions.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2">
+      {dimensions.map((dim) => (
+        <a
+          href="/personality-dimensions"
+          class="group rounded-lg border border-hairline bg-canvas-soft p-8 transition hover:border-hairline-strong dark:border-white/15 dark:bg-primary dark:hover:border-white/30"
+        >
+          <p class="font-mono text-xs uppercase tracking-wide text-link">{dim.label}</p>
+          <h3 class="mt-2 text-lg font-semibold text-ink group-hover:text-link dark:text-on-primary dark:group-hover:text-link">{dim.title}</h3>
+          <p class="mt-3 text-sm leading-7 text-body dark:text-mute">{dim.description}</p>
+          <span class="mt-4 inline-block text-sm font-medium text-link">Learn more →</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-16 rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+      <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How Scoring Works</h3>
+      <p class="mt-4 text-sm leading-7 text-body dark:text-mute">
+        Each question targets one dimension. After completing all questions, we calculate your score for each of the four dimensions. A higher score indicates a stronger preference toward one end of the spectrum. If your score is close to the middle on any dimension, you may see a balanced result — which is completely normal and reflects the flexibility of human personality.
+      </p>
+      <p class="mt-4 text-sm leading-7 text-body dark:text-mute">
+        This is a preference indicator, not a diagnostic tool. It describes tendencies, not limits.
+      </p>
+      <div class="mt-6">
+        <a
+          href="/about-test"
+          class="rounded-pill bg-primary px-6 py-3 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+        >
+          See How It Works
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

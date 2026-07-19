@@ -1,0 +1,76 @@
+---
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  steps?: Step[];
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const defaultSteps = [
+  {
+    number: "01",
+    title: "Answer 48 Questions",
+    description:
+      "Choose the option that feels most natural. There are no right or wrong answers, and there is no judgment — only curiosity. The assessment takes about 5 minutes.",
+  },
+  {
+    number: "02",
+    title: "Receive Your Personality Type",
+    description:
+      "Instantly see your 4-letter type, dimension scores, confidence level, and a detailed report tailored to your unique preferences.",
+  },
+  {
+    number: "03",
+    title: "Understand Yourself Better",
+    description:
+      "Explore your strengths, challenges, career fit, relationship patterns, and growth opportunities — all based on your actual results.",
+  },
+];
+
+const {
+  steps = defaultSteps,
+  ctaLabel = "Take the Free Assessment",
+  ctaHref = "/personality-test",
+} = Astro.props;
+---
+
+<section class="border-y border-hairline bg-canvas dark:border-white/10 dark:bg-primary">
+  <div class="mx-auto max-w-[1000px] px-6 py-20 sm:py-28">
+    <div class="text-center">
+      <h2 class="text-balance font-semibold tracking-[-1.2px] text-ink text-[32px] leading-[1.1] sm:text-[40px] dark:text-on-primary">
+        Three Steps to Clarity.
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto font-mono text-base leading-7 text-body dark:text-mute">
+        From your first answer to your full profile, the path to self-knowledge is short and simple.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-3">
+      {steps.map((step) => (
+        <div class="relative rounded-lg border border-hairline bg-canvas-soft p-8 dark:border-white/15 dark:bg-primary">
+          <div class="flex items-center gap-4">
+            <span class="font-mono text-3xl font-semibold tracking-tight text-link/30 dark:text-link/30">
+              {step.number}
+            </span>
+            <h3 class="text-lg font-semibold text-ink dark:text-on-primary">{step.title}</h3>
+          </div>
+          <p class="mt-4 text-sm leading-7 text-body dark:text-mute">{step.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-14 text-center">
+      <a
+        href={ctaHref}
+        class="rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+      >
+        {ctaLabel}
+      </a>
+    </div>
+  </div>
+</section>

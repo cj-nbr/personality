@@ -1,0 +1,250 @@
+---
+interface Props {
+  transparent?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  transparent = true,
+  ctaLabel = "Take Free Assessment",
+  ctaHref = "/personality-test",
+} = Astro.props;
+
+const navLinks = [
+  { href: "/personality-test", label: "Personality Test" },
+  { href: "/personality-types", label: "Personality Types" },
+  { href: "/personality-dimensions", label: "Dimensions" },
+  { href: "/about-test", label: "About" },
+  { href: "/blog", label: "Blog" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 ease-out"
+  role="banner"
+>
+  <nav
+    class="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-6"
+    aria-label="Main"
+  >
+    <a
+      href="/"
+      class="flex items-center gap-2 font-semibold tracking-tight text-ink dark:text-on-primary"
+      aria-label="personality home"
+    >
+      <span class="grid h-6 w-6 place-items-center rounded-sm bg-primary text-[13px] text-on-primary dark:bg-on-primary dark:text-primary">
+        p
+      </span>
+      <span class="hidden sm:inline">personality</span>
+    </a>
+
+    <div
+      class="hidden items-center gap-1 md:flex"
+      aria-label="Primary"
+    >
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="rounded-pill px-3 py-2 text-sm font-medium text-ink transition hover:bg-canvas-soft-2 dark:text-on-primary dark:hover:bg-white/10"
+          aria-current={currentPath === link.href ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <div class="hidden md:block">
+      <a
+        href={ctaHref}
+        class="rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+      >
+        {ctaLabel}
+      </a>
+    </div>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="flex h-11 w-11 items-center justify-center rounded-lg text-ink transition hover:bg-canvas-soft-2 dark:text-on-primary dark:hover:bg-white/10 md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Toggle navigation menu"
+    >
+      <svg
+        id="menu-icon-open"
+        class="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+      <svg
+        id="menu-icon-close"
+        class="hidden h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </nav>
+
+  <div
+    id="mobile-menu"
+    class="fixed inset-x-0 top-16 z-40 bg-canvas/95 backdrop-blur-xl dark:bg-primary/95 md:hidden opacity-0 -translate-y-2 pointer-events-none transition-all duration-300 ease-out"
+    aria-label="Mobile navigation"
+    aria-hidden="true"
+    inert
+  >
+    <div class="flex flex-col items-center justify-center gap-2 p-6">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-link w-full rounded-lg px-4 py-3 text-center text-base font-medium text-ink transition hover:bg-canvas-soft-2 dark:text-on-primary dark:hover:bg-white/10"
+          aria-current={currentPath === link.href ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={ctaHref}
+        class="mobile-link mt-4 rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+      >
+        {ctaLabel}
+      </a>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    const header = document.getElementById("site-header");
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
+    const openIcon = document.getElementById("menu-icon-open");
+    const closeIcon = document.getElementById("menu-icon-close");
+    const mobileLinks = menu.querySelectorAll(".mobile-link");
+    let lastFocusedElement = null;
+
+    function updateHeader() {
+      if (window.scrollY > 10) {
+        header.classList.remove("bg-transparent");
+        header.classList.add(
+          "border-b",
+          "border-hairline",
+          "bg-canvas/80",
+          "backdrop-blur",
+          "dark:border-white/10",
+          "dark:bg-primary/80"
+        );
+      } else {
+        header.classList.add("bg-transparent");
+        header.classList.remove(
+          "border-b",
+          "border-hairline",
+          "bg-canvas/80",
+          "backdrop-blur",
+          "dark:border-white/10",
+          "dark:bg-primary/80"
+        );
+      }
+    }
+
+    function openMenu() {
+      menu.classList.remove("opacity-0", "-translate-y-2", "pointer-events-none");
+      menu.classList.add("opacity-100", "translate-y-0");
+      menu.removeAttribute("inert");
+      menu.setAttribute("aria-hidden", "false");
+      toggle.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+      lastFocusedElement = document.activeElement;
+      setTimeout(function () {
+        mobileLinks[0].focus();
+      }, 50);
+    }
+
+    function closeMenu() {
+      menu.classList.remove("opacity-100", "translate-y-0");
+      menu.classList.add("opacity-0", "-translate-y-2", "pointer-events-none");
+      menu.setAttribute("inert", "");
+      menu.setAttribute("aria-hidden", "true");
+      toggle.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+      }
+    }
+
+    toggle.addEventListener("click", function () {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeMenu();
+        openIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+      } else {
+        openMenu();
+        openIcon.classList.add("hidden");
+        closeIcon.classList.remove("hidden");
+      }
+    });
+
+    mobileLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
+        closeMenu();
+        openIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+      });
+    });
+
+    menu.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closeMenu();
+        openIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+        toggle.focus();
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const focusable = menu.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    updateHeader();
+  })();
+</script>

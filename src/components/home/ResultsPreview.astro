@@ -1,0 +1,67 @@
+---
+interface ResultItem {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  items?: ResultItem[];
+}
+
+const defaultItems = [
+  { label: "Personality Type", value: "INTJ" },
+  { label: "Dimension Scores", value: "EI · SN · TF · JP" },
+  { label: "Strengths", value: "Strategic thinking, independence, long-term planning" },
+  { label: "Challenges", value: "Overly critical, impatient with inefficiency" },
+  { label: "Career Insights", value: "Software architect, strategic planner, research scientist" },
+  { label: "Relationship Insights", value: "Few but deep connections; values intellectual compatibility" },
+  { label: "Personal Growth", value: "Practice expressing appreciation; develop emotional vocabulary" },
+];
+
+const { items = defaultItems } = Astro.props;
+---
+
+<section class="border-y border-hairline bg-canvas dark:border-white/10 dark:bg-primary">
+  <div class="mx-auto max-w-[1000px] px-6 py-20 sm:py-28">
+    <div class="text-center">
+      <h2 class="text-balance font-semibold tracking-[-1.2px] text-ink text-[32px] leading-[1.1] sm:text-[40px] dark:text-on-primary">
+        What You Get When You Finish.
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto font-mono text-base leading-7 text-body dark:text-mute">
+        Your results aren't just a label. They're a starting point for understanding your patterns, leveraging your strengths, and navigating the areas where you might need to stretch.
+      </p>
+    </div>
+
+    <div class="mt-16 rounded-lg border border-hairline bg-canvas-soft p-8 dark:border-white/15 dark:bg-primary">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-wide text-mute">Your Personality Type</p>
+          <p class="mt-2 text-4xl font-semibold tracking-[-1.2px] text-ink dark:text-on-primary">INTJ</p>
+          <p class="mt-1 text-base text-body dark:text-mute">The Architect</p>
+        </div>
+        <div class="hidden sm:block text-right">
+          <p class="font-mono text-xs uppercase tracking-wide text-mute">Confidence</p>
+          <p class="mt-2 text-4xl font-semibold tracking-[-1.2px] text-ink dark:text-on-primary">87%</p>
+        </div>
+      </div>
+
+      <div class="mt-8 space-y-4">
+        {items.map((item) => (
+          <div class="flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-6">
+            <span class="sm:w-40 shrink-0 font-mono text-xs uppercase tracking-wide text-mute">{item.label}</span>
+            <span class="text-sm leading-7 text-body dark:text-mute">{item.value}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-14 text-center">
+      <a
+        href="/personality-test"
+        class="rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+      >
+        Take the Free Assessment
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+---
+interface Testimonial {
+  name: string;
+  type: string;
+  quote: string;
+}
+
+interface Props {
+  testimonials?: Testimonial[];
+}
+
+const defaultTestimonials = [
+  {
+    name: "Sarah Chen",
+    type: "INTP",
+    quote: "I always tested as an INTP but never understood what that meant for my career. This platform's breakdown of learning style changed how I approach projects.",
+  },
+  {
+    name: "Marcus Johnson",
+    type: "ENFJ",
+    quote: "I've taken 5 different personality tests. This is the only one that explained why my scores were balanced across dimensions instead of just giving me a 4-letter code.",
+  },
+  {
+    name: "Aisha Patel",
+    type: "ISTP",
+    quote: "I came for the personality test and stayed for the career and relationship insights. Actually excited to see what they build next.",
+  },
+];
+
+const { testimonials = defaultTestimonials } = Astro.props;
+---
+
+<section class="bg-canvas-soft dark:bg-primary">
+  <div class="mx-auto max-w-[1000px] px-6 py-20 sm:py-28">
+    <div class="text-center">
+      <h2 class="text-balance font-semibold tracking-[-1.2px] text-ink text-[32px] leading-[1.1] sm:text-[40px] dark:text-on-primary">
+        What People Are Saying.
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto font-mono text-base leading-7 text-body dark:text-mute">
+        Real feedback from people who took the assessment and explored their results.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3">
+      {testimonials.map((t) => (
+        <div class="rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-canvas-soft font-mono text-sm font-semibold text-link dark:bg-white/10" aria-hidden="true">
+              {t.name.split(" ").map(n => n[0]).join("")}
+            </div>
+            <div>
+              <p class="text-sm font-medium text-ink dark:text-on-primary">{t.name}</p>
+              <p class="font-mono text-xs text-mute">{t.type}</p>
+            </div>
+          </div>
+          <p class="mt-4 text-sm leading-7 text-body dark:text-mute">"{t.quote}"</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
