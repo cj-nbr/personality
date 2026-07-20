@@ -93,4 +93,14 @@ const selectedAnswer = state.answers[num];
     if (!state.startTime) state.startTime = Date.now();
     localStorage.setItem('personality_test_state', JSON.stringify(state));
   });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      var nextBtn = document.querySelector('a[href*="question/' + (parseInt('{$Astro.params.num}') + 1) + '"], a[href="/personality-test/results"]');
+      if (nextBtn) nextBtn.click();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      var prevBtn = document.querySelector('a[href*="question/' + (parseInt('{$Astro.params.num}') - 1) + '"], a[href="/personality-test"]');
+      if (prevBtn) prevBtn.click();
+    }
+  });
 </script>

@@ -1,0 +1,51 @@
+---
+import TestLayout from "../layouts/TestLayout.astro";
+---
+
+<TestLayout 
+  title="Team Dynamics Quiz | 16 Personality Test" 
+  description="Discover how your personality type affects team dynamics. Take our team dynamics quiz to learn about collaboration styles."
+>
+  <div class="mx-auto max-w-[800px] px-6 py-12 sm:py-20">
+    <h1 class="text-4xl font-semibold tracking-[-2.4px] text-ink sm:text-5xl dark:text-on-primary">
+      Team Dynamics Quiz
+    </h1>
+    
+    <div class="mt-8 space-y-6 text-body dark:text-mute">
+      <p>Understanding team dynamics is crucial for effective collaboration. Different personality types contribute uniquely to teams, and understanding these differences can help you work better together.</p>
+      
+      <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+        <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How It Works</h3>
+        <p class="mt-2">This quiz helps you understand how your personality type influences your teamwork style. Answer honestly to get insights into your natural role in team settings.</p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <h3 class="font-semibold text-ink dark:text-on-primary">Analysts</h3>
+          <p class="mt-2 text-sm text-body dark:text-mute">Strategic thinkers who bring logic and long-term vision to teams.</p>
+        </div>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <h3 class="font-semibold text-ink dark:text-on-primary">Diplomats</h3>
+          <p class="mt-2 text-sm text-body dark:text-mute">Empathetic collaborators who foster harmony and shared purpose.</p>
+        </div>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <h3 class="font-semibold text-ink dark:text-on-primary">Sentinels</h3>
+          <p class="mt-2 text-sm text-body dark:text-mute">Reliable organizers who ensure stability and follow-through.</p>
+        </div>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <h3 class="font-semibold text-ink dark:text-on-primary">Explorers</h3>
+          <p class="mt-2 text-sm text-body dark:text-mute">Adaptable problem-solvers who bring energy and quick thinking.</p>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a 
+          href="/personality-test"
+          class="rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+        >
+          Take the Personality Test First
+        </a>
+      </div>
+    </div>
+  </div>
+</TestLayout>

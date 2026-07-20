@@ -11,6 +11,7 @@ export interface DimensionScores {
   SN: number;
   TF: number;
   JP: number;
+  AT: number;
 }
 
 export interface TestResult {
@@ -31,7 +32,7 @@ export interface TestState {
 const STORAGE_KEY = 'personality_test_state';
 
 export function calculateResult(state: TestState, questions: Question[]): TestResult {
-  const scores: DimensionScores = { EI: 0, SN: 0, TF: 0, JP: 0 };
+  const scores: DimensionScores = { EI: 0, SN: 0, TF: 0, JP: 0, AT: 0 };
   
   questions.forEach(q => {
     const answer = state.answers[q.id];
@@ -47,6 +48,7 @@ export function calculateResult(state: TestState, questions: Question[]): TestRe
   if (Math.abs(scores.SN) < 12) balancedDimensions.push('SN');
   if (Math.abs(scores.TF) < 12) balancedDimensions.push('TF');
   if (Math.abs(scores.JP) < 12) balancedDimensions.push('JP');
+  if (Math.abs(scores.AT) < 12) balancedDimensions.push('AT');
 
   return {
     ...result,
@@ -60,36 +62,53 @@ export function getTypeFromScores(scores: DimensionScores): { code: string; name
   const s = scores.SN >= 12 ? 'S' : scores.SN <= -12 ? 'N' : 'X';
   const t = scores.TF >= 12 ? 'T' : scores.TF <= -12 ? 'F' : 'X';
   const j = scores.JP >= 12 ? 'J' : scores.JP <= -12 ? 'P' : 'X';
+  const a = scores.AT >= 12 ? 'A' : scores.AT <= -12 ? 'T' : 'X';
 
-  const code = `${e}${s}${t}${j}`;
+  const code = `${e}${s}${t}${j}-${a}`;
   
   const codeToName: Record<string, string> = {
-    'INTJ': 'The Architect',
-    'INTP': 'The Logician',
-    'ENTJ': 'The Commander',
-    'ENTP': 'The Debater',
-    'INFJ': 'The Advocate',
-    'INFP': 'The Mediator',
-    'ENFJ': 'The Protagonist',
-    'ENFP': 'The Campaigner',
-    'ISTJ': 'The Logistician',
-    'ISFJ': 'The Defender',
-    'ESTJ': 'The Executive',
-    'ESFJ': 'The Consul',
-    'ISTP': 'The Virtuoso',
-    'ISFP': 'The Adventurer',
-    'ESTP': 'The Entrepreneur',
-    'ESFP': 'The Entertainer',
-    'XXXX': 'The Balanced Individual'
+    'INTJ-A': 'The Architect (Assertive)',
+    'INTJ-T': 'The Architect (Turbulent)',
+    'INTP-A': 'The Logician (Assertive)',
+    'INTP-T': 'The Logician (Turbulent)',
+    'ENTJ-A': 'The Commander (Assertive)',
+    'ENTJ-T': 'The Commander (Turbulent)',
+    'ENTP-A': 'The Debater (Assertive)',
+    'ENTP-T': 'The Debater (Turbulent)',
+    'INFJ-A': 'The Advocate (Assertive)',
+    'INFJ-T': 'The Advocate (Turbulent)',
+    'INFP-A': 'The Mediator (Assertive)',
+    'INFP-T': 'The Mediator (Turbulent)',
+    'ENFJ-A': 'The Protagonist (Assertive)',
+    'ENFJ-T': 'The Protagonist (Turbulent)',
+    'ENFP-A': 'The Campaigner (Assertive)',
+    'ENFP-T': 'The Campaigner (Turbulent)',
+    'ISTJ-A': 'The Logistician (Assertive)',
+    'ISTJ-T': 'The Logistician (Turbulent)',
+    'ISFJ-A': 'The Defender (Assertive)',
+    'ISFJ-T': 'The Defender (Turbulent)',
+    'ESTJ-A': 'The Executive (Assertive)',
+    'ESTJ-T': 'The Executive (Turbulent)',
+    'ESFJ-A': 'The Consul (Assertive)',
+    'ESFJ-T': 'The Consul (Turbulent)',
+    'ISTP-A': 'The Virtuoso (Assertive)',
+    'ISTP-T': 'The Virtuoso (Turbulent)',
+    'ISFP-A': 'The Adventurer (Assertive)',
+    'ISFP-T': 'The Adventurer (Turbulent)',
+    'ESTP-A': 'The Entrepreneur (Assertive)',
+    'ESTP-T': 'The Entrepreneur (Turbulent)',
+    'ESFP-A': 'The Entertainer (Assertive)',
+    'ESFP-T': 'The Entertainer (Turbulent)',
+    'XXXX-X': 'The Balanced Individual'
   };
 
   return { code, name: codeToName[code] || 'The Balanced Individual' };
 }
 
 export function calculateConfidence(scores: DimensionScores): number {
-  const dimensions = [scores.EI, scores.SN, scores.TF, scores.JP];
+  const dimensions = [scores.EI, scores.SN, scores.TF, scores.JP, scores.AT];
   const avg = dimensions.reduce((sum, score) => sum + Math.abs(score), 0) / dimensions.length;
-  return Math.min(Math.round((avg / 24) * 100), 99);
+  return Math.min(Math.round((avg / 30) * 100), 99);
 }
 
 export function saveProgress(state: TestState): void {
@@ -130,11 +149,11 @@ export function getInitialState(): TestState {
 }
 
 export function getTotalQuestions(): number {
-  return 48;
+  return 60;
 }
 
 export function getEstimatedTimeRemaining(current: number, total: number, startTime: number | null): string {
-  if (!startTime) return '5 min';
+  if (!startTime) return '12 min';
   
   const elapsed = Date.now() - startTime;
   const avgTimePerQuestion = elapsed / current;

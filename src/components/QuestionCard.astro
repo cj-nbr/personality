@@ -18,47 +18,36 @@ const { question, selectedAnswer, onSelect } = Astro.props;
   <p class="mb-4 font-mono text-xs uppercase tracking-wide text-mute">
     {question.dimension === 'EI' ? 'Energy Direction' : 
      question.dimension === 'SN' ? 'Information Gathering' : 
-     question.dimension === 'TF' ? 'Decision Making' : 'Lifestyle'}
+     question.dimension === 'TF' ? 'Decision Making' : 
+     question.dimension === 'AT' ? 'Identity' : 'Lifestyle'}
   </p>
   
-  <h2 class="mb-8 text-balance font-semibold text-2xl text-ink sm:text-3xl dark:text-on-primary">
+  <h2 class="mb-10 text-balance font-semibold text-2xl text-ink sm:text-3xl dark:text-on-primary">
     {question.text}
   </h2>
 
-  <div 
-    class="question-container grid gap-4" 
-    data-question-id={question.id}
-    data-selected-answer={selectedAnswer ?? ''}
-  >
-    <label class="option-label group relative cursor-pointer rounded-lg border border-hairline bg-canvas p-6 text-left transition-all duration-200 hover:border-hairline-strong dark:border-white/15 dark:bg-primary" data-value={question.optionA.value}>
-      <input 
-        type="radio" 
-        name={`question-${question.id}`} 
-        value={question.optionA.value} 
-        class="sr-only"
-      />
-      <span class="flex items-start gap-4">
-        <span class="option-indicator flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-hairline-strong text-sm font-semibold text-mute transition-colors group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary">
-          A
-        </span>
-        <span class="text-base text-ink dark:text-on-primary">{question.optionA.text}</span>
-      </span>
-    </label>
+  <div class="question-container" data-question-id={question.id} data-selected-answer={selectedAnswer ?? ''}>
+    <div class="flex items-stretch gap-4">
+      <label class="option-label group flex-1 cursor-pointer rounded-xl border-2 border-hairline bg-canvas p-6 text-center transition-all duration-200 hover:border-hairline-strong dark:border-white/15 dark:bg-primary" data-value={question.optionA.value}>
+        <input 
+          type="radio" 
+          name={`question-${question.id}`} 
+          value={question.optionA.value} 
+          class="sr-only"
+        />
+        <span class="text-base font-medium text-ink dark:text-on-primary">{question.optionA.text}</span>
+      </label>
 
-    <label class="option-label group relative cursor-pointer rounded-lg border border-hairline bg-canvas p-6 text-left transition-all duration-200 hover:border-hairline-strong dark:border-white/15 dark:bg-primary" data-value={question.optionB.value}>
-      <input 
-        type="radio" 
-        name={`question-${question.id}`} 
-        value={question.optionB.value} 
-        class="sr-only"
-      />
-      <span class="flex items-start gap-4">
-        <span class="option-indicator flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-hairline-strong text-sm font-semibold text-mute transition-colors group-hover:border-ink group-hover:text-ink dark:group-hover:border-on-primary dark:group-hover:text-on-primary">
-          B
-        </span>
-        <span class="text-base text-ink dark:text-on-primary">{question.optionB.text}</span>
-      </span>
-    </label>
+      <label class="option-label group flex-1 cursor-pointer rounded-xl border-2 border-hairline bg-canvas p-6 text-center transition-all duration-200 hover:border-hairline-strong dark:border-white/15 dark:bg-primary" data-value={question.optionB.value}>
+        <input 
+          type="radio" 
+          name={`question-${question.id}`} 
+          value={question.optionB.value} 
+          class="sr-only"
+        />
+        <span class="text-base font-medium text-ink dark:text-on-primary">{question.optionB.text}</span>
+      </label>
+    </div>
   </div>
 </div>
 
@@ -76,10 +65,6 @@ const { question, selectedAnswer, onSelect } = Astro.props;
           l.style.border = '';
           l.style.backgroundColor = '';
           l.style.boxShadow = '';
-          var ind = l.querySelector('.option-indicator');
-          ind.style.border = '';
-          ind.style.backgroundColor = '';
-          ind.style.color = '';
         });
         
         var isDark = document.documentElement.classList.contains('dark');
@@ -90,11 +75,6 @@ const { question, selectedAnswer, onSelect } = Astro.props;
         label.style.border = '2px solid ' + borderColor;
         label.style.backgroundColor = bgColor;
         label.style.boxShadow = glow;
-        
-        var selectedIndicator = label.querySelector('.option-indicator');
-        selectedIndicator.style.border = '2px solid ' + borderColor;
-        selectedIndicator.style.backgroundColor = borderColor;
-        selectedIndicator.style.color = '#ffffff';
       }
       
       if (selectedAnswer && selectedAnswer !== '') {

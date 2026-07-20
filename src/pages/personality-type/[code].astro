@@ -121,6 +121,18 @@ if (resultState && resultState.completed) {
       </div>
 
       <aside class="space-y-8">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Explore This Type</h3>
+          <nav class="mt-4 space-y-2">
+            <a href={`/personality-type/${code.toLowerCase()}`} class="block text-sm text-link hover:text-link-deep dark:text-link dark:hover:text-link-deep">Introduction</a>
+            <a href={`/personality-type/${code.toLowerCase()}/strengths-and-weaknesses`} class="block text-sm text-link hover:text-link-deep dark:text-link dark:hover:text-link-deep">Strengths & Weaknesses</a>
+            <a href={`/personality-type/${code.toLowerCase()}/relationships`} class="block text-sm text-link hover:text-link-deep dark:text-link dark:hover:text-link-deep">Romantic Relationships</a>
+            <a href={`/personality-type/${code.toLowerCase()}/friends`} class="block text-sm text-link hover:text-link-deep dark:text-link dark:hover:text-link-deep">Friendships</a>
+            <a href={`/personality-type/${code.toLowerCase()}/parents`} class="block text-sm text-link hover:text-link-deep dark:text-link dark:hover:text-link-deep">Parenthood</a>
+            <a href={`/personality-type/${code.toLowerCase()}/careers`} class="block text-sm text-link hover:text-link-deep dark:text-link dark:hover:text-link-deep">Career Paths</a>
+            <a href={`/personality-type/${code.toLowerCase()}/workplace`} class="block text-sm text-link hover:text-link-deep dark:text-link dark:hover:text-link-deep">Workplace Habits</a>
+          </nav>
+        </div>
         {result && (
           <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
             <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Your Dimension Scores</h3>

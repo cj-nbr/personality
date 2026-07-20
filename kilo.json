@@ -11,7 +11,7 @@
       "timeout": 60000
     }
   },
-  "disabled_providers": ["openai", "kilo"],
+  "disabled_providers": ["openai"],
   "mcp": {
     "astro": {
       "enabled": true

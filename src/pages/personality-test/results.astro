@@ -30,13 +30,14 @@ if (!type) {
         {result.code}
       </h1>
       <p class="mt-2 text-xl text-body dark:text-mute">{type.name}</p>
+      <p class="mt-2 font-mono text-sm text-mute">{type.tagline}</p>
       <p class="mt-4 max-w-2xl mx-auto font-mono text-base leading-7 text-body dark:text-mute">
         {type.summary}
       </p>
       
       <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
         <a 
-          href={`/personality-type/${result.code.toLowerCase()}`}
+          href={`/personality-type/${result.code.split('-')[0].toLowerCase()}`}
           class="rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
         >
           View Full Profile
@@ -47,6 +48,15 @@ if (!type) {
         >
           Retake Test
         </button>
+      </div>
+
+      <div class="mt-6 flex items-center justify-center gap-3">
+        <button onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" class="rounded-pill border border-hairline px-4 py-2 text-sm font-medium text-ink transition hover:bg-canvas-soft-2 dark:border-white/15 dark:text-on-primary dark:hover:bg-white/10">
+          Copy Link
+        </button>
+        <a href={`https://twitter.com/intent/tweet?text=I%20just%20took%20the%2016%20Personality%20Test%20and%20got%20${result.code}%20-%20${type.name}!%20Take%20the%20test%20to%20find%20your%20type.&url=${encodeURIComponent('https://personality/personality-test')}`} target="_blank" rel="noopener noreferrer" class="rounded-pill border border-hairline px-4 py-2 text-sm font-medium text-ink transition hover:bg-canvas-soft-2 dark:border-white/15 dark:text-on-primary dark:hover:bg-white/10">
+          Share on Twitter
+        </a>
       </div>
     </div>
 
@@ -79,6 +89,12 @@ if (!type) {
           </div>
           <div class="text-xs font-mono text-mute">Perceiving</div>
         </div>
+        <div class="text-center">
+          <div class="text-2xl font-semibold text-ink dark:text-on-primary">
+            {Math.abs(result.scores.AT)}%
+          </div>
+          <div class="text-xs font-mono text-mute">Turbulent</div>
+        </div>
       </div>
     </div>
 
@@ -87,7 +103,7 @@ if (!type) {
       <div class="space-y-4 text-body dark:text-mute">
         <p>Your result shows a preference for {result.code.replace('X', 'balanced')} across the four personality dimensions. This means you naturally lean toward certain ways of perceiving the world and making decisions.</p>
         {result.balancedDimensions.length > 0 && (
-          <p>You scored particularly balanced on the {result.balancedDimensions.map(d => d === 'EI' ? 'Introversion-Extraversion' : d === 'SN' ? 'Sensing-Intuition' : d === 'TF' ? 'Thinking-Feeling' : 'Judging-Perceiving').join(' and ')} dimension. This suggests you can comfortably adapt between both preferences depending on the situation.</p>
+          <p>You scored particularly balanced on the {result.balancedDimensions.map(d => d === 'EI' ? 'Introversion-Extraversion' : d === 'SN' ? 'Sensing-Intuition' : d === 'TF' ? 'Thinking-Feeling' : d === 'JP' ? 'Judging-Perceiving' : 'Identity (Assertive-Turbulent)').join(' and ')} dimension. This suggests you can comfortably adapt between both preferences depending on the situation.</p>
         )}
         <p>Remember that personality types are frameworks for understanding preferences, not rigid boxes. You may find that different situations bring out different aspects of your personality.</p>
       </div>

@@ -342,13 +342,97 @@ export const questions: Question[] = [
     text: 'Your ideal morning routine is:',
     optionA: { text: 'Structured and consistent, with the same steps each day', value: 2 },
     optionB: { text: 'Flexible and varies depending on your mood or needs', value: -2 }
+  },
+  {
+    id: 49,
+    dimension: 'AT',
+    text: 'You generally feel confident about your decisions even when others doubt you.',
+    optionA: { text: 'Strongly Agree', value: 2 },
+    optionB: { text: 'Strongly Disagree', value: -2 }
+  },
+  {
+    id: 50,
+    dimension: 'AT',
+    text: 'You rarely worry about what other people think of you.',
+    optionA: { text: 'Strongly Agree', value: 2 },
+    optionB: { text: 'Strongly Disagree', value: -2 }
+  },
+  {
+    id: 51,
+    dimension: 'AT',
+    text: 'You tend to be perfectionistic and push yourself very hard.',
+    optionA: { text: 'Strongly Agree', value: -2 },
+    optionB: { text: 'Strongly Disagree', value: 2 }
+  },
+  {
+    id: 52,
+    dimension: 'AT',
+    text: 'Stressful situations rarely affect your mood for long.',
+    optionA: { text: 'Strongly Agree', value: 2 },
+    optionB: { text: 'Strongly Disagree', value: -2 }
+  },
+  {
+    id: 53,
+    dimension: 'AT',
+    text: 'You are comfortable being the center of attention.',
+    optionA: { text: 'Strongly Agree', value: 2 },
+    optionB: { text: 'Strongly Disagree', value: -2 }
+  },
+  {
+    id: 54,
+    dimension: 'AT',
+    text: 'You often compare yourself to others and feel you fall short.',
+    optionA: { text: 'Strongly Agree', value: -2 },
+    optionB: { text: 'Strongly Disagree', value: 2 }
+  },
+  {
+    id: 55,
+    dimension: 'AT',
+    text: 'You recover quickly from setbacks and failures.',
+    optionA: { text: 'Strongly Agree', value: 2 },
+    optionB: { text: 'Strongly Disagree', value: -2 }
+  },
+  {
+    id: 56,
+    dimension: 'AT',
+    text: 'You are very self-conscious about your appearance.',
+    optionA: { text: 'Strongly Agree', value: -2 },
+    optionB: { text: 'Strongly Disagree', value: 2 }
+  },
+  {
+    id: 57,
+    dimension: 'AT',
+    text: 'You feel little anxiety about things that might go wrong.',
+    optionA: { text: 'Strongly Agree', value: 2 },
+    optionB: { text: 'Strongly Disagree', value: -2 }
+  },
+  {
+    id: 58,
+    dimension: 'AT',
+    text: 'You often doubt your own abilities even when you are capable.',
+    optionA: { text: 'Strongly Agree', value: -2 },
+    optionB: { text: 'Strongly Disagree', value: 2 }
+  },
+  {
+    id: 59,
+    dimension: 'AT',
+    text: 'You are comfortable taking risks and trying new things.',
+    optionA: { text: 'Strongly Agree', value: 2 },
+    optionB: { text: 'Strongly Disagree', value: -2 }
+  },
+  {
+    id: 60,
+    dimension: 'AT',
+    text: 'You feel driven to prove yourself to others.',
+    optionA: { text: 'Strongly Agree', value: -2 },
+    optionB: { text: 'Strongly Disagree', value: 2 }
   }
 ];
 
-export function getQuestionsByDimension(dimension: string): Question[] {
-  return questions.filter(q => q.dimension === dimension);
-}
-
 export function getTotalQuestions(): number {
   return questions.length;
+}
+
+export function getQuestionsByDimension(dimension: string): Question[] {
+  return questions.filter(q => q.dimension === dimension);
 }
