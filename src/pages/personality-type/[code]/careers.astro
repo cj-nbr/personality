@@ -1,0 +1,93 @@
+---
+import TestLayout from "../../../layouts/TestLayout.astro";
+import RelatedTypes from "../../../components/RelatedTypes.astro";
+import { getTypeByCode, personalityTypes } from "../../../data/personality-types";
+
+export function getStaticPaths() {
+  return personalityTypes.map(type => ({ params: { code: type.code.toLowerCase() } }));
+}
+
+const code = Astro.params.code?.toUpperCase();
+const type = getTypeByCode(code);
+
+if (!type) {
+  return Astro.redirect('/personality-types');
+}
+---
+
+<TestLayout 
+  title={`${type.code} Careers | ${type.name}`} 
+  description={`Career paths and work environments for ${type.name} (${type.code}). Discover the best careers for your personality type.`}
+>
+  <div class="mx-auto max-w-[1000px] px-6 py-12 sm:py-20">
+    <div class="text-center">
+      <span class="inline-flex items-center rounded-full bg-canvas-soft px-4 py-2 font-mono text-sm text-body dark:bg-white/10 dark:text-mute">
+        Career Paths
+      </span>
+      <h1 class="mt-4 text-5xl font-semibold tracking-[-2.4px] text-ink sm:text-6xl dark:text-on-primary">
+        {type.code} Careers
+      </h1>
+      <p class="mt-2 text-xl text-body dark:text-mute">{type.name}</p>
+      <p class="mt-2 text-base font-mono text-mute">{type.tagline}</p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <div class="rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+        <h2 class="mb-6 text-xl font-semibold text-ink dark:text-on-primary">Best Career Paths</h2>
+        <ul class="space-y-3">
+          {type.careerPreferences.map(c => (
+            <li class="flex items-start gap-3 text-sm text-body dark:text-mute">
+              <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-primary dark:bg-on-primary"></span>
+              <span>{c}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+        <h2 class="mb-6 text-xl font-semibold text-ink dark:text-on-primary">Best Work Environments</h2>
+        <ul class="space-y-3">
+          {type.bestWorkEnvironments.map(env => (
+            <li class="flex items-start gap-3 text-sm text-body dark:text-mute">
+              <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-link"></span>
+              <span>{env}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+      <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Work Style</h2>
+      <p class="text-body leading-7 dark:text-mute">{type.workStyle}</p>
+    </div>
+
+    <div class="mt-8 rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+      <h2 class="mb-4 text-xl font-semibold text-ink dark:text-on-primary">Leadership Style</h2>
+      <p class="text-body leading-7 dark:text-mute">{type.leadershipStyle}</p>
+    </div>
+
+    <div class="mt-12">
+      <h2 class="mb-6 text-xl font-semibold text-ink dark:text-on-primary">Related Personality Types</h2>
+      <RelatedTypes types={type.relatedTypes.map(code => {
+        const t = personalityTypes.find(pt => pt.code === code);
+        return { code, name: t?.name || code, tagline: t?.tagline || '' };
+      })} />
+    </div>
+
+    <div class="mt-12 flex items-center justify-center gap-4">
+      <a 
+        href={`/personality-type/${code.toLowerCase()}`}
+        class="rounded-pill border border-hairline px-6 py-3 text-sm font-medium text-ink transition hover:bg-canvas-soft-2 dark:border-white/15 dark:text-on-primary dark:hover:bg-white/10"
+      >
+        ← Back to Profile
+      </a>
+      <a 
+        href="/personality-test"
+        class="rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"
+      >
+        Take the Test
+      </a>
+    </div>
+  </div>
+</TestLayout>
