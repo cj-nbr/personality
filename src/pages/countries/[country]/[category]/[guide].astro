@@ -41,16 +41,16 @@ if (!country || !category || !guide) {
 <CountryLayout
   title={`${guide.title} | ${country.name}`}
   description={guide.description}
-  breadcrumbs={[
-    { label: "Countries", href: "/countries" },
-    { label: country.name, href: `/countries/${country.slug}` },
-    { label: category.name, href: `/countries/${country.slug}/${category.slug}` },
-    { label: guide.title }
-  ]}
->
-  <div class="mb-8">
-    <h1 class="text-4xl font-bold text-ink dark:text-on-primary">{guide.title}</h1>
-    <p class="mt-2 text-lg text-body dark:text-muted">{guide.description}</p>
+    breadcrumbs={[
+      { label: "Countries", href: "/countries" },
+      { label: country.name, href: `/countries/${country.slug}` },
+      { label: category.name, href: `/countries/${country.slug}/${category.slug}` },
+      { label: guide.title }
+    ]}
+  >
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-ink dark:text-on-primary" data-i18n="guide.title">{guide.title}</h1>
+      <p class="mt-2 text-lg text-body dark:text-muted" data-i18n="guide.description">{guide.description}</p>
   </div>
 
   <div class="max-w-none">

@@ -169,8 +169,8 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
         document.documentElement.dispatchEvent(event);
       });
 
-      document.documentElement.addEventListener("lang-change", () => {
-        const lang = getLang();
+      document.documentElement.addEventListener("lang-change", (e) => {
+        const lang = (e as CustomEvent).detail?.lang || getLang();
         const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
         const nodes: Text[] = [];
         let node: Text | null;

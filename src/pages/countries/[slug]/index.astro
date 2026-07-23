@@ -35,11 +35,11 @@ const baseUrl = getBaseUrl();
             <div class="flex items-center gap-4 mb-4">
               <span class="text-5xl sm:text-6xl" aria-hidden="true">{country.flag}</span>
               <div>
-                <h1 class="text-3xl font-bold text-ink sm:text-4xl dark:text-on-primary">{country.name}</h1>
-                <p class="text-sm text-muted mt-1 dark:text-muted">{country.continent}</p>
+                 <h1 class="text-3xl font-bold text-ink sm:text-4xl dark:text-on-primary"><span data-i18n="country.name">{country.name}</span></h1>
+                 <p class="text-sm text-muted mt-1 dark:text-muted"><span data-i18n="country.continent_header">{country.continent}</span></p>
               </div>
             </div>
-            <p class="text-lg text-body leading-relaxed mt-4 dark:text-muted">{country.overview}</p>
+             <p class="text-lg text-body leading-relaxed mt-4 dark:text-muted"><span data-i18n="country.overview">{country.overview}</span></p>
             <div class="mt-6 flex flex-wrap items-center gap-3">
               <a
                 href={country.taxAuthorityUrl}
@@ -47,7 +47,7 @@ const baseUrl = getBaseUrl();
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white transition hover:bg-primary-dark"
               >
-                {country.officialTaxAuthority}
+                 <span data-i18n="country.official_tax_authority">{country.officialTaxAuthority}</span>
                 <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -55,19 +55,19 @@ const baseUrl = getBaseUrl();
           <div class="grid w-full max-w-xs grid-cols-2 gap-4 lg:w-auto">
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
               <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.currency">Currency</p>
-              <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.currency}</p>
+               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.currency_value">{country.currency}</span></p>
             </div>
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
               <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.capital">Capital</p>
-              <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.capital}</p>
+               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.capital_value">{country.capital}</span></p>
             </div>
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
               <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.tax_authority">Tax Authority</p>
-              <p class="mt-1 text-sm font-semibold text-ink leading-snug dark:text-on-primary">{country.officialTaxAuthority}</p>
+               <p class="mt-1 text-sm font-semibold text-ink leading-snug dark:text-on-primary"><span data-i18n="country.official_tax_authority_value">{country.officialTaxAuthority}</span></p>
             </div>
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
               <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.continent">Continent</p>
-              <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.continent}</p>
+               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.continent_value">{country.continent}</span></p>
             </div>
           </div>
         </div>
@@ -84,12 +84,10 @@ const baseUrl = getBaseUrl();
           class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary"
         >
           <div class="flex items-start justify-between">
-            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">
-              {category.name}
-            </h3>
+             <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary"><span data-i18n="country.category_name">{category.name}</span></h3>
             <span aria-hidden="true" class="mt-1 text-lg text-muted transition group-hover:translate-x-1 group-hover:text-primary dark:text-muted dark:group-hover:text-link">→</span>
           </div>
-          <p class="mt-2 text-sm text-body line-clamp-2 dark:text-muted">{category.description}</p>
+           <p class="mt-2 text-sm text-body line-clamp-2 dark:text-muted"><span data-i18n="country.category_description">{category.description}</span></p>
           <div class="mt-4 flex items-center gap-4 text-xs text-muted dark:text-muted">
             <span>{category.calculators.length} <span data-i18n="country.calculators">calculators</span></span>
             <span>{category.guides.length} <span data-i18n="country.guides">guides</span></span>
@@ -111,10 +109,10 @@ const baseUrl = getBaseUrl();
             href={`/countries/${country.slug}/${calc.category}/${calc.slug}`}
             class="rounded-xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:from-primary dark:to-primary"
           >
-            <p class="text-xs font-medium uppercase tracking-wider text-primary dark:text-link">
-              {category?.name ?? calc.category}
-            </p>
-            <h3 class="mt-2 font-semibold text-ink dark:text-on-primary">{calc.name}</h3>
+             <p class="text-xs font-medium uppercase tracking-wider text-primary dark:text-link">
+               <span data-i18n="country.calc_category_name">{category?.name ?? calc.category}</span>
+             </p>
+             <h3 class="mt-2 font-semibold text-ink dark:text-on-primary"><span data-i18n="country.calc_name">{calc.name}</span></h3>
             <p class="mt-1 text-sm text-muted dark:text-muted" data-i18n="country.calculate_your_tax">Calculate your tax liability</p>
             <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link dark:text-link">
               <span data-i18n="country.try_calculator">Try calculator</span> <span aria-hidden="true">→</span>
@@ -141,8 +139,8 @@ const baseUrl = getBaseUrl();
                 })}
               </span>
             </div>
-            <h3 class="font-semibold text-ink dark:text-on-primary">{update.title}</h3>
-            <p class="mt-2 text-sm text-body dark:text-muted">{update.description}</p>
+             <h3 class="font-semibold text-ink dark:text-on-primary"><span data-i18n="country.update_title">{update.title}</span></h3>
+             <p class="mt-2 text-sm text-body dark:text-muted"><span data-i18n="country.update_description">{update.description}</span></p>
           </div>
         ))}
       </div>
@@ -162,13 +160,13 @@ const baseUrl = getBaseUrl();
             class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary"
           >
             <div class="flex items-center gap-3">
-              <span class="text-3xl" aria-hidden="true">{related.flag}</span>
-              <div>
-                <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">{related.name}</h3>
-                <p class="text-xs text-muted dark:text-muted">{related.continent}</p>
-              </div>
-            </div>
-            <p class="mt-3 text-sm text-body line-clamp-2 dark:text-muted">{related.overview}</p>
+               <span class="text-3xl" aria-hidden="true">{related.flag}</span>
+               <div>
+                 <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary"><span data-i18n="country.related_name">{related.name}</span></h3>
+                 <p class="text-xs text-muted dark:text-muted"><span data-i18n="country.related_continent">{related.continent}</span></p>
+               </div>
+             </div>
+             <p class="mt-3 text-sm text-body line-clamp-2 dark:text-muted"><span data-i18n="country.related_overview">{related.overview}</span></p>
           </a>
         );
       })}

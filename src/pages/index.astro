@@ -26,9 +26,9 @@ import { countries } from "../data/countries";
             <a href={`/countries/${country.slug}`} class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-lg dark:border-white/15 dark:bg-primary dark:hover:border-primary">
               <div class="text-5xl mb-4" aria-hidden="true">{country.flag}</div>
               <h3 class="text-xl font-semibold text-ink group-hover:text-primary dark:text-on-primary">{country.name}</h3>
-              <p class="text-sm text-muted mt-1 dark:text-muted">{country.continent}</p>
-              <p class="text-sm text-body mt-3 line-clamp-2 dark:text-muted">{country.overview}</p>
-              <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline dark:text-link"><span data-i18n="home.explore_taxes">Explore taxes</span> →</span>
+              <p class="text-sm text-muted mt-1 dark:text-muted"><span data-i18n="home.country.continent">{country.continent}</span></p>
+              <p class="text-sm text-body mt-3 line-clamp-2 dark:text-muted"><span data-i18n="home.country.overview">{country.overview}</span></p>
+              <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline dark:text-link"><span data-i18n="home.explore_taxes">Explore taxes</span> <span data-i18n="home.explore_taxes_arrow">→</span></span>
             </a>
           ))}
         </div>
@@ -45,7 +45,7 @@ import { countries } from "../data/countries";
                  <span class="text-2xl" aria-hidden="true">{item.country.flag}</span>
                 <span class="text-sm text-muted dark:text-muted">{item.country.name}</span>
               </div>
-              <h3 class="font-semibold text-ink dark:text-on-primary">{item.name}</h3>
+              <h3 class="font-semibold text-ink dark:text-on-primary"><span data-i18n="home.calculator.name">{item.name}</span></h3>
             </a>
           ))}
         </div>

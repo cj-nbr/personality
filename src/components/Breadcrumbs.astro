@@ -10,7 +10,7 @@ const { items } = Astro.props;
   <ol class="flex flex-wrap items-center gap-2">
     {items.map((item, i) => (
       <li class="flex items-center gap-2">
-        {i > 0 && <span class="text-muted dark:text-muted">/</span>}
+        {i > 0 && <span class="text-muted dark:text-muted" data-i18n="breadcrumb.separator">/</span>}
         {item.href ? (
           <a href={item.href} class="text-link hover:underline dark:text-link">{item.label}</a>
         ) : (

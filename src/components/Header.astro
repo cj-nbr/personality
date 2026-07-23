@@ -33,26 +33,26 @@ const isAbout = currentPath === "/about";
             <input type="text" id="lang-search" data-i18n-placeholder="common.search_placeholder" placeholder="Search languages..." class="w-full rounded-md border border-hairline bg-canvas px-2 py-1 text-sm dark:border-white/15 dark:bg-primary dark:text-on-primary" />
           </div>
           <div id="lang-list" class="max-h-64 overflow-y-auto py-1">
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="en">English</button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="hi">हिन्दी</button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="es">Español</button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="fr">Français</button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="de">Deutsch</button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="zh">中文</button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ja">日本語</button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ar">العربية</button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="pt">Português</button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ru">Русский</button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="en"><span data-i18n="language.english">English</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="hi"><span data-i18n="language.hindi">हिन्दी</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="es"><span data-i18n="language.spanish">Español</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="fr"><span data-i18n="language.french">Français</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="de"><span data-i18n="language.german">Deutsch</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="zh"><span data-i18n="language.chinese">中文</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ja"><span data-i18n="language.japanese">日本語</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ar"><span data-i18n="language.arabic">العربية</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="pt"><span data-i18n="language.portuguese">Português</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ru"><span data-i18n="language.russian">Русский</span></button>
           </div>
         </div>
       </div>
 
-        <button id="theme-toggle" class="rounded-pill p-2 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:bg-white/10" aria-label="Toggle theme">
+        <button id="theme-toggle" class="rounded-pill p-2 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:bg-white/10" aria-label="Toggle theme" data-i18n="common.toggle_theme">
           <svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           <svg id="theme-icon-light" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         </button>
 
-        <button id="mobile-menu-btn" class="md:hidden rounded-pill p-2 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:bg-white/10" aria-expanded="false" aria-label="Open menu">
+        <button id="mobile-menu-btn" class="md:hidden rounded-pill p-2 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:bg-white/10" aria-expanded="false" aria-label="Open menu" data-i18n="common.open_menu">
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
@@ -122,11 +122,14 @@ const isAbout = currentPath === "/about";
             var labelMap = {en:'EN',hi:'HI',es:'ES',fr:'FR',de:'DE',zh:'ZH',ja:'JA',ar:'AR',pt:'PT',ru:'RU'};
             langLabel.textContent = labelMap[lang] || lang.toUpperCase();
           }
-          langMenu.classList.add('hidden');
-          langBtn.setAttribute('aria-expanded', 'false');
-          var event = new CustomEvent('lang-change', { bubbles: true, detail: { lang: lang } });
-          document.documentElement.dispatchEvent(event);
-          setTimeout(function() { window.location.reload(); }, 50);
+        langMenu.classList.add('hidden');
+        langBtn.setAttribute('aria-expanded', 'false');
+        var event = new CustomEvent('lang-change', { bubbles: true, detail: { lang: lang } });
+        document.documentElement.dispatchEvent(event);
+        try {
+          if (typeof setLang === 'function') setLang(lang);
+        } catch (e) {}
+        setTimeout(function() { window.location.reload(); }, 50);
         });
       });
 
