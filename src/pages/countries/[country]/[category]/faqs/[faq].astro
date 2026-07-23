@@ -49,6 +49,20 @@ if (!country || !category || !faq) {
     { label: "FAQ" }
   ]}
 >
+  <script type="application/ld+json" slot="head">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": {
+        "@type": "Question",
+        "name": {faq.question},
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": {faq.answer}
+        }
+      }
+    }
+  </script>
   <div class="mb-8">
     <h1 class="text-4xl font-bold text-ink dark:text-on-primary">{faq.question}</h1>
   </div>
