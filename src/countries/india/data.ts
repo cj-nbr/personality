@@ -52,7 +52,7 @@ const taxCategories: TaxCategory[] = [
 export const india: Country = {
   slug: "india",
   name: "India",
-  flag: "/logos/$($f.Directory.Name).png",
+  flag: "/logos/india.png",
   continent: "Asia",
   officialTaxAuthority: "Central Board of Direct Taxes (CBDT)",
   taxAuthorityUrl: "https://www.incometax.gov.in",

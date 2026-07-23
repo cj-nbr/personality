@@ -69,7 +69,7 @@ const taxCategories: TaxCategory[] = [
 export const unitedStates: Country = {
   slug: "united-states",
   name: "United States",
-  flag: "/logos/$($f.Directory.Name).png",
+  flag: "/logos/united-states.png",
   continent: "North America",
   officialTaxAuthority: "Internal Revenue Service (IRS)",
   taxAuthorityUrl: "https://www.irs.gov",

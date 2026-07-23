@@ -36,7 +36,7 @@ const taxCategories: TaxCategory[] = [
 export const malaysia: Country = {
   slug: "malaysia",
   name: "Malaysia",
-  flag: "/logos/$($f.Directory.Name).png",
+  flag: "/logos/malaysia.png",
   continent: "Asia",
   officialTaxAuthority: "Lembaga Hasil Dalam Negeri Malaysia (LHDNM)",
   taxAuthorityUrl: "https://www.hasil.gov.my",

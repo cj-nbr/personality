@@ -36,7 +36,7 @@ const taxCategories: TaxCategory[] = [
 export const hongKong: Country = {
   slug: "hong-kong",
   name: "Hong Kong",
-  flag: "/logos/$($f.Directory.Name).png",
+  flag: "/logos/hong-kong.png",
   continent: "Asia",
   officialTaxAuthority: "Inland Revenue Department (IRD)",
   taxAuthorityUrl: "https://www.ird.gov.hk",

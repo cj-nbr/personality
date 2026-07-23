@@ -51,7 +51,7 @@ const taxCategories: TaxCategory[] = [
 export const unitedKingdom: Country = {
   slug: "united-kingdom",
   name: "United Kingdom",
-  flag: "/logos/$($f.Directory.Name).png",
+  flag: "/logos/united-kingdom.png",
   continent: "Europe",
   officialTaxAuthority: "HM Revenue & Customs (HMRC)",
   taxAuthorityUrl: "https://www.gov.uk/hmrc",
