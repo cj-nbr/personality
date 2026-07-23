@@ -134,6 +134,19 @@ const isAbout = currentPath === "/about";
         });
       });
 
+      var countryToLang = {
+        "united states": "en",
+        "india": "hi",
+        "hong kong": "zh",
+        "singapore": "en",
+        "indonesia": null,
+        "malaysia": null,
+        "new zealand": "en",
+        "pakistan": null,
+        "philippines": null,
+        "united kingdom": "en"
+      };
+
       if (langSearch) {
         langSearch.setAttribute('aria-label', 'Search languages');
         langSearch.addEventListener('input', function() {
