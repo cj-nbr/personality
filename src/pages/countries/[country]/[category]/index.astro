@@ -32,25 +32,25 @@ if (!country || !category) {
   ]}
 >
   <div class="mb-8">
-    <h1 class="text-4xl font-bold text-ink">{category.name} in {country.name}</h1>
-    <p class="mt-2 text-lg text-body">{category.description}</p>
+    <h1 class="text-4xl font-bold text-ink dark:text-on-primary">{category.name} in {country.name}</h1>
+    <p class="mt-2 text-lg text-body dark:text-muted">{category.description}</p>
   </div>
 
   <div class="prose max-w-none mb-12">
-    <p class="text-body leading-relaxed">{category.overview}</p>
+    <p class="text-body leading-relaxed dark:text-muted">{category.overview}</p>
   </div>
 
   {category.calculators.length > 0 && (
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6">Calculators</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="calculators">Calculators</h2>
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {category.calculators.map(calc => (
-          <a 
+          <a
             href={`/countries/${country.slug}/${category.slug}/${calc.slug}`}
-            class="rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition"
+            class="rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition dark:border-white/15 dark:bg-primary"
           >
-            <h3 class="font-semibold text-ink">{calc.name}</h3>
-            <p class="text-sm text-muted mt-2">{calc.description}</p>
+            <h3 class="font-semibold text-ink dark:text-on-primary">{calc.name}</h3>
+            <p class="text-sm text-muted mt-2 dark:text-muted">{calc.description}</p>
           </a>
         ))}
       </div>
@@ -59,15 +59,15 @@ if (!country || !category) {
 
   {category.guides.length > 0 && (
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6">Guides</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="guides">Guides</h2>
       <div class="space-y-4">
         {category.guides.map(guide => (
-          <a 
+          <a
             href={`/countries/${country.slug}/${category.slug}/${guide.slug}`}
-            class="block rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition"
+            class="block rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition dark:border-white/15 dark:bg-primary"
           >
-            <h3 class="font-semibold text-ink">{guide.title}</h3>
-            <p class="text-sm text-muted mt-2">{guide.description}</p>
+            <h3 class="font-semibold text-ink dark:text-on-primary">{guide.title}</h3>
+            <p class="text-sm text-muted mt-2 dark:text-muted">{guide.description}</p>
           </a>
         ))}
       </div>
@@ -76,12 +76,12 @@ if (!country || !category) {
 
   {category.faqs.length > 0 && (
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6">Frequently Asked Questions</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="frequently_asked_questions">Frequently Asked Questions</h2>
       <div class="space-y-4">
         {category.faqs.map(faq => (
-          <div class="rounded-lg border border-hairline bg-canvas p-6">
-            <h3 class="font-semibold text-ink">{faq.question}</h3>
-            <p class="mt-2 text-body">{faq.answer}</p>
+          <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+            <h3 class="font-semibold text-ink dark:text-on-primary">{faq.question}</h3>
+            <p class="mt-2 text-body dark:text-muted">{faq.answer}</p>
           </div>
         ))}
       </div>
@@ -89,18 +89,18 @@ if (!country || !category) {
   )}
 
   <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6">Related Categories</h2>
+    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="related_categories">Related Categories</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {country.taxCategories
         .filter(c => c.slug !== category.slug)
         .slice(0, 6)
         .map(related => (
-          <a 
+          <a
             href={`/countries/${country.slug}/${related.slug}`}
-            class="rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition"
+            class="rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition dark:border-white/15 dark:bg-primary"
           >
-            <h3 class="font-semibold text-ink">{related.name}</h3>
-            <p class="text-sm text-muted mt-2">{related.description}</p>
+            <h3 class="font-semibold text-ink dark:text-on-primary">{related.name}</h3>
+            <p class="text-sm text-muted mt-2 dark:text-muted">{related.description}</p>
           </a>
         ))}
     </div>

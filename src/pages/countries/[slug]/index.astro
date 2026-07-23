@@ -28,18 +28,18 @@ const baseUrl = getBaseUrl();
   canonical={`${baseUrl}/countries/${country.slug}`}
 >
   <section class="mb-12">
-    <div class="rounded-2xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft shadow-sm">
+    <div class="rounded-2xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft shadow-sm dark:border-white/15 dark:from-primary dark:to-primary">
       <div class="p-8 sm:p-10 lg:p-12">
         <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div class="flex-1">
             <div class="flex items-center gap-4 mb-4">
               <span class="text-5xl sm:text-6xl" aria-hidden="true">{country.flag}</span>
               <div>
-                <h1 class="text-3xl font-bold text-ink sm:text-4xl">{country.name}</h1>
-                <p class="text-sm text-muted mt-1">{country.continent}</p>
+                <h1 class="text-3xl font-bold text-ink sm:text-4xl dark:text-on-primary">{country.name}</h1>
+                <p class="text-sm text-muted mt-1 dark:text-muted">{country.continent}</p>
               </div>
             </div>
-            <p class="text-lg text-body leading-relaxed mt-4">{country.overview}</p>
+            <p class="text-lg text-body leading-relaxed mt-4 dark:text-muted" data-i18n="country_overview">{country.overview}</p>
             <div class="mt-6 flex flex-wrap items-center gap-3">
               <a
                 href={country.taxAuthorityUrl}
@@ -53,21 +53,21 @@ const baseUrl = getBaseUrl();
             </div>
           </div>
           <div class="grid w-full max-w-xs grid-cols-2 gap-4 lg:w-auto">
-            <div class="rounded-xl border border-hairline bg-canvas p-4">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted">Currency</p>
-              <p class="mt-1 text-lg font-semibold text-ink">{country.currency}</p>
+            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
+              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="currency">Currency</p>
+              <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.currency}</p>
             </div>
-            <div class="rounded-xl border border-hairline bg-canvas p-4">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted">Capital</p>
-              <p class="mt-1 text-lg font-semibold text-ink">{country.capital}</p>
+            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
+              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="capital">Capital</p>
+              <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.capital}</p>
             </div>
-            <div class="rounded-xl border border-hairline bg-canvas p-4">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted">Tax Authority</p>
-              <p class="mt-1 text-sm font-semibold text-ink leading-snug">{country.officialTaxAuthority}</p>
+            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
+              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="tax_authority">Tax Authority</p>
+              <p class="mt-1 text-sm font-semibold text-ink leading-snug dark:text-on-primary">{country.officialTaxAuthority}</p>
             </div>
-            <div class="rounded-xl border border-hairline bg-canvas p-4">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted">Continent</p>
-              <p class="mt-1 text-lg font-semibold text-ink">{country.continent}</p>
+            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
+              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="continent">Continent</p>
+              <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.continent}</p>
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@ const baseUrl = getBaseUrl();
   </section>
 
   <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6">Tax Categories</h2>
+    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="tax_categories_section">Tax Categories</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {country.taxCategories.map(category => (
         <a
@@ -102,33 +102,33 @@ const baseUrl = getBaseUrl();
 
   {country.popularCalculators.length > 0 && (
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6">Popular Calculators</h2>
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {country.popularCalculators.map(calc => {
-          const category = country.taxCategories.find(c => c.slug === calc.category);
-          return (
-            <a
-              href={`/countries/${country.slug}/${calc.category}/${calc.slug}`}
-              class="rounded-xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft p-6 transition hover:border-primary hover:shadow-md"
-            >
-              <p class="text-xs font-medium uppercase tracking-wider text-primary">
-                {category?.name ?? calc.category}
-              </p>
-              <h3 class="mt-2 font-semibold text-ink">{calc.name}</h3>
-              <p class="mt-1 text-sm text-muted">Calculate your tax liability</p>
-              <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link">
-                Try calculator <span aria-hidden="true">→</span>
-              </span>
-            </a>
-          );
-        })}
-      </div>
-    </section>
-  )}
+    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Popular Calculators</h2>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {country.popularCalculators.map(calc => {
+        const category = country.taxCategories.find(c => c.slug === calc.category);
+        return (
+          <a
+            href={`/countries/${country.slug}/${calc.category}/${calc.slug}`}
+            class="rounded-xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:from-primary dark:to-primary"
+          >
+            <p class="text-xs font-medium uppercase tracking-wider text-primary">
+              {category?.name ?? calc.category}
+            </p>
+            <h3 class="mt-2 font-semibold text-ink dark:text-on-primary">{calc.name}</h3>
+            <p class="mt-1 text-sm text-muted dark:text-muted" data-i18n="calculate_your_tax">Calculate your tax liability</p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link">
+              <span data-i18n="try_calculator">Try calculator</span> <span aria-hidden="true">→</span>
+            </span>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+)}
 
   {country.latestUpdates.length > 0 && (
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6">Latest Updates</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="latest_updates">Latest Updates</h2>
       <div class="space-y-4">
         {country.latestUpdates.map(update => (
           <div class="rounded-xl border border-hairline bg-canvas p-6 transition hover:border-hairline">
@@ -151,28 +151,28 @@ const baseUrl = getBaseUrl();
 
   {country.relatedCountries.length > 0 && (
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6">Related Countries</h2>
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {country.relatedCountries.map(slug => {
-          const related = getCountryBySlug(slug);
-          if (!related) return null;
-          return (
-            <a
-              href={`/countries/${related.slug}`}
-              class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md"
-            >
-              <div class="flex items-center gap-3">
-                <span class="text-3xl" aria-hidden="true">{related.flag}</span>
-                <div>
-                  <h3 class="font-semibold text-ink group-hover:text-primary">{related.name}</h3>
-                  <p class="text-xs text-muted">{related.continent}</p>
-                </div>
+    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="related_countries_section">Related Countries</h2>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {country.relatedCountries.map(slug => {
+        const related = getCountryBySlug(slug);
+        if (!related) return null;
+        return (
+          <a
+            href={`/countries/${related.slug}`}
+            class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary"
+          >
+            <div class="flex items-center gap-3">
+              <span class="text-3xl" aria-hidden="true">{related.flag}</span>
+              <div>
+                <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">{related.name}</h3>
+                <p class="text-xs text-muted dark:text-muted">{related.continent}</p>
               </div>
-              <p class="mt-3 text-sm text-body line-clamp-2">{related.overview}</p>
-            </a>
-          );
-        })}
-      </div>
-    </section>
+            </div>
+            <p class="mt-3 text-sm text-body line-clamp-2 dark:text-muted">{related.overview}</p>
+          </a>
+        );
+      })}
+    </div>
+  </section>
   )}
 </CountryLayout>

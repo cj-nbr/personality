@@ -50,20 +50,20 @@ if (!country || !category || !faq) {
   ]}
 >
   <div class="mb-8">
-    <h1 class="text-4xl font-bold text-ink">{faq.question}</h1>
+    <h1 class="text-4xl font-bold text-ink dark:text-on-primary">{faq.question}</h1>
   </div>
 
-  <div class="rounded-lg border border-hairline bg-canvas p-8">
-    <p class="text-body leading-relaxed text-lg">{faq.answer}</p>
-    
+  <div class="rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+    <p class="text-body leading-relaxed text-lg dark:text-muted">{faq.answer}</p>
+
     <div class="mt-8 pt-6 border-t border-hairline">
-      <h2 class="text-xl font-semibold text-ink mb-4">Related Questions</h2>
+      <h2 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary" data-i18n="related_questions">Related Questions</h2>
       <ul class="space-y-2">
         {category.faqs.filter((_, i) => i !== faqIndex).slice(0, 5).map((relatedFaq, i) => (
           <li>
-            <a 
+            <a
               href={`/countries/${country.slug}/${category.slug}/faqs/faq-${category.faqs.indexOf(relatedFaq)}`}
-              class="text-link hover:underline"
+              class="text-link hover:underline dark:text-link"
             >
               {relatedFaq.question}
             </a>
