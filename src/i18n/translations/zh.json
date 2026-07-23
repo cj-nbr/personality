@@ -176,5 +176,6 @@
   "read_more": "阅读更多",
   "back_to_countries": "返回国家列表",
   "filter.all": "全部",
-  "filter.continents": "大洲"
+  "filter.continents": "大洲",
+  "language.chinese_traditional": "Traditional Chinese"
 }
