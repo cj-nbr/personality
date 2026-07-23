@@ -137,10 +137,26 @@ const isAbout = currentPath === "/about";
       if (langSearch) {
         langSearch.setAttribute('aria-label', 'Search languages');
         langSearch.addEventListener('input', function() {
-          var q = langSearch.value.toLowerCase();
+          var q = langSearch.value.toLowerCase().trim();
+          var matchedLang = null;
+
+          if (q) {
+            for (var country in countryToLang) {
+              if (country.includes(q)) {
+                matchedLang = countryToLang[country];
+                break;
+              }
+            }
+          }
+
           langButtons.forEach(function(btn) {
-            var text = btn.textContent.toLowerCase();
-            btn.style.display = text.includes(q) ? '' : 'none';
+            if (!q || !matchedLang) {
+              var text = btn.textContent.toLowerCase();
+              btn.style.display = text.includes(q) ? '' : 'none';
+            } else {
+              var lang = btn.getAttribute('data-lang');
+              btn.style.display = (lang === matchedLang) ? '' : 'none';
+            }
           });
         });
       }
@@ -158,65 +174,6 @@ const isAbout = currentPath === "/about";
         if (langMenu && !langMenu.contains(e.target) && e.target !== langBtn) {
           langMenu.classList.add('hidden');
           if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      var countryToLang = {
-        "united states": "en",
-        "india": "hi",
-        "hong kong": "zh",
-        "singapore": "en",
-        "indonesia": null,
-        "malaysia": null,
-        "new zealand": "en",
-        "pakistan": null,
-        "philippines": null,
-        "united kingdom": "en"
-      };
-
-      var langCodeToLabel = {
-        en: "English",
-        hi: "हिन्दी",
-        es: "Español",
-        fr: "Français",
-        de: "Deutsch",
-        zh: "中文",
-        "zh-tw": "繁體中文",
-        ja: "日本語",
-        ar: "العربية",
-        pt: "Português",
-        ru: "Русский"
-      };
-
-      document.addEventListener('country-search', function(e) {
-        var query = (e.detail && e.detail.query) ? e.detail.query : '';
-        var matchedLang = null;
-
-        if (query) {
-          for (var country in countryToLang) {
-            if (country.includes(query)) {
-              matchedLang = countryToLang[country];
-              break;
-            }
-          }
-        }
-
-        langButtons.forEach(function(btn) {
-          if (!query || !matchedLang) {
-            btn.style.display = '';
-          } else {
-            var lang = btn.getAttribute('data-lang');
-            btn.style.display = (lang === matchedLang) ? '' : 'none';
-          }
-        });
-
-        if (query && matchedLang && langMenu && langMenu.classList.contains('hidden')) {
-          langMenu.classList.remove('hidden');
-          if (langBtn) langBtn.setAttribute('aria-expanded', 'true');
-        }
-
-        if (langSearch) {
-          langSearch.value = '';
         }
       });
     }
