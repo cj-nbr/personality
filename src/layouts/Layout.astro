@@ -40,6 +40,24 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "TaxPortal",
+        "url": "https://personality.com",
+        "description": "Comprehensive international tax information and calculators"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "TaxPortal",
+        "url": "https://personality.com",
+        "description": "International tax information and calculators"
+      }
+    </script>
     <title>{title}</title>
     <slot name="head" />
   </head>
