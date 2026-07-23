@@ -12,7 +12,7 @@ const initialLang = typeof localStorage !== 'undefined' ? localStorage.getItem('
 ---
 
 <!doctype html>
-<html lang={initialLang} dir={initialLang === 'ar' ? 'rtl' : 'auto'} class="dark:bg-primary">
+  <html lang={initialLang} dir={initialLang === 'ar' ? 'rtl' : 'auto'} class="dark:bg-primary" color-scheme="light dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,13 +29,14 @@ const initialLang = typeof localStorage !== 'undefined' ? localStorage.getItem('
     <slot name="head" />
   </head>
   <body class="min-h-screen bg-canvas text-ink antialiased dark:bg-primary dark:text-on-primary">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header />
-    <main class="min-h-screen">
+    <main id="main-content" class="min-h-screen">
       <slot />
     </main>
     <footer class="border-t border-hairline bg-canvas-soft py-12 dark:border-white/10 dark:bg-primary">
       <div class="mx-auto max-w-7xl px-4 text-center text-sm text-muted sm:px-6 lg:px-8 dark:text-muted">
-        <p data-i18n="disclaimer">TaxPortal. For informational purposes only. Consult a tax professional for advice.</p>
+        <p data-i18n="disclaimer" translate="no">TaxPortal. For informational purposes only. Consult a tax professional for advice.</p>
         <p class="mt-2">© {new Date().getFullYear()} TaxPortal</p>
       </div>
     </footer>
