@@ -89,7 +89,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
                     class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
                   >
                     {input.options?.map((opt) => (
-                      <option value={opt.value}>{opt.label}</option>
+                      <option value={opt.value} selected={opt.value === input.defaultValue}>{opt.label}</option>
                     ))}
                   </select>
                 ) : (
@@ -152,7 +152,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
                 class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
               >
                 {taxYearOptions.map((year) => (
-                  <option value={year}>{year}</option>
+                  <option value={year} selected={year === taxYearOptions[0]}>{year}</option>
                 ))}
               </select>
             </div>
@@ -279,189 +279,333 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
       var resetBtn = document.getElementById('reset-btn');
       var resultDiv = document.getElementById('result');
       var errorDiv = document.getElementById('calc-error');
+      var ruleId = form ? form.getAttribute('data-rule-id') : '';
+      var currencyCode = form ? form.getAttribute('data-country-currency') || 'USD' : 'USD';
 
-      function getInputValue(id) {
+      var currencySymbols = {
+        USD: '$', INR: '₹', HKD: 'HK$', SGD: 'S$', IDR: 'Rp',
+        MYR: 'RM', NZD: 'NZ$', PKR: 'Rs', PHP: '₱', GBP: '£'
+      };
+
+      function getInput(id) {
         var el = document.getElementById(id);
         if (!el) return null;
         if (el.type === 'number') return parseFloat(el.value) || 0;
         return el.value;
       }
 
+      function fmt(num, dec) {
+        if (dec === undefined) dec = 2;
+        return num.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+      }
+
+      function fmtCurrency(num, code) {
+        var sym = currencySymbols[code] || '$';
+        var dec = (code === 'IDR' || code === 'PKR' || code === 'INR') ? 0 : 2;
+        return sym + fmt(num, dec);
+      }
+
+      function setOutput(id, value, format) {
+        var el = document.getElementById('result-' + id);
+        if (!el) return;
+        if (format === 'currency') el.textContent = fmtCurrency(value, currencyCode);
+        else if (format === 'percentage') el.textContent = value.toFixed(1) + '%';
+        else el.textContent = fmt(value, 0);
+      }
+
+      function pTax(income, brackets) {
+        var tax = 0, prev = 0;
+        for (var i = 0; i < brackets.length; i++) {
+          var lim = brackets[i][0], r = brackets[i][1];
+          if (income > prev) {
+            var taxable = Math.min(income, lim) - prev;
+            tax += taxable * r;
+          }
+          prev = lim;
+        }
+        return tax;
+      }
+
+      function showError() {
+        if (errorDiv) errorDiv.classList.remove('hidden');
+        if (resultDiv) resultDiv.classList.add('hidden');
+      }
+
+      function hideError() {
+        if (errorDiv) errorDiv.classList.add('hidden');
+      }
+
+      function markInvalid(input) {
+        input.classList.add('border-red-500');
+      }
+
+      function clearInvalid(input) {
+        input.classList.remove('border-red-500');
+      }
+
+      // ============================================================
+      // CALCULATOR IMPLEMENTATIONS
+      // ============================================================
+
+      function calcUSFederalIncomeTax() {
+        var income = getInput('annualIncome') || 0;
+        var status = getInput('filingStatus') || 'single';
+        var stdDedType = getInput('standardDeduction') || 'standard';
+        var itemized = parseFloat(getInput('itemizedAmount')) || 0;
+        var year = parseInt(getInput('taxYear')) || 2024;
+
+        var deduction = itemized;
+        if (stdDedType === 'standard') {
+          if (status === 'married_joint') deduction = year >= 2024 ? 29200 : 22000;
+          else if (status === 'head_of_household') deduction = year >= 2024 ? 20800 : 15700;
+          else if (status === 'married_separate') deduction = year >= 2024 ? 14600 : 11000;
+          else deduction = year >= 2024 ? 14600 : 11000;
+        }
+
+        var taxable = Math.max(0, income - deduction);
+        var tax = 0;
+        if (status === 'single') {
+          if (year >= 2024) tax = pTax(taxable, [[14600,0.10],[55900,0.12],[100525,0.22],[191950,0.24],[243725,0.32],[609350,0.35],[100000000,0.37]]);
+          else tax = pTax(taxable, [[11000,0.10],[44725,0.12],[95375,0.22],[182050,0.24],[231250,0.32],[578125,0.35],[100000000,0.37]]);
+        } else if (status === 'married_joint') {
+          if (year >= 2024) tax = pTax(taxable, [[29200,0.10],[111800,0.12],[201050,0.22],[383900,0.24],[487450,0.32],[731200,0.35],[100000000,0.37]]);
+          else tax = pTax(taxable, [[22000,0.10],[89450,0.12],[190750,0.22],[364200,0.24],[462500,0.32],[693750,0.35],[100000000,0.37]]);
+        } else if (status === 'head_of_household') {
+          if (year >= 2024) tax = pTax(taxable, [[20800,0.10],[83800,0.12],[150500,0.22],[229050,0.24],[470250,0.32],[610100,0.35],[100000000,0.37]]);
+          else tax = pTax(taxable, [[15700,0.10],[59850,0.12],[95250,0.22],[182050,0.24],[231250,0.32],[578100,0.35],[100000000,0.37]]);
+        } else if (status === 'married_separate') {
+          if (year >= 2024) tax = pTax(taxable, [[14600,0.10],[55900,0.12],[100525,0.22],[191950,0.24],[243725,0.32],[365600,0.35],[100000000,0.37]]);
+          else tax = pTax(taxable, [[11000,0.10],[44725,0.12],[95375,0.22],[182050,0.24],[231250,0.32],[346875,0.35],[100000000,0.37]]);
+        }
+
+        var effective = income > 0 ? (tax / income * 100) : 0;
+        var marginal = 0;
+        if (status === 'single') {
+          if (year >= 2024) { if (taxable>609350) marginal=37; else if (taxable>243725) marginal=35; else if (taxable>191950) marginal=32; else if (taxable>100525) marginal=24; else if (taxable>55900) marginal=22; else if (taxable>14600) marginal=12; else marginal=10; }
+          else { if (taxable>578125) marginal=37; else if (taxable>231250) marginal=35; else if (taxable>182050) marginal=32; else if (taxable>95375) marginal=24; else if (taxable>44725) marginal=22; else if (taxable>11000) marginal=12; else marginal=10; }
+        } else if (status === 'married_joint') {
+          if (year >= 2024) { if (taxable>731200) marginal=37; else if (taxable>487450) marginal=35; else if (taxable>383900) marginal=32; else if (taxable>201050) marginal=24; else if (taxable>111800) marginal=22; else if (taxable>29200) marginal=12; else marginal=10; }
+          else { if (taxable>693750) marginal=37; else if (taxable>462500) marginal=35; else if (taxable>364200) marginal=32; else if (taxable>190750) marginal=24; else if (taxable>89450) marginal=22; else if (taxable>22000) marginal=12; else marginal=10; }
+        } else if (status === 'head_of_household') {
+          if (year >= 2024) { if (taxable>610100) marginal=37; else if (taxable>470250) marginal=35; else if (taxable>229050) marginal=32; else if (taxable>150500) marginal=24; else if (taxable>83800) marginal=22; else if (taxable>20800) marginal=12; else marginal=10; }
+          else { if (taxable>578100) marginal=37; else if (taxable>231250) marginal=35; else if (taxable>182050) marginal=32; else if (taxable>95250) marginal=24; else if (taxable>59850) marginal=22; else if (taxable>15700) marginal=12; else marginal=10; }
+        }
+
+        setOutput('taxableIncome', taxable, 'currency');
+        setOutput('federalTax', tax, 'currency');
+        setOutput('effectiveRate', effective, 'percentage');
+        setOutput('marginalRate', marginal, 'percentage');
+        setOutput('takeHomePay', income - tax, 'currency');
+      }
+
+      function calcGenericIncomeTax(brackets) {
+        var income = getInput('annualIncome') || 0;
+        var tax = pTax(income, brackets);
+        var effective = income > 0 ? (tax / income * 100) : 0;
+        setOutput('incomeTax', tax, 'currency');
+        setOutput('effectiveRate', effective, 'percentage');
+        setOutput('takeHomePay', income - tax, 'currency');
+      }
+
+      function calcGenericVATorGST(rate, type) {
+        var amount = getInput('amount') || 0;
+        rate = parseFloat(rate) || 0;
+        var vatAmount, totalAmount, netAmount;
+        if (type === 'inclusive') {
+          vatAmount = amount - (amount / (1 + rate));
+          netAmount = amount / (1 + rate);
+          totalAmount = amount;
+        } else {
+          vatAmount = amount * rate;
+          netAmount = amount;
+          totalAmount = amount * (1 + rate);
+        }
+        setOutput('vatAmount', vatAmount, 'currency');
+        setOutput('totalAmount', totalAmount, 'currency');
+        setOutput('netAmount', netAmount, 'currency');
+      }
+
+      function calcSST() {
+        var amount = getInput('amount') || 0;
+        var taxType = getInput('taxType') || 'sales';
+        var rate = taxType === 'sales' ? 0.10 : 0.08;
+        setOutput('taxAmount', amount * rate, 'currency');
+        setOutput('totalAmount', amount * (1 + rate), 'currency');
+        setOutput('netAmount', amount, 'currency');
+      }
+
+      function calcTDS() {
+        var amount = getInput('amount') || 0;
+        var type = getInput('paymentType') || 'salary';
+        var rates = { salary: 0, professional: 0.10, interest: 0.10, rent: 0.10 };
+        var rate = rates[type] || 0;
+        setOutput('tdsAmount', amount * rate, 'currency');
+        setOutput('netAmount', amount * (1 - rate), 'currency');
+      }
+
+      function calcStateTax() {
+        var income = getInput('annualIncome') || 0;
+        var state = getInput('state') || 'CA';
+        var rates = {
+          CA: [[0,0],[10099,0.01],[23942,0.02],[37788,0.04],[52455,0.06],[68523,0.08],[406176,0.093],[1000000,0.103],[1000001,0.113],[1000002,0.123],[1000003,0.133]],
+          NY: [[0,0],[8500,0.04],[11700,0.045],[25000,0.0525],[50000,0.059],[100000,0.0645],[250000,0.0685],[250001,0.0965],[500000,0.103],[500001,0.109]],
+          TX: [[0,0]], FL: [[0,0]], WA: [[0,0]]
+        };
+        var brackets = rates[state] || rates['CA'];
+        var tax = pTax(income, brackets);
+        setOutput('stateTax', tax, 'currency');
+        setOutput('effectiveRate', income > 0 ? tax/income*100 : 0, 'percentage');
+        setOutput('takeHomePay', income - tax, 'currency');
+      }
+
+      function calcFICA() {
+        var income = getInput('annualIncome') || 0;
+        var type = getInput('employmentType') || 'employed';
+        var ssWageBase = 168600;
+        var ss = Math.min(income, ssWageBase) * (type === 'self_employed' ? 0.124 : 0.062);
+        var medicare = income * (type === 'self_employed' ? 0.029 : 0.0145);
+        var total = ss + medicare;
+        setOutput('socialSecurity', ss, 'currency');
+        setOutput('medicare', medicare, 'currency');
+        setOutput('totalFICA', total, 'currency');
+        setOutput('employerMatch', total, 'currency');
+      }
+
+      function calcCorporate() {
+        var income = getInput('taxableIncome') || 0;
+        var tax = income * 0.21;
+        setOutput('corporateTax', tax, 'currency');
+        setOutput('effectiveRate', income > 0 ? 21 : 0, 'percentage');
+        setOutput('afterTaxIncome', income - tax, 'currency');
+      }
+
+      function calcCapitalGains() {
+        var gain = getInput('gainAmount') || 0;
+        var ordinary = getInput('ordinaryIncome') || 0;
+        var status = getInput('filingStatus') || 'single';
+        var ltcg = 0;
+        if (status === 'single') {
+          if (ordinary + gain <= 47025) ltcg = 0; else if (ordinary + gain <= 518900) ltcg = 0.15; else ltcg = 0.20;
+        } else {
+          if (ordinary + gain <= 94300) ltcg = 0; else if (ordinary + gain <= 584750) ltcg = 0.15; else ltcg = 0.20;
+        }
+        var tax = gain * ltcg;
+        setOutput('capitalGainsTax', tax, 'currency');
+        setOutput('effectiveRate', gain > 0 ? ltcg * 100 : 0, 'percentage');
+        setOutput('afterTaxGain', gain - tax, 'currency');
+      }
+
+      function calcNIContributions() {
+        var income = getInput('annualIncome') || 0;
+        var type = getInput('employmentType') || 'employed';
+        var ni = 0;
+        if (type === 'employed') {
+          var pt = 12570, uh = 50270;
+          if (income <= pt) ni = 0;
+          else ni = Math.min(income - pt, uh - pt) * 0.08 + Math.max(0, income - uh) * 0.02;
+        } else {
+          var class2 = 52 * 3.45;
+          var class4 = Math.max(0, income - 12570) * 0.06 + Math.max(0, income - 50270) * 0.02;
+          ni = class2 + class4;
+        }
+        var rate = income > 0 ? (ni / income * 100) : 0;
+        setOutput('niContributions', ni, 'currency');
+        setOutput('effectiveRate', rate, 'percentage');
+      }
+
+      function calcStampDuty() {
+        var price = getInput('propertyPrice') || 0;
+        var buyer = getInput('buyerType') || 'citizen';
+        var propType = getInput('propertyType') || 'residential';
+        var duty = 0;
+        if (propType === 'residential') {
+          if (buyer === 'citizen') duty = 0.01 * Math.min(price, 180000) + 0.02 * Math.max(0, Math.min(price, 360000) - 180000) + 0.03 * Math.max(0, price - 360000);
+          else if (buyer === 'pr') duty = 0.05 * price;
+          else duty = 0.25 * price;
+        } else {
+          duty = price * 0.04;
+        }
+        setOutput('stampDuty', duty, 'currency');
+        setOutput('totalCost', price + duty, 'currency');
+      }
+
+      function calcHKSalariesTax() {
+        var income = getInput('annualIncome') || 0;
+        var net = Math.max(0, income - 132000);
+        var progressive = pTax(net, [[50000,0.02],[100000,0.06],[150000,0.10],[200000,0.14],[100000000,0.17]]);
+        var standard = income * 0.15;
+        var tax = Math.min(progressive, standard);
+        setOutput('salariesTax', tax, 'currency');
+        setOutput('effectiveRate', income > 0 ? (tax/income*100) : 0, 'percentage');
+        setOutput('takeHomePay', income - tax, 'currency');
+      }
+
+      // ============================================================
+      // DISPATCH
+      // ============================================================
+
       function calculate() {
         if (!form) return;
-        
+
         var inputs = form.querySelectorAll('input[required], select[required]');
         var valid = true;
-        
         inputs.forEach(function(input) {
-          if ((input.type === 'number' && (!input.value || parseFloat(input.value) <= 0)) || 
+          if ((input.type === 'number' && (!input.value || parseFloat(input.value) <= 0)) ||
               (input.tagName === 'SELECT' && !input.value)) {
             valid = false;
-            input.classList.add('border-red-500');
+            markInvalid(input);
           } else {
-            input.classList.remove('border-red-500');
+            clearInvalid(input);
           }
         });
 
-        if (!valid) {
-          if (errorDiv) errorDiv.classList.remove('hidden');
-          if (resultDiv) resultDiv.classList.add('hidden');
-          return;
-        }
+        if (!valid) { showError(); return; }
+        hideError();
 
-        if (errorDiv) errorDiv.classList.add('hidden');
-        
-        var income = getInputValue('annualIncome') || getInputValue('income') || 0;
-        var filingStatus = getInputValue('filingStatus') || 'single';
-        var taxYear = getInputValue('taxYear') || '2024';
-        
-        var tax = 0;
-        var currencySymbol = '$';
-        var countryCurrency = 'USD';
-        
         try {
-          var path = window.location.pathname;
-          var countryMatch = path.match(/\/countries\/([^\/]+)/);
-          if (countryMatch) {
-            var countrySlug = countryMatch[1];
-            if (countrySlug === 'united-kingdom') { currencySymbol = '£'; countryCurrency = 'GBP'; }
-            else if (countrySlug === 'india') { currencySymbol = '₹'; countryCurrency = 'INR'; }
-            else if (countrySlug === 'singapore') { currencySymbol = 'S$'; countryCurrency = 'SGD'; }
-            else if (countrySlug === 'hong-kong') { currencySymbol = 'HK$'; countryCurrency = 'HKD'; }
-            else if (countrySlug === 'australia') { currencySymbol = 'A$'; countryCurrency = 'AUD'; }
-            else if (countrySlug === 'new-zealand') { currencySymbol = 'NZ$'; countryCurrency = 'NZD'; }
-            else if (countrySlug === 'canada') { currencySymbol = 'C$'; countryCurrency = 'CAD'; }
+          if (ruleId === 'united-states-income-tax-federal-income-tax') calcUSFederalIncomeTax();
+          else if (ruleId === 'united-states-income-tax-state-income-tax') calcStateTax();
+          else if (ruleId === 'united-states-payroll-tax-payroll-tax-calculator') calcFICA();
+          else if (ruleId === 'united-states-corporate-tax-corporate-tax-calculator') calcCorporate();
+          else if (ruleId === 'united-states-capital-gains-tax-capital-gains-calculator') calcCapitalGains();
+          else if (ruleId === 'india-income-tax-income-tax-calculator') calcGenericIncomeTax([[300000,0],[700000,0.05],[1000000,0.10],[1200000,0.15],[1500000,0.20],[100000000,0.30]]);
+          else if (ruleId === 'india-gst-gst-calculator') calcGenericVATorGST(getInput('gstRate') || '18', getInput('calculationType') || 'exclusive');
+          else if (ruleId === 'india-tds-tds-calculator') calcTDS();
+          else if (ruleId === 'malaysia-income-tax-income-tax-calculator') calcGenericIncomeTax([[5000,0],[20000,0.01],[35000,0.03],[50000,0.06],[70000,0.11],[100000,0.19],[1000001,0.25],[250000,0.26],[10000000,0.30]]);
+          else if (ruleId === 'malaysia-sst-sst-calculator') calcSST();
+          else if (ruleId === 'new-zealand-income-tax-income-tax-calculator') calcGenericIncomeTax([[14000,0.105],[48000,0.175],[70000,0.30],[180000,0.33],[10000000,0.39]]);
+          else if (ruleId === 'new-zealand-gst-gst-calculator') calcGenericVATorGST(0.15, getInput('calculationType') || 'exclusive');
+          else if (ruleId === 'pakistan-income-tax-income-tax-calculator') calcGenericIncomeTax([[600000,0],[1200000,0.05],[2400000,0.10],[3600000,0.15],[6000000,0.20],[9600000,0.25],[10000000,0.30],[10000001,0.35]]);
+          else if (ruleId === 'pakistan-sales-tax-sales-tax-calculator') calcGenericVATorGST(0.18, getInput('calculationType') || 'exclusive');
+          else if (ruleId === 'philippines-income-tax-income-tax-calculator') calcGenericIncomeTax([[250000,0],[400000,0.20],[800000,0.25],[2000000,0.30],[8000000,0.35],[10000000,0.35]]);
+          else if (ruleId === 'philippines-vat-vat-calculator') calcGenericVATorGST(0.12, getInput('calculationType') || 'exclusive');
+          else if (ruleId === 'united-kingdom-income-tax-income-tax-calculator') {
+            var ukIncome = getInput('annualIncome') || 0;
+            var ukTax = 0;
+            if (ukIncome <= 12570) ukTax = 0;
+            else {
+              var basic = Math.min(ukIncome - 12570, 37700) * 0.20;
+              var higher = Math.min(Math.max(ukIncome - 12570 - 37700, 0), 100170) * 0.40;
+              var additional = Math.max(0, ukIncome - 12570 - 37700 - 100170) * 0.45;
+              ukTax = basic + higher + additional;
+            }
+            setOutput('taxableIncome', Math.max(0, ukIncome - 12570), 'currency');
+            setOutput('incomeTax', ukTax, 'currency');
+            setOutput('effectiveRate', ukIncome > 0 ? (ukTax/ukIncome*100) : 0, 'percentage');
+            setOutput('takeHomePay', ukIncome - ukTax, 'currency');
           }
-        } catch(e) {}
+          else if (ruleId === 'united-kingdom-vat-vat-calculator') calcGenericVATorGST(parseFloat(getInput('vatRate')) || 20, getInput('calculationType') || 'exclusive');
+          else if (ruleId === 'united-kingdom-national-insurance-ni-calculator') calcNIContributions();
+          else if (ruleId === 'hong-kong-salaries-tax-salaries-tax-calculator') calcHKSalariesTax();
+          else if (ruleId === 'singapore-income-tax-income-tax-calculator') calcGenericIncomeTax([[20000,0],[30000,0.02],[40000,0.035],[80000,0.07],[120000,0.115],[160000,0.15],[200000,0.18],[240000,0.19],[280000,0.205],[320000,0.22],[10000000,0.24]]);
+          else if (ruleId === 'singapore-gst-gst-calculator') calcGenericVATorGST(0.09, getInput('calculationType') || 'exclusive');
+          else if (ruleId === 'singapore-stamp-duty-stamp-duty-calculator') calcStampDuty();
+          else if (ruleId === 'indonesia-income-tax-income-tax-calculator') calcGenericIncomeTax([[60000000,0],[250000000,0.05],[500000000,0.15],[2000000000,0.25],[2500000000,0.30],[10000000,0.35]]);
+          else if (ruleId === 'indonesia-vat-vat-calculator') calcGenericVATorGST(0.11, getInput('calculationType') || 'exclusive');
+          else { hideError(); return; }
 
-        if (income <= 0) {
-          tax = 0;
-        } else if (filingStatus === 'single') {
-          if (taxYear >= '2024') {
-            if (income <= 14600) tax = income * 0.10;
-            else if (income <= 55900) tax = 1460 + (income - 14600) * 0.12;
-            else if (income <= 100525) tax = 6464 + (income - 55900) * 0.22;
-            else if (income <= 191950) tax = 17168 + (income - 100525) * 0.24;
-            else if (income <= 243725) tax = 39110 + (income - 191950) * 0.32;
-            else if (income <= 609350) tax = 55678 + (income - 243725) * 0.35;
-            else tax = 183647 + (income - 609350) * 0.37;
-          } else {
-            if (income <= 11000) tax = income * 0.10;
-            else if (income <= 44725) tax = 1100 + (income - 11000) * 0.12;
-            else if (income <= 95375) tax = 5147 + (income - 44725) * 0.22;
-            else if (income <= 182050) tax = 16290 + (income - 95375) * 0.24;
-            else if (income <= 231250) tax = 37104 + (income - 182050) * 0.32;
-            else if (income <= 578125) tax = 52832 + (income - 231250) * 0.35;
-            else tax = 174238 + (income - 578125) * 0.37;
-          }
-        } else if (filingStatus === 'married_joint') {
-          if (taxYear >= '2024') {
-            if (income <= 29200) tax = income * 0.10;
-            else if (income <= 111800) tax = 2920 + (income - 29200) * 0.12;
-            else if (income <= 201050) tax = 12928 + (income - 111800) * 0.22;
-            else if (income <= 383900) tax = 34336 + (income - 201050) * 0.24;
-            else if (income <= 487450) tax = 78222 + (income - 383900) * 0.32;
-            else if (income <= 731200) tax = 111357 + (income - 487450) * 0.35;
-            else tax = 196669 + (income - 731200) * 0.37;
-          } else {
-            if (income <= 22000) tax = income * 0.10;
-            else if (income <= 89450) tax = 2200 + (income - 22000) * 0.12;
-            else if (income <= 190750) tax = 10294 + (income - 89450) * 0.22;
-            else if (income <= 364200) tax = 32580 + (income - 190750) * 0.24;
-            else if (income <= 462500) tax = 74208 + (income - 364200) * 0.32;
-            else if (income <= 693750) tax = 105664 + (income - 462500) * 0.35;
-            else tax = 186601 + (income - 693750) * 0.37;
-          }
-        } else if (filingStatus === 'head_of_household') {
-          if (taxYear >= '2024') {
-            if (income <= 20800) tax = income * 0.10;
-            else if (income <= 83800) tax = 2080 + (income - 20800) * 0.12;
-            else if (income <= 150500) tax = 9568 + (income - 83800) * 0.22;
-            else if (income <= 229050) tax = 25572 + (income - 150500) * 0.24;
-            else if (income <= 470250) tax = 49160 + (income - 229050) * 0.32;
-            else if (income <= 610100) tax = 133936 + (income - 470250) * 0.35;
-            else tax = 201925 + (income - 610100) * 0.37;
-          } else {
-            if (income <= 15700) tax = income * 0.10;
-            else if (income <= 59850) tax = 1570 + (income - 15700) * 0.12;
-            else if (income <= 95250) tax = 6872 + (income - 59850) * 0.22;
-            else if (income <= 182050) tax = 20748 + (income - 95250) * 0.24;
-            else if (income <= 231250) tax = 37204 + (income - 182050) * 0.32;
-            else if (income <= 578100) tax = 52832 + (income - 231250) * 0.35;
-            else tax = 174238 + (income - 578100) * 0.37;
-          }
-        } else if (filingStatus === 'married_separate') {
-          if (taxYear >= '2024') {
-            if (income <= 14600) tax = income * 0.10;
-            else if (income <= 55900) tax = 1460 + (income - 14600) * 0.12;
-            else if (income <= 100525) tax = 6464 + (income - 55900) * 0.22;
-            else if (income <= 191950) tax = 17168 + (income - 100525) * 0.24;
-            else if (income <= 243725) tax = 39110 + (income - 191950) * 0.32;
-            else if (income <= 365600) tax = 55678 + (income - 243725) * 0.35;
-            else tax = 98334 + (income - 365600) * 0.37;
-          } else {
-            if (income <= 11000) tax = income * 0.10;
-            else if (income <= 44725) tax = 1100 + (income - 11000) * 0.12;
-            else if (income <= 95375) tax = 5147 + (income - 44725) * 0.22;
-            else if (income <= 182050) tax = 16290 + (income - 95375) * 0.24;
-            else if (income <= 231250) tax = 37104 + (income - 182050) * 0.32;
-            else if (income <= 346875) tax = 52832 + (income - 231250) * 0.35;
-            else tax = 93302 + (income - 346875) * 0.37;
-          }
-        }
-
-        var taxableIncome = income;
-        var effectiveRate = income > 0 ? (tax / income * 100) : 0;
-        var marginalRate = 0;
-        
-        if (filingStatus === 'single') {
-          if (taxYear >= '2024') {
-            if (income > 609350) marginalRate = 37;
-            else if (income > 243725) marginalRate = 35;
-            else if (income > 191950) marginalRate = 32;
-            else if (income > 100525) marginalRate = 24;
-            else if (income > 55900) marginalRate = 22;
-            else if (income > 14600) marginalRate = 12;
-            else marginalRate = 10;
-          } else {
-            if (income > 578125) marginalRate = 37;
-            else if (income > 231250) marginalRate = 35;
-            else if (income > 182050) marginalRate = 32;
-            else if (income > 95375) marginalRate = 24;
-            else if (income > 44725) marginalRate = 22;
-            else if (income > 11000) marginalRate = 12;
-            else marginalRate = 10;
-          }
-        } else if (filingStatus === 'married_joint') {
-          if (taxYear >= '2024') {
-            if (income > 731200) marginalRate = 37;
-            else if (income > 487450) marginalRate = 35;
-            else if (income > 383900) marginalRate = 32;
-            else if (income > 201050) marginalRate = 24;
-            else if (income > 111800) marginalRate = 22;
-            else if (income > 29200) marginalRate = 12;
-            else marginalRate = 10;
-          }
-        } else if (filingStatus === 'head_of_household') {
-          if (taxYear >= '2024') {
-            if (income > 610100) marginalRate = 37;
-            else if (income > 470250) marginalRate = 35;
-            else if (income > 229050) marginalRate = 32;
-            else if (income > 150500) marginalRate = 24;
-            else if (income > 83800) marginalRate = 22;
-            else if (income > 20800) marginalRate = 12;
-            else marginalRate = 10;
-          }
-        }
-        
-        var takeHome = income - tax;
-        
-        var resultEl = document.getElementById('result-value');
-        if (resultEl) {
-          resultEl.textContent = currencySymbol + tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
-        
-        if (resultDiv) resultDiv.classList.remove('hidden');
+          if (resultDiv) resultDiv.classList.remove('hidden');
+        } catch(e) { showError(); }
       }
 
       function reset() {
