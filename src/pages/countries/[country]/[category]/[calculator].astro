@@ -60,18 +60,21 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
   ]}
 >
   <div class="mb-8">
-    <h1 class="text-4xl font-bold text-ink dark:text-on-primary">{calculator.name}</h1>
-    <p class="mt-2 text-lg text-body dark:text-muted">{calculator.description}</p>
+    <h1 class="text-4xl font-bold text-ink dark:text-on-primary" data-i18n={calculator.name}>{calculator.name}</h1>
+    <p class="mt-2 text-lg text-body dark:text-muted" data-i18n={calculator.description}>{calculator.description}</p>
   </div>
 
   <div class="rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
     <p class="text-body leading-relaxed dark:text-muted">
-      Calculate your {category.name.toLowerCase()} using this {country.name} calculator.
-      Enter your information below to get an estimate.
+      <span data-i18n="calculator.calculate_using">Calculate your</span> 
+      {category.name.toLowerCase()} 
+      <span data-i18n="calculator.using_this">using this</span> 
+      {country.name} 
+      <span data-i18n="calculator.calculator_enter">calculator. Enter your information below to get an estimate.</span>
     </p>
 
     <div class="mt-8">
-      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Calculator Input</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="calculator.input_heading">Calculator Input</h2>
       
       {rule ? (
         <form id="calc-form" class="space-y-6" onsubmit="event.preventDefault()" data-rule-id={rule.id} data-country-currency={country.currency}>
@@ -79,7 +82,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
             {rule.inputs.map((input) => (
               <div>
                 <label for={input.id} class="block text-sm font-medium text-ink mb-2 dark:text-on-primary">
-                  {input.label}
+                  <span data-i18n={input.label}>{input.label}</span>
                   {input.required && <span class="text-red-500 ml-1">*</span>}
                 </label>
                 
@@ -89,7 +92,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
                     class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
                   >
                     {input.options?.map((opt) => (
-                      <option value={opt.value} selected={opt.value === input.defaultValue}>{opt.label}</option>
+                      <option value={opt.value} selected={opt.value === input.defaultValue} data-i18n={opt.label}>{opt.label}</option>
                     ))}
                   </select>
                 ) : (
@@ -103,7 +106,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
                 )}
                 
                 {input.helpText && (
-                  <p class="mt-1 text-sm text-muted dark:text-muted">{input.helpText}</p>
+                  <p class="mt-1 text-sm text-muted dark:text-muted" data-i18n={input.helpText}>{input.helpText}</p>
                 )}
               </div>
             ))}
@@ -114,6 +117,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
               type="button"
               id="calc-btn"
               class="rounded-lg bg-primary px-6 py-3 text-white font-medium hover:bg-primary-dark transition dark:bg-on-primary dark:text-primary"
+              data-i18n="calculator.calculate"
             >
               Calculate
             </button>
@@ -121,6 +125,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
               type="button"
               id="reset-btn"
               class="rounded-lg border border-hairline px-6 py-3 text-ink font-medium hover:bg-canvas-soft transition dark:border-white/15 dark:bg-primary dark:text-on-primary dark:hover:bg-white/10"
+              data-i18n="calculator.reset"
             >
               Reset
             </button>
@@ -128,22 +133,22 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
         </form>
       ) : (
         <form id="calc-form" class="space-y-6" onsubmit="event.preventDefault()">
-          <p class="text-body dark:text-muted">No calculator inputs are configured for this page. Please select a different calculator.</p>
+          <p class="text-body dark:text-muted" data-i18n="calculator.no_inputs">No calculator inputs are configured for this page. Please select a different calculator.</p>
         </form>
       )}
 
       <div id="result" class="mt-8 hidden">
-        <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Results</h3>
+        <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary" data-i18n="results.title">Results</h3>
         <div class="rounded-lg bg-canvas-soft p-6 dark:bg-primary">
           {rule ? (
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {rule.outputs.map((output) => (
                 <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
-                  <p class="text-sm text-muted dark:text-muted">{output.label}</p>
+                  <p class="text-sm text-muted dark:text-muted" data-i18n={output.label}>{output.label}</p>
                   <p class="text-2xl font-bold text-primary dark:text-on-primary" id={`result-${output.id}`}>
                     {output.format === "currency" ? formatCurrency(0, country.currency) : output.format === "percentage" ? "0%" : "0"}
                   </p>
-                  <p class="text-xs text-muted mt-1 dark:text-muted">{output.description}</p>
+                  <p class="text-xs text-muted mt-1 dark:text-muted" data-i18n={output.description}>{output.description}</p>
                 </div>
               ))}
             </div>
@@ -152,31 +157,31 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
               {formatCurrency(0, country.currency)}
             </p>
           )}
-          <p class="text-sm text-muted mt-4 dark:text-muted">
+          <p class="text-sm text-muted mt-4 dark:text-muted" data-i18n="calculator.estimate_disclaimer">
             This is an estimate. Consult a tax professional for accurate calculations.
           </p>
         </div>
       </div>
 
       <div id="calc-error" class="mt-4 hidden">
-        <p class="text-sm text-red-600 dark:text-red-400">Please enter valid values for all required fields</p>
+        <p class="text-sm text-red-600 dark:text-red-400" data-i18n="calculator.error">Please enter valid values for all required fields</p>
       </div>
     </div>
   </div>
 
   {rule && rule.examples && rule.examples.length > 0 && (
     <div class="mt-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Example Calculation</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="example.title">Example Calculation</h2>
       <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div>
-            <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">{rule.examples[0].title}</h3>
+            <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary" data-i18n={rule.examples[0].title}>{rule.examples[0].title}</h3>
             <div class="space-y-2">
               {Object.entries(rule.examples[0].inputs).map(([key, value]) => {
                 const inputDef = rule.inputs.find(i => i.id === key);
                 return (
                   <div class="flex justify-between">
-                    <span class="text-body dark:text-muted">{inputDef?.label || key}:</span>
+                    <span class="text-body dark:text-muted" data-i18n={inputDef?.label || key}>{inputDef?.label || key}:</span>
                     <span class="font-medium text-ink dark:text-on-primary">{value}</span>
                   </div>
                 );
@@ -184,7 +189,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
             </div>
           </div>
           <div>
-            <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">Result</h3>
+            <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary" data-i18n="result.title">Result</h3>
             <div class="space-y-2">
               {Object.entries(rule.examples[0].outputs).map(([key, value]) => {
                 const outputDef = rule.outputs.find(o => o.id === key);
@@ -195,7 +200,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
                   : String(value);
                 return (
                   <div class="flex justify-between">
-                    <span class="text-body dark:text-muted">{outputDef?.label || key}:</span>
+                    <span class="text-body dark:text-muted" data-i18n={outputDef?.label || key}>{outputDef?.label || key}:</span>
                     <span class="font-medium text-ink dark:text-on-primary">{formattedValue}</span>
                   </div>
                 );
@@ -203,23 +208,23 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
             </div>
           </div>
         </div>
-        <p class="mt-4 text-sm text-muted dark:text-muted">{rule.examples[0].explanation}</p>
+        <p class="mt-4 text-sm text-muted dark:text-muted" data-i18n={rule.examples[0].explanation}>{rule.examples[0].explanation}</p>
       </div>
     </div>
   )}
 
   {rule && rule.formulas && rule.formulas.length > 0 && (
     <div class="mt-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Calculation Methodology</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="methodology.title">Calculation Methodology</h2>
       <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
         <div class="space-y-6">
           {rule.formulas.map((formula) => (
             <div>
-              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">{formula.name}</h3>
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary" data-i18n={formula.name}>{formula.name}</h3>
               <code class="block mt-2 rounded-lg bg-canvas-soft p-3 text-sm font-mono text-primary dark:bg-primary dark:text-on-primary">
                 {formula.formula}
               </code>
-              <p class="mt-2 text-sm text-body dark:text-muted">{formula.description}</p>
+              <p class="mt-2 text-sm text-body dark:text-muted" data-i18n={formula.description}>{formula.description}</p>
             </div>
           ))}
         </div>

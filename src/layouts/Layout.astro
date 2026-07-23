@@ -14,7 +14,7 @@ import ar from "../i18n/translations/ar.json";
 import pt from "../i18n/translations/pt.json";
 import ru from "../i18n/translations/ru.json";
 
-loadLocales({ en, hi, es, fr, de, zh, zhTW, ja, ar, pt, ru });
+loadLocales({ en, hi, es, fr, de, zh, "zh-TW": zhTW, ja, ar, pt, ru });
 
 interface Props {
   title?: string;
@@ -104,7 +104,7 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
       import ar from "/src/i18n/translations/ar.json";
       import pt from "/src/i18n/translations/pt.json";
       import ru from "/src/i18n/translations/ru.json";
-      loadLocales({ en, hi, es, fr, de, zh, zhTW, ja, ar, pt, ru });
+      loadLocales({ en, hi, es, fr, de, zh, "zh-TW": zhTW, ja, ar, pt, ru });
 
       const dict = getDict();
       document.querySelectorAll('[data-i18n]').forEach((el) => {
