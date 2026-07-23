@@ -67,6 +67,9 @@ const baseUrl = getBaseUrl();
             data.continent.toLowerCase().includes(q);
           data.element.style.display = match ? '' : 'none';
         });
+
+        var event = new CustomEvent('country-search', { bubbles: true, detail: { query: q } });
+        document.documentElement.dispatchEvent(event);
       }
 
       if (searchInput) {

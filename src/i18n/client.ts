@@ -132,6 +132,40 @@ export function onChange(fn: () => void): () => void {
   return () => { listeners.delete(fn); };
 }
 
+const countryToLanguage: Record<string, LanguageCode | null> = {
+  "united-states": "en",
+  "india": "hi",
+  "hong-kong": "zh",
+  "singapore": "en",
+  "indonesia": null,
+  "malaysia": null,
+  "new-zealand": "en",
+  "pakistan": null,
+  "philippines": null,
+  "united-kingdom": "en"
+};
+
+const countryToLanguageByFullName: Record<string, LanguageCode | null> = {
+  "United States": "en",
+  "India": "hi",
+  "Hong Kong": "zh",
+  "Singapore": "en",
+  "Indonesia": null,
+  "Malaysia": null,
+  "New Zealand": "en",
+  "Pakistan": null,
+  "Philippines": null,
+  "United Kingdom": "en"
+};
+
+export function getLanguageForCountry(countrySlug: string): LanguageCode | null {
+  return countryToLanguage[countrySlug] || null;
+}
+
+export function getLanguageForCountryName(countryName: string): LanguageCode | null {
+  return countryToLanguageByFullName[countryName] || null;
+}
+
 export function t(key: string, vars?: Record<string, string | number>): string {
   const dict = getDict();
   let text = dict[key] || key;

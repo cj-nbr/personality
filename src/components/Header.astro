@@ -120,7 +120,7 @@ const isAbout = currentPath === "/about";
           var lang = btn.getAttribute('data-lang');
           try { localStorage.setItem('lang', lang); } catch (e) {}
           if (langLabel) {
-            var labelMap = {en:'EN',hi:'HI',es:'ES',fr:'FR',de:'DE',zh:'ZH',ja:'JA',ar:'AR',pt:'PT',ru:'RU'};
+            var labelMap = {en:'EN',hi:'HI',es:'ES',fr:'FR',de:'DE',zh:'ZH',ja:'JA',ar:'AR',pt:'PT',ru:'RU', 'zh-TW':'ZH-TW'};
             langLabel.textContent = labelMap[lang] || lang.toUpperCase();
           }
         langMenu.classList.add('hidden');
@@ -145,9 +145,79 @@ const isAbout = currentPath === "/about";
         });
       }
 
-      document.addEventListener('click', function() {
-        langMenu.classList.add('hidden');
-        if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
+      if (langMenu) {
+        langMenu.addEventListener('mousedown', function(e) {
+          e.stopPropagation();
+        });
+        langMenu.addEventListener('click', function(e) {
+          e.stopPropagation();
+        });
+      }
+
+      document.addEventListener('click', function(e) {
+        if (langMenu && !langMenu.contains(e.target) && e.target !== langBtn) {
+          langMenu.classList.add('hidden');
+          if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      var countryToLang = {
+        "united states": "en",
+        "india": "hi",
+        "hong kong": "zh",
+        "singapore": "en",
+        "indonesia": null,
+        "malaysia": null,
+        "new zealand": "en",
+        "pakistan": null,
+        "philippines": null,
+        "united kingdom": "en"
+      };
+
+      var langCodeToLabel = {
+        en: "English",
+        hi: "हिन्दी",
+        es: "Español",
+        fr: "Français",
+        de: "Deutsch",
+        zh: "中文",
+        "zh-tw": "繁體中文",
+        ja: "日本語",
+        ar: "العربية",
+        pt: "Português",
+        ru: "Русский"
+      };
+
+      document.addEventListener('country-search', function(e) {
+        var query = (e.detail && e.detail.query) ? e.detail.query : '';
+        var matchedLang = null;
+
+        if (query) {
+          for (var country in countryToLang) {
+            if (country.includes(query)) {
+              matchedLang = countryToLang[country];
+              break;
+            }
+          }
+        }
+
+        langButtons.forEach(function(btn) {
+          if (!query || !matchedLang) {
+            btn.style.display = '';
+          } else {
+            var lang = btn.getAttribute('data-lang');
+            btn.style.display = (lang === matchedLang) ? '' : 'none';
+          }
+        });
+
+        if (query && matchedLang && langMenu && langMenu.classList.contains('hidden')) {
+          langMenu.classList.remove('hidden');
+          if (langBtn) langBtn.setAttribute('aria-expanded', 'true');
+        }
+
+        if (langSearch) {
+          langSearch.value = '';
+        }
       });
     }
 
