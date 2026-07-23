@@ -1,6 +1,9 @@
 ---
 import CountryLayout from "../../../../layouts/CountryLayout.astro";
 import { getCountryBySlug, getCategoryBySlug } from "../../../../data/countries";
+import { getCurrency, formatCurrency } from "../../../../config/currencies";
+import { getTaxYears } from "../../../../config/taxYears";
+import type { TaxRule } from "../../../../config/taxRules";
 
 export function getStaticPaths() {
   const paths: { params: { country: string; category: string; calculator: string } }[] = [];
@@ -36,6 +39,14 @@ const calculator = category?.calculators.find(c => c.slug === Astro.params.calcu
 if (!country || !category || !calculator) {
   return Astro.redirect("/countries");
 }
+
+const currency = getCurrency(country.currency);
+const taxYearOptions = getTaxYears(country.slug);
+
+const ruleId = `${country.slug}-${category.slug}-${calculator.slug}`;
+const rule = (await import("../../../../config/taxRules")).taxRules.find(
+  (r: TaxRule) => r.id === ruleId
+) as TaxRule | undefined;
 ---
 
 <CountryLayout
@@ -49,89 +60,414 @@ if (!country || !category || !calculator) {
   ]}
 >
   <div class="mb-8">
-    <h1 class="text-4xl font-bold text-ink dark:text-on-primary"><span data-i18n="calculator.name">{calculator.name}</span></h1>
-    <p class="mt-2 text-lg text-body dark:text-muted"><span data-i18n="calculator.description">{calculator.description}</span></p>
+    <h1 class="text-4xl font-bold text-ink dark:text-on-primary">{calculator.name}</h1>
+    <p class="mt-2 text-lg text-body dark:text-muted">{calculator.description}</p>
   </div>
 
   <div class="rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
-    <p class="text-body leading-relaxed dark:text-muted" data-i18n="calculator.calculate_your_tax" data-i18n-vars={JSON.stringify({ category: category.name, country: country.name })}>
+    <p class="text-body leading-relaxed dark:text-muted">
       Calculate your {category.name.toLowerCase()} using this {country.name} calculator.
       Enter your information below to get an estimate.
     </p>
 
-      <div class="mt-8">
-        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="calculator.input">Calculator Input</h2>
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div>
-            <label for="income" class="block text-sm font-medium text-ink mb-2 dark:text-on-primary" data-i18n="calculator.annual_income">Annual Income</label>
-            <input
-              type="number"
-              id="income"
-              autocomplete="off"
-              class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
-            />
+    <div class="mt-8">
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Calculator Input</h2>
+      
+      {rule ? (
+        <form id="calc-form" class="space-y-6" onsubmit="event.preventDefault()">
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {rule.inputs.map((input) => (
+              <div>
+                <label for={input.id} class="block text-sm font-medium text-ink mb-2 dark:text-on-primary">
+                  {input.label}
+                  {input.required && <span class="text-red-500 ml-1">*</span>}
+                </label>
+                
+                {input.type === "select" ? (
+                  <select
+                    id={input.id}
+                    class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
+                  >
+                    {input.options?.map((opt) => (
+                      <option value={opt.value}>{opt.label}</option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    type={input.type}
+                    id={input.id}
+                    autocomplete="off"
+                    placeholder={input.placeholder}
+                    class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
+                  />
+                )}
+                
+                {input.helpText && (
+                  <p class="mt-1 text-sm text-muted dark:text-muted">{input.helpText}</p>
+                )}
+              </div>
+            ))}
           </div>
-          <div>
-            <label for="tax-year" class="block text-sm font-medium text-ink mb-2 dark:text-on-primary" data-i18n="calculator.tax_year">Tax Year</label>
-            <select id="tax-year" class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary">
-              <option data-i18n="calculator.year_2024">2024</option>
-              <option data-i18n="calculator.year_2023">2023</option>
-            </select>
+
+          <div class="flex gap-4">
+            <button
+              type="button"
+              id="calc-btn"
+              class="rounded-lg bg-primary px-6 py-3 text-white font-medium hover:bg-primary-dark transition dark:bg-on-primary dark:text-primary"
+            >
+              Calculate
+            </button>
+            <button
+              type="button"
+              id="reset-btn"
+              class="rounded-lg border border-hairline px-6 py-3 text-ink font-medium hover:bg-canvas-soft transition dark:border-white/15 dark:bg-primary dark:text-on-primary dark:hover:bg-white/10"
+            >
+              Reset
+            </button>
           </div>
+        </form>
+      ) : (
+        <form id="calc-form" class="space-y-6" onsubmit="event.preventDefault()">
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div>
+              <label for="annualIncome" class="block text-sm font-medium text-ink mb-2 dark:text-on-primary">
+                Annual Income <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                id="annualIncome"
+                autocomplete="off"
+                placeholder="Enter your annual income"
+                class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
+              />
+              <p class="mt-1 text-sm text-muted dark:text-muted">Your total annual income before taxes and deductions</p>
+            </div>
+
+            <div>
+              <label for="taxYear" class="block text-sm font-medium text-ink mb-2 dark:text-on-primary">
+                Tax Year <span class="text-red-500">*</span>
+              </label>
+              <select
+                id="taxYear"
+                class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
+              >
+                {taxYearOptions.map((year) => (
+                  <option value={year}>{year}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <button
+              type="button"
+              id="calc-btn"
+              class="rounded-lg bg-primary px-6 py-3 text-white font-medium hover:bg-primary-dark transition dark:bg-on-primary dark:text-primary"
+            >
+              Calculate
+            </button>
+            <button
+              type="button"
+              id="reset-btn"
+              class="rounded-lg border border-hairline px-6 py-3 text-ink font-medium hover:bg-canvas-soft transition dark:border-white/15 dark:bg-primary dark:text-on-primary dark:hover:bg-white/10"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+      )}
+
+      <div id="result" class="mt-8 hidden">
+        <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Results</h3>
+        <div class="rounded-lg bg-canvas-soft p-6 dark:bg-primary">
+          {rule ? (
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {rule.outputs.map((output) => (
+                <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
+                  <p class="text-sm text-muted dark:text-muted">{output.label}</p>
+                  <p class="text-2xl font-bold text-primary dark:text-on-primary" id={`result-${output.id}`}>
+                    {output.format === "currency" ? formatCurrency(0, country.currency) : output.format === "percentage" ? "0%" : "0"}
+                  </p>
+                  <p class="text-xs text-muted mt-1 dark:text-muted">{output.description}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p class="text-3xl font-bold text-primary dark:text-on-primary" id="result-value">
+              {formatCurrency(0, country.currency)}
+            </p>
+          )}
+          <p class="text-sm text-muted mt-4 dark:text-muted">
+            This is an estimate. Consult a tax professional for accurate calculations.
+          </p>
         </div>
-      <button
-        id="calc-btn"
-        class="mt-6 rounded-lg bg-primary px-6 py-3 text-white font-medium hover:bg-primary-dark transition dark:bg-on-primary dark:text-primary"
-        data-i18n="calculator.calculate">Calculate</button>
-      <button
-        id="reset-btn"
-        class="mt-2 ml-4 rounded-lg border border-hairline px-6 py-3 text-ink font-medium hover:bg-canvas-soft transition dark:border-white/15 dark:bg-primary dark:text-on-primary dark:hover:bg-white/10"
-        data-i18n="calculator.reset">Reset</button>
-    </div>
-
-    <div id="result" class="mt-8 hidden">
-      <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary" data-i18n="calculator.estimated_tax">Estimated Tax</h3>
-      <div class="rounded-lg bg-canvas-soft p-6 dark:bg-primary">
-        <p class="text-3xl font-bold text-primary dark:text-on-primary" id="result-value">$0</p>
-        <p class="text-sm text-muted mt-2 dark:text-muted" data-i18n="calculator.estimate_disclaimer">This is an estimate. Consult a tax professional for accurate calculations.</p>
       </div>
-    </div>
 
-    <div id="calc-error" class="mt-4 hidden">
-      <p class="text-sm text-red-600 dark:text-red-400" data-i18n="calculator.please_enter_income">Please enter a valid income amount</p>
+      <div id="calc-error" class="mt-4 hidden">
+        <p class="text-sm text-red-600 dark:text-red-400">Please enter valid values for all required fields</p>
+      </div>
     </div>
   </div>
 
+  {rule && rule.examples && rule.examples.length > 0 && (
+    <div class="mt-12">
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Example Calculation</h2>
+      <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div>
+            <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">{rule.examples[0].title}</h3>
+            <div class="space-y-2">
+              {Object.entries(rule.examples[0].inputs).map(([key, value]) => {
+                const inputDef = rule.inputs.find(i => i.id === key);
+                return (
+                  <div class="flex justify-between">
+                    <span class="text-body dark:text-muted">{inputDef?.label || key}:</span>
+                    <span class="font-medium text-ink dark:text-on-primary">{value}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">Result</h3>
+            <div class="space-y-2">
+              {Object.entries(rule.examples[0].outputs).map(([key, value]) => {
+                const outputDef = rule.outputs.find(o => o.id === key);
+                const formattedValue = outputDef?.format === "currency" 
+                  ? formatCurrency(value, country.currency)
+                  : outputDef?.format === "percentage"
+                  ? `${value}%`
+                  : String(value);
+                return (
+                  <div class="flex justify-between">
+                    <span class="text-body dark:text-muted">{outputDef?.label || key}:</span>
+                    <span class="font-medium text-ink dark:text-on-primary">{formattedValue}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <p class="mt-4 text-sm text-muted dark:text-muted">{rule.examples[0].explanation}</p>
+      </div>
+    </div>
+  )}
+
+  {rule && rule.formulas && rule.formulas.length > 0 && (
+    <div class="mt-12">
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Calculation Methodology</h2>
+      <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+        <div class="space-y-6">
+          {rule.formulas.map((formula) => (
+            <div>
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">{formula.name}</h3>
+              <code class="block mt-2 rounded-lg bg-canvas-soft p-3 text-sm font-mono text-primary dark:bg-primary dark:text-on-primary">
+                {formula.formula}
+              </code>
+              <p class="mt-2 text-sm text-body dark:text-muted">{formula.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )}
+
   <script is:inline>
     (function() {
-      var incomeInput = document.getElementById('income');
+      var form = document.getElementById('calc-form');
       var calcBtn = document.getElementById('calc-btn');
       var resetBtn = document.getElementById('reset-btn');
       var resultDiv = document.getElementById('result');
-      var resultValue = document.getElementById('result-value');
       var errorDiv = document.getElementById('calc-error');
 
+      function getInputValue(id) {
+        var el = document.getElementById(id);
+        if (!el) return null;
+        if (el.type === 'number') return parseFloat(el.value) || 0;
+        return el.value;
+      }
+
       function calculate() {
-        var income = parseFloat(incomeInput.value) || 0;
+        if (!form) return;
         
-        if (income <= 0) {
-          if (errorDiv) {
-            errorDiv.classList.remove('hidden');
-            resultDiv.classList.add('hidden');
+        var inputs = form.querySelectorAll('input[required], select[required]');
+        var valid = true;
+        
+        inputs.forEach(function(input) {
+          if ((input.type === 'number' && (!input.value || parseFloat(input.value) <= 0)) || 
+              (input.tagName === 'SELECT' && !input.value)) {
+            valid = false;
+            input.classList.add('border-red-500');
+          } else {
+            input.classList.remove('border-red-500');
           }
+        });
+
+        if (!valid) {
+          if (errorDiv) errorDiv.classList.remove('hidden');
+          if (resultDiv) resultDiv.classList.add('hidden');
           return;
         }
-        
+
         if (errorDiv) errorDiv.classList.add('hidden');
-        var tax = income * 0.15;
-        resultValue.textContent = '$' + tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        resultDiv.classList.remove('hidden');
+        
+        var income = getInputValue('annualIncome') || getInputValue('income') || 0;
+        var filingStatus = getInputValue('filingStatus') || 'single';
+        var taxYear = getInputValue('taxYear') || '2024';
+        
+        var tax = 0;
+        var currencySymbol = '$';
+        var countryCurrency = 'USD';
+        
+        try {
+          var path = window.location.pathname;
+          var countryMatch = path.match(/\/countries\/([^\/]+)/);
+          if (countryMatch) {
+            var countrySlug = countryMatch[1];
+            if (countrySlug === 'united-kingdom') { currencySymbol = '£'; countryCurrency = 'GBP'; }
+            else if (countrySlug === 'india') { currencySymbol = '₹'; countryCurrency = 'INR'; }
+            else if (countrySlug === 'singapore') { currencySymbol = 'S$'; countryCurrency = 'SGD'; }
+            else if (countrySlug === 'hong-kong') { currencySymbol = 'HK$'; countryCurrency = 'HKD'; }
+            else if (countrySlug === 'australia') { currencySymbol = 'A$'; countryCurrency = 'AUD'; }
+            else if (countrySlug === 'new-zealand') { currencySymbol = 'NZ$'; countryCurrency = 'NZD'; }
+            else if (countrySlug === 'canada') { currencySymbol = 'C$'; countryCurrency = 'CAD'; }
+          }
+        } catch(e) {}
+
+        if (income <= 0) {
+          tax = 0;
+        } else if (filingStatus === 'single') {
+          if (taxYear >= '2024') {
+            if (income <= 14600) tax = income * 0.10;
+            else if (income <= 55900) tax = 1460 + (income - 14600) * 0.12;
+            else if (income <= 100525) tax = 6464 + (income - 55900) * 0.22;
+            else if (income <= 191950) tax = 17168 + (income - 100525) * 0.24;
+            else if (income <= 243725) tax = 39110 + (income - 191950) * 0.32;
+            else if (income <= 609350) tax = 55678 + (income - 243725) * 0.35;
+            else tax = 183647 + (income - 609350) * 0.37;
+          } else {
+            if (income <= 11000) tax = income * 0.10;
+            else if (income <= 44725) tax = 1100 + (income - 11000) * 0.12;
+            else if (income <= 95375) tax = 5147 + (income - 44725) * 0.22;
+            else if (income <= 182050) tax = 16290 + (income - 95375) * 0.24;
+            else if (income <= 231250) tax = 37104 + (income - 182050) * 0.32;
+            else if (income <= 578125) tax = 52832 + (income - 231250) * 0.35;
+            else tax = 174238 + (income - 578125) * 0.37;
+          }
+        } else if (filingStatus === 'married_joint') {
+          if (taxYear >= '2024') {
+            if (income <= 29200) tax = income * 0.10;
+            else if (income <= 111800) tax = 2920 + (income - 29200) * 0.12;
+            else if (income <= 201050) tax = 12928 + (income - 111800) * 0.22;
+            else if (income <= 383900) tax = 34336 + (income - 201050) * 0.24;
+            else if (income <= 487450) tax = 78222 + (income - 383900) * 0.32;
+            else if (income <= 731200) tax = 111357 + (income - 487450) * 0.35;
+            else tax = 196669 + (income - 731200) * 0.37;
+          } else {
+            if (income <= 22000) tax = income * 0.10;
+            else if (income <= 89450) tax = 2200 + (income - 22000) * 0.12;
+            else if (income <= 190750) tax = 10294 + (income - 89450) * 0.22;
+            else if (income <= 364200) tax = 32580 + (income - 190750) * 0.24;
+            else if (income <= 462500) tax = 74208 + (income - 364200) * 0.32;
+            else if (income <= 693750) tax = 105664 + (income - 462500) * 0.35;
+            else tax = 186601 + (income - 693750) * 0.37;
+          }
+        } else if (filingStatus === 'head_of_household') {
+          if (taxYear >= '2024') {
+            if (income <= 20800) tax = income * 0.10;
+            else if (income <= 83800) tax = 2080 + (income - 20800) * 0.12;
+            else if (income <= 150500) tax = 9568 + (income - 83800) * 0.22;
+            else if (income <= 229050) tax = 25572 + (income - 150500) * 0.24;
+            else if (income <= 470250) tax = 49160 + (income - 229050) * 0.32;
+            else if (income <= 610100) tax = 133936 + (income - 470250) * 0.35;
+            else tax = 201925 + (income - 610100) * 0.37;
+          } else {
+            if (income <= 15700) tax = income * 0.10;
+            else if (income <= 59850) tax = 1570 + (income - 15700) * 0.12;
+            else if (income <= 95250) tax = 6872 + (income - 59850) * 0.22;
+            else if (income <= 182050) tax = 20748 + (income - 95250) * 0.24;
+            else if (income <= 231250) tax = 37204 + (income - 182050) * 0.32;
+            else if (income <= 578100) tax = 52832 + (income - 231250) * 0.35;
+            else tax = 174238 + (income - 578100) * 0.37;
+          }
+        } else if (filingStatus === 'married_separate') {
+          if (taxYear >= '2024') {
+            if (income <= 14600) tax = income * 0.10;
+            else if (income <= 55900) tax = 1460 + (income - 14600) * 0.12;
+            else if (income <= 100525) tax = 6464 + (income - 55900) * 0.22;
+            else if (income <= 191950) tax = 17168 + (income - 100525) * 0.24;
+            else if (income <= 243725) tax = 39110 + (income - 191950) * 0.32;
+            else if (income <= 365600) tax = 55678 + (income - 243725) * 0.35;
+            else tax = 98334 + (income - 365600) * 0.37;
+          } else {
+            if (income <= 11000) tax = income * 0.10;
+            else if (income <= 44725) tax = 1100 + (income - 11000) * 0.12;
+            else if (income <= 95375) tax = 5147 + (income - 44725) * 0.22;
+            else if (income <= 182050) tax = 16290 + (income - 95375) * 0.24;
+            else if (income <= 231250) tax = 37104 + (income - 182050) * 0.32;
+            else if (income <= 346875) tax = 52832 + (income - 231250) * 0.35;
+            else tax = 93302 + (income - 346875) * 0.37;
+          }
+        }
+
+        var taxableIncome = income;
+        var effectiveRate = income > 0 ? (tax / income * 100) : 0;
+        var marginalRate = 0;
+        
+        if (filingStatus === 'single') {
+          if (taxYear >= '2024') {
+            if (income > 609350) marginalRate = 37;
+            else if (income > 243725) marginalRate = 35;
+            else if (income > 191950) marginalRate = 32;
+            else if (income > 100525) marginalRate = 24;
+            else if (income > 55900) marginalRate = 22;
+            else if (income > 14600) marginalRate = 12;
+            else marginalRate = 10;
+          } else {
+            if (income > 578125) marginalRate = 37;
+            else if (income > 231250) marginalRate = 35;
+            else if (income > 182050) marginalRate = 32;
+            else if (income > 95375) marginalRate = 24;
+            else if (income > 44725) marginalRate = 22;
+            else if (income > 11000) marginalRate = 12;
+            else marginalRate = 10;
+          }
+        } else if (filingStatus === 'married_joint') {
+          if (taxYear >= '2024') {
+            if (income > 731200) marginalRate = 37;
+            else if (income > 487450) marginalRate = 35;
+            else if (income > 383900) marginalRate = 32;
+            else if (income > 201050) marginalRate = 24;
+            else if (income > 111800) marginalRate = 22;
+            else if (income > 29200) marginalRate = 12;
+            else marginalRate = 10;
+          }
+        } else if (filingStatus === 'head_of_household') {
+          if (taxYear >= '2024') {
+            if (income > 610100) marginalRate = 37;
+            else if (income > 470250) marginalRate = 35;
+            else if (income > 229050) marginalRate = 32;
+            else if (income > 150500) marginalRate = 24;
+            else if (income > 83800) marginalRate = 22;
+            else if (income > 20800) marginalRate = 12;
+            else marginalRate = 10;
+          }
+        }
+        
+        var takeHome = income - tax;
+        
+        var resultEl = document.getElementById('result-value');
+        if (resultEl) {
+          resultEl.textContent = currencySymbol + tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+        
+        if (resultDiv) resultDiv.classList.remove('hidden');
       }
 
       function reset() {
-        incomeInput.value = '';
-        resultDiv.classList.add('hidden');
-        errorDiv.classList.add('hidden');
+        form.reset();
+        if (resultDiv) resultDiv.classList.add('hidden');
+        if (errorDiv) errorDiv.classList.add('hidden');
       }
 
       if (calcBtn) calcBtn.addEventListener('click', calculate);

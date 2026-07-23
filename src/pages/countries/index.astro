@@ -1,6 +1,5 @@
 ---
 import CountryLayout from "../../layouts/CountryLayout.astro";
-import SearchBox from "../../components/SearchBox.astro";
 import CountryCard from "../../components/CountryCard.astro";
 import { countries } from "../../data/countries";
 import { getBaseUrl } from "../../utils/routing";
@@ -21,11 +20,18 @@ const baseUrl = getBaseUrl();
   </div>
 
   <div class="mb-8">
-    <SearchBox
-      value={Astro.url.searchParams.get("search") ?? ""}
-      onInput={() => {}}
-      placeholder=""
-    />
+    <div class="relative">
+      <input
+        type="text"
+        id="country-search"
+        placeholder="Search countries..."
+        data-i18n-placeholder="countries.search_countries"
+        class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 pl-10 text-ink placeholder:text-muted focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary dark:placeholder:text-muted"
+      />
+      <svg class="absolute left-3 top-2.5 h-5 w-5 text-muted dark:text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </div>
   </div>
 
   <div class="mb-8">
@@ -45,13 +51,13 @@ const baseUrl = getBaseUrl();
 
   <script is:inline>
     (function() {
-      var searchInput = document.querySelector('input[type="text"]');
-      var countryGrid = document.querySelector('.grid');
+      var searchInput = document.getElementById('country-search');
       var countryData = [];
       
       document.querySelectorAll('.group').forEach(function(el) {
         var name = el.querySelector('h3')?.textContent || '';
         var continent = el.querySelector('.text-muted')?.textContent || '';
+        var slugEl = el.getAttribute('href');
         countryData.push({
           name: name,
           continent: continent,
