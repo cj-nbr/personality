@@ -14,23 +14,23 @@ const baseUrl = getBaseUrl();
   breadcrumbs={[{ label: "Countries" }]}
 >
   <div class="mb-8">
-    <h1 class="text-4xl font-bold text-ink">Countries</h1>
-    <p class="mt-2 text-lg text-body">
+    <h1 class="text-4xl font-bold text-ink"><span data-i18n="countries">Countries</span></h1>
+    <p class="mt-2 text-lg text-body" data-i18n="comprehensive_tax_info" data-i18n-vars={JSON.stringify({ count: countries.length })}>
       Explore comprehensive tax information for {countries.length} countries.
     </p>
   </div>
 
   <div class="mb-8">
-    <SearchBox 
+    <SearchBox
       value={Astro.url.searchParams.get("search") ?? ""}
       onInput={() => {}}
-      placeholder="Search countries..."
+      placeholder=""
     />
   </div>
 
   <div class="mb-8">
-    <h2 class="text-2xl font-semibold text-ink mb-4">All Countries</h2>
-    <CountryCard 
+    <h2 class="text-2xl font-semibold text-ink mb-4"><span data-i18n="all_countries">All Countries</span></h2>
+    <CountryCard
       countries={countries.map(c => ({
         slug: c.slug,
         name: c.name,

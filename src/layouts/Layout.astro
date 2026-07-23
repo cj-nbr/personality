@@ -8,10 +8,11 @@ interface Props {
 }
 
 const { title = "TaxPortal", description = "International tax information and calculators" } = Astro.props;
+const initialLang = typeof localStorage !== 'undefined' ? localStorage.getItem('lang') || 'en' : 'en';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={initialLang} dir={initialLang === 'ar' ? 'rtl' : 'auto'} class="dark:bg-primary">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,14 +28,74 @@ const { title = "TaxPortal", description = "International tax information and ca
     <title>{title}</title>
     <slot name="head" />
   </head>
-  <body class="min-h-screen bg-canvas text-ink antialiased">
+  <body class="min-h-screen bg-canvas text-ink antialiased dark:bg-primary dark:text-on-primary">
     <Header />
-    <slot />
+    <main class="min-h-screen">
+      <slot />
+    </main>
     <footer class="border-t border-hairline bg-canvas-soft py-12 dark:border-white/10 dark:bg-primary">
-      <div class="mx-auto max-w-7xl px-4 text-center text-sm text-muted sm:px-6 lg:px-8">
-        <p>TaxPortal. For informational purposes only. Consult a tax professional for advice.</p>
+      <div class="mx-auto max-w-7xl px-4 text-center text-sm text-muted sm:px-6 lg:px-8 dark:text-muted">
+        <p data-i18n="footer.disclaimer">TaxPortal. For informational purposes only. Consult a tax professional for advice.</p>
         <p class="mt-2">© {new Date().getFullYear()} TaxPortal</p>
       </div>
     </footer>
+    <script is:inline>
+      (function() {
+        const translations = {
+          en: {"home":"Home","countries":"Countries","about_us":"About Us","explore_countries":"Explore Countries","featured_countries":"Featured Countries","popular_calculators":"Popular Calculators","all_countries":"All Countries","search_countries":"Search countries...","taxportal_home":"TaxPortal","disclaimer":"TaxPortal. For informational purposes only. Consult a tax professional for advice.","comprehensive_tax_info":"Comprehensive tax information and calculators for {count} countries worldwide","explore_taxes":"Explore taxes","view_taxes":"View taxes","footer_text":"TaxPortal. For informational purposes only. Consult a tax professional for advice."},
+          hi: {"home":"होम","countries":"देश","about_us":"हमारे बारे में","explore_countries":"देश खोजें","featured_countries":"विशेष देश","popular_calculators":"लोकप्रिय कैलकुलेटर","all_countries":"सभी देश","search_countries":"देश खोजें...","taxportal_home":"टैक्सपोर्टल","disclaimer":"टैक्सपोर्टल. केवल सूचना के लिए। सलाह के लिए किसी कर विशेषज्ञ से संपर्क करें।","comprehensive_tax_info":"{count} देशों के लिए व्यापक कर जानकारी और कैलकुलेटर","explore_taxes":"कर खोजें","view_taxes":"कर देखें","footer_text":"टैक्सपोर्टल. केवल सूचना के लिए। सलाह के लिए किसी कर विशेषज्ञ से संपर्क करें।"},
+          es: {"home":"Inicio","countries":"Países","about_us":"Sobre Nosotros","explore_countries":"Explorar Países","featured_countries":"Países Destacados","popular_calculators":"Calculadoras Populares","all_countries":"Todos los Países","search_countries":"Buscar países...","taxportal_home":"TaxPortal","disclaimer":"TaxPortal. Solo para fines informativos. Consulte a un profesional de impuestos.","comprehensive_tax_info":"Información fiscal completa y calculadoras para {count} países en todo el mundo","explore_taxes":"Explorar impuestos","view_taxes":"Ver impuestos","footer_text":"TaxPortal. Solo para fines informativos. Consulte a un profesional de impuestos."},
+          fr: {"home":"Accueil","countries":"Pays","about_us":"À Propos","explore_countries":"Explorer les Pays","featured_countries":"Pays en Vedette","popular_calculators":"Calculatrices Populaires","all_countries":"Tous les Pays","search_countries":"Rechercher des pays...","taxportal_home":"TaxPortal","disclaimer":"TaxPortal. À des fins informatives uniquement. Consultez un professionnel fiscal.","comprehensive_tax_info":"Informations fiscales complètes et calculatrices pour {count} pays dans le monde","explore_taxes":"Explorer les taxes","view_taxes":"Voir les taxes","footer_text":"TaxPortal. À des fins informatives uniquement. Consultez un professionnel fiscal."},
+          de: {"home":"Startseite","countries":"Länder","about_us":"Über Uns","explore_countries":"Länder Erkunden","featured_countries":"Empfohlene Länder","popular_calculators":"Beliebte Rechner","all_countries":"Alle Länder","search_countries":"Länder suchen...","taxportal_home":"TaxPortal","disclaimer":"TaxPortal. Nur zu Informationszwecken. Konsultieren Sie einen Steuerberater.","comprehensive_tax_info":"Umfassende Steuerinformationen und Rechner für {count} Länder weltweit","explore_taxes":"Steuern erkunden","view_taxes":"Steuern anzeigen","footer_text":"TaxPortal. Nur zu Informationszwecken. Konsultieren Sie einen Steuerberater."},
+          zh: {"home":"首页","countries":"国家","about_us":"关于我们","explore_countries":"探索国家","featured_countries":"特色国家","popular_calculators":"热门计算器","all_countries":"所有国家","search_countries":"搜索国家...","taxportal_home":"TaxPortal","disclaimer":"TaxPortal。仅供参考。请咨询税务专业人士。","comprehensive_tax_info":"为全球{count}个国家提供全面的税务信息和计算器","explore_taxes":"探索税务","view_taxes":"查看税务","footer_text":"TaxPortal。仅供参考。请咨询税务专业人士。"},
+          ja: {"home":"ホーム","countries":"国","about_us":"私たちについて","explore_countries":"国を探索","featured_countries":"注目の国","popular_calculators":"人気計算機","all_countries":"すべての国","search_countries":"国を検索...","taxportal_home":"TaxPortal","disclaimer":"TaxPortal。情報提供のみ。税務専門家にご相談ください。","comprehensive_tax_info":"世界中の{count}カ国の包括的な税務情報と電卓","explore_taxes":"税金を探索","view_taxes":"税金を表示","footer_text":"TaxPortal。情報提供のみ。税務専門家にご相談ください。"},
+          ar: {"home":"الرئيسية","countries":"الدول","about_us":"عنا","explore_countries":"استكشاف الدول","featured_countries":"الدول المميزة","popular_calculators":"الحاسبات الشائعة","all_countries":"جميع الدول","search_countries":"البحث عن الدول...","taxportal_home":"TaxPortal","disclaimer":"TaxPortal. لأغراض إعلامية فقط. استشر محترف ضرائب.","comprehensive_tax_info":"معلومات ضريبية شاملة وحاسبات لـ {count} دولة حول العالم","explore_taxes":"استكشاف الضرائب","view_taxes":"عرض الضرائب","footer_text":"TaxPortal. لأغراض إعلامية فقط. استشر محترف ضرائب."},
+          pt: {"home":"Início","countries":"Países","about_us":"Sobre Nós","explore_countries":"Explorar Países","featured_countries":"Países em Destaque","popular_calculators":"Calculadoras Populares","all_countries":"Todos os Países","search_countries":"Pesquisar países...","taxportal_home":"TaxPortal","disclaimer":"TaxPortal. Apenas para fins informativos. Consulte um profissional tributário.","comprehensive_tax_info":"Informações fiscais abrangentes e calculadoras para {count} países em todo o mundo","explore_taxes":"Explorar impostos","view_taxes":"Ver impostos","footer_text":"TaxPortal. Apenas para fins informativos. Consulte um profissional tributário。"},
+          ru: {"home":"Главная","countries":"Страны","about_us":"О нас","explore_countries":"Изучить страны","featured_countries":"Избранные страны","popular_calculators":"Популярные калькуляторы","all_countries":"Все страны","search_countries":"Поиск стран...","taxportal_home":"TaxPortal","disclaimer":"TaxPortal. Только для информационных целей. Проконсультируйтесь с налоговым специалистом.","comprehensive_tax_info":"Полная налоговая информация и калькуляторы для {count} стран мира","explore_taxes":"Изучить налоги","view_taxes":"Просмотреть налоги","footer_text":"TaxPortal. Только для информационных целей. Проконсультируйтесь с налоговым специалистом."}
+        };
+        const rtlLangs = ['ar'];
+
+        function getLang() {
+          try { return localStorage.getItem('lang') || 'en'; } catch (e) { return 'en'; }
+        }
+
+        function setLang(lang) {
+          try { localStorage.setItem('lang', lang); } catch (e) {}
+          const html = document.documentElement;
+          html.setAttribute('lang', lang);
+          html.setAttribute('dir', rtlLangs.includes(lang) ? 'rtl' : 'auto');
+          applyTranslations(lang);
+        }
+
+        function applyTranslations(lang) {
+          const dict = translations[lang] || translations.en;
+          document.querySelectorAll('[data-i18n]').forEach(function(el) {
+            var key = el.getAttribute('data-i18n');
+            var text = dict[key];
+            if (text) {
+              var countMatch = text.match(/\{count\}/);
+              if (countMatch && el.hasAttribute('data-i18n-vars')) {
+                try {
+                  var vars = JSON.parse(el.getAttribute('data-i18n-vars'));
+                  text = text.replace(/\{(\w+)\}/g, function(m, k) { return vars[k] !== undefined ? vars[k] : m; });
+                } catch (e) {}
+              }
+              el.textContent = text;
+            }
+          });
+          document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+            var key = el.getAttribute('data-i18n-placeholder');
+            var text = dict[key];
+            if (text) {
+              el.setAttribute('placeholder', text);
+            }
+          });
+        }
+
+        setLang(getLang());
+        window.applyTranslations = applyTranslations;
+        window.setLanguage = setLang;
+      })();
+    </script>
   </body>
 </html>

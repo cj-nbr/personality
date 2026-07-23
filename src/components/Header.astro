@@ -15,9 +15,9 @@ const isAbout = currentPath === "/about";
           <span class="text-lg text-ink dark:text-on-primary">TaxPortal</span>
         </a>
         <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
-          <a href="/" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isHome ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-muted hover:text-ink dark:hover:text-on-primary"}`}>Home</a>
-          <a href="/countries" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isCountries ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-muted hover:text-ink dark:hover:text-on-primary"}`}>Countries</a>
-          <a href="/about" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isAbout ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-muted hover:text-ink dark:hover:text-on-primary"}`}>About Us</a>
+          <a href="/" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isHome ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="home">Home</span></a>
+          <a href="/countries" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isCountries ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="countries">Countries</span></a>
+          <a href="/about" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isAbout ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="about_us">About Us</span></a>
         </nav>
       </div>
 
@@ -25,7 +25,7 @@ const isAbout = currentPath === "/about";
         <div class="relative">
           <button id="lang-btn" class="flex items-center gap-1 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:bg-white/10" aria-expanded="false" aria-haspopup="true">
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0 0v-9m0 9h9m-9 0h-9"/></svg>
-            <span class="hidden sm:inline">EN</span>
+            <span class="hidden sm:inline" id="lang-label">EN</span>
             <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div id="lang-menu" class="hidden absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-lg border border-hairline bg-canvas py-1 shadow-lg dark:border-white/15 dark:bg-primary" role="menu">
@@ -61,9 +61,9 @@ const isAbout = currentPath === "/about";
 
   <div id="mobile-menu" class="hidden md:hidden border-t border-hairline dark:border-white/10">
     <div class="mx-auto max-w-7xl px-4 py-3 space-y-1">
-      <a href="/" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary">Home</a>
-      <a href="/countries" class="block rounded-pill px-3 py-2 text-sm font-medium text-muted hover:text-ink dark:hover:text-on-primary">Countries</a>
-      <a href="/about" class="block rounded-pill px-3 py-2 text-sm font-medium text-muted hover:text-ink dark:hover:text-on-primary">About Us</a>
+      <a href="/" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="home">Home</span></a>
+      <a href="/countries" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="countries">Countries</span></a>
+      <a href="/about" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="about_us">About Us</span></a>
     </div>
   </div>
 </header>
@@ -83,8 +83,8 @@ const isAbout = currentPath === "/about";
 
     function updateThemeIcon() {
       var isDark = document.documentElement.classList.contains('dark');
-      themeIconDark.classList.toggle('hidden', !isDark);
-      themeIconLight.classList.toggle('hidden', isDark);
+      if (themeIconDark) themeIconDark.classList.toggle('hidden', !isDark);
+      if (themeIconLight) themeIconLight.classList.toggle('hidden', isDark);
     }
 
     try {
@@ -119,10 +119,14 @@ const isAbout = currentPath === "/about";
           var lang = btn.getAttribute('data-lang');
           try { localStorage.setItem('lang', lang); } catch (e) {}
           if (langLabel) {
-            langLabel.textContent = btn.textContent || lang;
+            var labelMap = {en:'EN',hi:'HI',es:'ES',fr:'FR',de:'DE',zh:'ZH',ja:'JA',ar:'AR',pt:'PT',ru:'RU'};
+            langLabel.textContent = labelMap[lang] || lang.toUpperCase();
           }
           langMenu.classList.add('hidden');
           langBtn.setAttribute('aria-expanded', 'false');
+          if (typeof window.setLanguage === 'function') {
+            window.setLanguage(lang);
+          }
         });
       });
 
