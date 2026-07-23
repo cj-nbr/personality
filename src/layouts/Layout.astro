@@ -1,16 +1,40 @@
 ---
 import "../styles/global.css";
+import Header from "../components/Header.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "TaxPortal", description = "International tax information and calculators" } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
     <slot name="head" />
-    <title>{Astro.props.title ?? "TaxPortal"}</title>
   </head>
-  <body class="min-h-screen bg-white text-slate-900 antialiased">
+  <body class="min-h-screen bg-canvas text-ink antialiased">
+    <Header />
     <slot />
+    <footer class="border-t border-hairline bg-canvas-soft py-12 dark:border-white/10 dark:bg-primary">
+      <div class="mx-auto max-w-7xl px-4 text-center text-sm text-muted sm:px-6 lg:px-8">
+        <p>TaxPortal. For informational purposes only. Consult a tax professional for advice.</p>
+        <p class="mt-2">© {new Date().getFullYear()} TaxPortal</p>
+      </div>
+    </footer>
   </body>
 </html>
