@@ -46,7 +46,7 @@ export function t(path: string, lang?: LanguageCode, vars?: Record<string, strin
 
 export function getBrowserLanguage(): LanguageCode {
   try {
-    const browserLang = (navigator.languages && navigator.languages[0]) ? navigator.languages[0] : ((navigator as any).language || "en");
+    const browserLang = (navigator.languages && navigator.languages[0]) ? navigator.languages[0] : (typeof navigator !== "undefined" && (navigator as unknown as { language?: string }).language) ? (navigator as unknown as { language?: string }).language || "en" : "en";
     const code = browserLang.slice(0, 2).toLowerCase() as LanguageCode;
     return (["en", "hi", "es", "fr", "de", "zh", "ja", "ar", "pt", "ru"] as LanguageCode[]).includes(code) ? code : "en";
   } catch {
