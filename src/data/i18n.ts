@@ -10,7 +10,7 @@ const translations: Record<string, Record<string, string>> = {
     "search_countries": "Search countries...",
     "taxportal_home": "TaxPortal",
     "disclaimer": "TaxPortal. For informational purposes only. Consult a tax professional for advice.",
-    "comprehensive_tax_info": "Comprehensive tax information and calculators for {count} countries worldwide",
+    "comprehensive_tax_info": "Comprehensive tax information and calculators for countries worldwide",
     "explore_taxes": "Explore taxes",
     "view_taxes": "View taxes",
     "footer_text": "TaxPortal. For informational purposes only. Consult a tax professional for advice.",
