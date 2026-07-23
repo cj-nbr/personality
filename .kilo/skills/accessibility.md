@@ -1,24 +1,5 @@
 # Accessibility
 
-## Skip Link
-```astro
-<a href="#main-content" class="skip-link">Skip to main content</a>
-```
-```css
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--color-primary);
-  color: var(--color-on-primary);
-  padding: 8px;
-  z-index: 100;
-}
-.skip-link:focus {
-  top: 0;
-}
-```
-
 ## Landmark Regions
 - `<header>` for site header
 - `<nav aria-label="Main navigation">` for navigation

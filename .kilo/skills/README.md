@@ -60,7 +60,6 @@ This folder contains skills, patterns, and instructions used while building and 
 
 ### 7. Accessibility
 - File: `accessibility.md`
-- Skip link: `<a href="#main-content" class="skip-link">Skip to main content</a>`
 - `aria-label` on icon-only buttons (theme toggle, language selector, mobile menu)
 - `aria-expanded` for dropdown/menu state
 - `role="menu"` on language dropdown
