@@ -2,7 +2,7 @@
 // Shared global header
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === "/";
-const isCountries = currentPath.startsWith("/countries");
+const isCountries = currentPath.startsWith("/common.countries");
 const isAbout = currentPath === "/about";
 ---
 
@@ -15,9 +15,9 @@ const isAbout = currentPath === "/about";
           <span class="text-lg text-ink dark:text-on-primary" translate="no">TaxPortal</span>
         </a>
         <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
-          <a href="/" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isHome ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="home">Home</span></a>
-          <a href="/countries" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isCountries ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="countries">Countries</span></a>
-          <a href="/about" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isAbout ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="about_us">About Us</span></a>
+          <a href="/" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isHome ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.home">Home</span></a>
+          <a href="/countries" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isCountries ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.countries">Countries</span></a>
+          <a href="/about" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isAbout ? "bg-canvas-soft text-ink dark:bg-white/10 dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.about_us">About Us</span></a>
         </nav>
       </div>
 
@@ -61,9 +61,9 @@ const isAbout = currentPath === "/about";
 
   <div id="mobile-menu" class="hidden md:hidden border-t border-hairline dark:border-white/10">
     <div class="mx-auto max-w-7xl px-4 py-3 space-y-1">
-      <a href="/" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="home">Home</span></a>
-      <a href="/countries" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="countries">Countries</span></a>
-      <a href="/about" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="about_us">About Us</span></a>
+      <a href="/" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.home">Home</span></a>
+      <a href="/countries" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.countries">Countries</span></a>
+      <a href="/about" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.about_us">About Us</span></a>
     </div>
   </div>
 </header>

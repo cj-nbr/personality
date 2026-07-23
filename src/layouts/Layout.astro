@@ -135,6 +135,36 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
         const event = new CustomEvent("i18n-updated", { bubbles: true });
         document.documentElement.dispatchEvent(event);
       });
+
+      document.documentElement.addEventListener("lang-change", () => {
+        const lang = getLang();
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+        const nodes: Text[] = [];
+        let node: Text | null;
+        while ((node = walker.nextNode() as Text | null)) nodes.push(node);
+        nodes.forEach((textNode) => {
+          let text = textNode.textContent || "";
+          let changed = false;
+          let newText = text;
+          const cDict = countryNames[lang] || countryNames.en;
+          const catDict = categoryNames[lang] || categoryNames.en;
+          for (const [enName, translated] of Object.entries(cDict)) {
+            if (newText.includes(enName)) {
+              newText = newText.replace(new RegExp(enName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), translated);
+              changed = true;
+            }
+          }
+          for (const [enName, translated] of Object.entries(catDict)) {
+            if (newText.includes(enName)) {
+              newText = newText.replace(new RegExp(enName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), translated);
+              changed = true;
+            }
+          }
+          if (changed && textNode.parentElement) {
+            textNode.parentElement.textContent = newText;
+          }
+        });
+      });
     </script>
   </body>
 </html>
