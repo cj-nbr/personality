@@ -80,11 +80,11 @@ if (!country || !category || !calculator) {
           </div>
         </div>
       <button
-        onclick="calculate()"
+        id="calc-btn"
         class="mt-6 rounded-lg bg-primary px-6 py-3 text-white font-medium hover:bg-primary-dark transition dark:bg-on-primary dark:text-primary"
         data-i18n="calculator.calculate">Calculate</button>
       <button
-        onclick="document.getElementById('income').value='';"
+        id="reset-btn"
         class="mt-2 ml-4 rounded-lg border border-hairline px-6 py-3 text-ink font-medium hover:bg-canvas-soft transition dark:border-white/15 dark:bg-primary dark:text-on-primary dark:hover:bg-white/10"
         data-i18n="calculator.reset">Reset</button>
     </div>
@@ -103,24 +103,39 @@ if (!country || !category || !calculator) {
   </div>
 
   <script is:inline>
-    function calculate() {
-      var income = parseFloat(document.getElementById('income').value) || 0;
+    (function() {
+      var incomeInput = document.getElementById('income');
+      var calcBtn = document.getElementById('calc-btn');
+      var resetBtn = document.getElementById('reset-btn');
       var resultDiv = document.getElementById('result');
       var resultValue = document.getElementById('result-value');
       var errorDiv = document.getElementById('calc-error');
-      
-      if (income <= 0) {
-        if (errorDiv) {
-          errorDiv.classList.remove('hidden');
-          resultDiv.classList.add('hidden');
+
+      function calculate() {
+        var income = parseFloat(incomeInput.value) || 0;
+        
+        if (income <= 0) {
+          if (errorDiv) {
+            errorDiv.classList.remove('hidden');
+            resultDiv.classList.add('hidden');
+          }
+          return;
         }
-        return;
+        
+        if (errorDiv) errorDiv.classList.add('hidden');
+        var tax = income * 0.15;
+        resultValue.textContent = '$' + tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        resultDiv.classList.remove('hidden');
       }
-      
-      if (errorDiv) errorDiv.classList.add('hidden');
-      var tax = income * 0.15;
-      resultValue.textContent = '$' + tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      resultDiv.classList.remove('hidden');
-    }
+
+      function reset() {
+        incomeInput.value = '';
+        resultDiv.classList.add('hidden');
+        errorDiv.classList.add('hidden');
+      }
+
+      if (calcBtn) calcBtn.addEventListener('click', calculate);
+      if (resetBtn) resetBtn.addEventListener('click', reset);
+    })();
   </script>
 </CountryLayout>
