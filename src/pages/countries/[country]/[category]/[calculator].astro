@@ -74,7 +74,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
       <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Calculator Input</h2>
       
       {rule ? (
-        <form id="calc-form" class="space-y-6" onsubmit="event.preventDefault()">
+        <form id="calc-form" class="space-y-6" onsubmit="event.preventDefault()" data-rule-id={rule.id} data-country-currency={country.currency}>
           <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {rule.inputs.map((input) => (
               <div>

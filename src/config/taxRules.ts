@@ -51,7 +51,7 @@ export interface TaxExample {
 export const taxRules: TaxRule[] = [
   // United States - Federal Income Tax
   {
-    id: "us-federal-income-tax",
+    id: "united-states-income-tax-federal-income-tax",
     countrySlug: "united-states",
     categorySlug: "income-tax",
     calculatorSlug: "federal-income-tax",
@@ -134,7 +134,7 @@ export const taxRules: TaxRule[] = [
   },
   // Malaysia - Income Tax
   {
-    id: "malaysia-income-tax",
+    id: "malaysia-income-tax-income-tax-calculator",
     countrySlug: "malaysia",
     categorySlug: "income-tax",
     calculatorSlug: "income-tax-calculator",
@@ -164,7 +164,7 @@ export const taxRules: TaxRule[] = [
   },
   // Malaysia - SST
   {
-    id: "malaysia-sst",
+    id: "malaysia-sst-sst-calculator",
     countrySlug: "malaysia",
     categorySlug: "sst",
     calculatorSlug: "sst-calculator",
@@ -194,7 +194,7 @@ export const taxRules: TaxRule[] = [
   },
   // New Zealand - Income Tax
   {
-    id: "newzealand-income-tax",
+    id: "new-zealand-income-tax-income-tax-calculator",
     countrySlug: "new-zealand",
     categorySlug: "income-tax",
     calculatorSlug: "income-tax-calculator",
@@ -221,7 +221,7 @@ export const taxRules: TaxRule[] = [
   },
   // New Zealand - GST
   {
-    id: "newzealand-gst",
+    id: "new-zealand-gst-gst-calculator",
     countrySlug: "new-zealand",
     categorySlug: "gst",
     calculatorSlug: "gst-calculator",
@@ -247,7 +247,7 @@ export const taxRules: TaxRule[] = [
   },
   // Pakistan - Income Tax
   {
-    id: "pakistan-income-tax",
+    id: "pakistan-income-tax-income-tax-calculator",
     countrySlug: "pakistan",
     categorySlug: "income-tax",
     calculatorSlug: "income-tax-calculator",
@@ -273,7 +273,7 @@ export const taxRules: TaxRule[] = [
   },
   // Pakistan - Sales Tax
   {
-    id: "pakistan-sales-tax",
+    id: "pakistan-sales-tax-sales-tax-calculator",
     countrySlug: "pakistan",
     categorySlug: "sales-tax",
     calculatorSlug: "sales-tax-calculator",
@@ -299,7 +299,7 @@ export const taxRules: TaxRule[] = [
   },
   // Philippines - Income Tax
   {
-    id: "philippines-income-tax",
+    id: "philippines-income-tax-income-tax-calculator",
     countrySlug: "philippines",
     categorySlug: "income-tax",
     calculatorSlug: "income-tax-calculator",
@@ -325,7 +325,7 @@ export const taxRules: TaxRule[] = [
   },
   // Philippines - VAT
   {
-    id: "philippines-vat",
+    id: "philippines-vat-vat-calculator",
     countrySlug: "philippines",
     categorySlug: "vat",
     calculatorSlug: "vat-calculator",
@@ -351,7 +351,7 @@ export const taxRules: TaxRule[] = [
   },
   // United Kingdom - Income Tax
   {
-    id: "uk-income-tax",
+    id: "united-kingdom-income-tax-income-tax-calculator",
     countrySlug: "united-kingdom",
     categorySlug: "income-tax",
     calculatorSlug: "income-tax-calculator",
@@ -378,7 +378,7 @@ export const taxRules: TaxRule[] = [
   },
   // United Kingdom - VAT
   {
-    id: "uk-vat",
+    id: "united-kingdom-vat-vat-calculator",
     countrySlug: "united-kingdom",
     categorySlug: "vat",
     calculatorSlug: "vat-calculator",
@@ -407,7 +407,7 @@ export const taxRules: TaxRule[] = [
   },
   // United Kingdom - National Insurance
   {
-    id: "uk-national-insurance",
+    id: "united-kingdom-national-insurance-ni-calculator",
     countrySlug: "united-kingdom",
     categorySlug: "national-insurance",
     calculatorSlug: "ni-calculator",
