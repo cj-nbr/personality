@@ -1,4 +1,4 @@
-export type LanguageCode = "en" | "hi" | "es" | "fr" | "de" | "zh" | "ja" | "ar" | "pt" | "ru";
+export type LanguageCode = "en" | "hi" | "es" | "fr" | "de" | "zh" | "zh-TW" | "ja" | "ar" | "pt" | "ru";
 
 export type TranslationDict = Record<string, string>;
 
@@ -17,6 +17,7 @@ const countryNames: Record<LanguageCode, Record<string, string>> = {
   fr: { "United States":"États-Unis","India":"Inde","Hong Kong":"Hong Kong","Singapore":"Singapour","Indonesia":"Indonésie","Malaysia":"Malaisie","New Zealand":"Nouvelle-Zélande","Pakistan":"Pakistan","Philippines":"Philippines","United Kingdom":"Royaume-Uni" },
   de: { "United States":"Vereinigte Staaten","India":"Indien","Hong Kong":"Hongkong","Singapore":"Singapur","Indonesia":"Indonesien","Malaysia":"Malaysia","New Zealand":"Neuseeland","Pakistan":"Pakistan","Philippines":"Philippinen","United Kingdom":"Vereinigtes Königreich" },
   zh: { "United States":"美国","India":"印度","Hong Kong":"香港","Singapore":"新加坡","Indonesia":"印度尼西亚","Malaysia":"马来西亚","New Zealand":"新西兰","Pakistan":"巴基斯坦","Philippines":"菲律宾","United Kingdom":"英国" },
+  "zh-TW": { "United States":"美國","India":"印度","Hong Kong":"香港","Singapore":"新加坡","Indonesia":"印度尼西亞","Malaysia":"馬來西亞","New Zealand":"紐西蘭","Pakistan":"巴基斯坦","Philippines":"菲律賓","United Kingdom":"英國" },
   ja: { "United States":"アメリカ","India":"インド","Hong Kong":"香港","Singapore":"シンガポール","Indonesia":"インドネシア","Malaysia":"マレーシア","New Zealand":"ニュージーランド","Pakistan":"パキスタン","Philippines":"フィリピン","United Kingdom":"英国" },
   ar: { "United States":"الولايات المتحدة","India":"الهند","Hong Kong":"هونغ كونغ","Singapore":"سنغافورة","Indonesia":"إندونيسيا","Malaysia":"ماليزيا","New Zealand":"نيوزيلندا","Pakistan":"باكستان","Philippines":"الفلبين","United Kingdom":"المملكة المتحدة" },
   pt: { "United States":"Estados Unidos","India":"Índia","Hong Kong":"Hong Kong","Singapore":"Cingapura","Indonesia":"Indonésia","Malaysia":"Malásia","New Zealand":"Nova Zelândia","Pakistan":"Paquistão","Philippines":"Filipinas","United Kingdom":"Reino Unido" },
@@ -30,6 +31,7 @@ const continentNames: Record<LanguageCode, Record<string, string>> = {
   fr: { "North America":"Amérique du Nord","Asia":"Asie","Europe":"Europe","Oceania":"Océanie" },
   de: { "North America":"Nordamerika","Asia":"Asien","Europe":"Europa","Oceania":"Ozeanien" },
   zh: { "North America":"北美洲","Asia":"亚洲","Europe":"欧洲","Oceania":"大洋洲" },
+  "zh-TW": { "North America":"北美洲","Asia":"亞洲","Europe":"歐洲","Oceania":"大洋洲" },
   ja: { "North America":"北アメリカ","Asia":"アジア","Europe":"ヨーロッパ","Oceania":"オセアニア" },
   ar: { "North America":"أمريكا الشمالية","Asia":"آسيا","Europe":"أوروبا","Oceania":"أوقيانوسيا" },
   pt: { "North America":"América do Norte","Asia":"Ásia","Europe":"Europa","Oceania":"Oceania" },
@@ -43,6 +45,7 @@ const currencyNames: Record<LanguageCode, Record<string, string>> = {
   fr: { "USD":"USD","INR":"INR","HKD":"HKD","SGD":"SGD","IDR":"IDR","MYR":"MYR","NZD":"NZD","PKR":"PKR","PHP":"PHP","GBP":"GBP" },
   de: { "USD":"USD","INR":"INR","HKD":"HKD","SGD":"SGD","IDR":"IDR","MYR":"MYR","NZD":"NZD","PKR":"PKR","PHP":"PHP","GBP":"GBP" },
   zh: { "USD":"美元","INR":"印度卢比","HKD":"港币","SGD":"新加坡元","IDR":"印尼盾","MYR":"马来西亚林吉特","NZD":"新西兰元","PKR":"巴基斯坦卢比","PHP":"菲律宾比索","GBP":"英镑" },
+  "zh-TW": { "USD":"美元","INR":"印度盧比","HKD":"港幣","SGD":"新加坡元","IDR":"印尼盾","MYR":"馬來西亞林吉特","NZD":"紐西蘭元","PKR":"巴基斯坦盧比","PHP":"菲律賓比索","GBP":"英鎊" },
   ja: { "USD":"米ドル","INR":"インドルピー","HKD":"香港ドル","SGD":"シンガポールドル","IDR":"インドネシアルピア","MYR":"マレーシアリンギット","NZD":"ニュージーランドドル","PKR":"パキスタンルピー","PHP":"フィリピンペソ","GBP":"英ポンド" },
   ar: { "USD":"دولار أمريكي","INR":"روبية هندية","HKD":"دولار هونغ كونغ","SGD":"دولار سنغافوري","IDR":"روبية إندونيسية","MYR":"رينغيت ماليزي","NZD":"دولار نيوزيلندي","PKR":"روبية باكستانية","PHP":"بيزو فلبيني","GBP":"جنيه إسترليني" },
   pt: { "USD":"USD","INR":"INR","HKD":"HKD","SGD":"SGD","IDR":"IDR","MYR":"MYR","NZD":"NZD","PKR":"PKR","PHP":"PHP","GBP":"GBP" },
@@ -56,6 +59,7 @@ const taxAuthorityNames: Record<LanguageCode, Record<string, string>> = {
   fr: { "IRS":"Internal Revenue Service (IRS)","CBDT":"Conseil central des impôts directs (CBDT)","IRD_hk":"Department of Inland Revenue (IRD)","IRAS":"Inland Revenue Authority of Singapore (IRAS)","DJP":"Direction Générale des Impôts (DJP)","LHDNM":"Conseil des revenus intérieurs de Malaisie (LHDNM)","IRD_nz":"Department of Inland Revenue (IRD)","FBR":"Commission fédérale des recettes (FBR)","BIR":"Bureau of Internal Revenue (BIR)","HMRC":"HM Revenue & Customs (HMRC)" },
   de: { "IRS":"Internal Revenue Service (IRS)","CBDT":"Central Board of Direct Taxes (CBDT)","IRD_hk":"Inland Revenue Department (IRD)","IRAS":"Inland Revenue Authority of Singapore (IRAS)","DJP":"Direktorat Jenderal Pajak (DJP)","LHDNM":"Lembaga Hasil Dalam Negeri Malaysia (LHDNM)","IRD_nz":"Inland Revenue Department (IRD)","FBR":"Federal Board of Revenue (FBR)","BIR":"Bureau of Internal Revenue (BIR)","HMRC":"HM Revenue & Customs (HMRC)" },
   zh: { "IRS":"美国国税局（IRS）","CBDT":"中央直接税委员会（CBDT）","IRD_hk":"税务局（IRD）","IRAS":"新加坡税务局（IRAS）","DJP":"税务总局（DJP）","LHDNM":"马来西亚国内税收局（LHDNM）","IRD_nz":"税务局（IRD）","FBR":"联邦税收委员会（FBR）","BIR":"国内税务局（BIR）","HMRC":"英国税务海关总署（HMRC）" },
+  "zh-TW": { "IRS":"美國國稅局 (IRS)","CBDT":"中央直接稅委員會 (CBDT)","IRD_hk":"香港稅務局 (IRD)","IRAS":"新加坡稅務局 (IRAS)","DJP":"印尼稅務總局 (DJP)","LHDNM":"馬來西亞國內稅收局 (LHDNM)","IRD_nz":"紐西蘭稅務局","FBR":"巴基斯坦稅務委員會 (FBR)","BIR":"菲律賓國內稅務局 (BIR)","HMRC":"英國稅務海關總署 (HMRC)" },
   ja: { "IRS":"内国歳入局（IRS）","CBDT":"中央直接税委員会（CBDT）","IRD_hk":"内国歳入部（IRD）","IRAS":"シンガポール内国歳入庁（IRAS）","DJP":"総 Directorat Pajak（DJP)","LHDNM":"マレーシア内国歳入庁（LHDNM)","IRD_nz":"内国歳入部（IRD)","FBR":"連邦歳入委員会（FBR)","BIR":"内国歳入局（BIR)","HMRC":"英国歳入関税庁（HMRC)" },
   ar: { "IRS":"مصلحة الضرائب الداخلية (IRS)","CBDT":"المجلس المركزي للضرائب المباشرة (CBDT)","IRD_hk":"إدارة الإيرادات الداخلية (IRD)","IRAS":"هيئة الإيرادات الداخلية سنغافورة (IRAS)","DJP":"المديرية العامة للضرائب (DJP)","LHDNM":"مجلس الإيرادات الداخلية الماليزي (LHDNM)","IRD_nz":"إدارة الإيرادات الداخلية (IRD)","FBR":"مجلس الإيرادات الفيدرالي (FBR)","BIR":"مكتب الإيرادات الداخلية (BIR)","HMRC":"إدارة HM للإيرادات والجمارك (HMRC)" },
   pt: { "IRS":"Receita Federal (IRS)","CBDT":"Conselho Central de Impostos Diretos (CBDT)","IRD_hk":"Departamento de Receita Interna (IRD)","IRAS":"Autoridade Fiscal de Singapura (IRAS)","DJP":"Direção Geral de Impostos (DJP)","LHDNM":"Conselho de Receita Interna da Malásia (LHDNM)","IRD_nz":"Departamento de Receita Interna (IRD)","FBR":"Conselho Federal de Receitas (FBR)","BIR":"Escritório de Receita Interna (BIR)","HMRC":"HM Receita & Alfândega (HMRC)" },
@@ -69,6 +73,7 @@ const categoryNames: Record<LanguageCode, Record<string, string>> = {
   fr: { "Income Tax":"Impôt sur le Revenu","Payroll Tax":"Taxe sur les Salaires","Corporate Tax":"Impôt sur les Sociétés","Capital Gains Tax":"Impôt sur les Plus-Values","GST":"GST","TDS":"TDS","Salaries Tax":"Impôt sur les Salaires","Profits Tax":"Impôt sur les Bénéfices","Stamp Duty":"Droit de Timbre","VAT":"TVA","SST":"SST","Sales Tax":"Taxe de Vente","National Insurance":"Assurance Nationale" },
   de: { "Income Tax":"Einkommensteuer","Payroll Tax":"Lohnsteuer","Corporate Tax":"Körperschaftsteuer","Capital Gains Tax":"Kapitalertragsteuer","GST":"GST","TDS":"TDS","Salaries Tax":"Gehaltssteuer","Profits Tax":"Gewinnsteuer","Stamp Duty":"Stempelsteuer","VAT":"MwSt","SST":"SST","Sales Tax":"Umsatzsteuer","National Insurance":"Nationalversicherung" },
   zh: { "Income Tax":"所得税","Payroll Tax":"工资税","Corporate Tax":"企业税","Capital Gains Tax":"资本利得税","GST":"GST","TDS":"TDS","Salaries Tax":"薪水税","Profits Tax":"利得税","Stamp Duty":"印花税","VAT":"增值税","SST":"SST","Sales Tax":"销售税","National Insurance":"国民保险" },
+  "zh-TW": { "Income Tax":"所得稅","Payroll Tax":"工資稅","Corporate Tax":"企業稅","Capital Gains Tax":"資本利得稅","GST":"GST","TDS":"TDS","Salaries Tax":"薪水稅","Profits Tax":"利得稅","Stamp Duty":"印花稅","VAT":"增值責任 NO -> 增值稅","SST":"SST","Sales Tax":"銷售稅","National Insurance":"國民保險" },
   ja: { "Income Tax":"所得税","Payroll Tax":"給与税","Corporate Tax":"法人税","Capital Gains Tax":"キャピタルゲイン税","GST":"GST","TDS":"TDS","Salaries Tax":"給与税","Profits Tax":"利益税","Stamp Duty":"印紙税","VAT":"付加価値税","SST":"SST","Sales Tax":"売上税","National Insurance":"国民保険" },
   ar: { "Income Tax":"ضريبة الدخل","Payroll Tax":"ضريبة الرواتب","Corporate Tax":"ضريبة الشركات","Capital Gains Tax":"ضريبة الأرباح الرأسمالية","GST":"ضريبة القيمة المضافة الموحدة","TDS":"الضريبة المخصومة عند المصدر","Salaries Tax":"ضريبة الرواتب","Profits Tax":"ضريبة الأرباح","Stamp Duty":"ضريبة الدمغة","VAT":"ضريبة القيمة المضافة","SST":"ضريبة المبيعات والخدمات","Sales Tax":"ضريبة المبيعات","National Insurance":"التأمين الوطني" },
   pt: { "Income Tax":"Imposto de Renda","Payroll Tax":"Imposto sobre Salários","Corporate Tax":"Imposto Corporativo","Capital Gains Tax":"Imposto sobre Ganhos de Capital","GST":"GST","TDS":"TDS","Salaries Tax":"Imposto sobre Salários","Profits Tax":"Imposto sobre Lucros","Stamp Duty":"Imposto de Selo","VAT":"IVA","SST":"SST","Sales Tax":"Imposto sobre Vendas","National Insurance":"Seguro Nacional" },
@@ -109,11 +114,14 @@ export function loadLocales(locales: LocaleBundle): void {
 export function detectLanguage(): LanguageCode {
   try {
     const stored = localStorage.getItem("lang");
+    if (stored === "zh-TW") return "zh-TW";
     if (stored && isValidLang(stored)) return stored as LanguageCode;
   } catch {}
   try {
     const browser = navigator.languages?.[0] || navigator.language || "en";
-    const code = browser.slice(0, 2).toLowerCase() as LanguageCode;
+    const lower = browser.toLowerCase();
+    if (lower.startsWith("zh-tw") || lower.startsWith("zh-hk")) return "zh-TW";
+    const code = lower.slice(0, 2) as LanguageCode;
     if (isValidLang(code)) return code;
   } catch {}
   return "en";
@@ -144,7 +152,7 @@ export function translateCategoryName(name: string, lang?: LanguageCode): string
 }
 
 function isValidLang(lang: string | null | undefined): boolean {
-  return !!lang && ["en", "hi", "es", "fr", "de", "zh", "ja", "ar", "pt", "ru"].includes(lang);
+  return !!lang && ["en", "hi", "es", "fr", "de", "zh", "zh-TW", "ja", "ar", "pt", "ru"].includes(lang);
 }
 
 function escapeRegExp(s: string): string {

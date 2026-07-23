@@ -8,12 +8,13 @@ import es from "../i18n/translations/es.json";
 import fr from "../i18n/translations/fr.json";
 import de from "../i18n/translations/de.json";
 import zh from "../i18n/translations/zh.json";
+import zhTW from "../i18n/translations/zh-TW.json";
 import ja from "../i18n/translations/ja.json";
 import ar from "../i18n/translations/ar.json";
 import pt from "../i18n/translations/pt.json";
 import ru from "../i18n/translations/ru.json";
 
-loadLocales({ en, hi, es, fr, de, zh, ja, ar, pt, ru });
+loadLocales({ en, hi, es, fr, de, zh, zhTW, ja, ar, pt, ru });
 
 interface Props {
   title?: string;
@@ -43,6 +44,7 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
     <link rel="alternate" hreflang="fr" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <link rel="alternate" hreflang="de" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <link rel="alternate" hreflang="zh" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="zh-TW" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <link rel="alternate" hreflang="ja" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <link rel="alternate" hreflang="ar" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <link rel="alternate" hreflang="pt" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
@@ -97,11 +99,12 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
       import fr from "/src/i18n/translations/fr.json";
       import de from "/src/i18n/translations/de.json";
       import zh from "/src/i18n/translations/zh.json";
+      import zhTW from "/src/i18n/translations/zh-TW.json";
       import ja from "/src/i18n/translations/ja.json";
       import ar from "/src/i18n/translations/ar.json";
       import pt from "/src/i18n/translations/pt.json";
       import ru from "/src/i18n/translations/ru.json";
-      loadLocales({ en, hi, es, fr, de, zh, ja, ar, pt, ru });
+      loadLocales({ en, hi, es, fr, de, zh, zhTW, ja, ar, pt, ru });
 
       const dict = getDict();
       document.querySelectorAll('[data-i18n]').forEach((el) => {

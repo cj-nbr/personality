@@ -1,6 +1,6 @@
 const translationsEn: TranslationDict = {};
 
-export type LanguageCode = "en" | "hi" | "es" | "fr" | "de" | "zh" | "ja" | "ar" | "pt" | "ru";
+export type LanguageCode = "en" | "hi" | "es" | "fr" | "de" | "zh" | "zh-TW" | "ja" | "ar" | "pt" | "ru";
 
 export interface TranslationDict {
   [key: string]: string;
@@ -15,7 +15,7 @@ let currentLang: LanguageCode = "en";
 
 export function loadLocales(locales: LocaleBundle): void {
   for (const [code, dict] of Object.entries(locales)) {
-    if (dict && ["en", "hi", "es", "fr", "de", "zh", "ja", "ar", "pt", "ru"].includes(code)) {
+    if (dict && ["en", "hi", "es", "fr", "de", "zh", "zh-TW", "ja", "ar", "pt", "ru"].includes(code)) {
       dictCache[code as LanguageCode] = dict;
     }
   }
@@ -48,7 +48,7 @@ export function getBrowserLanguage(): LanguageCode {
   try {
     const browserLang = (navigator.languages && navigator.languages[0]) ? navigator.languages[0] : (typeof navigator !== "undefined" && (navigator as unknown as { language?: string }).language) ? (navigator as unknown as { language?: string }).language || "en" : "en";
     const code = browserLang.slice(0, 2).toLowerCase() as LanguageCode;
-    return (["en", "hi", "es", "fr", "de", "zh", "ja", "ar", "pt", "ru"] as LanguageCode[]).includes(code) ? code : "en";
+      return (["en", "hi", "es", "fr", "de", "zh", "zh-TW", "ja", "ar", "pt", "ru"] as LanguageCode[]).includes(code) ? code : "en";
   } catch {
     return "en";
   }
@@ -57,7 +57,7 @@ export function getBrowserLanguage(): LanguageCode {
 export function getStoredLanguage(): LanguageCode | null {
   try {
     const stored = localStorage.getItem("lang");
-    if (stored && (["en", "hi", "es", "fr", "de", "zh", "ja", "ar", "pt", "ru"] as LanguageCode[]).includes(stored as LanguageCode)) {
+    if (stored && (["en", "hi", "es", "fr", "de", "zh", "zh-TW", "ja", "ar", "pt", "ru"] as LanguageCode[]).includes(stored as LanguageCode)) {
       return stored as LanguageCode;
     }
   } catch {}
