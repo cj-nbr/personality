@@ -18,9 +18,10 @@ loadLocales({ en, hi, es, fr, de, zh, ja, ar, pt, ru });
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
-const { title = "TaxPortal", description = "International tax information and calculators" } = Astro.props;
+const { title = "TaxPortal", description = "International tax information and calculators", image = "https://personality.com/og-image.png" } = Astro.props;
 const initialLang = detectLanguage();
 setLang(initialLang);
 const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
@@ -32,10 +33,12 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={description} />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
