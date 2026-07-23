@@ -1,0 +1,84 @@
+---
+import CountryLayout from "../../../../layouts/CountryLayout.astro";
+import { getCountryBySlug, getCategoryBySlug } from "../../../../data/countries";
+
+export function getStaticPaths() {
+  const paths: { params: { country: string; category: string; guide: string } }[] = [];
+  const allCountries = [
+    "united-states", "india", "hong-kong", "singapore", "indonesia",
+    "malaysia", "new-zealand", "pakistan", "philippines", "united-kingdom"
+  ];
+  
+  allCountries.forEach(countrySlug => {
+    const country = getCountryBySlug(countrySlug);
+    if (!country) return;
+    
+    country.taxCategories.forEach(category => {
+      category.guides.forEach(guide => {
+        paths.push({
+          params: {
+            country: countrySlug,
+            category: category.slug,
+            guide: guide.slug
+          }
+        });
+      });
+    });
+  });
+  
+  return paths;
+}
+
+const country = getCountryBySlug(Astro.params.country!);
+const category = getCategoryBySlug(Astro.params.country!, Astro.params.category!);
+const guide = category?.guides.find(g => g.slug === Astro.params.guide);
+
+if (!country || !category || !guide) {
+  return Astro.redirect("/countries");
+}
+---
+
+<CountryLayout
+  title={`${guide.title} | ${country.name}`}
+  description={guide.description}
+  breadcrumbs={[
+    { label: "Countries", href: "/countries" },
+    { label: country.name, href: `/countries/${country.slug}` },
+    { label: category.name, href: `/countries/${country.slug}/${category.slug}` },
+    { label: guide.title }
+  ]}
+>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-ink">{guide.title}</h1>
+    <p class="mt-2 text-lg text-body">{guide.description}</p>
+  </div>
+
+  <div class="prose max-w-none">
+    <div class="rounded-lg border border-hairline bg-canvas p-8">
+      <p class="text-body leading-relaxed">
+        This comprehensive guide covers {guide.title.toLowerCase()} for {country.name}. 
+        Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long" })}.
+      </p>
+      <p class="mt-4 text-body leading-relaxed">
+        Understanding {category.name.toLowerCase()} in {country.name} is essential for compliance and planning.
+        This guide walks you through the key concepts, requirements, and best practices.
+      </p>
+      
+      <h2 class="text-2xl font-semibold text-ink mt-8 mb-4">Key Points</h2>
+      <ul class="list-disc pl-6 space-y-2 text-body">
+        <li>Understand the current tax rates and thresholds</li>
+        <li>Know your filing obligations and deadlines</li>
+        <li>Keep proper records and documentation</li>
+        <li>Consult a tax professional for complex situations</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold text-ink mt-8 mb-4">Official Resources</h2>
+      <p class="text-body">
+        For the most accurate and up-to-date information, visit the official tax authority:
+        <a href={country.taxAuthorityUrl} target="_blank" rel="noopener" class="text-link hover:underline">
+          {country.officialTaxAuthority}
+        </a>
+      </p>
+    </div>
+  </div>
+</CountryLayout>

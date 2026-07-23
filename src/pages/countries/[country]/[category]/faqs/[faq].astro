@@ -1,0 +1,75 @@
+---
+import CountryLayout from "../../../../../layouts/CountryLayout.astro";
+import { getCountryBySlug, getCategoryBySlug } from "../../../../../data/countries";
+
+export function getStaticPaths() {
+  const paths: { params: { country: string; category: string; faq: string } }[] = [];
+  const allCountries = [
+    "united-states", "india", "hong-kong", "singapore", "indonesia",
+    "malaysia", "new-zealand", "pakistan", "philippines", "united-kingdom"
+  ];
+  
+  allCountries.forEach(countrySlug => {
+    const country = getCountryBySlug(countrySlug);
+    if (!country) return;
+    
+    country.taxCategories.forEach(category => {
+      category.faqs.forEach((faq, index) => {
+        paths.push({
+          params: {
+            country: countrySlug,
+            category: category.slug,
+            faq: `faq-${index}`
+          }
+        });
+      });
+    });
+  });
+  
+  return paths;
+}
+
+const country = getCountryBySlug(Astro.params.country!);
+const category = getCategoryBySlug(Astro.params.country!, Astro.params.category!);
+const faqIndex = parseInt(Astro.params.faq!.replace('faq-', ''));
+const faq = category?.faqs[faqIndex];
+
+if (!country || !category || !faq) {
+  return Astro.redirect("/countries");
+}
+---
+
+<CountryLayout
+  title={`${faq.question} | ${country.name}`}
+  description={faq.answer}
+  breadcrumbs={[
+    { label: "Countries", href: "/countries" },
+    { label: country.name, href: `/countries/${country.slug}` },
+    { label: category.name, href: `/countries/${country.slug}/${category.slug}` },
+    { label: "FAQ" }
+  ]}
+>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-ink">{faq.question}</h1>
+  </div>
+
+  <div class="rounded-lg border border-hairline bg-canvas p-8">
+    <p class="text-body leading-relaxed text-lg">{faq.answer}</p>
+    
+    <div class="mt-8 pt-6 border-t border-hairline">
+      <h2 class="text-xl font-semibold text-ink mb-4">Related Questions</h2>
+      <ul class="space-y-2">
+        {category.faqs.filter((_, i) => i !== faqIndex).slice(0, 5).map((relatedFaq, i) => (
+          <li>
+            <a 
+              href={`/countries/${country.slug}/${category.slug}/faqs/faq-${category.faqs.indexOf(relatedFaq)}`}
+              class="text-link hover:underline"
+            >
+              {relatedFaq.question}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</CountryLayout>

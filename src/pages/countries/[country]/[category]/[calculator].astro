@@ -1,0 +1,120 @@
+---
+import CountryLayout from "../../../../layouts/CountryLayout.astro";
+import { getCountryBySlug, getCategoryBySlug } from "../../../../data/countries";
+
+export function getStaticPaths() {
+  const paths: { params: { country: string; category: string; calculator: string } }[] = [];
+  const allCountries = [
+    "united-states", "india", "hong-kong", "singapore", "indonesia",
+    "malaysia", "new-zealand", "pakistan", "philippines", "united-kingdom"
+  ];
+  
+  allCountries.forEach(countrySlug => {
+    const country = getCountryBySlug(countrySlug);
+    if (!country) return;
+    
+    country.taxCategories.forEach(category => {
+      category.calculators.forEach(calc => {
+        paths.push({
+          params: {
+            country: countrySlug,
+            category: category.slug,
+            calculator: calc.slug
+          }
+        });
+      });
+    });
+  });
+  
+  return paths;
+}
+
+const country = getCountryBySlug(Astro.params.country!);
+const category = getCategoryBySlug(Astro.params.country!, Astro.params.category!);
+const calculator = category?.calculators.find(c => c.slug === Astro.params.calculator);
+
+if (!country || !category || !calculator) {
+  return Astro.redirect("/countries");
+}
+---
+
+<CountryLayout
+  title={`${calculator.name} | ${country.name}`}
+  description={calculator.description}
+  breadcrumbs={[
+    { label: "Countries", href: "/countries" },
+    { label: country.name, href: `/countries/${country.slug}` },
+    { label: category.name, href: `/countries/${country.slug}/${category.slug}` },
+    { label: calculator.name }
+  ]}
+>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-ink">{calculator.name}</h1>
+    <p class="mt-2 text-lg text-body">{calculator.description}</p>
+  </div>
+
+  <div class="rounded-lg border border-hairline bg-canvas p-8">
+    <p class="text-body leading-relaxed">
+      Calculate your {category.name.toLowerCase()} using this {country.name} calculator.
+      Enter your information below to get an estimate.
+    </p>
+
+    <div class="mt-8">
+      <h2 class="text-2xl font-semibold text-ink mb-6">Calculator Input</h2>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div>
+          <label class="block text-sm font-medium text-ink mb-2">Annual Income</label>
+          <input 
+            type="number" 
+            id="income"
+            class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none"
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-ink mb-2">Tax Year</label>
+          <select class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none">
+            <option>2024</option>
+            <option>2023</option>
+          </select>
+        </div>
+      </div>
+      <button 
+        onclick="calculate()"
+        class="mt-6 rounded-lg bg-primary px-6 py-3 text-white font-medium hover:bg-primary-dark transition"
+      >
+        Calculate
+      </button>
+      <button 
+        onclick="document.getElementById('income').value='';"
+        class="mt-2 ml-4 rounded-lg border border-hairline px-6 py-3 text-ink font-medium hover:bg-canvas-soft transition"
+      >
+        Reset
+      </button>
+    </div>
+
+    <div id="result" class="mt-8 hidden">
+      <h3 class="text-xl font-semibold text-ink mb-4">Estimated Tax</h3>
+      <div class="rounded-lg bg-canvas-soft p-6">
+        <p class="text-3xl font-bold text-primary" id="result-value">$0</p>
+        <p class="text-sm text-muted mt-2">This is an estimate. Consult a tax professional for accurate calculations.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    function calculate() {
+      var income = parseFloat(document.getElementById('income').value) || 0;
+      var resultDiv = document.getElementById('result');
+      var resultValue = document.getElementById('result-value');
+      
+      if (income <= 0) {
+        alert('Please enter a valid income amount');
+        return;
+      }
+      
+      var tax = income * 0.15;
+      resultValue.textContent = '$' + tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      resultDiv.classList.remove('hidden');
+    }
+  </script>
+</CountryLayout>

@@ -1,0 +1,178 @@
+---
+import CountryLayout from "../../../layouts/CountryLayout.astro";
+import { countries, getCountryBySlug } from "../../../data/countries";
+import { getBaseUrl } from "../../../utils/routing";
+
+export function getStaticPaths() {
+  return countries.map(country => ({
+    params: { slug: country.slug }
+  }));
+}
+
+const country = getCountryBySlug(Astro.params.slug!);
+
+if (!country) {
+  return Astro.redirect("/countries");
+}
+
+const baseUrl = getBaseUrl();
+---
+
+<CountryLayout
+  title={`${country.name} Tax Guide | TaxPortal`}
+  description={country.overview}
+  breadcrumbs={[
+    { label: "Countries", href: "/countries" },
+    { label: country.name }
+  ]}
+  canonical={`${baseUrl}/countries/${country.slug}`}
+>
+  <section class="mb-12">
+    <div class="rounded-2xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft shadow-sm">
+      <div class="p-8 sm:p-10 lg:p-12">
+        <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div class="flex-1">
+            <div class="flex items-center gap-4 mb-4">
+              <span class="text-5xl sm:text-6xl" aria-hidden="true">{country.flag}</span>
+              <div>
+                <h1 class="text-3xl font-bold text-ink sm:text-4xl">{country.name}</h1>
+                <p class="text-sm text-muted mt-1">{country.continent}</p>
+              </div>
+            </div>
+            <p class="text-lg text-body leading-relaxed mt-4">{country.overview}</p>
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href={country.taxAuthorityUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white transition hover:bg-primary-dark"
+              >
+                {country.officialTaxAuthority}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+          <div class="grid w-full max-w-xs grid-cols-2 gap-4 lg:w-auto">
+            <div class="rounded-xl border border-hairline bg-canvas p-4">
+              <p class="text-xs font-medium uppercase tracking-wider text-muted">Currency</p>
+              <p class="mt-1 text-lg font-semibold text-ink">{country.currency}</p>
+            </div>
+            <div class="rounded-xl border border-hairline bg-canvas p-4">
+              <p class="text-xs font-medium uppercase tracking-wider text-muted">Capital</p>
+              <p class="mt-1 text-lg font-semibold text-ink">{country.capital}</p>
+            </div>
+            <div class="rounded-xl border border-hairline bg-canvas p-4">
+              <p class="text-xs font-medium uppercase tracking-wider text-muted">Tax Authority</p>
+              <p class="mt-1 text-sm font-semibold text-ink leading-snug">{country.officialTaxAuthority}</p>
+            </div>
+            <div class="rounded-xl border border-hairline bg-canvas p-4">
+              <p class="text-xs font-medium uppercase tracking-wider text-muted">Continent</p>
+              <p class="mt-1 text-lg font-semibold text-ink">{country.continent}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold text-ink mb-6">Tax Categories</h2>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {country.taxCategories.map(category => (
+        <a
+          href={`/countries/${country.slug}/${category.slug}`}
+          class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md"
+        >
+          <div class="flex items-start justify-between">
+            <h3 class="font-semibold text-ink group-hover:text-primary">
+              {category.name}
+            </h3>
+            <span aria-hidden="true" class="mt-1 text-lg text-muted transition group-hover:translate-x-1 group-hover:text-primary">→</span>
+          </div>
+          <p class="mt-2 text-sm text-body line-clamp-2">{category.description}</p>
+          <div class="mt-4 flex items-center gap-4 text-xs text-muted">
+            <span>{category.calculators.length} calculator{category.calculators.length === 1 ? "" : "s"}</span>
+            <span>{category.guides.length} guide{category.guides.length === 1 ? "" : "s"}</span>
+            <span>{category.faqs.length} FAQ{category.faqs.length === 1 ? "" : "s"}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {country.popularCalculators.length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-ink mb-6">Popular Calculators</h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {country.popularCalculators.map(calc => {
+          const category = country.taxCategories.find(c => c.slug === calc.category);
+          return (
+            <a
+              href={`/countries/${country.slug}/${calc.category}/${calc.slug}`}
+              class="rounded-xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft p-6 transition hover:border-primary hover:shadow-md"
+            >
+              <p class="text-xs font-medium uppercase tracking-wider text-primary">
+                {category?.name ?? calc.category}
+              </p>
+              <h3 class="mt-2 font-semibold text-ink">{calc.name}</h3>
+              <p class="mt-1 text-sm text-muted">Calculate your tax liability</p>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link">
+                Try calculator <span aria-hidden="true">→</span>
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )}
+
+  {country.latestUpdates.length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-ink mb-6">Latest Updates</h2>
+      <div class="space-y-4">
+        {country.latestUpdates.map(update => (
+          <div class="rounded-xl border border-hairline bg-canvas p-6 transition hover:border-hairline">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                {new Date(update.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric"
+                })}
+              </span>
+            </div>
+            <h3 class="font-semibold text-ink">{update.title}</h3>
+            <p class="mt-2 text-sm text-body">{update.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {country.relatedCountries.length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-ink mb-6">Related Countries</h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {country.relatedCountries.map(slug => {
+          const related = getCountryBySlug(slug);
+          if (!related) return null;
+          return (
+            <a
+              href={`/countries/${related.slug}`}
+              class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md"
+            >
+              <div class="flex items-center gap-3">
+                <span class="text-3xl" aria-hidden="true">{related.flag}</span>
+                <div>
+                  <h3 class="font-semibold text-ink group-hover:text-primary">{related.name}</h3>
+                  <p class="text-xs text-muted">{related.continent}</p>
+                </div>
+              </div>
+              <p class="mt-3 text-sm text-body line-clamp-2">{related.overview}</p>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )}
+</CountryLayout>

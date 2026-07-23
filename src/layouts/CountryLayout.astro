@@ -1,0 +1,59 @@
+---
+import Layout from "./Layout.astro";
+import { getBaseUrl } from "../utils/routing";
+
+interface Props {
+  title: string;
+  description: string;
+  breadcrumbs?: Array<{ label: string; href?: string }>;
+  canonical?: string;
+}
+
+const { title, description, breadcrumbs, canonical } = Astro.props;
+const baseUrl = getBaseUrl();
+---
+
+<Layout title={`${title} | TaxPortal`} description={description}>
+  <header class="bg-primary text-white">
+    <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
+        <a href="/" class="text-xl font-bold">TaxPortal</a>
+        <nav class="hidden md:flex gap-6">
+          <a href="/countries" class="hover:text-secondary">Countries</a>
+          <a href="/countries/united-states" class="hover:text-secondary">United States</a>
+          <a href="/countries/india" class="hover:text-secondary">India</a>
+          <a href="/countries/singapore" class="hover:text-secondary">Singapore</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="min-h-screen">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <nav class="mb-6 text-sm text-muted" aria-label="Breadcrumb">
+          <ol class="flex items-center gap-2">
+            {breadcrumbs.map((crumb, i) => (
+              <li class="flex items-center gap-2">
+                {i > 0 && <span class="text-muted">/</span>}
+                {crumb.href ? (
+                  <a href={crumb.href} class="text-link hover:underline">{crumb.label}</a>
+                ) : (
+                  <span class="font-medium text-ink" aria-current="page">{crumb.label}</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+      <slot />
+    </div>
+  </main>
+
+  <footer class="border-t border-hairline bg-canvas-soft py-12">
+    <div class="mx-auto max-w-7xl px-4 text-center text-sm text-muted sm:px-6 lg:px-8">
+      <p>TaxPortal. For informational purposes only. Consult a tax professional for advice.</p>
+      <p class="mt-2">© {new Date().getFullYear()} TaxPortal</p>
+    </div>
+  </footer>
+</Layout>

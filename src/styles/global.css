@@ -1,35 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #000000;
-  --color-on-primary: #ffffff;
+  --color-primary: #0f766e;
+  --color-primary-dark: #115e59;
+  --color-secondary: #f59e0b;
+  --color-accent: #3b82f6;
   --color-canvas: #ffffff;
-  --color-canvas-soft: #f5f5f5;
-  --color-canvas-soft-2: #e5e5e5;
-  --color-ink: #171717;
-  --color-on-primary: #ffffff;
-  --color-body: #525252;
-  --color-mute: #a3a3a3;
-  --color-link: #2563eb;
-  --color-link-deep: #1d4ed8;
-  --color-hairline: #e5e5e5;
-  --color-hairline-strong: #a3a3a3;
-  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-canvas-soft: #f8fafc;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+  --color-hairline: #e2e8f0;
   --radius-pill: 9999px;
-  --radius-lg: 0.5rem;
-  --tracking-[-2.4px]: -2.4px;
-  --tracking-[-0.96px]: -0.96px;
-  --tracking-[-1.5px]: -1.5px;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: var(--font-sans);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }

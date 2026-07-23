@@ -1,0 +1,79 @@
+---
+import CountryLayout from "../../layouts/CountryLayout.astro";
+import SearchBox from "../../components/SearchBox.astro";
+import CountryCard from "../../components/CountryCard.astro";
+import { countries } from "../../data/countries";
+import { getBaseUrl } from "../../utils/routing";
+
+const baseUrl = getBaseUrl();
+---
+
+<CountryLayout
+  title="Countries"
+  description="Explore tax information for countries worldwide. Find income tax, VAT, corporate tax, and more."
+  breadcrumbs={[{ label: "Countries" }]}
+>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-ink">Countries</h1>
+    <p class="mt-2 text-lg text-body">
+      Explore comprehensive tax information for {countries.length} countries.
+    </p>
+  </div>
+
+  <div class="mb-8">
+    <SearchBox 
+      value={Astro.url.searchParams.get("search") ?? ""}
+      onInput={() => {}}
+      placeholder="Search countries..."
+    />
+  </div>
+
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold text-ink mb-4">All Countries</h2>
+    <CountryCard 
+      countries={countries.map(c => ({
+        slug: c.slug,
+        name: c.name,
+        flag: c.flag,
+        continent: c.continent,
+        overview: c.overview
+      }))}
+      searchQuery=""
+      selectedContinent=""
+    />
+  </div>
+
+  <script is:inline>
+    (function() {
+      var searchInput = document.querySelector('input[type="text"]');
+      var countryGrid = document.querySelector('.grid');
+      var countryData = [];
+      
+      document.querySelectorAll('.group').forEach(function(el) {
+        var name = el.querySelector('h3')?.textContent || '';
+        var continent = el.querySelector('.text-muted')?.textContent || '';
+        countryData.push({
+          name: name,
+          continent: continent,
+          element: el
+        });
+      });
+
+      function filterCountries(query) {
+        var q = query.toLowerCase().trim();
+        countryData.forEach(function(data) {
+          var match = !q || 
+            data.name.toLowerCase().includes(q) || 
+            data.continent.toLowerCase().includes(q);
+          data.element.style.display = match ? '' : 'none';
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+          filterCountries(e.target.value);
+        });
+      }
+    })();
+  </script>
+</CountryLayout>

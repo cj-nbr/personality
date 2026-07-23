@@ -1,0 +1,108 @@
+---
+import CountryLayout from "../../../../layouts/CountryLayout.astro";
+import { countries } from "../../../../data/countries";
+import { getCountryBySlug, getCategoryBySlug } from "../../../../data/countries";
+
+export function getStaticPaths() {
+  return countries.flatMap(country => 
+    country.taxCategories.map(category => ({
+      params: { 
+        country: country.slug, 
+        category: category.slug 
+      }
+    }))
+  );
+}
+
+const country = getCountryBySlug(Astro.params.country!);
+const category = getCategoryBySlug(Astro.params.country!, Astro.params.category!);
+
+if (!country || !category) {
+  return Astro.redirect("/countries");
+}
+---
+
+<CountryLayout
+  title={`${category.name} in ${country.name}`}
+  description={category.description}
+  breadcrumbs={[
+    { label: "Countries", href: "/countries" },
+    { label: country.name, href: `/countries/${country.slug}` },
+    { label: category.name }
+  ]}
+>
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-ink">{category.name} in {country.name}</h1>
+    <p class="mt-2 text-lg text-body">{category.description}</p>
+  </div>
+
+  <div class="prose max-w-none mb-12">
+    <p class="text-body leading-relaxed">{category.overview}</p>
+  </div>
+
+  {category.calculators.length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-ink mb-6">Calculators</h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {category.calculators.map(calc => (
+          <a 
+            href={`/countries/${country.slug}/${category.slug}/${calc.slug}`}
+            class="rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition"
+          >
+            <h3 class="font-semibold text-ink">{calc.name}</h3>
+            <p class="text-sm text-muted mt-2">{calc.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {category.guides.length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-ink mb-6">Guides</h2>
+      <div class="space-y-4">
+        {category.guides.map(guide => (
+          <a 
+            href={`/countries/${country.slug}/${category.slug}/${guide.slug}`}
+            class="block rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition"
+          >
+            <h3 class="font-semibold text-ink">{guide.title}</h3>
+            <p class="text-sm text-muted mt-2">{guide.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {category.faqs.length > 0 && (
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-ink mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {category.faqs.map(faq => (
+          <div class="rounded-lg border border-hairline bg-canvas p-6">
+            <h3 class="font-semibold text-ink">{faq.question}</h3>
+            <p class="mt-2 text-body">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold text-ink mb-6">Related Categories</h2>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {country.taxCategories
+        .filter(c => c.slug !== category.slug)
+        .slice(0, 6)
+        .map(related => (
+          <a 
+            href={`/countries/${country.slug}/${related.slug}`}
+            class="rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition"
+          >
+            <h3 class="font-semibold text-ink">{related.name}</h3>
+            <p class="text-sm text-muted mt-2">{related.description}</p>
+          </a>
+        ))}
+    </div>
+  </section>
+</CountryLayout>

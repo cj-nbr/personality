@@ -1,9 +1,72 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { countries } from "../data/countries";
 ---
 
-<Layout title="i love you beta">
-  <main class="flex min-h-screen items-center justify-center">
-    <h1 class="text-4xl font-bold">i love you beta</h1>
-  </main>
+<Layout title="TaxPortal - International Tax Information">
+  <div class="min-h-screen bg-gradient-to-b from-canvas to-canvas-soft">
+    <header class="border-b border-hairline bg-white/80 backdrop-blur">
+      <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-ink">TaxPortal</h1>
+        <p class="mt-2 text-lg text-body">
+          Comprehensive tax information for {countries.length} countries worldwide
+        </p>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <section class="mb-16">
+        <h2 class="text-3xl font-semibold text-ink mb-6">Featured Countries</h2>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {countries.slice(0, 6).map(country => (
+            <a 
+              href={`/countries/${country.slug}`}
+              class="group rounded-xl border border-hairline bg-white p-6 shadow-sm transition hover:border-primary hover:shadow-lg"
+            >
+              <div class="text-5xl mb-4">{country.flag}</div>
+              <h3 class="text-xl font-semibold text-ink group-hover:text-primary">{country.name}</h3>
+              <p class="text-sm text-muted mt-1">{country.continent}</p>
+              <p class="text-sm text-body mt-3 line-clamp-2">{country.overview}</p>
+              <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline">
+                Explore taxes →
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="mb-16">
+        <h2 class="text-3xl font-semibold text-ink mb-6">Popular Calculators</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {countries.flatMap(c => c.popularCalculators.map(pc => ({ ...pc, country: c }))).slice(0, 6).map(item => (
+            <a 
+              href={`/countries/${item.country.slug}/${item.category}/${item.slug}`}
+              class="rounded-lg border border-hairline bg-white p-6 hover:border-primary transition"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-2xl">{item.country.flag}</span>
+                <span class="text-sm text-muted">{item.country.name}</span>
+              </div>
+              <h3 class="font-semibold text-ink">{item.name}</h3>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-3xl font-semibold text-ink mb-6">All Countries</h2>
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          {countries.map(country => (
+            <a 
+              href={`/countries/${country.slug}`}
+              class="flex items-center gap-3 rounded-lg border border-hairline bg-white p-4 hover:border-primary transition"
+            >
+              <span class="text-3xl">{country.flag}</span>
+              <span class="font-medium text-ink">{country.name}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
+  </div>
 </Layout>

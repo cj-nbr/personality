@@ -1,0 +1,30 @@
+---
+interface Props {
+  headers: string[];
+  rows: Array<Record<string, string | number>>;
+---
+
+<div class="overflow-x-auto">
+  <table class="min-w-full divide-y divide-hairline">
+    <thead class="bg-canvas-soft">
+      <tr>
+        {headers.map(header => (
+          <th class="px-4 py-3 text-left text-sm font-semibold text-ink">
+            {header}
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-hairline">
+      {rows.map((row, i) => (
+        <tr class={i % 2 === 0 ? "bg-canvas" : "bg-canvas-soft"}>
+          {headers.map(header => (
+            <td class="px-4 py-3 text-sm text-body">
+              {row[header.toLowerCase().replace(/\s/g, "_")] ?? row[header] ?? ""}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
