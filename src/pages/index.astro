@@ -8,19 +8,19 @@ import { countries } from "../data/countries";
     <section class="relative overflow-hidden">
       <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-canvas-soft to-canvas dark:from-primary dark:to-primary" aria-hidden="true"></div>
       <div class="relative mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-bold tracking-tight text-ink sm:text-5xl dark:text-on-primary"><span data-i18n="taxportal_home">TaxPortal</span></h1>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-body dark:text-muted" data-i18n="comprehensive_tax_info" data-i18n-vars={JSON.stringify({ count: countries.length })}>
+        <h1 class="text-4xl font-bold tracking-tight text-ink sm:text-5xl dark:text-on-primary"><span data-i18n="home.taxportal_home">TaxPortal</span></h1>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-body dark:text-muted" data-i18n="home.comprehensive_tax_info" data-i18n-vars={JSON.stringify({ count: countries.length })}>
           Comprehensive tax information and calculators for {countries.length} countries worldwide
         </p>
         <div class="mt-8 flex items-center justify-center gap-4">
-          <a href="/countries" class="rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"><span data-i18n="explore_countries">Explore Countries</span></a>
+          <a href="/countries" class="rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"><span data-i18n="home.explore_countries">Explore Countries</span></a>
         </div>
       </div>
     </section>
 
     <section class="border-t border-hairline dark:border-white/10">
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="featured_countries">Featured Countries</span></h2>
+        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="home.featured_countries">Featured Countries</span></h2>
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {countries.slice(0, 6).map(country => (
             <a href={`/countries/${country.slug}`} class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-lg dark:border-white/15 dark:bg-primary dark:hover:border-primary">
@@ -28,7 +28,7 @@ import { countries } from "../data/countries";
               <h3 class="text-xl font-semibold text-ink group-hover:text-primary dark:text-on-primary">{country.name}</h3>
               <p class="text-sm text-muted mt-1 dark:text-muted">{country.continent}</p>
               <p class="text-sm text-body mt-3 line-clamp-2 dark:text-muted">{country.overview}</p>
-              <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline dark:text-link"><span data-i18n="explore_taxes">Explore taxes</span> →</span>
+              <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline dark:text-link"><span data-i18n="home.explore_taxes">Explore taxes</span> →</span>
             </a>
           ))}
         </div>
@@ -37,7 +37,7 @@ import { countries } from "../data/countries";
 
     <section class="border-t border-hairline bg-canvas-soft dark:border-white/10 dark:bg-primary">
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="popular_calculators">Popular Calculators</span></h2>
+        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="home.popular_calculators">Popular Calculators</span></h2>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {countries.flatMap(c => c.popularCalculators.map(pc => ({ ...pc, country: c }))).slice(0, 6).map(item => (
             <a href={`/countries/${item.country.slug}/${item.category}/${item.slug}`} class="rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
@@ -54,7 +54,7 @@ import { countries } from "../data/countries";
 
     <section class="border-t border-hairline dark:border-white/10">
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="all_countries">All Countries</span></h2>
+        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="home.all_countries">All Countries</span></h2>
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {countries.map(country => (
             <a href={`/countries/${country.slug}`} class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">

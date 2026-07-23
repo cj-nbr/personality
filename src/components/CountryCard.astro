@@ -24,9 +24,7 @@ const { countries, searchQuery, selectedContinent } = Astro.props;
       <h3 class="text-lg font-semibold text-ink group-hover:text-primary">{country.name}</h3>
       <p class="text-sm text-muted mt-1">{country.continent}</p>
       <p class="text-sm text-body mt-2 line-clamp-2">{country.overview}</p>
-      <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline">
-        View taxes →
-      </span>
+      <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline" data-i18n="countries.view_taxes">View taxes</span>
     </a>
   ))}
 </div>

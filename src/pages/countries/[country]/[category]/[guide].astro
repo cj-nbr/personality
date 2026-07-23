@@ -55,25 +55,25 @@ if (!country || !category || !guide) {
 
   <div class="prose max-w-none">
     <div class="rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
-      <p class="text-body leading-relaxed dark:text-muted" data-i18n="guide_intro">
+      <p class="text-body leading-relaxed dark:text-muted" data-i18n="guide.intro" data-i18n-vars={JSON.stringify({ title: guide.title, country: country.name, date: new Date().toLocaleDateString("en-US", { year: "numeric", month: "long" }) })}>
         This comprehensive guide covers {guide.title.toLowerCase()} for {country.name}.
         Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long" })}.
       </p>
-      <p class="mt-4 text-body leading-relaxed dark:text-muted" data-i18n="guide_importance">
+      <p class="mt-4 text-body leading-relaxed dark:text-muted" data-i18n="guide.importance" data-i18n-vars={JSON.stringify({ category: category.name, country: country.name })}>
         Understanding {category.name.toLowerCase()} in {country.name} is essential for compliance and planning.
         This guide walks you through the key concepts, requirements, and best practices.
       </p>
 
-      <h2 class="text-2xl font-semibold text-ink mt-8 mb-4 dark:text-on-primary" data-i18n="key_points">Key Points</h2>
+      <h2 class="text-2xl font-semibold text-ink mt-8 mb-4 dark:text-on-primary" data-i18n="guide.key_points">Key Points</h2>
       <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
-        <li data-i18n="point_1">Understand the current tax rates and thresholds</li>
-        <li data-i18n="point_2">Know your filing obligations and deadlines</li>
-        <li data-i18n="point_3">Keep proper records and documentation</li>
-        <li data-i18n="point_4">Consult a tax professional for complex situations</li>
+        <li data-i18n="guide.point_1">Understand the current tax rates and thresholds</li>
+        <li data-i18n="guide.point_2">Know your filing obligations and deadlines</li>
+        <li data-i18n="guide.point_3">Keep proper records and documentation</li>
+        <li data-i18n="guide.point_4">Consult a tax professional for complex situations</li>
       </ul>
 
-      <h2 class="text-2xl font-semibold text-ink mt-8 mb-4 dark:text-on-primary" data-i18n="official_resources">Official Resources</h2>
-      <p class="text-body dark:text-muted" data-i18n="official_resources_text">
+      <h2 class="text-2xl font-semibold text-ink mt-8 mb-4 dark:text-on-primary" data-i18n="guide.official_resources">Official Resources</h2>
+      <p class="text-body dark:text-muted" data-i18n="guide.official_resources_text">
         For the most accurate and up-to-date information, visit the official tax authority:
         <a href={country.taxAuthorityUrl} target="_blank" rel="noopener" class="text-link hover:underline dark:text-link">
           {country.officialTaxAuthority}

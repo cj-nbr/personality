@@ -22,30 +22,30 @@ const isAbout = currentPath === "/about";
       </div>
 
       <div class="flex items-center gap-2">
-        <div class="relative">
-          <button id="lang-btn" class="flex items-center gap-1 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:bg-white/10" aria-expanded="false" aria-haspopup="true">
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0 0v-9m0 9h9m-9 0h-9"/></svg>
-            <span class="hidden sm:inline" id="lang-label">EN</span>
-            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div id="lang-menu" class="hidden absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-lg border border-hairline bg-canvas py-1 shadow-lg dark:border-white/15 dark:bg-primary" role="menu">
-            <div class="px-3 py-2">
-              <input type="text" id="lang-search" placeholder="Search languages..." class="w-full rounded-md border border-hairline bg-canvas px-2 py-1 text-sm dark:border-white/15 dark:bg-primary dark:text-on-primary" />
-            </div>
-            <div id="lang-list" class="max-h-64 overflow-y-auto py-1">
-              <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="en">English</button>
-              <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="hi">हिन्दी</button>
-              <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="es">Español</button>
-              <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="fr">Français</button>
-              <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="de">Deutsch</button>
-              <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="zh">中文</button>
-              <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ja">日本語</button>
-              <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ar">العربية</button>
-              <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="pt">Português</button>
-              <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ru">Русский</button>
-            </div>
+      <div class="relative">
+        <button id="lang-btn" class="flex items-center gap-1 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:bg-white/10" aria-expanded="false" aria-haspopup="true">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0 0v-9m0 9h9m-9 0h-9"/></svg>
+          <span class="hidden sm:inline" id="lang-label" data-i18n-title="common.select_language">EN</span>
+          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="lang-menu" class="hidden absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-lg border border-hairline bg-canvas py-1 shadow-lg dark:border-white/15 dark:bg-primary" role="menu">
+          <div class="px-3 py-2">
+            <input type="text" id="lang-search" data-i18n-placeholder="common.search_placeholder" placeholder="Search languages..." class="w-full rounded-md border border-hairline bg-canvas px-2 py-1 text-sm dark:border-white/15 dark:bg-primary dark:text-on-primary" />
+          </div>
+          <div id="lang-list" class="max-h-64 overflow-y-auto py-1">
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="en">English</button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="hi">हिन्दी</button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="es">Español</button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="fr">Français</button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="de">Deutsch</button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="zh">中文</button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ja">日本語</button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ar">العربية</button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="pt">Português</button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:bg-white/10" data-lang="ru">Русский</button>
           </div>
         </div>
+      </div>
 
         <button id="theme-toggle" class="rounded-pill p-2 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:bg-white/10" aria-label="Toggle theme">
           <svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
@@ -124,9 +124,8 @@ const isAbout = currentPath === "/about";
           }
           langMenu.classList.add('hidden');
           langBtn.setAttribute('aria-expanded', 'false');
-          if (typeof window.setLanguage === 'function') {
-            window.setLanguage(lang);
-          }
+          var event = new CustomEvent('lang-change', { bubbles: true, detail: { lang } });
+          document.documentElement.dispatchEvent(event);
         });
       });
 

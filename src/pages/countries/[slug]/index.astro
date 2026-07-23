@@ -19,7 +19,7 @@ const baseUrl = getBaseUrl();
 ---
 
 <CountryLayout
-  title={`${country.name} Tax Guide | TaxPortal`}
+  title={`${country.name} | TaxPortal`}
   description={country.overview}
   breadcrumbs={[
     { label: "Countries", href: "/countries" },
@@ -39,7 +39,7 @@ const baseUrl = getBaseUrl();
                 <p class="text-sm text-muted mt-1 dark:text-muted">{country.continent}</p>
               </div>
             </div>
-            <p class="text-lg text-body leading-relaxed mt-4 dark:text-muted" data-i18n="country_overview">{country.overview}</p>
+            <p class="text-lg text-body leading-relaxed mt-4 dark:text-muted">{country.overview}</p>
             <div class="mt-6 flex flex-wrap items-center gap-3">
               <a
                 href={country.taxAuthorityUrl}
@@ -54,19 +54,19 @@ const baseUrl = getBaseUrl();
           </div>
           <div class="grid w-full max-w-xs grid-cols-2 gap-4 lg:w-auto">
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="currency">Currency</p>
+              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.currency">Currency</p>
               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.currency}</p>
             </div>
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="capital">Capital</p>
+              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.capital">Capital</p>
               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.capital}</p>
             </div>
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="tax_authority">Tax Authority</p>
+              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.tax_authority">Tax Authority</p>
               <p class="mt-1 text-sm font-semibold text-ink leading-snug dark:text-on-primary">{country.officialTaxAuthority}</p>
             </div>
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="continent">Continent</p>
+              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.continent">Continent</p>
               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.continent}</p>
             </div>
           </div>
@@ -76,7 +76,7 @@ const baseUrl = getBaseUrl();
   </section>
 
   <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="tax_categories_section">Tax Categories</h2>
+    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.tax_categories">Tax Categories</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {country.taxCategories.map(category => (
         <a
@@ -91,9 +91,9 @@ const baseUrl = getBaseUrl();
           </div>
           <p class="mt-2 text-sm text-body line-clamp-2">{category.description}</p>
           <div class="mt-4 flex items-center gap-4 text-xs text-muted">
-            <span>{category.calculators.length} calculator{category.calculators.length === 1 ? "" : "s"}</span>
-            <span>{category.guides.length} guide{category.guides.length === 1 ? "" : "s"}</span>
-            <span>{category.faqs.length} FAQ{category.faqs.length === 1 ? "" : "s"}</span>
+            <span>{category.calculators.length} <span data-i18n="country.calculators">calculators</span></span>
+            <span>{category.guides.length} <span data-i18n="country.guides">guides</span></span>
+            <span>{category.faqs.length} <span data-i18n="country.faqs">FAQs</span></span>
           </div>
         </a>
       ))}
@@ -102,7 +102,7 @@ const baseUrl = getBaseUrl();
 
   {country.popularCalculators.length > 0 && (
     <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Popular Calculators</h2>
+    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.popular_calculators">Popular Calculators</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {country.popularCalculators.map(calc => {
         const category = country.taxCategories.find(c => c.slug === calc.category);
@@ -115,9 +115,9 @@ const baseUrl = getBaseUrl();
               {category?.name ?? calc.category}
             </p>
             <h3 class="mt-2 font-semibold text-ink dark:text-on-primary">{calc.name}</h3>
-            <p class="mt-1 text-sm text-muted dark:text-muted" data-i18n="calculate_your_tax">Calculate your tax liability</p>
+            <p class="mt-1 text-sm text-muted dark:text-muted" data-i18n="country.calculate_your_tax">Calculate your tax liability</p>
             <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link">
-              <span data-i18n="try_calculator">Try calculator</span> <span aria-hidden="true">→</span>
+              <span data-i18n="country.try_calculator">Try calculator</span> <span aria-hidden="true">→</span>
             </span>
           </a>
         );
@@ -128,7 +128,7 @@ const baseUrl = getBaseUrl();
 
   {country.latestUpdates.length > 0 && (
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="latest_updates">Latest Updates</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.latest_updates">Latest Updates</h2>
       <div class="space-y-4">
         {country.latestUpdates.map(update => (
           <div class="rounded-xl border border-hairline bg-canvas p-6 transition hover:border-hairline">
@@ -151,7 +151,7 @@ const baseUrl = getBaseUrl();
 
   {country.relatedCountries.length > 0 && (
     <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="related_countries_section">Related Countries</h2>
+    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.related_countries">Related Countries</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {country.relatedCountries.map(slug => {
         const related = getCountryBySlug(slug);

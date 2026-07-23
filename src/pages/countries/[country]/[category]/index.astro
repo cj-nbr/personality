@@ -23,7 +23,7 @@ if (!country || !category) {
 ---
 
 <CountryLayout
-  title={`${category.name} in ${country.name}`}
+  title={`${category.name}`}
   description={category.description}
   breadcrumbs={[
     { label: "Countries", href: "/countries" },
@@ -32,7 +32,7 @@ if (!country || !category) {
   ]}
 >
   <div class="mb-8">
-    <h1 class="text-4xl font-bold text-ink dark:text-on-primary">{category.name} in {country.name}</h1>
+    <h1 class="text-4xl font-bold text-ink dark:text-on-primary">{category.name}</h1>
     <p class="mt-2 text-lg text-body dark:text-muted">{category.description}</p>
   </div>
 
@@ -42,7 +42,7 @@ if (!country || !category) {
 
   {category.calculators.length > 0 && (
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="calculators">Calculators</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.calculators">Calculators</h2>
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {category.calculators.map(calc => (
           <a
@@ -59,7 +59,7 @@ if (!country || !category) {
 
   {category.guides.length > 0 && (
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="guides">Guides</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.guides">Guides</h2>
       <div class="space-y-4">
         {category.guides.map(guide => (
           <a
@@ -76,7 +76,7 @@ if (!country || !category) {
 
   {category.faqs.length > 0 && (
     <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="frequently_asked_questions">Frequently Asked Questions</h2>
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="category.frequently_asked_questions">Frequently Asked Questions</h2>
       <div class="space-y-4">
         {category.faqs.map(faq => (
           <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
@@ -89,7 +89,7 @@ if (!country || !category) {
   )}
 
   <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="related_categories">Related Categories</h2>
+    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="category.related_categories">Related Categories</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {country.taxCategories
         .filter(c => c.slug !== category.slug)
