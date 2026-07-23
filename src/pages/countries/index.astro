@@ -14,8 +14,8 @@ const baseUrl = getBaseUrl();
   breadcrumbs={[{ label: "Countries" }]}
 >
   <div class="mb-8">
-    <h1 class="text-4xl font-bold text-ink"><span data-i18n="countries.heading">Countries</span></h1>
-    <p class="mt-2 text-lg text-body" data-i18n="countries.comprehensive_tax_info" data-i18n-vars={JSON.stringify({ count: countries.length })}>
+    <h1 class="text-4xl font-bold text-ink dark:text-on-primary"><span data-i18n="countries.heading">Countries</span></h1>
+    <p class="mt-2 text-lg text-body dark:text-muted" data-i18n="countries.comprehensive_tax_info" data-i18n-vars={JSON.stringify({ count: countries.length })}>
       Explore comprehensive tax information for {countries.length} countries.
     </p>
   </div>
@@ -29,7 +29,7 @@ const baseUrl = getBaseUrl();
   </div>
 
   <div class="mb-8">
-    <h2 class="text-2xl font-semibold text-ink mb-4"><span data-i18n="countries.all_countries">All Countries</span></h2>
+      <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary"><span data-i18n="countries.all_countries">All Countries</span></h2>
     <CountryCard
       countries={countries.map(c => ({
         slug: c.slug,
