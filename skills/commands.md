@@ -32,9 +32,17 @@ git checkout -- <file>        # Discard changes
 4. Capture screenshots for visual verification
 5. Check console for errors
 
+## Pre-Push Checklist
+1. Inspect `.github/workflows/*.yml` and ensure dependency caching is configured
+2. Verify the main page builds to the correct root path (`dist/index.html`)
+3. Ensure `.gitignore` covers `dist/`, `node_modules/`, `.astro/`
+4. Run `npm run build` locally and inspect the output
+5. Stage only source files, not generated artifacts
+
 ## Deployment
 - **Platform**: Cloudflare Pages
 - **Trigger**: Push to `main` branch
 - **GitHub Action**: Auto-deploy workflow
 - **Build Command**: `npm run build`
 - **Output Directory**: `dist`
+- **Optimization**: node_modules caching enabled via `actions/cache@v4`

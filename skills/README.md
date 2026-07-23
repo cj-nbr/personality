@@ -19,6 +19,7 @@ This folder documents the technical skills, patterns, and important knowledge us
 
 ### Workflow
 - [Commands](commands.md) - Development, build, deployment commands
+- [Deployment](deployment.md) - Cloudflare Pages, CI/CD, caching optimization
 - [Testing](testing.md) - Playwright automation, test scenarios
 - [SEO & Accessibility](seo-accessibility.md) - Best practices implemented
 
