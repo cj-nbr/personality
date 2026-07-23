@@ -1,4 +1,4 @@
-import translationsEn from "./locales/en.ts";
+const translationsEn: TranslationDict = {};
 
 export type LanguageCode = "en" | "hi" | "es" | "fr" | "de" | "zh" | "ja" | "ar" | "pt" | "ru";
 

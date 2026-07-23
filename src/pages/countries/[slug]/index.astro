@@ -81,16 +81,16 @@ const baseUrl = getBaseUrl();
       {country.taxCategories.map(category => (
         <a
           href={`/countries/${country.slug}/${category.slug}`}
-          class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md"
+          class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary"
         >
           <div class="flex items-start justify-between">
-            <h3 class="font-semibold text-ink group-hover:text-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">
               {category.name}
             </h3>
-            <span aria-hidden="true" class="mt-1 text-lg text-muted transition group-hover:translate-x-1 group-hover:text-primary">→</span>
+            <span aria-hidden="true" class="mt-1 text-lg text-muted transition group-hover:translate-x-1 group-hover:text-primary dark:text-muted dark:group-hover:text-link">→</span>
           </div>
-          <p class="mt-2 text-sm text-body line-clamp-2">{category.description}</p>
-          <div class="mt-4 flex items-center gap-4 text-xs text-muted">
+          <p class="mt-2 text-sm text-body line-clamp-2 dark:text-muted">{category.description}</p>
+          <div class="mt-4 flex items-center gap-4 text-xs text-muted dark:text-muted">
             <span>{category.calculators.length} <span data-i18n="country.calculators">calculators</span></span>
             <span>{category.guides.length} <span data-i18n="country.guides">guides</span></span>
             <span>{category.faqs.length} <span data-i18n="country.faqs">FAQs</span></span>
@@ -111,12 +111,12 @@ const baseUrl = getBaseUrl();
             href={`/countries/${country.slug}/${calc.category}/${calc.slug}`}
             class="rounded-xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:from-primary dark:to-primary"
           >
-            <p class="text-xs font-medium uppercase tracking-wider text-primary">
+            <p class="text-xs font-medium uppercase tracking-wider text-primary dark:text-link">
               {category?.name ?? calc.category}
             </p>
             <h3 class="mt-2 font-semibold text-ink dark:text-on-primary">{calc.name}</h3>
             <p class="mt-1 text-sm text-muted dark:text-muted" data-i18n="country.calculate_your_tax">Calculate your tax liability</p>
-            <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link">
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link dark:text-link">
               <span data-i18n="country.try_calculator">Try calculator</span> <span aria-hidden="true">→</span>
             </span>
           </a>
@@ -131,9 +131,9 @@ const baseUrl = getBaseUrl();
       <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.latest_updates">Latest Updates</h2>
       <div class="space-y-4">
         {country.latestUpdates.map(update => (
-          <div class="rounded-xl border border-hairline bg-canvas p-6 transition hover:border-hairline">
+          <div class="rounded-xl border border-hairline bg-canvas p-6 transition hover:border-hairline dark:border-white/15 dark:bg-primary">
             <div class="flex items-center gap-3 mb-2">
-              <span class="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+              <span class="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary dark:bg-primary/20 dark:text-link">
                 {new Date(update.date).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
@@ -141,8 +141,8 @@ const baseUrl = getBaseUrl();
                 })}
               </span>
             </div>
-            <h3 class="font-semibold text-ink">{update.title}</h3>
-            <p class="mt-2 text-sm text-body">{update.description}</p>
+            <h3 class="font-semibold text-ink dark:text-on-primary">{update.title}</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">{update.description}</p>
           </div>
         ))}
       </div>

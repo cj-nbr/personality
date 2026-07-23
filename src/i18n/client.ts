@@ -23,6 +23,45 @@ const countryNames: Record<LanguageCode, Record<string, string>> = {
   ru: { "United States":"США","India":"Индия","Hong Kong":"Гонконг","Singapore":"Сингапур","Indonesia":"Индонезия","Malaysia":"Малайзия","New Zealand":"Новая Зеландия","Pakistan":"Пакистан","Philippines":"Филиппины","United Kingdom":"Великобритания" }
 };
 
+const continentNames: Record<LanguageCode, Record<string, string>> = {
+  en: { "North America":"North America","Asia":"Asia","Europe":"Europe","Oceania":"Oceania" },
+  hi: { "North America":"उत्तरी अमेरिका","Asia":"एशिया","Europe":"यूरोप","Oceania":"ओशेनिया" },
+  es: { "North America":"América del Norte","Asia":"Asia","Europe":"Europa","Oceania":"Oceanía" },
+  fr: { "North America":"Amérique du Nord","Asia":"Asie","Europe":"Europe","Oceania":"Océanie" },
+  de: { "North America":"Nordamerika","Asia":"Asien","Europe":"Europa","Oceania":"Ozeanien" },
+  zh: { "North America":"北美洲","Asia":"亚洲","Europe":"欧洲","Oceania":"大洋洲" },
+  ja: { "North America":"北アメリカ","Asia":"アジア","Europe":"ヨーロッパ","Oceania":"オセアニア" },
+  ar: { "North America":"أمريكا الشمالية","Asia":"آسيا","Europe":"أوروبا","Oceania":"أوقيانوسيا" },
+  pt: { "North America":"América do Norte","Asia":"Ásia","Europe":"Europa","Oceania":"Oceania" },
+  ru: { "North America":"Северная Америка","Asia":"Азия","Europe":"Европа","Oceania":"Океания" }
+};
+
+const currencyNames: Record<LanguageCode, Record<string, string>> = {
+  en: { "USD":"USD","INR":"INR","HKD":"HKD","SGD":"SGD","IDR":"IDR","MYR":"MYR","NZD":"NZD","PKR":"PKR","PHP":"PHP","GBP":"GBP" },
+  hi: { "USD":"USD","INR":"INR","HKD":"HKD","SGD":"SGD","IDR":"IDR","MYR":"MYR","NZD":"NZD","PKR":"PKR","PHP":"PHP","GBP":"GBP" },
+  es: { "USD":"USD","INR":"INR","HKD":"HKD","SGD":"SGD","IDR":"IDR","MYR":"MYR","NZD":"NZD","PKR":"PKR","PHP":"PHP","GBP":"GBP" },
+  fr: { "USD":"USD","INR":"INR","HKD":"HKD","SGD":"SGD","IDR":"IDR","MYR":"MYR","NZD":"NZD","PKR":"PKR","PHP":"PHP","GBP":"GBP" },
+  de: { "USD":"USD","INR":"INR","HKD":"HKD","SGD":"SGD","IDR":"IDR","MYR":"MYR","NZD":"NZD","PKR":"PKR","PHP":"PHP","GBP":"GBP" },
+  zh: { "USD":"美元","INR":"印度卢比","HKD":"港币","SGD":"新加坡元","IDR":"印尼盾","MYR":"马来西亚林吉特","NZD":"新西兰元","PKR":"巴基斯坦卢比","PHP":"菲律宾比索","GBP":"英镑" },
+  ja: { "USD":"米ドル","INR":"インドルピー","HKD":"香港ドル","SGD":"シンガポールドル","IDR":"インドネシアルピア","MYR":"マレーシアリンギット","NZD":"ニュージーランドドル","PKR":"パキスタンルピー","PHP":"フィリピンペソ","GBP":"英ポンド" },
+  ar: { "USD":"دولار أمريكي","INR":"روبية هندية","HKD":"دولار هونغ كونغ","SGD":"دولار سنغافوري","IDR":"روبية إندونيسية","MYR":"رينغيت ماليزي","NZD":"دولار نيوزيلندي","PKR":"روبية باكستانية","PHP":"بيزو فلبيني","GBP":"جنيه إسترليني" },
+  pt: { "USD":"USD","INR":"INR","HKD":"HKD","SGD":"SGD","IDR":"IDR","MYR":"MYR","NZD":"NZD","PKR":"PKR","PHP":"PHP","GBP":"GBP" },
+  ru: { "USD":"USD","INR":"INR","HKD":"HKD","SGD":"SGD","IDR":"IDR","MYR":"MYR","NZD":"NZD","PKR":"PKR","PHP":"PHP","GBP":"GBP" }
+};
+
+const taxAuthorityNames: Record<LanguageCode, Record<string, string>> = {
+  en: { "IRS":"Internal Revenue Service (IRS)","CBDT":"Central Board of Direct Taxes (CBDT)","IRD_hk":"Inland Revenue Department (IRD)","IRAS":"Inland Revenue Authority of Singapore (IRAS)","DJP":"Direktorat Jenderal Pajak (DJP)","LHDNM":"Lembaga Hasil Dalam Negeri Malaysia (LHDNM)","IRD_nz":"Inland Revenue Department (IRD)","FBR":"Federal Board of Revenue (FBR)","BIR":"Bureau of Internal Revenue (BIR)","HMRC":"HM Revenue & Customs (HMRC)" },
+  hi: { "IRS":"आंतरिक राजस्व सेवा (IRS)","CBDT":"केन्द्रीय प्रत्यक्ष कर बोर्ड (CBDT)","IRD_hk":"आंतरिक राजस्व विभाग (IRD)","IRAS":"सिंगापुर आंतरिक राजस्व प्राधिकरण (IRAS)","DJP":"डायरेक्टोरेट जेनरल पजक (DJP)","LHDNM":"लेम्बागा हसिल दाम नेगेरी मलेशिया (LHDNM)","IRD_nz":"आंतरिक राजस्व विभाग (IRD)","FBR":"संघीय राजस्व बोर्ड (FBR)","BIR":"आंतरिक राजसventy वादा ब्यूरो (BIR)","HMRC":"एचएम राजस्व और कस्टम (HMRC)" },
+  es: { "IRS":"Servicio de Impuestos Internos (IRS)","CBDT":"Junta Central de Impuestos Directos (CBDT)","IRD_hk":"Departamento de Impuestos Internos (IRD)","IRAS":"Administración Tributaria de Singapur (IRAS)","DJP":"Dirección General de Impuestos (DJP)","LHDNM":"Consejo de Ingresos Internos de Malasia (LHDNM)","IRD_nz":"Departamento de Impuestos Internos (IRD)","FBR":"Junta Federal de Ingresos (FBR)","BIR":"Oficina de Impuestos Internos (BIR)","HMRC":"Hacienda y Aduanas del Reino Unido (HMRC)" },
+  fr: { "IRS":"Internal Revenue Service (IRS)","CBDT":"Conseil central des impôts directs (CBDT)","IRD_hk":"Department of Inland Revenue (IRD)","IRAS":"Inland Revenue Authority of Singapore (IRAS)","DJP":"Direction Générale des Impôts (DJP)","LHDNM":"Conseil des revenus intérieurs de Malaisie (LHDNM)","IRD_nz":"Department of Inland Revenue (IRD)","FBR":"Commission fédérale des recettes (FBR)","BIR":"Bureau of Internal Revenue (BIR)","HMRC":"HM Revenue & Customs (HMRC)" },
+  de: { "IRS":"Internal Revenue Service (IRS)","CBDT":"Central Board of Direct Taxes (CBDT)","IRD_hk":"Inland Revenue Department (IRD)","IRAS":"Inland Revenue Authority of Singapore (IRAS)","DJP":"Direktorat Jenderal Pajak (DJP)","LHDNM":"Lembaga Hasil Dalam Negeri Malaysia (LHDNM)","IRD_nz":"Inland Revenue Department (IRD)","FBR":"Federal Board of Revenue (FBR)","BIR":"Bureau of Internal Revenue (BIR)","HMRC":"HM Revenue & Customs (HMRC)" },
+  zh: { "IRS":"美国国税局（IRS）","CBDT":"中央直接税委员会（CBDT）","IRD_hk":"税务局（IRD）","IRAS":"新加坡税务局（IRAS）","DJP":"税务总局（DJP）","LHDNM":"马来西亚国内税收局（LHDNM）","IRD_nz":"税务局（IRD）","FBR":"联邦税收委员会（FBR）","BIR":"国内税务局（BIR）","HMRC":"英国税务海关总署（HMRC）" },
+  ja: { "IRS":"内国歳入局（IRS）","CBDT":"中央直接税委員会（CBDT）","IRD_hk":"内国歳入部（IRD）","IRAS":"シンガポール内国歳入庁（IRAS）","DJP":"総 Directorat Pajak（DJP)","LHDNM":"マレーシア内国歳入庁（LHDNM)","IRD_nz":"内国歳入部（IRD)","FBR":"連邦歳入委員会（FBR)","BIR":"内国歳入局（BIR)","HMRC":"英国歳入関税庁（HMRC)" },
+  ar: { "IRS":"مصلحة الضرائب الداخلية (IRS)","CBDT":"المجلس المركزي للضرائب المباشرة (CBDT)","IRD_hk":"إدارة الإيرادات الداخلية (IRD)","IRAS":"هيئة الإيرادات الداخلية سنغافورة (IRAS)","DJP":"المديرية العامة للضرائب (DJP)","LHDNM":"مجلس الإيرادات الداخلية الماليزي (LHDNM)","IRD_nz":"إدارة الإيرادات الداخلية (IRD)","FBR":"مجلس الإيرادات الفيدرالي (FBR)","BIR":"مكتب الإيرادات الداخلية (BIR)","HMRC":"إدارة HM للإيرادات والجمارك (HMRC)" },
+  pt: { "IRS":"Receita Federal (IRS)","CBDT":"Conselho Central de Impostos Diretos (CBDT)","IRD_hk":"Departamento de Receita Interna (IRD)","IRAS":"Autoridade Fiscal de Singapura (IRAS)","DJP":"Direção Geral de Impostos (DJP)","LHDNM":"Conselho de Receita Interna da Malásia (LHDNM)","IRD_nz":"Departamento de Receita Interna (IRD)","FBR":"Conselho Federal de Receitas (FBR)","BIR":"Escritório de Receita Interna (BIR)","HMRC":"HM Receita & Alfândega (HMRC)" },
+  ru: { "IRS":"Налоговая служба (IRS)","CBDT":"Центральный совет прямых налогов (CBDT)","IRD_hk":"Налоговое управление (IRD)","IRAS":"Налоговое управление Сингапура (IRAS)","DJP":"Генеральное управление налогообложения (DJP)","LHDNM":"Совет внутренних доходов Малайзии (LHDNM)","IRD_nz":"Налоговое управление (IRD)","FBR":"Федеральный совет по доходам (FBR)","BIR":"Бюро внутренних доходов (BIR)","HMRC":"HM Налоговая и таможенная (HMRC)" }
+};
+
 const categoryNames: Record<LanguageCode, Record<string, string>> = {
   en: { "Income Tax":"Income Tax","Payroll Tax":"Payroll Tax","Corporate Tax":"Corporate Tax","Capital Gains Tax":"Capital Gains Tax","GST":"GST","TDS":"TDS","Salaries Tax":"Salaries Tax","Profits Tax":"Profits Tax","Stamp Duty":"Stamp Duty","VAT":"VAT","SST":"SST","Sales Tax":"Sales Tax","National Insurance":"National Insurance" },
   hi: { "Income Tax":"आय कर","Payroll Tax":"पेरोल कर","Corporate Tax":"कॉर्पोरेट कर","Capital Gains Tax":"पूंजी लाभ कर","GST":"जीएसटी","TDS":"टीडीएस","Salaries Tax":"वेतन कर","Profits Tax":"लाभ कर","Stamp Duty":"स्टाम्प ड्यूटी","VAT":"वैट","SST":"एसएसटी","Sales Tax":"सेल्स टैक्स","National Insurance":"नैशनल इंश्योरेंस" },
@@ -115,6 +154,9 @@ function escapeRegExp(s: string): string {
 function translateDynamicContent(lang: LanguageCode) {
   const cDict = countryNames[lang] || countryNames.en;
   const catDict = categoryNames[lang] || categoryNames.en;
+  const contDict = continentNames[lang] || continentNames.en;
+  const currDict = currencyNames[lang] || currencyNames.en;
+  const taxDict = taxAuthorityNames[lang] || taxAuthorityNames.en;
 
   const walk = (root: Node) => {
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
@@ -136,6 +178,27 @@ function translateDynamicContent(lang: LanguageCode) {
       }
 
       for (const [enName, translated] of Object.entries(catDict)) {
+        if (newText.includes(enName)) {
+          newText = newText.replace(new RegExp(escapeRegExp(enName), 'g'), translated);
+          changed = true;
+        }
+      }
+
+      for (const [enName, translated] of Object.entries(contDict)) {
+        if (newText.includes(enName)) {
+          newText = newText.replace(new RegExp(escapeRegExp(enName), 'g'), translated);
+          changed = true;
+        }
+      }
+
+      for (const [enName, translated] of Object.entries(currDict)) {
+        if (newText.includes(enName)) {
+          newText = newText.replace(new RegExp("\\b" + escapeRegExp(enName) + "\\b", 'g'), translated);
+          changed = true;
+        }
+      }
+
+      for (const [enName, translated] of Object.entries(taxDict)) {
         if (newText.includes(enName)) {
           newText = newText.replace(new RegExp(escapeRegExp(enName), 'g'), translated);
           changed = true;

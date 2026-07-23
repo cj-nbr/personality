@@ -2,7 +2,7 @@
 // Shared global header
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === "/";
-const isCountries = currentPath.startsWith("/common.countries");
+  const isCountries = currentPath.startsWith("/countries") || currentPath.startsWith("/countries/");
 const isAbout = currentPath === "/about";
 ---
 
@@ -124,8 +124,9 @@ const isAbout = currentPath === "/about";
           }
           langMenu.classList.add('hidden');
           langBtn.setAttribute('aria-expanded', 'false');
-          var event = new CustomEvent('lang-change', { bubbles: true, detail: { lang } });
+          var event = new CustomEvent('lang-change', { bubbles: true, detail: { lang: lang } });
           document.documentElement.dispatchEvent(event);
+          setTimeout(function() { window.location.reload(); }, 50);
         });
       });
 
