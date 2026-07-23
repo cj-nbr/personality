@@ -33,7 +33,7 @@ const baseUrl = getBaseUrl();
         <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div class="flex-1">
             <div class="flex items-center gap-4 mb-4">
-              <span class="text-5xl sm:text-6xl" aria-hidden="true">{country.flag}</span>
+              <img src={country.flag} alt={country.name} class="h-16 w-auto sm:h-20 object-contain" />
               <div>
                  <h1 class="text-3xl font-bold text-ink sm:text-4xl dark:text-on-primary"><span data-i18n="country.name">{country.name}</span></h1>
                  <p class="text-sm text-muted mt-1 dark:text-muted"><span data-i18n="country.continent_header">{country.continent}</span></p>
@@ -160,7 +160,7 @@ const baseUrl = getBaseUrl();
             class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary"
           >
             <div class="flex items-center gap-3">
-               <span class="text-3xl" aria-hidden="true">{related.flag}</span>
+                <img src={related.flag} alt={related.name} class="h-12 w-auto object-contain" />
                <div>
                  <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary"><span data-i18n="country.related_name">{related.name}</span></h3>
                  <p class="text-xs text-muted dark:text-muted"><span data-i18n="country.related_continent">{related.continent}</span></p>

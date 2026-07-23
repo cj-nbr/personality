@@ -20,7 +20,7 @@ const { countries, searchQuery, selectedContinent } = Astro.props;
       href={`/countries/${country.slug}`}
       class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-lg dark:border-white/15 dark:bg-primary dark:hover:border-primary"
     >
-      <div class="text-4xl mb-4" aria-hidden="true">{country.flag}</div>
+      <img src={country.flag} alt={country.name} class="h-10 w-auto mb-4 object-contain" />
       <h3 class="text-lg font-semibold text-ink group-hover:text-primary dark:text-on-primary">{country.name}</h3>
       <p class="text-sm text-muted mt-1 dark:text-muted">{country.continent}</p>
       <p class="text-sm text-body mt-2 line-clamp-2 dark:text-muted">{country.overview}</p>

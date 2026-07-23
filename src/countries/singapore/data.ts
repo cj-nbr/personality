@@ -51,7 +51,7 @@ const taxCategories: TaxCategory[] = [
 export const singapore: Country = {
   slug: "singapore",
   name: "Singapore",
-  flag: "🇸🇬",
+  flag: "/logos/$($f.Directory.Name).png",
   continent: "Asia",
   officialTaxAuthority: "Inland Revenue Authority of Singapore (IRAS)",
   taxAuthorityUrl: "https://www.iras.gov.sg",

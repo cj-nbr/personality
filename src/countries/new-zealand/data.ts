@@ -36,7 +36,7 @@ const taxCategories: TaxCategory[] = [
 export const newZealand: Country = {
   slug: "new-zealand",
   name: "New Zealand",
-  flag: "🇳🇿",
+  flag: "/logos/$($f.Directory.Name).png",
   continent: "Oceania",
   officialTaxAuthority: "Inland Revenue Department (IRD)",
   taxAuthorityUrl: "https://www.ird.govt.nz",

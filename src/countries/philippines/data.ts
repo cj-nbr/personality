@@ -36,7 +36,7 @@ const taxCategories: TaxCategory[] = [
 export const philippines: Country = {
   slug: "philippines",
   name: "Philippines",
-  flag: "🇵🇭",
+  flag: "/logos/$($f.Directory.Name).png",
   continent: "Asia",
   officialTaxAuthority: "Bureau of Internal Revenue (BIR)",
   taxAuthorityUrl: "https://www.bir.gov.ph",

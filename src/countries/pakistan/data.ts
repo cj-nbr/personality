@@ -36,7 +36,7 @@ const taxCategories: TaxCategory[] = [
 export const pakistan: Country = {
   slug: "pakistan",
   name: "Pakistan",
-  flag: "🇵🇰",
+  flag: "/logos/$($f.Directory.Name).png",
   continent: "Asia",
   officialTaxAuthority: "Federal Board of Revenue (FBR)",
   taxAuthorityUrl: "https://www.fbr.gov.pk",

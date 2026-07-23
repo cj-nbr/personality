@@ -36,7 +36,7 @@ const taxCategories: TaxCategory[] = [
 export const indonesia: Country = {
   slug: "indonesia",
   name: "Indonesia",
-  flag: "🇮🇩",
+  flag: "/logos/$($f.Directory.Name).png",
   continent: "Asia",
   officialTaxAuthority: "Direktorat Jenderal Pajak (DJP)",
   taxAuthorityUrl: "https://www.pajak.go.id",
