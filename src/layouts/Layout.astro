@@ -34,8 +34,20 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="description" content={description} />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="en" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="hi" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="es" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="fr" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="de" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="zh" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="ja" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="ar" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="pt" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="ru" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
