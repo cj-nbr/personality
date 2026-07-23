@@ -96,6 +96,10 @@ if (!country || !category || !calculator) {
         <p class="text-sm text-muted mt-2 dark:text-muted" data-i18n="calculator.estimate_disclaimer">This is an estimate. Consult a tax professional for accurate calculations.</p>
       </div>
     </div>
+
+    <div id="calc-error" class="mt-4 hidden">
+      <p class="text-sm text-red-600 dark:text-red-400" data-i18n="calculator.please_enter_income">Please enter a valid income amount</p>
+    </div>
   </div>
 
   <script is:inline>
@@ -103,12 +107,19 @@ if (!country || !category || !calculator) {
       var income = parseFloat(document.getElementById('income').value) || 0;
       var resultDiv = document.getElementById('result');
       var resultValue = document.getElementById('result-value');
+      var errorDiv = document.getElementById('calc-error');
       
       if (income <= 0) {
-        alert('Please enter a valid income amount');
+        if (errorDiv) {
+          errorDiv.classList.remove('hidden');
+          resultDiv.classList.add('hidden');
+        } else {
+          alert('Please enter a valid income amount');
+        }
         return;
       }
       
+      if (errorDiv) errorDiv.classList.add('hidden');
       var tax = income * 0.15;
       resultValue.textContent = '$' + tax.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       resultDiv.classList.remove('hidden');
