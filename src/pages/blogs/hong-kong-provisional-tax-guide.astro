@@ -1,0 +1,84 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Hong Kong Provisional Tax Guide: How to Calculate and Pay";
+const description = "Hong Kong provisional tax guide for salaries tax and profits tax. Learn how provisional tax is calculated, when to pay, and how to claim holdover.";
+const image = "/images/blogs/hong-kong-provisional-tax-guide.svg";
+---
+
+<Layout title={title} description={description} image={image}>
+  <div class="min-h-screen bg-canvas dark:bg-primary">
+    <main class="min-h-screen">
+      <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li class="flex items-center gap-2"><a href="/" class="text-link hover:underline dark:text-link">Home</a></li>
+            <li class="flex items-center gap-2"><span class="text-muted">/</span><a href="/blogs" class="text-link hover:underline dark:text-link">Blogs</a></li>
+            <li class="flex items-center gap-2"><span class="text-muted">/</span><span class="font-medium text-ink dark:text-on-primary" aria-current="page">Hong Kong Provisional Tax Guide</span></li>
+          </ol>
+        </nav>
+
+        <article class="prose max-w-none">
+          <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">Hong Kong Provisional Tax Guide: How to Calculate and Pay</h1>
+          <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 10 min read</p>
+
+          <div class="mt-8 space-y-6 text-body dark:text-muted">
+            <p>Provisional tax is an advance payment system used by the Inland Revenue Department to help taxpayers spread their tax burden across the year. Under the Hong Kong provisional tax system, taxpayers pay portions of their expected tax liability before the final assessment is issued, helping the government manage cash flow and reducing the pressure of a lump-sum payment. This guide explains how provisional tax is calculated, payment deadlines, the holdover mechanism, and penalties for late payment for both salaries tax and profits tax.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">What is Provisional Tax?</h2>
+            <p>Provisional tax is an estimate of the tax you will owe for the next year of assessment, based on your tax liability for the current year. For salaries tax, the IRD issues a provisional tax demand along with your final assessment notice. For profits tax, provisional tax is included in the profits tax return. The idea is simple: instead of waiting until the end of the year to settle your full tax liability, you pay in two installments during the current year.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">How Provisional Tax is Calculated</h2>
+            <p>For salaries tax, provisional tax is calculated as the difference between your last assessed tax and the tax already deducted through payroll deductions. For profits tax, it is based on the preceding year's assessable profits. The IRD uses an advance payment system where you pay for the coming year while paying off the current year. Both salaries tax and profits tax provisional payments are typically split into two equal installments. The first installment is usually due in November, and the second in April. A detailed deadline calendar is available in our <a href="/blogs/hong-kong-tax-deadline-calendar" class="text-link hover:underline dark:text-link">Hong Kong tax deadline calendar</a>.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Payment Deadlines</h2>
+            <p>Missing provisional tax deadlines can be costly. The IRD charges an initial surcharge of up to 5% if payment is late by a specified period. If the tax remains unpaid, additional surcharges accrue, and the IRD may issue a warrant or take legal action. To avoid these consequences, mark the due dates in your calendar and ensure funds are available. You can pay tax using the IRD's electronic payment channels, including PPS, bank transfer, or credit card through the IRD website or eTAX system. Paying early may also help you avoid the risk of late payment penalties.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Holdover Mechanism</h2>
+            <p>If you anticipate a lower tax liability in the coming year, you can apply for a holdover of provisional tax. The IRD will consider your application based on evidence that your income will decrease, such as a reduction in business turnover, contract termination, or planned retirement. To apply, complete the holdover application form and submit it before the provisional tax payment deadline. Approval of a holdover reduces the immediate financial burden and aligns your tax payments with your actual liability. Note that the IRD may request supporting documents to substantiate your application.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Penalties for Late Payment</h2>
+            <p>Late payment of provisional tax attracts surcharges and interest. The IRD imposes a 5% surcharge if the tax is not paid within the specified period. If the balance remains unpaid after a further six months, an additional 10% surcharge is imposed on the unpaid balance. Interest also accrues at the prevailing rate on overdue amounts. To minimize penalties, make use of the eTAX system to schedule payments and monitor your tax account in real time. If you are genuinely unable to pay, contact the IRD as soon as possible to negotiate an installment arrangement.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Provisional Tax vs. Final Tax</h2>
+            <p>When your final assessment is issued, the provisional tax you paid is credited against your final tax liability. If the provisional tax exceeds your final tax, the IRD refunds the difference. If it falls short, you must pay the balance within the specified period. This reconciliation happens after the year of assessment closes, and many taxpayers find that their final tax is lower (or higher) than expected. Using a <a href="/countries/hong-kong/salaries-tax/salaries-tax-calculator" class="text-link hover:underline dark:text-link">Hong Kong tax calculator</a> throughout the year can help you anticipate your final liability and plan accordingly.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Frequently Asked Questions</h2>
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Do I have to pay provisional tax?</h3>
+            <p>Provisional tax is required if your assessed tax liability exceeds a threshold determined by the IRD. Most individual taxpayers and business owners with taxable income must pay provisional tax unless specifically exempted or held over.</p>
+
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">How much is provisional tax in Hong Kong?</h3>
+            <p>Provisional tax is typically based on the preceding year's final tax liability, split into two installments. The exact amount is shown on your provisional tax demand note from the IRD.</p>
+
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Can I apply for holdover of provisional tax?</h3>
+            <p>Yes, you can apply for holdover if your income is expected to decrease. Submit the IRD holdover application before the payment deadline and provide supporting evidence.</p>
+
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">What if I cannot pay my provisional tax?</h3>
+            <p>Contact the IRD immediately to discuss installment arrangements. Ignoring the demand will result in additional surcharges and potential legal action.</p>
+
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Does provisional tax apply to profits tax?</h3>
+            <p>Yes, businesses carrying on trade, profession, or business in Hong Kong are liable for provisional profits tax in two installments. See our <a href="/blogs/hong-kong-profits-tax-guide" class="text-link hover:underline dark:text-link">Hong Kong profits tax guide</a> for details.</p>
+          </div>
+
+          <div class="mt-12">
+            <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Related Calculators</h2>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <a href="/countries/hong-kong/salaries-tax/salaries-tax-calculator" class="block rounded border p-4 hover:border-primary transition">HK Salaries Tax Calculator</a>
+              <a href="/countries/hong-kong/profits-tax/profits-tax-calculator" class="block rounded border p-4 hover:border-primary transition">HK Profits Tax Calculator</a>
+              <a href="/countries/hong-kong" class="block rounded border p-4 hover:border-primary transition">More Hong Kong Calculators</a>
+            </div>
+          </div>
+
+          <div class="mt-12">
+            <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Related Articles</h2>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <a href="/blogs/hong-kong-tax-deadline-calendar" class="block rounded border p-4 hover:border-primary transition">Hong Kong Tax Deadline Calendar</a>
+              <a href="/blogs/hong-kong-etax-guide" class="block rounded border p-4 hover:border-primary transition">Hong Kong eTAX Guide</a>
+              <a href="/blogs/hong-kong-salaries-tax-guide" class="block rounded border p-4 hover:border-primary transition">Hong Kong Salaries Tax Guide</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+</Layout>
