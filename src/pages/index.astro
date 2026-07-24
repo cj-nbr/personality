@@ -3,67 +3,173 @@ import Layout from "../layouts/Layout.astro";
 import { countries } from "../data/countries";
 ---
 
-<Layout title="TaxPortal - International Tax Information" description="Comprehensive tax information and calculators for countries worldwide.">
-  <div class="min-h-screen bg-canvas dark:bg-primary">
-    <section class="relative overflow-hidden">
-      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-canvas-soft to-canvas dark:from-primary dark:to-primary" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-bold tracking-tight text-ink sm:text-5xl dark:text-on-primary"><span data-i18n="home.taxportal_home">TaxPortal</span></h1>
-        <p class="mt-4 max-w-2xl mx-auto text-lg text-body dark:text-muted" data-i18n="home.comprehensive_tax_info">
-          Comprehensive tax information and calculators for countries worldwide
-        </p>
-        <div class="mt-8 flex items-center justify-center gap-4">
-          <a href="/countries" class="rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"><span data-i18n="home.explore_countries">Explore Countries</span></a>
-        </div>
-      </div>
-    </section>
-
+<Layout 
     <section class="border-t border-hairline dark:border-white/10">
-      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="home.featured_countries">Featured Countries</span></h2>
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {countries.slice(0, 6).map(country => (
-            <a href={`/countries/${country.slug}`} class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-lg dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-              <img src={country.flag} alt={country.name} class="h-16 w-auto mb-4 object-contain" />
-              <h3 class="text-xl font-semibold text-ink group-hover:text-primary dark:text-on-primary">{country.name}</h3>
-              <p class="text-sm text-muted mt-1 dark:text-muted"><span data-i18n="home.country.continent">{country.continent}</span></p>
-              <p class="text-sm text-body mt-3 line-clamp-2 dark:text-muted"><span data-i18n="home.country.overview">{country.overview}</span></p>
-              <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline dark:text-link"><span data-i18n="home.explore_taxes">Explore taxes</span> <span data-i18n="home.explore_taxes_arrow">→</span></span>
-            </a>
-          ))}
+      <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">How TaxPortal Helps You</h2>
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div class="rounded-xl border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+            <h3 class="text-xl font-semibold text-ink mb-3 dark:text-on-primary">Plan Your Taxes Confidently</h3>
+            <p class="text-body leading-relaxed dark:text-muted">Understand your tax obligations before they become surprises. Our calculators provide instant, accurate estimates using the latest tax brackets, rates, and rules for each country. Whether you are a salaried employee, freelancer, business owner, or investor, we have tools designed for your situation.</p>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+            <h3 class="text-xl font-semibold text-ink mb-3 dark:text-on-primary">Compare Tax Regimes</h3>
+            <p class="text-body leading-relaxed dark:text-muted">Not sure which tax regime is best for you? Our comparison tools help you evaluate the old vs new tax regimes side by side, so you can make informed decisions about your tax strategy and maximize your take-home pay.</p>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+            <h3 class="text-xl font-semibold text-ink mb-3 dark:text-on-primary">Understand Your Deductions</h3>
+            <p class="text-body leading-relaxed dark:text-muted">From Section 80C investments in India to the standard deduction in the US, our guides and calculators help you identify every deduction and credit you may be eligible for. Don't leave money on the table.</p>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
+            <h3 class="text-xl font-semibold text-ink mb-3 dark:text-on-primary">Stay compliant, stay informed</h3>
+            <p class="text-body leading-relaxed dark:text-muted">Tax laws change every year. We keep our calculators and guides updated with the latest rates, thresholds, and regulations so you can stay compliant and avoid penalties.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="border-t border-hairline bg-canvas-soft dark:border-white/10 dark:bg-primary">
-      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="home.popular_calculators">Popular Calculators</span></h2>
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {countries.flatMap(c => c.popularCalculators.map(pc => ({ ...pc, country: c }))).slice(0, 6).map(item => (
-            <a href={`/countries/${item.country.slug}/${item.category}/${item.slug}`} class="rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-              <div class="flex items-center gap-3 mb-3">
-                 <img src={item.country.flag} alt={item.country.name} class="h-8 w-auto object-contain" />
-                <span class="text-sm text-muted dark:text-muted">{item.country.name}</span>
-              </div>
-              <h3 class="font-semibold text-ink dark:text-on-primary"><span data-i18n="home.calculator.name">{item.name}</span></h3>
-            </a>
-          ))}
+      <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">About TaxPortal</h2>
+        <div class="prose max-w-none text-body dark:text-muted space-y-6">
+          <p>TaxPortal is a free, comprehensive online platform dedicated to making international tax information accessible and actionable. We provide accurate tax calculators, detailed guides, and up-to-date tax rate information for individuals and businesses across multiple countries.</p>
+          <p>Every calculator on our platform is built with precision, using official tax brackets, withholding tables, and statutory rates sourced from government authorities. Our content is reviewed by tax professionals to ensure accuracy and relevance.</p>
+          <p>We believe that tax planning should not be a source of anxiety. By providing clear, well-structured tools and educational content, we empower users to take control of their financial future and make informed tax decisions.</p>
+          <p><strong>Disclaimer:</strong> TaxPortal is for informational and educational purposes only. It does not constitute tax, legal, or financial advice. Always consult a qualified tax professional for advice specific to your situation.</p>
         </div>
       </div>
     </section>
 
-    <section class="border-t border-hairline dark:border-white/10">
-      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="home.all_countries">All Countries</span></h2>
-        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {countries.map(country => (
-            <a href={`/countries/${country.slug}`} class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-              <img src={country.flag} alt={country.name} class="h-10 w-auto object-contain" />
-              <span class="font-medium text-ink dark:text-on-primary">{country.name}</span>
-            </a>
-          ))}
+    <section class="border-t border-hairline bg-canvas-soft dark:border-white/10 dark:bg-primary">
+      <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">What is a tax calculator?</h3>
+            <p class="text-body dark:text-muted">A tax calculator is a tool that estimates your tax liability based on your income, deductions, filing status, and applicable tax rates. TaxPortal provides free, browser-based calculators for countries including the United States, India, the United Kingdom, Singapore, and more.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How accurate are TaxPortal calculators?</h3>
+            <p class="text-body dark:text-muted">Our calculators use official tax brackets, rates, and rules from each country's tax authority. They provide accurate estimates based on the information you input. However, they are for informational purposes only and should not replace professional tax advice.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Do I need to create an account to use the calculators?</h3>
+            <p class="text-body dark:text-muted">No. All TaxPortal calculators are completely free to use and do not require an account or personal information. All calculations are performed locally in your browser.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How often are the tax rates updated?</h3>
+            <p class="text-body dark:text-muted">We update our calculators and guides as soon as new tax rates, brackets, or rules are announced by the relevant tax authorities. We strive to reflect the latest changes for every tax year.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Can I compare old and new tax regimes?</h3>
+            <p class="text-body dark:text-muted">Yes. For countries that offer multiple tax regimes, such as India, our calculators allow you to compare both regimes side by side to determine which one minimizes your tax liability.</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Is TaxPortal free to use?</h3>
+            <p class="text-body dark:text-muted">Yes, all basic calculators and educational content on TaxPortal are completely free. There are no hidden fees or subscription requirements.</p>
+          </div>
         </div>
       </div>
     </section>
-  </div>
-</Layout>
+    <section class="border-t border-hairline dark:border-white/10">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">About Our Hong Kong Tax Calculator Tools</h2>
+        <div class="prose max-w-none text-body dark:text-muted space-y-6">
+          <p>Welcome to TaxPortal, your comprehensive source for a free online <strong>Hong Kong tax calculator</strong> and <strong>HK tax calculator</strong> suite designed to simplify tax planning and estimation for individuals, expats, and businesses in Hong Kong. Whether you need a basic <strong>Hong Kong income tax calculator</strong>, an advanced <strong>Hong Kong salary tax calculator</strong>, or a specialized tool such as a <strong>stamp duty calculator hk</strong>, <strong>Hong Kong property tax calculator</strong>, or <strong>Hong Kong corporate tax calculator</strong>, our platform provides accurate, up-to-date calculations based on official HK IRD tax brackets and statutory rates.</p>
+          
+          <p>Our <strong>tax calculator Hong Kong</strong> tools cover a wide range of use cases for the 2024/25 assessment year and beyond. Employees and expats can rely on our <strong>Hong Kong salaries tax calculator</strong> to estimate their salaries tax liability under the progressive rates or standard rate system. Use our <strong>HK salary tax calculator</strong> to <strong>calculate hong kong tax</strong> on employment income, or try our <strong>Hong Kong net salary calculator</strong> and <strong>Hong Kong take home pay calculator</strong> to see your exact <strong>Hong Kong salary after tax</strong>. Our <strong>Hong Kong income tax calculator 2022</strong> and <strong>HK tax calculator 2022</strong> support prior-year planning for tax refunds and provisional tax calculations.</p>
+          
+          <p>Foreigners and expats working in Hong Kong benefit from our dedicated <strong>Hong Kong tax calculator for expats</strong> and <strong>Hong Kong tax calculator for foreigners</strong>. These tools account for the territorial tax system, overseas income exclusion, and different residential status rules. Our <strong>Hong Kong expat tax calculator</strong> helps you determine your <strong>HK tax estimate</strong> and understand whether your overseas income is taxable in Hong Kong, making it easier to plan your finances and qualify as a <strong>Hong Kong tax resident</strong>.</p>
+          
+          <p>Property owners and investors can use our <strong>Hong Kong property tax calculator</strong> and <strong>HK property stamp duty calculator</strong> to calculate property tax and stamp duty on residential and commercial transactions. Our <strong>stamp duty calculator hk</strong> supports first registration tax calculations, while the <strong>Hong Kong rental tax deduction calculator</strong> and <strong>rental stamp duty calculator hong kong</strong> help landlords estimate rental reimbursement and stamp duty on lease agreements. Whether you need a <strong>property stamp duty calculator hong kong</strong> or a <strong>Hong Kong rental reimbursement scheme calculator</strong>, our tools provide instant estimates based on current HK rates.</p>
+          
+          <p>Business owners and self-employed individuals can estimate their obligations with our <strong>Hong Kong profits tax computation</strong> tool and <strong>profit tax calculator hk</strong>. Calculate your <strong>company tax rate Hong Kong</strong>, understand <strong>deferred tax calculation Hong Kong</strong>, and compute your <strong>provisional tax calculation Hong Kong</strong> with ease. Our <strong>Hong Kong corporate tax calculator</strong> supports both incorporated and unincorporated businesses, helping you plan for <strong>2021 to 2022 tax calculator hk</strong> and current year obligations.</p>
+          
+          <p>Our <strong>tax computation hk</strong> tools also include salary-specific calculators such as the <strong>hk salaries tax computation</strong> and <strong>salary tax computation hk</strong>. These tools break down your income into assessable income, allowable deductions, and personal allowances, showing you exactly how much tax you pay. Use our <strong>hk tax rate calculator</strong> to see the progressive rates applied to your salary, or try the <strong>Hong Kong personal income tax calculator</strong> for a complete breakdown of your personal tax liability. Our <strong>Hong Kong government tax calculator</strong> and <strong>hk gov tax calculator</strong> are regularly updated to reflect the latest IRD guidelines.</p>
+          
+          <p>From simple use cases like <strong>personal tax calculator Hong Kong</strong> and <strong>hk personal tax calculator</strong> to advanced needs like <strong>Hong Kong profit tax computation</strong> and <strong>hk profit tax computation</strong>, TaxPortal provides accurate, browser-based tools that respect your privacy. Whether you need to <strong>calculate hk tax</strong> for the current year or review prior obligations with <strong>HK tax calculator 2021</strong>, our calculators deliver instant results without requiring personal data. Use our <strong>HK tax estimate</strong> tool to plan your salary negotiations, or try the <strong>Hong Kong rental stamp duty calculator</strong> before signing a new lease. Explore our full suite of <strong>HK tax calculator</strong> tools today and take control of your Hong Kong tax planning.</p>
+         </div>
+       </div>
+     </section>
+
+      <section class="border-t border-hairline bg-canvas-soft dark:border-white/10 dark:bg-primary">
+        <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+          <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Hong Kong Tax Blog</h2>
+          <p class="text-lg text-body dark:text-muted mb-8">Latest guides, tips, and updates on Hong Kong taxes for individuals, expats, and businesses.</p>
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <a href="/blogs/hong-kong-salaries-tax-guide" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">Hong Kong Salaries Tax Guide 2024/25</h3>
+              <p class="text-sm text-muted mt-2 dark:text-muted">Rates, allowances, MPF deductions, and how to calculate your salaries tax.</p>
+              <span class="inline-block mt-3 text-sm font-medium text-link group-hover:underline dark:text-link">Read guide <span aria-hidden="true">→</span></span>
+            </a>
+            <a href="/blogs/hong-kong-tax-calculator-expats-guide" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">Hong Kong Tax Calculator for Expats</h3>
+              <p class="text-sm text-muted mt-2 dark:text-muted">Complete guide for foreigners on Hong Kong tax obligations, territorial system, and 60-day rule.</p>
+              <span class="inline-block mt-3 text-sm font-medium text-link group-hover:underline dark:text-link">Read guide <span aria-hidden="true">→</span></span>
+            </a>
+            <a href="/blogs/hong-kong-stamp-duty-guide" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">Hong Kong Stamp Duty Guide</h3>
+              <p class="text-sm text-muted mt-2 dark:text-muted">AVD, BSD, SSD rates, Scale 2, and how to calculate property stamp duty in Hong Kong.</p>
+              <span class="inline-block mt-3 text-sm font-medium text-link group-hover:underline dark:text-link">Read guide <span aria-hidden="true">→</span></span>
+            </a>
+            <a href="/blogs/hong-kong-profits-tax-guide" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">Hong Kong Profits Tax Guide</h3>
+              <p class="text-sm text-muted mt-2 dark:text-muted">Two-tiered profits tax rates, assessable profits, and filing obligations for businesses.</p>
+              <span class="inline-block mt-3 text-sm font-medium text-link group-hover:underline dark:text-link">Read guide <span aria-hidden="true">→</span></span>
+            </a>
+            <a href="/blogs/hong-kong-tax-residency" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">Hong Kong Tax Residency Guide</h3>
+              <p class="text-sm text-muted mt-2 dark:text-muted">How to qualify as a Hong Kong tax resident, ordinary residency, and 60-day rule.</p>
+              <span class="inline-block mt-3 text-sm font-medium text-link group-hover:underline dark:text-link">Read guide <span aria-hidden="true">→</span></span>
+            </a>
+            <a href="/blogs/hong-kong-provisional-tax-guide" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">Hong Kong Provisional Tax Guide</h3>
+              <p class="text-sm text-muted mt-2 dark:text-muted">How provisional tax is calculated, when to pay, and how to claim holdover.</p>
+              <span class="inline-block mt-3 text-sm font-medium text-link group-hover:underline dark:text-link">Read guide <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
+          <div class="mt-8 text-center">
+            <a href="/blogs" class="inline-flex items-center rounded-lg bg-primary px-6 py-3 text-base font-medium text-white transition hover:opacity-90 dark:bg-on-primary dark:text-primary">View All Hong Kong Tax Articles</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-hairline dark:border-white/10">
+        <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+          <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Frequently Asked Questions - Hong Kong Tax</h2>
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How much tax do I pay in Hong Kong?</h3>
+              <p class="text-body dark:text-muted">Salaries tax in Hong Kong is charged at progressive rates from 2% to 17% on net chargeable income, or at the standard rate of 15% on total income minus deductions, whichever is lower. Use our <a href="/countries/hong-kong/salaries-tax/salaries-tax-calculator" class="text-link hover:underline dark:text-link">Hong Kong tax calculator</a> for an accurate estimate.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How is Hong Kong tax calculated?</h3>
+              <p class="text-body dark:text-muted">Hong Kong uses a territorial tax system. Salaries tax is calculated on assessable income after allowable deductions and personal allowances. The progressive rates range from 2% to 17%, with a standard rate cap of 15%. Use our <a href="/countries/hong-kong/salaries-tax/salaries-tax-calculator" class="text-link hover:underline dark:text-link">Hong Kong income tax calculator</a> to compute your exact tax.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How can I calculate my income tax rate as a foreigner in Hong Kong?</h3>
+              <p class="text-body dark:text-muted">Foreigners working in Hong Kong can use our <a href="/blogs/hong-kong-tax-calculator-expats-guide" class="text-link hover:underline dark:text-link">Hong Kong tax calculator for expats</a> to estimate their tax rate. Your tax rate depends on employment income, marital status, and deductions. Read our guide on <a href="/blogs/hong-kong-tax-residency" class="text-link hover:underline dark:text-link">Hong Kong tax residency</a> for more details.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Is HK tax free for foreigners?</h3>
+              <p class="text-body dark:text-muted">Hong Kong tax is not entirely free for foreigners. Employment income sourced in Hong Kong is subject to salaries tax. However, the territorial tax system means overseas income is generally not taxable. Use our <a href="/countries/hong-kong/salaries-tax/hong-kong-tax-calculator-for-expats" class="text-link hover:underline dark:text-link">expat tax calculator</a> to understand your obligations.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How do I calculate my tax?</h3>
+              <p class="text-body dark:text-muted">To calculate your Hong Kong tax, input your assessable income, allowable deductions, and personal allowances into our <a href="/countries/hong-kong/salaries-tax/salaries-tax-calculator" class="text-link hover:underline dark:text-link">HK tax calculator</a>. The calculator applies current IRD progressive rates and determines whether you pay less under the standard rate or progressive rates system.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Is Hong Kong still good for expats?</h3>
+              <p class="text-body dark:text-muted">Hong Kong remains attractive for expats due to its low tax regime, world-class infrastructure, and strategic location. The territorial tax system means you only pay tax on Hong Kong-sourced income. Use our <a href="/blogs/hong-kong-tax-calculator-expats-guide" class="text-link hover:underline dark:text-link">expat tax guide</a> to estimate your tax savings.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How to save tax in Hong Kong?</h3>
+              <p class="text-body dark:text-muted">Save tax in Hong Kong by maximizing allowable deductions such as charitable donations, home loan interest, and MPF contributions. Use our <a href="/blogs/hong-kong-tax-allowances-deductions" class="text-link hover:underline dark:text-link">tax allowances and deductions guide</a> to compare your tax under different scenarios.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How to qualify as a Hong Kong tax resident?</h3>
+              <p class="text-body dark:text-muted">Qualify as a Hong Kong tax resident by being ordinarily resident in Hong Kong or having a permanent place of residence there. The IRD assesses your residential status based on factors such as the 60-day rule. Learn more in our <a href="/blogs/hong-kong-tax-residency" class="text-link hover:underline dark:text-link">tax residency guide</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>

@@ -1,0 +1,107 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "TDS Deduction Guide 2024: How to Calculate TDS on Salary, Contractors & Professionals";
+const description = "Complete TDS deduction guide for India. Learn how to calculate TDS on salary, TDS rates for different payment types, Section 192, 194C, 194J, TDS due dates, and how to claim TDS refund.";
+const image = "/images/blogs/tds-deduction-guide.jpg";
+const author = "Hana Patel";
+const lastUpdated = "July 2026";
+const readTime = "11 min read";
+---
+
+<Layout title={title} description={description} image={image}>
+  <div class="min-h-screen bg-canvas dark:bg-primary">
+    <main class="min-h-screen">
+      <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li class="flex items-center gap-2"><a href="/" class="text-link hover:underline dark:text-link">Home</a></li>
+            <li class="flex items-center gap-2"><span class="text-muted" aria-hidden="true">/</span><a href="/blogs" class="text-link hover:underline dark:text-link">Tax Guides</a></li>
+            <li class="flex items-center gap-2"><span class="text-muted" aria-hidden="true">/</span><span class="font-medium text-ink dark:text-on-primary" aria-current="page">TDS Deduction Guide</span></li>
+          </ol>
+        </nav>
+
+        <article class="prose max-w-none">
+          <header class="mb-8">
+            <img src="/images/blogs/tds-deduction-guide.jpg" alt="TDS deduction guide for Indian tax" class="mb-6 w-full rounded-lg object-cover max-h-64" />
+            <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">{title}</h1>
+            <div class="flex flex-wrap items-center gap-4 text-sm text-muted dark:text-muted">
+              <span>By <span class="font-medium text-ink dark:text-on-primary">{author}</span></span>
+              <span aria-hidden="true">·</span>
+              <span>Last updated: {lastUpdated}</span>
+              <span aria-hidden="true">·</span>
+              <span>{readTime}</span>
+            </div>
+            <div class="mt-4 flex items-center gap-3">
+              <img src="/images/avatars/hana-patel.jpg" alt="Hana Patel" class="h-10 w-10 rounded-full object-cover" />
+              <div>
+                <p class="text-sm font-medium text-ink dark:text-on-primary">Hana Patel</p>
+                <p class="text-xs text-muted dark:text-muted">India Tax Specialist</p>
+              </div>
+            </div>
+            <div class="mt-4 rounded-lg border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
+              <p class="text-sm text-body dark:text-muted"><strong>Editorial Review:</strong> Verified against the Income Tax Act 1961 and CBDT circulars for FY 2024-25.</p>
+            </div>
+          </header>
+
+          <div class="mt-8 space-y-6 text-body dark:text-muted">
+            <p>Tax Deducted at Source (TDS) is a mechanism introduced by the Income Tax Department to collect tax at the source of income. Under TDS, the payer deducts tax before making payments for specified types of transactions and deposits it with the government. The deductee can then claim the TDS as advance tax payments while filing their income tax return.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">What is TDS?</h2>
+            <p>TDS stands for Tax Deducted at Source. It is a way of collecting income tax by the government at the time of payment. The person making the payment (deductor) is responsible for deducting tax before making the payment and depositing it with the government. TDS ensures a steady flow of tax revenue throughout the year and reduces the burden of lump-sum tax payments at the end of the year.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">TDS on Salary (Section 192)</h2>
+            <p>TDS on salary is deducted by the employer based on the employee's total taxable income. The employer calculates TDS using the applicable income tax slabs after considering all available deductions including Section 80C, Section 80D, HRA, and standard deduction. The TDS deduction rate depends on the employee's tax regime choice and total income.</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Employers must deduct TDS every month while making salary payments.</li>
+              <li>Employees can submit proof of investments to employers for lower TDS deductions.</li>
+              <li>TDS is calculated based on the average rate of income tax for the year.</li>
+              <li>Form 16 is issued by the employer showing the TDS deducted during the year.</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">TDS Rates for Different Payment Types</h2>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>Salary (Section 192):</strong> As per applicable income tax slabs.</li>
+              <li><strong>Contractor/Sub-contractor (Section 194C):</strong> 1% for individuals/HUFs, 2% for others.</li>
+              <li><strong>Professional Fees (Section 194J):</strong> 10% for professionals, 20% if payer does not deduct tax.</li>
+              <li><strong>Interest (Section 194A):</strong> 10% on interest exceeding ₹40,000 (₹50,000 for senior citizens).</li>
+              <li><strong>Rent (Section 194I):</strong> 10% on rent exceeding ₹2.4 lakh for plant and machinery, ₹2.4 lakh for land/building.</li>
+              <li><strong>Dividend (Section 194):</strong> 10% on dividend exceeding ₹5,000.</li>
+              <li><strong>Commission (Section 194H):</strong> 5% on commission or brokerage exceeding ₹15,000.</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">How to Calculate TDS on Salary</h2>
+            <p>Use our TDS calculator to compute TDS on salary for FY 2024-25. Enter your salary, other income, applicable deductions, and tax regime to get the exact TDS deduction per month. The calculator considers standard deduction, Section 80C, 80D, and other applicable deductions.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">TDS Due Dates and Compliance</h2>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>TDS must be deducted at the time of payment or credit, whichever is earlier.</li>
+              <li>TDS must be deposited by the 7th of the following month.</li>
+              <li>Quarterly TDS returns (Form 24Q for salary, 26Q for non-salary) must be filed within 30 days of the quarter end.</li>
+              <li>Form 16 (for salary TDS) must be issued by June 15th of the following year.</li>
+              <li>Form 26AS should be verified annually for TDS credits.</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">TDS Interest and Penalties</h2>
+            <p>Late deduction of TDS attracts interest at 1% per month from the date of deduction to the date of deposit. Late payment of TDS attracts interest at 1.5% per month. Late filing of TDS returns attracts penalties ranging from ₹10,000 to ₹1 lakh under Section 271H.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">How to Claim TDS Refund</h2>
+            <p>If the TDS deducted exceeds your actual tax liability, you are entitled to a refund. File your income tax return (ITR) by the due date and ensure your TDS details in Form 26AS match the TDS certificates issued by the deductor. The refund is processed electronically and credited to your bank account within 4-6 months.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Conclusion</h2>
+            <p>TDS is an important aspect of tax compliance in India. Understanding TDS rates, calculation methods, and due dates helps both deductors and deductees stay compliant. Use our <a href="/countries/india/tds/tds-calculator">TDS calculator</a> to compute your TDS liability and plan your tax payments effectively. For more information on Indian taxation, explore our <a href="/countries/india">India tax overview</a>.</p>
+          </div>
+        </article>
+
+        <aside class="mt-12 rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-white/15 dark:bg-primary" aria-label="Related calculators">
+          <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">Related Calculators</h3>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <a href="/countries/india/income-tax/income-tax-calculator" class="text-link hover:underline dark:text-link">India Income Tax Calculator</a>
+            <a href="/countries/india/tds/tds-calculator" class="text-link hover:underline dark:text-link">India TDS Calculator</a>
+            <a href="/countries/india/gst/gst-calculator" class="text-link hover:underline dark:text-link">India GST Calculator</a>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+</Layout>

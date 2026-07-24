@@ -1,0 +1,100 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Capital Gains Tax Guide 2024: Calculate Tax on Stocks, Property & Mutual Funds";
+const description = "Complete guide to capital gains tax in India. Learn about short-term and long-term capital gains tax rates, indexation benefits, how to calculate capital gains on property, stocks, and mutual funds for FY 2024-25.";
+const image = "/images/blogs/capital-gains-tax-guide.jpg";
+const author = "Nora Chen";
+---
+
+<Layout title={title} description={description} image={image}>
+  <div class="min-h-screen bg-canvas dark:bg-primary">
+    <main class="min-h-screen">
+      <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li class="flex items-center gap-2"><a href="/" class="text-link hover:underline dark:text-link">Home</a></li>
+            <li class="flex items-center gap-2"><span class="text-muted">/</span><a href="/blogs" class="text-link hover:underline dark:text-link">Blogs</a></li>
+            <li class="flex items-center gap-2"><span class="text-muted">/</span><span class="font-medium text-ink dark:text-on-primary" aria-current="page">Capital Gains Tax Guide</span></li>
+          </ol>
+        </nav>
+
+        <article class="prose max-w-none">
+          <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">Capital Gains Tax Guide 2024: Calculate Tax on Stocks, Property & Mutual Funds</h1>
+          <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 12 min read</p>
+          <div class="mt-4 flex items-center gap-3">
+            <img src="/images/avatars/nora-chen.jpg" alt="Nora Chen" class="h-10 w-10 rounded-full object-cover" />
+            <div>
+              <p class="text-sm font-medium text-ink dark:text-on-primary">Nora Chen</p>
+              <p class="text-xs text-muted dark:text-muted">Tax Analyst</p>
+            </div>
+          </div>
+
+          <div class="mt-8 space-y-6 text-body dark:text-muted">
+            <p>Capital gains tax is levied on the profit earned from the sale of capital assets such as stocks, mutual funds, real estate, and bonds. Understanding capital gains tax is essential for every investor to plan their investments and tax liabilities effectively. This guide covers short-term and long-term capital gains tax rates, indexation benefits, and how to calculate capital gains on different assets for FY 2024-25.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">What is Capital Gains Tax?</h2>
+            <p>Capital gains tax is the tax levied on the profit earned from the sale of a capital asset. The profit is calculated as the difference between the sale price and the purchase price (cost of acquisition). Capital gains can be short-term or long-term, depending on the holding period of the asset.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Short-Term vs Long-Term Capital Gains</h2>
+            <p>The classification of capital gains depends on the holding period of the asset:</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>Equity shares/units of equity-oriented mutual funds:</strong> Short-term if held for less than 12 months; long-term if held for 12 months or more</li>
+              <li><strong>Debt mutual funds:</strong> Short-term if held for less than 36 months; long-term if held for 36 months or more</li>
+              <li><strong>Real estate (land, house, etc.):</strong> Short-term if held for less than 24 months; long-term if held for 24 months or more</li>
+              <li><strong>Other assets:</strong> Short-term if held for less than 36 months; long-term if held for 36 months or more</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Capital Gains Tax Rates for FY 2024-25</h2>
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Equity Shares and Equity-Oriented Mutual Funds</h3>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Short-Term Capital Gains (STCG): 15% (plus 4% cess)</li>
+              <li>Long-Term Capital Gains (LTCG): 10% on gains above ₹1 lakh (plus 4% cess)</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Debt Mutual Funds (purchased on or after April 1, 2023)</h3>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Short-Term Capital Gains (STCG): Added to income and taxed as per applicable slab rates</li>
+              <li>Long-Term Capital Gains (LTCG): 12.5% without indexation (plus 4% cess)</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Real Estate</h3>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Short-Term Capital Gains (STCG): Added to income and taxed as per applicable slab rates</li>
+              <li>Long-Term Capital Gains (LTCG): 20% with indexation benefit (plus 4% cess)</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">How to Calculate Capital Gains</h2>
+            <p>The basic formula for calculating capital gains is:</p>
+            <p><strong>Capital Gains = Sale Price - Cost of Acquisition - Cost of Improvements - Selling Expenses</strong></p>
+            <p>For long-term capital gains, you can adjust the cost of acquisition using the Cost Inflation Index (CII) to account for inflation. This is known as indexation.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Indexation Benefit</h2>
+            <p>Indexation allows you to adjust the purchase cost of an asset for inflation, thereby reducing your capital gains tax liability. The formula is:</p>
+            <p><strong>Indexed Cost of Acquisition = Original Cost × (CII of Sale Year / CII of Purchase Year)</strong></p>
+            <p>For example, if you purchased a property in FY 2018-19 for ₹50 lakh and sold it in FY 2024-25 for ₹80 lakh, the indexed cost would be ₹50 lakh × (363/280) = ₹64.82 lakh. Your capital gains would be ₹80 lakh - ₹64.82 lakh = ₹15.18 lakh, instead of ₹30 lakh without indexation.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Capital Gains Tax on Sale of Property</h2>
+            <p>Real estate investments attract significant capital gains tax. For residential property held for more than 24 months, you pay 20% LTCG tax with indexation benefit. You can also avail of exemptions under Section 54 (reinvestment in residential property), Section 54F (reinvestment in residential property for non-residential assets), and Section 54EC (investment in capital gains bonds).</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Tax Saving Tips for Capital Gains</h2>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Hold equity investments for more than 12 months to qualify for lower LTCG rates</li>
+              <li>Use indexation for debt mutual funds and real estate</li>
+              <li>Reinvest in residential property under Section 54 to save on LTCG tax</li>
+              <li>Invest in capital gains bonds under Section 54EC</li>
+              <li>Set off capital losses against capital gains</li>
+              <li>Carry forward unused capital losses for 8 years</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Recent Changes in Budget 2024</h2>
+            <p>The Finance Act 2024 modified the holding period for real estate from 24 months to 36 months for short-term classification. Additionally, the LTCG rate for certain assets was revised. Stay updated with our capital gains tax calculator for accurate calculations.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Conclusion</h2>
+            <p>Capital gains tax is an integral part of investment planning. By understanding the applicable rates, holding periods, and indexation benefits, you can optimize your investment returns and minimize tax liability. Use our capital gains tax calculator to compute your exact tax liability on the sale of property, stocks, or mutual funds.</p>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+</Layout>

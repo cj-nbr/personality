@@ -20,9 +20,10 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  keywords?: string;
 }
 
-const { title = "TaxPortal", description = "International tax information and calculators", image = "https://personality.com/og-image.png" } = Astro.props;
+const { title = "TaxPortal", description = "International tax information and calculators", image = "https://personality.com/og-image.png", keywords = "tax calculator, income tax calculator, payroll calculator, tax refund estimator, tax estimator, federal tax calculator, free tax calculator, capital gains tax calculator, vat calculator, gst calculator, stamp duty calculator, w4 calculator, 1099 tax calculator, self employment tax calculator, paycheck calculator, tax withholding calculator, tax bracket calculator, tax return calculator, tax refund calculator, irs tax calculator, hr block tax calculator, turbotax calculator, 234a interest calculator, 234b interest calculator, 234c interest calculator, 80gg calculator, ato tax calculator, hmrc tax calculator, salary after tax calculator, take home pay calculator, gross to net calculator,capital gains tax calculator on sale of property, 234a 234b 234c interest calculator, gst calculator online, gst interest calculator, gst late fee calculator, tds calculator, calculate tds on salary, capital gain calculator with indexation, capital gain calculator for ay 2022 23, old regime tax calculator, new regime tax calculator, stamp duty calculator 2021, hmrc income tax calculator, hmrc payroll calculator, hmrc ni calculator, ato income tax calculator, ato tax tables fortnightly, cra payroll calculator, lhdn calculator, bir tax calculator, fis calculator, tax on 30k salary, tax on 40k salary, tax on 60k salary, effective tax rate calculator, adjusted gross income calculator, taxable income calculator" } = Astro.props;
 const initialLang = detectLanguage();
 setLang(initialLang);
 const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
@@ -34,10 +35,21 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="keywords" content={keywords} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="description" content={description} />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image || "https://personality.com/og-image.png"} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TaxPortal" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image || "https://personality.com/og-image.png"} />
     <link rel="alternate" hreflang="en" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <link rel="alternate" hreflang="hi" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <link rel="alternate" hreflang="es" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
@@ -49,15 +61,8 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
     <link rel="alternate" hreflang="ar" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <link rel="alternate" hreflang="pt" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
     <link rel="alternate" hreflang="ru" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
-    <link rel="alternate" hreflang="x-default" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <script type="application/ld+json">
+<link rel="alternate" hreflang="x-default" href={new URL(Astro.url.pathname, Astro.site || "https://taxportal.com").href} />
+     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
@@ -203,7 +208,7 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
             }
           }
           if (changed && textNode.parentElement) {
-            textNode.parentElement.textContent = newText;
+            textNode.textContent = newText;
           }
         });
       });

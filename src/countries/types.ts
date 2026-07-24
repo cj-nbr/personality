@@ -28,7 +28,17 @@ export interface Country {
   taxAuthorityUrl: string;
   currency: string;
   capital: string;
+  population: string;
+  gdp: string;
+  officialLanguage: string;
   overview: string;
+  taxSystemOverview: {
+    incomeTax: string;
+    capitalGainsTax: string;
+    vatGstSalesTax: string;
+    corporateTax: string;
+    payrollTax: string;
+  };
   taxCategories: TaxCategory[];
   popularCalculators: Array<{ slug: string; name: string; category: string }>;
   relatedCountries: string[];

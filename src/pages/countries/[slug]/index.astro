@@ -154,20 +154,31 @@ const baseUrl = getBaseUrl();
       {country.relatedCountries.map(slug => {
         const related = getCountryBySlug(slug);
         if (!related) return null;
+        const guides = related.taxCategories.flatMap(cat =>
+          cat.guides.slice(0, 2).map(guide => ({ ...guide, categorySlug: cat.slug }))
+        ).slice(0, 2);
         return (
-          <a
-            href={`/countries/${related.slug}`}
+          <div
             class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary"
           >
-            <div class="flex items-center gap-3">
+            <a href={`/countries/${related.slug}`} class="flex items-center gap-3">
                 <img src={related.flag} alt={related.name} class="h-12 w-auto object-contain" />
                <div>
-                 <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary"><span data-i18n="country.related_name">{related.name}</span></h3>
-                 <p class="text-xs text-muted dark:text-muted"><span data-i18n="country.related_continent">{related.continent}</span></p>
-               </div>
-             </div>
-             <p class="mt-3 text-sm text-body line-clamp-2 dark:text-muted"><span data-i18n="country.related_overview">{related.overview}</span></p>
-          </a>
+                  <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary"><span data-i18n="country.related_name">{related.name}</span></h3>
+                  <p class="text-xs text-muted dark:text-muted"><span data-i18n="country.related_continent">{related.continent}</span></p>
+                </div>
+              </a>
+              <p class="mt-3 text-sm text-body line-clamp-2 dark:text-muted"><span data-i18n="country.related_overview">{related.overview}</span></p>
+              {guides.length > 0 && (
+                <div class="mt-3 space-y-1">
+                  {guides.map(guide => (
+                    <a href={`/countries/${related.slug}/${guide.categorySlug}/${guide.slug}`} class="text-sm text-link hover:underline dark:text-link">
+                      {guide.title}
+                    </a>
+                  ))}
+                </div>
+              )}
+          </div>
         );
       })}
     </div>

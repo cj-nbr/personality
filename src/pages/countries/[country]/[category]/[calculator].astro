@@ -3,6 +3,7 @@ import CountryLayout from "../../../../layouts/CountryLayout.astro";
 import { getCountryBySlug, getCategoryBySlug } from "../../../../data/countries";
 import { getCurrency, formatCurrency } from "../../../../config/currencies";
 import { getTaxYears } from "../../../../config/taxYears";
+import { calculatorContent } from "../../../../config/calculatorContent";
 import type { TaxRule } from "../../../../config/taxRules";
 
 export function getStaticPaths() {
@@ -47,6 +48,22 @@ const ruleId = `${country.slug}-${category.slug}-${calculator.slug}`;
 const rule = (await import("../../../../config/taxRules")).taxRules.find(
   (r: TaxRule) => r.id === ruleId
 ) as TaxRule | undefined;
+
+const content = calculatorContent[ruleId];
+
+const relatedCalculators = country.taxCategories
+  .flatMap(cat => cat.calculators.map(calc => ({ ...calc, categorySlug: cat.slug })))
+  .filter(rc => rc.slug !== calculator.slug || rc.categorySlug !== category.slug)
+  .slice(0, 6);
+
+const suggestedArticles = country.taxCategories
+  .filter(cat => cat.slug !== category.slug)
+  .slice(0, 3)
+  .map(cat => ({
+    title: cat.name + ' Guide',
+    slug: '/countries/' + country.slug + '/' + cat.slug
+  }));
+
 ---
 
 <CountryLayout
@@ -101,6 +118,7 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
                     id={input.id}
                     autocomplete="off"
                     placeholder={input.placeholder}
+                    data-i18n-placeholder={input.placeholder}
                     class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
                   />
                 )}
@@ -665,4 +683,87 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
       if (resetBtn) resetBtn.addEventListener('click', reset);
     })();
   </script>
+
+  {content && (
+    <>
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.howToUse.title}></h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.howToUse.html}></div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.understandingResults.title}></h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.understandingResults.html}></div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.formula.title}></h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.formula.html}></div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.taxSlabs.title}></h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.taxSlabs.html}></div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.commonMistakes.title}></h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.commonMistakes.html}></div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Related Calculators</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedCalculators.map(rc => (
+            <a href={`/countries/${country.slug}/${rc.categorySlug}/${rc.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink dark:text-on-primary">{rc.name}</h3>
+              <p class="text-sm text-muted mt-1 dark:text-muted">{category.name} - {country.name}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Suggested Articles</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {suggestedArticles.map(article => (
+            <a href={article.slug.startsWith('/') ? article.slug : `/blogs/${article.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink dark:text-on-primary">{article.title}</h3>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.officialResources.title}></h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.officialResources.html}></div>
+        </div>
+      </section>
+
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: Object.entries(content.faqSchema).map(([name, text]) => ({
+          "@type": "Question",
+          name,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: `<p>${text}</p>`
+          }
+        }))
+      })}></script>
+    </>
+  )}
+
 </CountryLayout>

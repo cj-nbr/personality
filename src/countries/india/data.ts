@@ -58,14 +58,27 @@ export const india: Country = {
   taxAuthorityUrl: "https://www.incometax.gov.in",
   currency: "INR",
   capital: "New Delhi",
-  overview: "India has a comprehensive tax system with direct and indirect taxes. The Income Tax Act governs direct taxes while GST unifies indirect taxation.",
+  population: "1.4 billion",
+  gdp: "$3.7 trillion",
+  officialLanguage: "Hindi and English (official languages); 22 scheduled languages recognised",
+  overview: "India has one of the world's largest and most complex tax systems. The Income Tax Act of 1961 governs direct taxes, while the Goods and Services Tax (GST) Act unifies indirect taxation. India uses a self-assessment system where taxpayers calculate and declare their own tax liability. The tax year runs from April 1 to March 31, with returns due July 31 for individuals. India offers two tax regimes: the old regime with deductions and exemptions, and the new regime with lower slab rates but limited deductions.",
+  taxSystemOverview: {
+    incomeTax: "Progressive rates from 0% to 30% under both old and new regimes. The new regime offers concessional rates (0% up to ₹4L, 5% ₹4-8L, 10% ₹8-12L, 15% ₹12-16L, 20% ₹16-20L, 25% ₹20-24L, 30% above ₹24L). The old regime has lower rates but allows deductions under Sections 80C, 80D, HRA, and more.",
+    capitalGainsTax: "Short-term capital gains taxed at applicable income tax rates. Long-term capital gains on equity funds and shares: 12.5% above ₹1 lakh (LTCG indexation for property). Long-term capital gains on other assets: 20% with indexation benefit.",
+    vatGstSalesTax: "GST is a multi-stage, destination-based indirect tax. Rates: 0%, 5%, 12%, 18%, and 28%. GST is levied on most goods and services with input tax credit available for businesses.",
+    corporateTax: "22% for domestic companies opting for reduced rate (without exemptions). 30% for other domestic companies. Foreign companies taxed at 40%. Surcharge and cess apply.",
+    payrollTax: "Employer contributes 12% of basic pay to EPF (8.33% employer + 3.67% employee split). Professional tax varies by state (0-20% with annual cap). TDS is deducted monthly from salaries by employers."
+  },
   taxCategories,
   popularCalculators: [
     { slug: "income-tax-calculator", name: "Income Tax Calculator", category: "income-tax" },
-    { slug: "gst-calculator", name: "GST Calculator", category: "gst" }
+    { slug: "gst-calculator", name: "GST Calculator", category: "gst" },
+    { slug: "tds-calculator", name: "TDS Calculator", category: "tds" }
   ],
-  relatedCountries: ["singapore", "malaysia", "hong-kong"],
+  relatedCountries: ["singapore", "malaysia", "hong-kong", "pakistan"],
   latestUpdates: [
-    { date: "2024-02-01", title: "New Tax Regime Updates", description: "Budget 2024 changes to income tax slabs." }
+    { date: "2024-02-01", title: "Budget 2024-25 Tax Changes", description: "Union Budget 2024 introduced new tax provisions including increased TDS thresholds and updated deductions." },
+    { date: "2024-01-01", title: "Standard Deduction Increased", description: "Standard deduction for salaried individuals increased to ₹75,000 under the new regime." },
+    { date: "2023-04-01", title: "New Regime Tax Slabs Updated", description: "New tax regime slabs revised with additional benefits and expanded rebate under Section 87A." }
   ]
 };
