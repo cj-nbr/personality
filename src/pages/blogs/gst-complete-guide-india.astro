@@ -7,7 +7,6 @@ const image = "/images/blogs/gst-complete-guide.jpg";
 const author = "Kira Tanaka";
 const lastUpdated = "July 2026";
 const readTime = "15 min read";
-const canonical = "https://taxportal.com/blogs/gst-complete-guide-india";
 ---
 
 <Layout title={title} description={description} image={image}>
@@ -24,6 +23,7 @@ const canonical = "https://taxportal.com/blogs/gst-complete-guide-india";
 
         <article class="prose max-w-none">
           <header class="mb-8">
+            <img src="/images/blogs/gst-complete-guide.jpg" alt="GST complete guide for India" class="mb-6 w-full rounded-lg object-cover max-h-64" />
             <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">{title}</h1>
             <div class="flex flex-wrap items-center gap-4 text-sm text-muted dark:text-muted">
               <span>By <span class="font-medium text-ink dark:text-on-primary">{author}</span></span>
@@ -31,6 +31,13 @@ const canonical = "https://taxportal.com/blogs/gst-complete-guide-india";
               <span>Last updated: {lastUpdated}</span>
               <span aria-hidden="true">·</span>
               <span>{readTime}</span>
+            </div>
+            <div class="mt-4 flex items-center gap-3">
+              <img src="/images/avatars/kira-tanaka.jpg" alt="Kira Tanaka" class="h-10 w-10 rounded-full object-cover" />
+              <div>
+                <p class="text-sm font-medium text-ink dark:text-on-primary">Kira Tanaka</p>
+                <p class="text-xs text-muted dark:text-muted">GST & Indirect Tax Specialist</p>
+              </div>
             </div>
             <div class="mt-4 rounded-lg border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
               <p class="text-sm text-body dark:text-muted"><strong>Editorial Review:</strong> This guide has been reviewed for accuracy against current GST rules and rates as updated by the GST Council for FY 2024-25.</p>

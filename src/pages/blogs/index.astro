@@ -20,11 +20,19 @@ const posts = getSortedPosts();
               </h2>
               <p class="text-sm text-muted mb-4 dark:text-muted">{post.description}</p>
               <div class="flex items-center gap-4 text-sm text-muted dark:text-muted">
+                <span>By {post.author}</span>
+                <span aria-hidden="true">·</span>
                 <span>{post.date}</span>
                 <span>{post.readTime}</span>
               </div>
             </article>
           ))}
+        </div>
+
+        <div class="mt-12 rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-white/10 dark:bg-primary">
+          <h2 class="text-xl font-semibold text-ink mb-3 dark:text-on-primary">About Our Blog</h2>
+          <p class="text-body dark:text-muted">TaxPortal's blog features expert analysis from tax professionals and financial analysts. Our team of contributors includes Maya Lin (US tax), Kira Tanaka (India GST/TDS), Nora Chen (capital gains), Hana Patel (TDS deductions), Lena Park (Indian tax calculations), and Sora Vance (old vs new tax regimes). Browse our guides for actionable tax strategies and calculators for every tax scenario.</p>
+          <p class="mt-3 text-body dark:text-muted"><a href="/about" class="text-link hover:underline dark:text-link">Learn more about our team</a>.</p>
         </div>
       </div>
     </main>

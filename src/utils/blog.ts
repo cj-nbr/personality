@@ -11,6 +11,7 @@ interface BlogPost {
   slug: string;
   date: string;
   readTime: string;
+  author: string;
 }
 
 export function getSortedPosts(): BlogPost[] {
@@ -27,6 +28,7 @@ export function getSortedPosts(): BlogPost[] {
     const descMatch = content.match(/const description = "([^"]+)"/);
     const dateMatch = content.match(/Last updated: ([^|]+)/);
     const readTimeMatch = content.match(/(\d+) min read/);
+    const authorMatch = content.match(/const author = "([^"]+)"/);
     
     if (titleMatch && descMatch) {
       posts.push({
@@ -34,7 +36,8 @@ export function getSortedPosts(): BlogPost[] {
         description: descMatch[1],
         slug: file.replace(/\.astro$/, ''),
         date: dateMatch ? dateMatch[1].trim() : '2026-07-24',
-        readTime: readTimeMatch ? `${readTimeMatch[1]} min read` : '10 min read'
+        readTime: readTimeMatch ? `${readTimeMatch[1]} min read` : '10 min read',
+        author: authorMatch ? authorMatch[1] : 'TaxPortal Team'
       });
     }
   }
