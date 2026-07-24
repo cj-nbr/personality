@@ -9,10 +9,21 @@ export interface TaxCategory {
     description: string;
   }>;
   guides: Array<{
-    slug: string;
-    title: string;
-    description: string;
-  }>;
+      slug: string;
+      title: string;
+      description: string;
+      image: string;
+      sections: Array<{
+        title: string;
+        content: string;
+      }>;
+      steps: Array<{
+        step: number;
+        title: string;
+        description: string;
+      }>;
+      tips: string[];
+    }>;
   faqs: Array<{
     question: string;
     answer: string;
