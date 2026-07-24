@@ -3,7 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import { countries } from "../data/countries";
 ---
 
-<Layout title="TaxPortal - International Tax Information" description="Comprehensive tax information and calculators for countries worldwide.">
+<Layout 
+  title="Tax Calculator - Free Online Tax Estimator, Income Tax Calculator & Payroll Calculator | TaxPortal" 
+  description="Use our free tax calculator for accurate income tax, payroll, capital gains, VAT, GST, stamp duty, and sales tax calculations. Estimate your tax refund, federal tax, state tax, and paycheck with our easy-to-use tax estimator tools."
+  image="https://personality.com/og-image.png"
+>
   <div class="min-h-screen bg-canvas dark:bg-primary">
     <section class="relative overflow-hidden">
       <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-canvas-soft to-canvas dark:from-primary dark:to-primary" aria-hidden="true"></div>
@@ -62,8 +66,142 @@ import { countries } from "../data/countries";
               <span class="font-medium text-ink dark:text-on-primary">{country.name}</span>
             </a>
           ))}
-        </div>
-      </div>
-    </section>
-  </div>
-</Layout>
+         </div>
+       </div>
+     </section>
+
+     <section class="border-t border-hairline dark:border-white/10">
+       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+         <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">About Our Tax Calculator Tools</h2>
+         <div class="prose max-w-none text-body dark:text-muted space-y-6">
+           <p>Welcome to TaxPortal, your comprehensive source for a free online <strong>tax calculator</strong> and tax estimator suite designed to simplify tax planning and estimation for individuals and businesses worldwide. Whether you need a basic <strong>income tax calculator</strong>, an advanced <strong>payroll calculator</strong>, or a specialized tool such as a <strong>capital gains tax calculator</strong>, <strong>VAT calculator</strong>, <strong>GST calculator</strong>, or <strong>stamp duty calculator</strong>, our platform provides accurate, up-to-date calculations based on official tax brackets, withholding tables, and statutory rates.</p>
+           
+           <p>Our <strong>tax estimator</strong> tools cover a wide range of use cases across multiple countries and tax years. Use our <strong>federal tax calculator</strong> to estimate your federal income tax liability under the latest IRS tax brackets, or try our <strong>state tax calculator</strong> for California, New York, Georgia, and other state-level obligations. If you are <strong>self-employed</strong>, our <strong>self employment tax calculator</strong> with deductions makes it easy to account for SE tax, home office deductions, and business expenses. Our <strong>1099 tax calculator</strong>, <strong>1099 NEC tax calculator</strong>, and <strong>independent contractor taxes calculator</strong> help gig workers and freelancers set aside the right amount for <strong>quarterly tax calculator</strong> payments and <strong>estimated tax payments</strong>.</p>
+           
+           <p>Employees can rely on our <strong>paycheck calculator</strong>, <strong>paystub calculator</strong>, and <strong>payroll calculator</strong> to see their gross-to-net conversion in detail. Our <strong>W-4 calculator</strong> and <strong>W-4 estimator</strong> help you optimize <strong>tax withholding</strong> to avoid surprises at tax time, while our <strong>payroll deductions online calculator</strong> and <strong>payroll deduction calculator</strong> break down every deduction from your paycheck. We also offer hourly-specific tools such as the <strong>hourly wage calculator</strong>, <strong>hourly paycheck calculator</strong>, <strong>hourly payroll calculator</strong>, and <strong>weekly tax calculator</strong> for workers paid by the hour.</p>
+           
+           <p>Investors and homeowners benefit from our specialized calculators. Estimate taxes on <strong>401k withdrawal</strong>s with our <strong>taxes on 401k withdrawal calculator</strong>, calculate <strong>capital gains tax</strong> on the sale of property or stock gains, or determine your <strong>taxable social security benefits</strong> with our dedicated calculator. Property owners can use our <strong>property tax calculator</strong>, <strong>mortgage tax deduction calculator</strong>, and <strong>rental property depreciation calculator</strong> to better understand real estate tax obligations. Our <strong>tax refund estimator</strong> and <strong>tax refund calculator</strong> help you predict your refund amount before filing, while our comprehensive <strong>tax return calculator</strong> guides you through the complete filing process for 1040, 1040EZ, and <strong>self assessment</strong> returns.</p>
+           
+           <p>International users benefit from region-specific tools. Our <strong>UK tax calculator</strong> and <strong>HMRC tax calculator</strong> handle UK income tax and National Insurance, our <strong>Canadian tax calculator</strong> and <strong>CRA payroll calculator</strong> cover Canadian federal and provincial taxes, our <strong>Australian tax calculator</strong> and <strong>ATO tax calculator</strong> address Australian obligations, and our <strong>Indian tax calculator</strong> supports both old and new tax regimes with Excel-compatible outputs. Our <strong>GST calculator</strong> works for India, Singapore, New Zealand, and other GST-adopting countries, while our <strong>VAT calculator</strong> and <strong>online VAT calculator</strong> support the UK, EU, and other VAT-registered jurisdictions.</p>
+           
+           <p>Planning for retirement? Use our <strong>SEP IRA calculator</strong>, <strong>Solo 401k contribution calculator</strong>, <strong>Roth IRA conversion calculator</strong>, and <strong>traditional IRA to Roth IRA conversion</strong> tools to minimize tax on retirement savings. Our <strong>RRSP calculator</strong>, <strong>RRSP withdrawal tax calculator</strong>, and <strong>superannuation calculator</strong> are tailored for Canadian and Australian savers. Business owners can rely on our <strong>LLC tax calculator</strong>, <strong>S corp tax calculator</strong>, <strong>corporation tax calculator</strong>, and <strong>small business taxes calculator</strong> for entity-level planning. We also offer niche tools such as our <strong>company car tax calculator</strong>, <strong>salary sacrifice calculator</strong>, <strong>nanny tax calculator</strong>, <strong>Doordash tax calculator</strong>, <strong>Uber tax calculator</strong>, and <strong>onlyfans tax calculator</strong> for unique income scenarios.</p>
+           
+           <p>At TaxPortal, every <strong>tax estimator</strong> is built with precision and clarity. Our <strong>tax bracket calculator</strong> shows exactly which rates apply to your income, our <strong>effective tax rate calculator</strong> reveals your true tax burden, and our <strong>tax deduction calculator</strong> helps you maximize allowable deductions. Whether you are filing a <strong>1040</strong>, <strong>1040EZ</strong>, or a <strong>self assessment tax return</strong>, our tools provide the insights you need to file confidently. Explore our full suite of calculators today and take control of your tax planning.</p>
+         </div>
+       </div>
+     </section>
+
+     <section class="border-t border-hairline bg-canvas-soft dark:border-white/10 dark:bg-primary">
+       <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+         <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Frequently Asked Questions</h2>
+         <div class="space-y-6">
+           <div>
+             <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How to calculate income tax on salary with example new regime?</h3>
+             <p class="text-body dark:text-muted">To calculate income tax on salary under the new regime, start with your gross salary, apply the standard deduction if applicable, and then apply the applicable slab rates. For example, under the FY 2024-25 new tax regime, income up to ₹4 lakh is exempt, ₹4-8 lakh is taxed at 5%, ₹8-12 lakh at 10%, ₹12-16 lakh at 15%, ₹16-20 lakh at 20%, ₹20-24 lakh at 25%, and above ₹24 lakh at 30%. A standard deduction of ₹75,000 is available for salaried individuals. Use our income tax calculator for accurate results.</p>
+           </div>
+           <div>
+             <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Old vs new tax regime calculator excel</h3>
+             <p class="text-body dark:text-muted">You can compare the old and new tax regimes using our built-in calculator or by exporting income and deduction details into Excel. The old regime allows deductions under Section 80C, 80D, home loan interest, HRA, and LTA, while the new regime offers lower slab rates but limits most deductions. For most taxpayers, the new regime is beneficial if they do not have significant deductions. Use our income tax calculator AY 2026-27 new regime tool to compare both regimes side by side.</p>
+           </div>
+           <div>
+             <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How to calculate tax in new regime on salary?</h3>
+             <p class="text-body dark:text-muted">Calculating tax in the new regime on salary involves identifying your total taxable income after considering the standard deduction and then applying the new regime slab rates. The new regime does not allow most exemptions and deductions except the standard deduction for salaried individuals. Our tax calculator 2026 new regime simplifies this by automatically applying the correct slabs and cess.</p>
+           </div>
+           <div>
+             <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How to calculate tax in new regime India?</h3>
+             <p class="text-body dark:text-muted">In India, the new tax regime introduced under the Finance Act offers concessional slab rates in exchange for forgoing most exemptions and deductions. To calculate tax, determine your total income, subtract the standard deduction of ₹75,000 (for salaried), and apply the slab rates: 0% up to ₹4 lakh, 5% from ₹4-8 lakh, 10% from ₹8-12 lakh, 15% from ₹12-16 lakh, 20% from ₹16-20 lakh, 25% from ₹20-24 lakh, and 30% above ₹24 lakh. Add a 4% health and education cess on the tax computed.</p>
+           </div>
+           <div>
+             <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Tax slab new regime</h3>
+             <p class="text-body dark:text-muted">The new regime tax slabs for FY 2024-25 (AY 2025-26) are: 0% on the first ₹4 lakh, 5% on the next ₹4 lakh, 10% on the next ₹4 lakh, 15% on the next ₹4 lakh, 20% on the next ₹4 lakh, 25% on the next ₹4 lakh, and 30% on income above ₹24 lakh. A standard deduction of ₹75,000 is available for salaried individuals. These slabs apply to individuals and HUFs below 60 years of age. Senior citizens have higher basic exemption limits.</p>
+           </div>
+           <div>
+             <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Income tax calculator AY 2026-27 new regime</h3>
+             <p class="text-body dark:text-muted">For Assessment Year 2026-27, our income tax calculator applies the latest new regime slabs and standard deductions. You can input your salary, other income, and allowable deductions to get an accurate estimate of your tax liability, effective tax rate, and take-home pay. The calculator also supports the old regime so you can compare which regime saves you more tax for AY 2026-27.</p>
+           </div>
+           <div>
+             <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Tax calculator 2026 new regime</h3>
+             <p class="text-body dark:text-muted">Our tax calculator 2026 new regime is designed for the latest financial year and updated according to the Union Budget. It covers all the revised slab rates, standard deductions, and cess calculations. Whether you are a salaried employee, a freelancer, or a business owner, this calculator helps you estimate your tax liability under the new regime with minimal effort.</p>
+           </div>
+           <div>
+             <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Income tax calculator AY 2026 27 excel old and new regime</h3>
+             <p class="text-body dark:text-muted">You can use our online calculator or export the input data into Excel to perform a detailed comparison of the old and new regimes for AY 2026-27. The old regime allows various deductions such as 80C, 80D, home loan interest, and HRA, while the new regime offers lower rates but limited deductions. Our tool presents both calculations side by side so you can make an informed choice.</p>
+           </div>
+         </div>
+       </div>
+     </section>
+
+     <script type="application/ld+json">
+     {
+       "@context": "https://schema.org",
+       "@type": "FAQPage",
+       "mainEntity": [
+         {
+           "@type": "Question",
+           "name": "How to calculate income tax on salary with example new regime?",
+           "acceptedAnswer": {
+             "@type": "Answer",
+             "text": "<p>To calculate income tax on salary under the new regime, start with your gross salary, apply the standard deduction if applicable, and then apply the applicable slab rates. For example, under FY 2024-25, income up to ₹4 lakh is exempt, ₹4-8 lakh at 5%, ₹8-12 lakh at 10%, ₹12-16 lakh at 15%, ₹16-20 lakh at 20%, ₹20-24 lakh at 25%, and above ₹24 lakh at 30%, plus 4% cess.</p>"
+           }
+         },
+         {
+           "@type": "Question",
+           "name": "Old vs new tax regime calculator excel",
+           "acceptedAnswer": {
+             "@type": "Answer",
+             "text": "<p>You can compare the old and new tax regimes using our built-in calculator or by exporting income and deduction details into Excel. The old regime allows deductions under Section 80C, 80D, home loan interest, HRA, and LTA, while the new regime offers lower slab rates but limits most deductions. Use our income tax calculator AY 2026-27 new regime tool to compare both regimes.</p>"
+           }
+         },
+         {
+           "@type": "Question",
+           "name": "How to calculate tax in new regime on salary?",
+           "acceptedAnswer": {
+             "@type": "Answer",
+             "text": "<p>Calculating tax in the new regime on salary involves identifying your total taxable income after the standard deduction and applying new regime slab rates. The new regime does not allow most exemptions and deductions except the standard deduction for salaried individuals. Our tax calculator 2026 new regime simplifies this by automatically applying the correct slabs and cess.</p>"
+           }
+         },
+         {
+           "@type": "Question",
+           "name": "How to calculate tax in new regime India?",
+           "acceptedAnswer": {
+             "@type": "Answer",
+             "text": "<p>In India, the new tax regime offers concessional slab rates in exchange for forgoing most exemptions and deductions. Determine your total income, subtract the standard deduction of ₹75,000, and apply the slab rates: 0% up to ₹4 lakh, 5% ₹4-8 lakh, 10% ₹8-12 lakh, 15% ₹12-16 lakh, 20% ₹16-20 lakh, 25% ₹20-24 lakh, and 30% above ₹24 lakh. Add 4% health and education cess.</p>"
+           }
+         },
+         {
+           "@type": "Question",
+           "name": "Tax slab new regime",
+           "acceptedAnswer": {
+             "@type": "Answer",
+             "text": "<p>The new regime tax slabs for FY 2024-25 (AY 2025-26) are: 0% on the first ₹4 lakh, 5% on the next ₹4 lakh, 10% on the next ₹4 lakh, 15% on the next ₹4 lakh, 20% on the next ₹4 lakh, 25% on the next ₹4 lakh, and 30% on income above ₹24 lakh. A standard deduction of ₹75,000 is available for salaried individuals. Senior citizens have higher basic exemption limits.</p>"
+           }
+         },
+         {
+           "@type": "Question",
+           "name": "Income tax calculator AY 2026-27 new regime",
+           "acceptedAnswer": {
+             "@type": "Answer",
+             "text": "<p>For Assessment Year 2026-27, our income tax calculator applies the latest new regime slabs and standard deductions. Input your salary, other income, and allowable deductions to get an accurate estimate of your tax liability, effective tax rate, and take-home pay. The calculator also supports the old regime so you can compare which regime saves you more tax for AY 2026-27.</p>"
+           }
+         },
+         {
+           "@type": "Question",
+           "name": "Tax calculator 2026 new regime",
+           "acceptedAnswer": {
+             "@type": "Answer",
+             "text": "<p>Our tax calculator 2026 new regime is designed for the latest financial year and updated according to the Union Budget. It covers all the revised slab rates, standard deductions, and cess calculations. Whether you are a salaried employee, freelancer, or business owner, this calculator helps you estimate your tax liability under the new regime with minimal effort.</p>"
+           }
+         },
+         {
+           "@type": "Question",
+           "name": "Income tax calculator AY 2026 27 excel old and new regime",
+           "acceptedAnswer": {
+             "@type": "Answer",
+             "text": "<p>You can use our online calculator or export input data into Excel to perform a detailed comparison of the old and new regimes for AY 2026-27. The old regime allows deductions such as 80C, 80D, home loan interest, and HRA, while the new regime offers lower rates but limited deductions. Our tool presents both calculations side by side so you can make an informed choice.</p>"
+           }
+         }
+       ]
+     }
+     </script>
+   </div>
+ </Layout>
