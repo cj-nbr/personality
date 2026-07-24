@@ -1,0 +1,32 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getSortedPosts } from "../../utils/blog";
+
+const posts = getSortedPosts();
+---
+
+<Layout title="Tax Blog - Latest Tax Tips, Guides & Updates | TaxPortal" description="Read the latest tax tips, guides, and updates from TaxPortal. Learn about income tax, GST, TDS, capital gains, and tax saving strategies.">
+  <div class="min-h-screen bg-canvas dark:bg-primary">
+    <main class="min-h-screen">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-ink mb-8 dark:text-on-primary">Tax Blog</h1>
+        <p class="text-lg text-body dark:text-muted mb-12">Latest tax tips, guides, and updates to help you stay informed and save taxes.</p>
+        
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map(post => (
+            <article class="rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-lg dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h2 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">
+                <a href={post.slug} class="hover:text-primary dark:hover:text-link">{post.title}</a>
+              </h2>
+              <p class="text-sm text-muted mb-4 dark:text-muted">{post.description}</p>
+              <div class="flex items-center gap-4 text-sm text-muted dark:text-muted">
+                <span>{post.date}</span>
+                <span>{post.readTime}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>

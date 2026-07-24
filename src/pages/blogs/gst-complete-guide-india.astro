@@ -1,0 +1,88 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "GST Complete Guide 2024: GST Rates, Calculator, Filing & Compliance for India";
+const description = "Complete GST guide for India. Learn about GST rates (5%, 12%, 18%, 28%), GST calculator, GST filing process, input tax credit, GST compliance, and latest GST council updates for FY 2024-25.";
+const image = "/images/blogs/gst-complete-guide.jpg";
+---
+
+<Layout title={title} description={description} image={image}>
+  <div class="min-h-screen bg-canvas dark:bg-primary">
+    <main class="min-h-screen">
+      <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li class="flex items-center gap-2"><a href="/" class="text-link hover:underline dark:text-link">Home</a></li>
+            <li class="flex items-center gap-2"><span class="text-muted">/</span><a href="/blogs" class="text-link hover:underline dark:text-link">Blogs</a></li>
+            <li class="flex items-center gap-2"><span class="text-muted">/</span><span class="font-medium text-ink dark:text-on-primary" aria-current="page">GST Complete Guide</span></li>
+          </ol>
+        </nav>
+
+        <article class="prose max-w-none">
+          <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">GST Complete Guide 2024: GST Rates, Calculator, Filing & Compliance for India</h1>
+          <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 15 min read</p>
+
+          <div class="mt-8 space-y-6 text-body dark:text-muted">
+            <p>Goods and Services Tax (GST) is a comprehensive, multi-stage, destination-based tax levied on every value addition. Implemented in India on July 1, 2017, GST replaced multiple indirect taxes like VAT, Service Tax, Excise Duty, and others. This complete guide covers everything you need to know about GST rates, calculation, filing, compliance, and recent updates.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">What is GST?</h2>
+            <p>GST is a single indirect tax on the supply of goods and services, right from the manufacturer to the consumer. It is a destination-based tax, meaning the tax is collected by the state where the goods or services are consumed, not where they are produced. GST has eliminated the cascading effect of taxes and created a unified national market.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Types of GST in India</h2>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>CGST (Central GST):</strong> Levied by the Central Government on intra-state supplies</li>
+              <li><strong>SGST (State GST):</strong> Levied by the State Government on intra-state supplies</li>
+              <li><strong>IGST (Integrated GST):</strong> Levied on inter-state supplies and imports</li>
+              <li><strong>UTGST (Union Territory GST):</strong> Levied in Union Territories without a legislature</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">GST Rate Structure</h2>
+            <p>GST in India is structured into four tax slabs: 5%, 12%, 18%, and 28%. There is also a special rate of 3% for gold and precious stones, and 0% for essential items like food grains, milk, and healthcare services.</p>
+
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">5% GST Rate</h3>
+            <p>Applied to essential items such as sugar, tea, coffee, edible oils, spices, and transportation services.</p>
+
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">12% GST Rate</h3>
+            <p>Applied to items like processed foods, mobile phones, and certain services.</p>
+
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">18% GST Rate</h3>
+            <p>Applied to most goods and services, including electronics, furniture, and professional services.</p>
+
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">28% GST Rate</h3>
+            <p>Applied to luxury items such as cars, tobacco, aerated drinks, and high-end electronics.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">How to Calculate GST</h2>
+            <p>GST calculation depends on whether the price is inclusive or exclusive of GST:</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>GST Exclusive (Add GST):</strong> GST Amount = Price × GST Rate%</li>
+              <li><strong>GST Inclusive (Remove GST):</strong> GST Amount = Price - (Price / (1 + GST Rate%))</li>
+            </ul>
+            <p>For example, if the price of a product is ₹1,000 and GST rate is 18%, the GST amount is ₹180 and the total price is ₹1,180. If the total price including GST is ₹1,180, the GST amount is ₹180 and the net price is ₹1,000.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">GST Input Tax Credit (ITC)</h2>
+            <p>Input Tax Credit allows businesses to claim credit for the GST paid on inputs used in the supply of goods or services. This eliminates the cascading effect of taxes. To claim ITC, the supplier must have filed their GST returns, and the recipient must have received the goods or services.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">GST Compliance and Filing</h2>
+            <p>GST compliance involves several periodic filings:</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>GSTR-1:</strong> Monthly return for outward supplies, due on the 10th of the following month</li>
+              <li><strong>GSTR-2A:</strong> Auto-generated statement for inward supplies</li>
+              <li><strong>GSTR-3B:</strong> Monthly summary return, due on the 20th of the following month</li>
+              <li><strong>GSTR-9:</strong> Annual return, due on December 31 of the following financial year</li>
+              <li><strong>GSTR-9C:</strong> Annual reconciliation statement, due by December 31</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">GST Interest and Late Fees</h2>
+            <p>Late payment of GST attracts interest at 18% per annum from the due date of payment. Late filing of GSTR-3B attracts a late fee of ₹50 per day (₹20 for nil returns) for each state/UT. Late filing of GSTR-1 attracts a late fee of ₹50 per day (₹20 for nil returns).</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Latest GST Updates 2024</h2>
+            <p>The GST Council regularly updates rates and compliance norms. Recent updates include changes in GST rates for various items, simplified filing procedures, and auto-population of GSTR-2A. Stay updated with our GST calculator for the latest rates and calculations.</p>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Conclusion</h2>
+            <p>GST has simplified India's indirect tax structure but requires careful compliance. Use our GST calculator to compute GST amounts accurately and stay updated with the latest GST rates and rules. Whether you are a businessman, accountant, or consumer, understanding GST is essential in today's economy.</p>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+</Layout>

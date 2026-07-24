@@ -47,6 +47,34 @@ const ruleId = `${country.slug}-${category.slug}-${calculator.slug}`;
 const rule = (await import("../../../../config/taxRules")).taxRules.find(
   (r: TaxRule) => r.id === ruleId
 ) as TaxRule | undefined;
+
+const allBlogSlugs = [
+  "how-to-save-income-tax-india-2024-25",
+  "old-vs-new-tax-regime-calculator",
+  "hra-calculation-guide-india",
+  "80c-deductions-complete-guide",
+  "capital-gains-tax-guide-india",
+  "gst-complete-guide-india",
+  "tds-deduction-guide-india",
+  "income-tax-filing-guide-india",
+  "nps-tax-benefits-calculator",
+  "home-loan-tax-benefits-guide"
+];
+
+const relatedCalculators = [
+  { name: "Income Tax Calculator", slug: "income-tax-calculator", country: country.slug, category: "income-tax" },
+  { name: "Tax Saving Calculator", slug: "tax-saving-calculator", country: country.slug, category: "income-tax" },
+  { name: "HRA Calculator", slug: "hra-calculator", country: country.slug, category: "income-tax" },
+  { name: "GST Calculator", slug: "gst-calculator", country: country.slug, category: "gst" },
+  { name: "TDS Calculator", slug: "tds-calculator", country: country.slug, category: "tds" },
+  { name: "Capital Gains Calculator", slug: "capital-gains-calculator", country: country.slug, category: "capital-gains-tax" },
+];
+
+const suggestedArticles = allBlogSlugs.map(slug => ({
+  title: slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
+  slug
+}));
+
 ---
 
 <CountryLayout
@@ -665,4 +693,568 @@ const rule = (await import("../../../../config/taxRules")).taxRules.find(
       if (resetBtn) resetBtn.addEventListener('click', reset);
     })();
   </script>
+
+  {ruleId === 'india-income-tax-income-tax-calculator' && (
+    <>
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">How to Calculate Income Tax on Salary in India</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4">
+            <p>Calculating income tax on salary in India involves determining your gross total income, applying applicable deductions, and then computing tax using the applicable slab rates. Our Indian income tax calculator simplifies this process by automating these calculations for both old and new tax regimes.</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Step-by-Step Guide</h3>
+            <ol class="list-decimal pl-6 space-y-2">
+              <li><strong>Enter your annual salary:</strong> Input your basic salary, allowances, and any other regular income.</li>
+              <li><strong>Select tax regime:</strong> Choose between old tax regime and new tax regime based on your preferences and deductions.</li>
+              <li><strong>Select age group:</strong> Choose the appropriate age category as tax slabs differ for senior citizens and super senior citizens.</li>
+              <li><strong>Add other income:</strong> Include income from house property, capital gains, interest, or other sources.</li>
+              <li><strong>Enter deductions:</strong> For old regime, add HRA, Section 80C, 80D, home loan interest, and other applicable deductions.</li>
+              <li><strong>Click Calculate:</strong> Get instant results showing taxable income, tax liability, cess, and take-home pay.</li>
+              <li><strong>Review results:</strong> Understand each component of your tax calculation and plan your finances accordingly.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Understanding Your Results</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4">
+            <p>Our income tax calculator provides a detailed breakdown of your tax computation. Here's what each field means:</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Gross Total Income</h3>
+            <p>This is your total income before any deductions. It includes salary, house property income, capital gains, and other sources of income.</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Total Deductions</h3>
+            <p>Under the old regime, this includes standard deduction, Section 80C, 80D, HRA, home loan interest, and other exemptions. Under the new regime, it includes the standard deduction of ₹75,000.</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Taxable Income</h3>
+            <p>Income after deducting all applicable deductions and exemptions from your gross total income. This is the income on which tax is calculated.</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Income Tax</h3>
+            <p>The actual tax payable before adding health and education cess. This is computed using the applicable tax slabs.</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Health and Education Cess</h3>
+            <p>A 4% cess is levied on the income tax amount. This is added to your total tax liability.</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Total Tax Liability</h3>
+            <p>The final amount of tax you need to pay. This is the sum of income tax and health and education cess.</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Effective Rate</h3>
+            <p>Your actual tax burden expressed as a percentage of your gross income. This helps you understand how much of your income goes towards taxes.</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Take-Home Pay</h3>
+            <p>Your net income after deducting all taxes. This is the amount you actually receive in your bank account.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Common Mistakes to Avoid</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><strong>Not choosing the right regime:</strong> Many taxpayers blindly choose the new regime without comparing it with the old regime. Use our calculator to compare both and choose the one that minimizes your tax.</li>
+            <li><strong>Forgetting HRA exemption:</strong> If you live in a rented accommodation and receive HRA, make sure to claim the exemption. Submit rent receipts and landlord PAN to your employer.</li>
+            <li><strong>Not claiming Section 80C:</strong> Investments in PPF, ELSS, NSC, life insurance, and home loan principal can save up to ₹1.5 lakh in tax under Section 80C.</li>
+            <li><strong>Missing out on Section 80D:</strong> Health insurance premiums for yourself and your parents can save additional tax. Senior citizens get higher limits.</li>
+            <li><strong>Not updating investments:</strong> Tax rules change every year. Review your tax-saving investments and adjust them according to the latest rules.</li>
+            <li><strong>Ignoring home loan benefits:</strong> Both principal and interest on home loans offer tax benefits under Section 80C and Section 24 respectively.</li>
+            <li><strong>Late filing of returns:</strong> Filing your ITR after the due date can attract penalties and interest under Sections 234A, 234B, and 234C.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Related Calculators</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedCalculators.map(rc => (
+            <a href={`/countries/${rc.country}/${rc.category}/${rc.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink dark:text-on-primary">{rc.name}</h3>
+              <p class="text-sm text-muted mt-1 dark:text-muted">{country.name} - {category.name}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Suggested Articles</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {suggestedArticles.map(article => (
+            <a href={`/blogs/${article.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink dark:text-on-primary">{article.title}</h3>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Official Resources</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <ul class="space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Income Tax Department of India</a></li>
+            <li><a href="https://www.gstn.org" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">GST Portal</a></li>
+            <li><a href="https://www.cbic.gov.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Central Board of Indirect Taxes and Customs</a></li>
+            <li><a href="https://www.finmin.nic.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Ministry of Finance</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How to calculate income tax on salary with example new regime?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>To calculate income tax on salary under the new regime, start with your gross salary, apply the standard deduction of ₹75,000, and then apply the applicable slab rates. For example, under FY 2024-25, income up to ₹4 lakh is exempt, ₹4-8 lakh at 5%, ₹8-12 lakh at 10%, ₹12-16 lakh at 15%, ₹16-20 lakh at 20%, ₹20-24 lakh at 25%, and above ₹24 lakh at 30%.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Old vs new tax regime calculator excel",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>You can compare old and new tax regimes using our built-in calculator. The old regime allows deductions under Section 80C, 80D, home loan interest, HRA, and LTA, while the new regime offers lower slab rates but limits most deductions. Use our income tax calculator AY 2026-27 new regime tool to compare both regimes side by side.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How to calculate tax in new regime on salary?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>Calculating tax in the new regime on salary involves identifying your total taxable income after the standard deduction and applying new regime slab rates. The new regime does not allow most exemptions and deductions except the standard deduction for salaried individuals.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the standard deduction for FY 2024-25?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>The standard deduction is ₹50,000 under the old regime and ₹75,000 under the new regime for salaried individuals in FY 2024-25.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How to calculate HRA exemption?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>HRA exemption is calculated as the lowest of actual HRA received, 50% of basic salary for metro cities or 40% for non-metro, or rent paid minus 10% of basic salary. Use our HRA calculator for accurate computation.</p>"
+            }
+          }
+        ]
+      }
+      </script>
+    </>
+  )}
+
+  {ruleId === 'india-gst-gst-calculator' && (
+    <>
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">How to Calculate GST on Goods and Services in India</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4">
+            <p>Goods and Services Tax (GST) is a unified indirect tax system introduced in India on July 1, 2017. It replaced multiple taxes like VAT, Service Tax, and Excise Duty. Our GST calculator helps you compute GST amounts quickly and accurately for different scenarios.</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">GST Calculation Methods</h3>
+            <p>GST can be calculated in two ways:</p>
+            <ol class="list-decimal pl-6 space-y-2">
+              <li><strong>GST Exclusive (Add GST):</strong> Used when you have a base amount and need to add GST on top. GST Amount = Amount × (GST Rate / 100)</li>
+              <li><strong>GST Inclusive (Remove GST):</strong> Used when you have a total amount that includes GST and need to find the base amount. GST Amount = Total Amount - (Total Amount / (1 + GST Rate/100))</li>
+            </ol>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Step-by-Step GST Calculation Guide</h3>
+            <ol class="list-decimal pl-6 space-y-2">
+              <li>Select the calculation type: GST Exclusive or GST Inclusive</li>
+              <li>Enter the amount for which you want to calculate GST</li>
+              <li>Select the applicable GST rate (5%, 12%, 18%, or 28%)</li>
+              <li>Click Calculate to see GST amount, net amount, and total amount</li>
+              <li>Use Copy Result to share the calculation or print for your records</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Understanding GST Rates in India</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <th class="text-left py-3 px-4 font-semibold text-ink dark:text-on-primary">GST Rate</th>
+                  <th class="text-left py-3 px-4 font-semibold text-ink dark:text-on-primary">Applicable Goods/Services</th>
+                  <th class="text-left py-3 px-4 font-semibold text-ink dark:text-on-primary">Examples</th>
+                </tr>
+              </thead>
+              <tbody class="text-body dark:text-muted">
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4 font-semibold">5%</td>
+                  <td class="py-3 px-4">Essential items</td>
+                  <td class="py-3 px-4">Sugar, tea, edible oils, spices, transport services</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4 font-semibold">12%</td>
+                  <td class="py-3 px-4">Processed foods, mobiles</td>
+                  <td class="py-3 px-4">Processed foods, mobile phones, certain services</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4 font-semibold">18%</td>
+                  <td class="py-3 px-4">Most goods and services</td>
+                  <td class="py-3 px-4">Electronics, furniture, professional services, restaurants</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4 font-semibold">28%</td>
+                  <td class="py-3 px-4">Luxury items</td>
+                  <td class="py-3 px-4">Cars, tobacco, aerated drinks, high-end electronics</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">GST Formula Explained</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4">
+            <p><strong>GST Exclusive (Adding GST to base price):</strong></p>
+            <p>GST Amount = Base Amount × (GST Rate / 100)</p>
+            <p>Total Amount = Base Amount + GST Amount</p>
+            
+            <p><strong>GST Inclusive (Extracting GST from total price):</strong></p>
+            <p>Base Amount = Total Amount / (1 + GST Rate / 100)</p>
+            <p>GST Amount = Total Amount - Base Amount</p>
+            
+            <p>For example, if you have a product priced at ₹1,000 excluding GST and GST rate is 18%, the GST amount is ₹180 and total price is ₹1,180. If the selling price including GST is ₹1,180, the base amount is ₹1,000 and GST is ₹180.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Common GST Calculation Mistakes</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><strong>Wrong GST rate:</strong> Applying incorrect GST rates leads to overcharging or undercharging, which can attract penalties. Always verify the applicable rate from the official GST rate list.</li>
+            <li><strong>Confusing inclusive and exclusive:</strong> Mixing up GST inclusive and exclusive calculations is a common error. Ensure you know whether the given amount includes GST or not before calculating.</li>
+            <li><strong>Not claiming Input Tax Credit:</strong> Businesses often forget to claim ITC on purchases, leading to higher effective tax costs. Maintain proper invoices and file returns timely.</li>
+            <li><strong>Wrong HSN/SAC codes:</strong> Using incorrect HSN or SAC codes can result in mismatches and tax disputes. Verify codes from the official GST portal.</li>
+            <li><strong>Not separating CGST and SGST:</strong> For intra-state transactions, GST must be split equally between CGST and SGST. IGST is applicable for inter-state transactions.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">GST Input Tax Credit (ITC)</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4">
+            <p>Input Tax Credit is one of the most important features of GST. It allows businesses to claim credit for the GST paid on inputs used in the supply of goods or services. This eliminates the cascading effect of taxes.</p>
+            <p>Conditions for claiming ITC:</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>You must have a valid GST invoice</li>
+              <li>The supplier must have filed their GST returns</li>
+              <li>You must have received the goods or services</li>
+              <li>You must have filed your GST returns</li>
+            </ul>
+            <p>ITC cannot be claimed for certain supplies like food and beverages for personal consumption, outdoor catering, and beauty treatment services.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">GST Returns and Compliance Calendar</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <th class="text-left py-3 px-4 font-semibold text-ink dark:text-on-primary">Return Type</th>
+                  <th class="text-left py-3 px-4 font-semibold text-ink dark:text-on-primary">Frequency</th>
+                  <th class="text-left py-3 px-4 font-semibold text-ink dark:text-on-primary">Due Date</th>
+                </tr>
+              </thead>
+              <tbody class="text-body dark:text-muted">
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4">GSTR-1</td>
+                  <td class="py-3 px-4">Monthly</td>
+                  <td class="py-3 px-4">10th of following month</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4">GSTR-3B</td>
+                  <td class="py-3 px-4">Monthly</td>
+                  <td class="py-3 px-4">20th of following month</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4">GSTR-9</td>
+                  <td class="py-3 px-4">Annual</td>
+                  <td class="py-3 px-4">December 31</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4">GSTR-9C</td>
+                  <td class="py-3 px-4">Annual</td>
+                  <td class="py-3 px-4">December 31</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Related Calculators</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedCalculators.map(rc => (
+            <a href={`/countries/${rc.country}/${rc.category}/${rc.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink dark:text-on-primary">{rc.name}</h3>
+              <p class="text-sm text-muted mt-1 dark:text-muted">{country.name} - {category.name}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Suggested Articles</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {suggestedArticles.map(article => (
+            <a href={`/blogs/${article.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink dark:text-on-primary">{article.title}</h3>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Official Resources</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <ul class="space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.gstn.org" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">GST Portal - GSTN</a></li>
+            <li><a href="https://www.cbic.gov.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Central Board of Indirect Taxes and Customs</a></li>
+            <li><a href="https://taxinfo.gstn.org.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">GST Rate Finder</a></li>
+            <li><a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Income Tax Department</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How to calculate GST on MRP or inclusive price?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>To calculate GST on an MRP price that includes GST, divide the total amount by (1 + GST rate/100) to get the net price, then subtract from the total amount to get GST. For example, if MRP is ₹1,180 with 18% GST, net price is ₹1,000 and GST is ₹180.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the GST rate for restaurants and food services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>Restaurants and food services typically attract 5% GST without input tax credit or 18% GST with input tax credit, depending on the type of restaurant and services provided.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How to calculate GST on services with multiple rates?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>When multiple GST rates apply to different services, calculate GST for each service separately using the applicable rate and then sum up the total GST liability. Use our GST calculator with selectable rates for accurate computations.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between CGST, SGST, and IGST?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>CGST is levied by the Central Government on intra-state supplies, SGST by the State Government on intra-state supplies, and IGST on inter-state supplies. For intra-state transactions, CGST and SGST are each half of the total GST rate. For inter-state transactions, IGST is the full GST rate.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I claim GST input tax credit on all purchases?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>No, ITC cannot be claimed on certain supplies like food and beverages for personal consumption, outdoor catering, beauty treatment services, and goods used for personal consumption. Also, you can only claim ITC on business-related purchases with valid GST invoices.</p>"
+            }
+          }
+        ]
+      }
+      </script>
+    </>
+  )}
+
+  {ruleId === 'india-tds-tds-calculator' && (
+    <>
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">How to Calculate TDS on Various Payments in India</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4">
+            <p>Tax Deducted at Source (TDS) is a mechanism for collecting income tax at the source of income. Our TDS calculator helps you compute TDS on various payment types including salary, professional fees, rent, interest, and contractor payments for FY 2024-25.</p>
+            
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">TDS Calculation Guide</h3>
+            <ol class="list-decimal pl-6 space-y-2">
+              <li>Select the payment type: Salary, Professional Fees, Contractor, Interest, Rent, or Dividend</li>
+              <li>Enter the amount on which TDS needs to be calculated</li>
+              <li>For professionals and contractors, indicate if PAN is available</li>
+              <li>Click Calculate to see the TDS rate, TDS amount, and net amount</li>
+              <li>Use the results for accurate compliance and deduction planning</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">TDS Rates for Different Payment Types - FY 2024-25</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="overflow-x-auto">
+            <table class="min-w-full text-sm">
+              <thead>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <th class="text-left py-3 px-4 font-semibold text-ink dark:text-on-primary">Payment Type</th>
+                  <th class="text-left py-3 px-4 font-semibold text-ink dark:text-on-primary">Section</th>
+                  <th class="text-left py-3 px-4 font-semibold text-ink dark:text-on-primary">TDS Rate</th>
+                  <th class="text-left py-3 px-4 font-semibold text-ink dark:text-on-primary">Threshold</th>
+                </tr>
+              </thead>
+              <tbody class="text-body dark:text-muted">
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4">Salary</td>
+                  <td class="py-3 px-4">192</td>
+                  <td class="py-3 px-4">As per applicable slabs</td>
+                  <td class="py-3 px-4">No threshold for salaried</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4">Professional Fees</td>
+                  <td class="py-3 px-4">194J</td>
+                  <td class="py-3 px-4">10%</td>
+                  <td class="py-3 px-4">₹30,000</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4">Contractor</td>
+                  <td class="py-3 px-4">194C</td>
+                  <td class="py-3 px-4">1% / 2%</td>
+                  <td class="py-3 px-4">₹30,000 (single) / ₹1 lakh (aggregate)</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4">Interest</td>
+                  <td class="py-3 px-4">194A</td>
+                  <td class="py-3 px-4">10%</td>
+                  <td class="py-3 px-4">₹40,000</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4">Rent</td>
+                  <td class="py-3 px-4">194I</td>
+                  <td class="py-3 px-4">10%</td>
+                  <td class="py-3 px-4">₹2.4 lakh</td>
+                </tr>
+                <tr class="border-b border-hairline dark:border-white/15">
+                  <td class="py-3 px-4">Dividend</td>
+                  <td class="py-3 px-4">194</td>
+                  <td class="py-3 px-4">10%</td>
+                  <td class="py-3 px-4">₹5,000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Understanding TDS Compliance</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <div class="prose max-w-none text-body dark:text-muted space-y-4">
+            <p>TDS compliance involves several important steps for deductors:</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>Deduction:</strong> TDS must be deducted at the time of payment or credit, whichever is earlier</li>
+              <li><strong>Deposit:</strong> TDS must be deposited with the government by the 7th of the following month through Challan No. 281</li>
+              <li><strong>Returns:</strong> Quarterly TDS returns must be filed on time (Form 24Q for salary, Form 26Q for others)</li>
+              <li><strong>TDS Certificates:</strong> Form 16 for salary, Form 16A for other payments must be issued to deductees</li>
+              <li><strong>Form 26AS:</strong> Verify TDS credits in Form 26AS on the Income Tax portal</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Related Calculators</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {relatedCalculators.map(rc => (
+            <a href={`/countries/${rc.country}/${rc.category}/${rc.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink dark:text-on-primary">{rc.name}</h3>
+              <p class="text-sm text-muted mt-1 dark:text-muted">{country.name} - {category.name}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Suggested Articles</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {suggestedArticles.map(article => (
+            <a href={`/blogs/${article.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+              <h3 class="font-semibold text-ink dark:text-on-primary">{article.title}</h3>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Official Resources</h2>
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+          <ul class="space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Income Tax Department - TDS Guide</a></li>
+            <li><a href="https://www.tin-nsdl.com" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">TIN-NSDL - TDS Portal</a></li>
+            <li><a href="https://www.incometax.gov.in/iec/foportal/help/tds" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">TDS Help & Support</a></li>
+            <li><a href="https://www.cbic.gov.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">CBDT Notifications</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the TDS rate for professional fees without PAN?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>Without PAN, TDS on professional fees is deducted at a higher rate of 20% instead of the usual 10%. Always provide PAN to avoid higher TDS deductions.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How to calculate TDS on salary for FY 2024-25?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>Use our TDS calculator for FY 2024-25 to compute TDS on salary. Enter your annual salary, other income, applicable deductions under Chapter VI-A, and select your tax regime to get the exact TDS amount.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the TDS due date for monthly deductions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>TDS must be deposited by the 7th of the following month. For March deductions, the due date is April 30. Late payment attracts interest at 1.5% per month under Section 201.</p>"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I claim TDS refund if excess tax is deducted?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "<p>Yes, if excess TDS is deducted, you can claim a refund by filing your income tax return. The excess TDS will be reflected in your Form 26AS credit statement. The refund will be processed after verification by the Income Tax Department.</p>"
+            }
+          }
+        ]
+      }
+      </script>
+    </>
+  )}
 </CountryLayout>
