@@ -81,7 +81,7 @@ export const unitedStates: Country = {
     { slug: "federal-income-tax", name: "Federal Income Tax Calculator", category: "income-tax" },
     { slug: "capital-gains-calculator", name: "Capital Gains Tax Calculator", category: "capital-gains-tax" }
   ],
-  relatedCountries: ["canada", "united-kingdom", "australia"],
+  relatedCountries: ["united-kingdom"],
   latestUpdates: [
     { date: "2024-01-01", title: "2024 Tax Brackets Updated", description: "IRS released updated tax brackets for 2024." }
   ]

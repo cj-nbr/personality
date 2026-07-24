@@ -47,7 +47,7 @@ export const pakistan: Country = {
   popularCalculators: [
     { slug: "income-tax-calculator", name: "Income Tax Calculator", category: "income-tax" }
   ],
-  relatedCountries: ["india", "bangladesh"],
+  relatedCountries: ["india"],
   latestUpdates: [
     { date: "2024-06-01", title: "2024-25 Budget Tax Changes", description: "New tax brackets introduced in the federal budget." }
   ]

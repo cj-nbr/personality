@@ -63,7 +63,7 @@ export const unitedKingdom: Country = {
     { slug: "income-tax-calculator", name: "Income Tax Calculator", category: "income-tax" },
     { slug: "vat-calculator", name: "VAT Calculator", category: "vat" }
   ],
-  relatedCountries: ["united-states", "canada", "australia"],
+  relatedCountries: ["united-states"],
   latestUpdates: [
     { date: "2024-04-06", title: "2024/25 Tax Year Updates", description: "New tax rates and thresholds announced for the new tax year." }
   ]

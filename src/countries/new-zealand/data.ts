@@ -47,7 +47,7 @@ export const newZealand: Country = {
   popularCalculators: [
     { slug: "income-tax-calculator", name: "Income Tax Calculator", category: "income-tax" }
   ],
-  relatedCountries: ["australia", "singapore", "united-kingdom"],
+  relatedCountries: ["singapore", "united-kingdom"],
   latestUpdates: [
     { date: "2024-03-31", title: "2024 Tax Rates Updated", description: "IRD released updated tax rates for 2024." }
   ]

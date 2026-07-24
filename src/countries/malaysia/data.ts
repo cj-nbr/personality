@@ -47,7 +47,7 @@ export const malaysia: Country = {
   popularCalculators: [
     { slug: "income-tax-calculator", name: "Income Tax Calculator", category: "income-tax" }
   ],
-  relatedCountries: ["singapore", "indonesia", "thailand"],
+  relatedCountries: ["singapore", "indonesia"],
   latestUpdates: [
     { date: "2024-01-01", title: "Budget 2024 Tax Changes", description: "New tax reliefs and revised income tax rates announced." }
   ]

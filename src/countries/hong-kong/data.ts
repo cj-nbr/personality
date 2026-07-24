@@ -47,7 +47,7 @@ export const hongKong: Country = {
   popularCalculators: [
     { slug: "salaries-tax-calculator", name: "Salaries Tax Calculator", category: "salaries-tax" }
   ],
-  relatedCountries: ["singapore", "malaysia", "china"],
+  relatedCountries: ["singapore", "malaysia"],
   latestUpdates: [
     { date: "2024-04-01", title: "2024/25 Tax Rates Released", description: "IRD released updated tax rates for the new assessment year." }
   ]
