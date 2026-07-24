@@ -632,5 +632,16 @@
   "Gross income minus total tax": "總收入減總稅額",
   "Personal allowance: £12,570. Basic rate: £37,430 x 20% = £7,486.": "個人免稅額：£12,570。基本稅率：£37,430 x 20% = £7,486。",
   "Profits Tax Rate": "利得稅稅率",
-  "SST Amount": "SST金額"
+  "SST Amount": "SST金額",
+  "Enter amount": "輸入金額",
+  "Enter your annual earnings": "輸入您的年度收入",
+  "Enter 401(k) and other pre-tax deductions": "輸入401(k)及其他預稅扣除額",
+  "Enter taxable income": "輸入應稅收入",
+  "Enter your capital gain": "輸入您的資本收益",
+  "Enter your ordinary income": "輸入您的普通收入",
+  "Enter annual salary": "輸入年薪",
+  "Interest, rental, or other income": "利息、租金或其他收入",
+  "Enter HRA received (Old regime only)": "輸入已收HRA（僅適用舊稅制）",
+  "Enter mandatory contributions": "輸入強制性供款",
+  "Enter total itemized deductions": "輸入明細扣除總額"
 }

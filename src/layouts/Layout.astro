@@ -214,7 +214,7 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
             }
           }
           if (changed && textNode.parentElement) {
-            textNode.parentElement.textContent = newText;
+            textNode.textContent = newText;
           }
         });
       });

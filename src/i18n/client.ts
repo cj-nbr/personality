@@ -248,7 +248,7 @@ function translateDynamicContent(lang: LanguageCode) {
       }
 
       if (changed && textNode.parentElement) {
-        textNode.parentElement.textContent = newText;
+        textNode.textContent = newText;
       }
     });
   };
