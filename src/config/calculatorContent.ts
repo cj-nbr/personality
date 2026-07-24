@@ -218,83 +218,90 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
 
   "pakistan-income-tax-income-tax-calculator": {
     "howToUse": {
-        "title": "How to Use",
-        "html": "<p>Use this Pakistan Income Tax calculator to estimate your tax liability. Enter the required details and click Calculate.</p>"
+        "title": "How to Use the Pakistan Income Tax Calculator",
+        "html": "<p>Use this <strong>Pakistan income tax calculator</strong> to estimate your FBR tax liability:</p><ol class=\"list-decimal pl-6 space-y-2\"><li>Enter your <strong>annual income</strong> in PKR from all sources including salary, business, and investments.</li><li>Select your <strong>tax year</strong> (e.g., 2024/25, 2023/24) to apply the correct FBR tax slabs.</li><li>Choose your <strong>taxpayer category</strong>: salaried individual, freelancer, or business.</li><li>Enter any <strong>allowable deductions</strong> such as charitable donations, life insurance premiums, or pension contributions.</li><li>Click <strong>Calculate</strong> to see your income tax, effective tax rate, and take-home pay.</li></ol><p>This <strong>tax calculator Pakistan</strong> supports both salaried individuals and businesses. Use our <a href=\"/countries/pakistan/income-tax\">Pakistan income tax guide</a> for more details on deductions and exemptions.</p>"
     },
     "understandingResults": {
-        "title": "Understanding Results",
-        "html": "<p><strong>Taxable Income:</strong> Income subject to tax. <strong>Tax Amount:</strong> Total tax liability. <strong>Effective Rate:</strong> Tax as percentage of income. <strong>Take-Home Pay:</strong> Income after tax.</p>"
+        "title": "Understanding Your Pakistan Income Tax Results",
+        "html": "<p><strong>Total Income:</strong> Your gross annual income before deductions.<br><strong>Allowable Deductions:</strong> Donations, insurance, pension, and other deductions under FBR rules.<br><strong>Taxable Income:</strong> Income minus allowable deductions.<br><strong>Income Tax:</strong> Computed using the applicable FBR progressive tax slabs.<br><strong>Effective Rate:</strong> Your total tax as a percentage of your total income.<br><strong>Take-Home Pay:</strong> Your income after income tax. Use our <a href=\"/countries/pakistan/income-tax/income-tax-calculator\">Pakistan tax calculator</a> to explore different scenarios.</p>"
     },
     "formula": {
-        "title": "Formula",
-        "html": "<p>Tax is computed using applicable rates and rules for Pakistan. Review the detailed methodology above for assumptions and calculations.</p>"
+        "title": "Pakistan Income Tax Formula",
+        "html": "<p><strong>Taxable Income = Total Income - Allowable Deductions</strong></p><p>Income Tax is then computed using <strong>progressive tax slabs</strong> announced by FBR for the relevant tax year. Tax rates range from 0% to 35% depending on your taxable income bracket.</p><p>Use our <strong>Pakistan income tax calculator</strong> to apply this formula automatically with the latest FBR rates.</p>"
     },
     "taxSlabs": {
-        "title": "Tax Slabs",
-        "html": "<p>Pakistan Income Tax slabs vary based on income level and taxpayer profile. Use this calculator to determine your exact liability under current rules.</p>"
+        "title": "Pakistan Income Tax Slabs for Salaried Individuals",
+        "html": "<p>Pakistan uses progressive tax slabs for salaried individuals. The tax-free limit is PKR 600,000 per year for FY 2024/25. Tax slabs apply to taxable income after deductions.</p><h3 class=\"text-xl font-semibold mt-4 mb-2\">Example Tax Slabs (Salaried Individuals)</h3><table class=\"w-full text-left border-collapse mt-2\"><thead><tr class=\"border-b\"><th class=\"py-2\">Taxable Income (PKR)</th><th class=\"py-2\">Rate</th></tr></thead><tbody><tr><td class=\"py-2\">Up to 600,000</td><td class=\"py-2\">0%</td></tr><tr><td class=\"py-2\">600,001 - 1,200,000</td><td class=\"py-2\">5%</td></tr><tr><td class=\"py-2\">1,200,001 - 2,400,000</td><td class=\"py-2\">15%</td></tr><tr><td class=\"py-2\">2,400,001 - 3,600,000</td><td class=\"py-2\">25%</td></tr><tr><td class=\"py-2\">3,600,001 - 6,000,000</td><td class=\"py-2\">30%</td></tr><tr><td class=\"py-2\">Above 6,000,000</td><td class=\"py-2\">35%</td></tr></tbody></table><p>Use our <a href=\"/countries/pakistan/income-tax/income-tax-calculator\">Pakistan income tax calculator</a> to compute your exact tax based on the latest FBR slabs.</p>"
     },
     "commonMistakes": {
-        "title": "Common Mistakes",
-        "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Not updating inputs for the correct tax year.</li><li>Using incorrect residency or employment status.</li><li>Forgetting to account for all income sources.</li><li>Not considering eligible deductions and reliefs.</li></ul>"
+        "title": "Common Mistakes to Avoid When Using the Pakistan Tax Calculator",
+        "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Not including all income sources such as bonuses, dividends, and rental income.</li><li>Missing allowable deductions like charitable donations, life insurance premiums, and pension contributions.</li><li>Confusing the tax year (July 1 to June 30) with the calendar year.</li><li>Not filing a tax return even if you did not receive a notice from FBR.</li><li>Assuming agricultural income is always exempt - only certain types of agricultural income are exempt.</li></ul><p>Use our <strong>Pakistan income tax calculator</strong> to ensure you account for all deductions and calculate your tax accurately.</p>"
     },
     "relatedCalculators": {
-        "title": "Related Calculators",
-        "html": "<div class=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n    <a href=\"/countries/pakistan\" class=\"block rounded border p-4 hover:border-primary transition\">More Pakistan Calculators</a>\n    <a href=\"/countries\" class=\"block rounded border p-4 hover:border-primary transition\">All Countries</a>\n    <a href=\"/\" class=\"block rounded border p-4 hover:border-primary transition\">Home</a>\n  </div>"
+        "title": "Related Pakistan Tax Calculators",
+        "html": "<div class=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n    <a href=\"/countries/pakistan/sales-tax/sales-tax-calculator\" class=\"block rounded border p-4 hover:border-primary transition\">Pakistan Sales Tax Calculator</a>\n    <a href=\"/countries/pakistan/income-tax/income-tax-calculator\" class=\"block rounded border p-4 hover:border-primary transition\">Pakistan Income Tax Calculator</a>\n    <a href=\"/countries\" class=\"block rounded border p-4 hover:border-primary transition\">All Countries</a>\n  </div>"
     },
     "suggestedArticles": {
-        "title": "Suggested Articles",
-        "html": "<div class=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n    <a href=\"/countries/pakistan/income-tax\" class=\"block rounded border p-4 hover:border-primary transition\">Income Tax Guide</a>\n    <a href=\"/countries/pakistan\" class=\"block rounded border p-4 hover:border-primary transition\">Pakistan Tax Overview</a>\n    <a href=\"/\" class=\"block rounded border p-4 hover:border-primary transition\">All Calculators</a>\n  </div>"
+        "title": "Suggested Articles on Pakistan Tax",
+        "html": "<div class=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n    <a href=\"/blogs/pakistan-income-tax-guide\" class=\"block rounded border p-4 hover:border-primary transition\">Pakistan Income Tax Guide</a>\n    <a href=\"/blogs/pakistan-fbr-tax-slabs\" class=\"block rounded border p-4 hover:border-primary transition\">FBR Tax Slabs Explained</a>\n    <a href=\"/blogs/pakistan-tax-filing-guide\" class=\"block rounded border p-4 hover:border-primary transition\">Pakistan Tax Filing Guide</a>\n  </div>"
     },
     "officialResources": {
         "title": "Official Resources",
-        "html": "<ul class=\"space-y-2\"><li><a href=\"https://www.fbr.gov.pk\" target=\"_blank\" rel=\"noopener noreferrer\">FBR</a></li></ul>"
+        "html": "<ul class=\"space-y-2\"><li><a href=\"https://www.fbr.gov.pk\" target=\"_blank\" rel=\"noopener noreferrer\">FBR Official Website</a></li><li><a href=\"https://iris.fbr.gov.pk\" target=\"_blank\" rel=\"noopener noreferrer\">FBR Iris Portal</a></li><li><a href=\"https://www.fbr.gov.pk/tax-information/income-tax-rates\" target=\"_blank\" rel=\"noopener noreferrer\">FBR Income Tax Rates</a></li></ul>"
     },
     "faqSchema": {
-        "What is the standard deduction for Income Tax in Pakistan?": "Standard deductions vary by country. Check the latest official guidelines for your jurisdiction.",
-        "How to calculate Income Tax on salary in Pakistan?": "Enter your annual income, select your tax year, and use the calculator to get an estimate.",
-        "What are the Income Tax slabs in Pakistan?": "Slabs vary by income level and tax year. The calculator shows the applicable rates."
+        "How much tax is deducted from salary in Pakistan?": "Tax deduction from salary in Pakistan depends on your taxable income and FBR tax slabs. Monthly tax is calculated based on annual taxable income after deductions.",
+        "What is the tax-free limit for salary in Pakistan?": "The tax-free limit for salaried individuals in Pakistan is PKR 600,000 per year for the 2024/25 tax year.",
+        "What are the FBR tax slabs for FY 2026–27?": "FBR tax slabs for salaried individuals range from 0% to 35% on annual taxable income. The slabs are progressive, with higher incomes taxed at higher rates.",
+        "How is monthly salary tax calculated in Pakistan?": "Monthly salary tax is calculated by dividing your annual taxable income by 12, then applying the applicable FBR tax slab. Employers deduct tax at source under Section 159.",
+        "Are medical and house rent allowances taxable?": "Medical allowance and house rent allowance in Pakistan are generally taxable as part of your salary income, though certain exemptions may apply.",
+        "How do I calculate tax if I change jobs mid-year?": "If you change jobs mid-year, your total income from both employers is combined for the year, and tax is calculated on the aggregate income.",
+        "Who qualifies as a Salaried Individual for FBR?": "A salaried individual for FBR purposes is any person receiving income from employment, pension, or annuity.",
+        "What is the tax rate for freelancers and sole proprietors in Pakistan?": "Freelancers and sole proprietors are taxed at the same progressive rates as individuals, ranging from 0% to 35% on net business income.",
+        "Can I use an online tax calculator for official tax filing?": "Our online tax calculator Pakistan is for estimation and planning only. For official filing, use the FBR Iris portal.",
+        "What is the penalty for non-filing tax in Pakistan?": "FBR may impose penalties up to PKR 100,000 or more for non-filing. Non-filers also face higher withholding tax rates."
     }
-},
+  },
 
   "pakistan-sales-tax-sales-tax-calculator": {
     "howToUse": {
-        "title": "How to Use",
-        "html": "<p>Use this Pakistan Sales Tax calculator to estimate your tax liability. Enter the required details and click Calculate.</p>"
+        "title": "How to Use the Pakistan Sales Tax Calculator",
+        "html": "<p>Use this <strong>Pakistan sales tax calculator</strong> to estimate sales tax on goods and services:</p><ol class=\"list-decimal pl-6 space-y-2\"><li>Enter the <strong>taxable value</strong> of goods or services in PKR.</li><li>Select the <strong>sales tax rate</strong> (standard 18% or reduced rate if applicable).</li><li>Choose whether you want to add tax to a net amount or extract tax from a gross amount.</li><li>Click <strong>Calculate</strong> to see the sales tax amount and total value.</li></ol><p>This <strong>sales tax calculator pakistan</strong> uses the standard 18% sales tax rate. Use our <a href=\"/countries/pakistan/sales-tax\">Pakistan sales tax guide</a> for more information.</p>"
     },
     "understandingResults": {
-        "title": "Understanding Results",
-        "html": "<p><strong>Taxable Income:</strong> Income subject to tax. <strong>Tax Amount:</strong> Total tax liability. <strong>Effective Rate:</strong> Tax as percentage of income. <strong>Take-Home Pay:</strong> Income after tax.</p>"
+        "title": "Understanding Your Pakistan Sales Tax Results",
+        "html": "<p><strong>Taxable Value:</strong> The net value of goods or services before tax.<br><strong>Sales Tax Rate:</strong> The applicable rate, typically 18% for most goods and services.<br><strong>Sales Tax Amount:</strong> The tax computed on the taxable value.<br><strong>Total Value:</strong> Taxable value plus sales tax. Use our <a href=\"/countries/pakistan/sales-tax/sales-tax-calculator\">Pakistan GST calculator</a> for your calculations.</p>"
     },
     "formula": {
-        "title": "Formula",
-        "html": "<p>Tax is computed using applicable rates and rules for Pakistan. Review the detailed methodology above for assumptions and calculations.</p>"
+        "title": "Pakistan Sales Tax Formula",
+        "html": "<p><strong>Sales Tax = Taxable Value x Sales Tax Rate</strong></p><p>For example, if the taxable value is PKR 1,000 and the sales tax rate is 18%, the sales tax is PKR 180, and the total amount payable is PKR 1,180.</p><p>Use our <strong>Pakistan sales tax calculator</strong> to apply this formula automatically.</p>"
     },
     "taxSlabs": {
-        "title": "Tax Slabs",
-        "html": "<p>Pakistan Sales Tax slabs vary based on income level and taxpayer profile. Use this calculator to determine your exact liability under current rules.</p>"
+        "title": "Pakistan Sales Tax Rates",
+        "html": "<p>Pakistan imposes sales tax on most goods and services at the <strong>standard rate of 18%</strong>. Some items are exempt or taxed at reduced rates.</p><h3 class=\"text-xl font-semibold mt-4 mb-2\">Common Sales Tax Rates</h3><table class=\"w-full text-left border-collapse mt-2\"><thead><tr class=\"border-b\"><th class=\"py-2\">Category</th><th class=\"py-2\">Rate</th></tr></thead><tbody><tr><td class=\"py-2\">Most Goods and Services</td><td class=\"py-2\">18%</td></tr><tr><td class=\"py-2\">Essential Items (e.g., unprocessed food)</td><td class=\"py-2\">Exempt</td></tr><tr><td class=\"py-2\">Reduced Rate Items</td><td class=\"py-2\">Varies by item</td></tr></tbody></table><p>Use our <a href=\"/countries/pakistan/sales-tax/sales-tax-calculator\">Pakistan GST calculator</a> to compute your sales tax.</p>"
     },
     "commonMistakes": {
-        "title": "Common Mistakes",
-        "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Not updating inputs for the correct tax year.</li><li>Using incorrect residency or employment status.</li><li>Forgetting to account for all income sources.</li><li>Not considering eligible deductions and reliefs.</li></ul>"
+        "title": "Common Mistakes to Avoid When Using the Pakistan Sales Tax Calculator",
+        "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Applying the wrong sales tax rate to exempt or reduced-rate items.</li><li>Forgetting to register for sales tax when turnover exceeds the FBR threshold.</li><li>Missing sales tax filing deadlines, which can result in penalties.</li><li>Not maintaining proper records of sales tax collected and paid.</li></ul><p>Use our <strong>Pakistan sales tax calculator</strong> to estimate your liability accurately.</p>"
     },
     "relatedCalculators": {
-        "title": "Related Calculators",
-        "html": "<div class=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n    <a href=\"/countries/pakistan\" class=\"block rounded border p-4 hover:border-primary transition\">More Pakistan Calculators</a>\n    <a href=\"/countries\" class=\"block rounded border p-4 hover:border-primary transition\">All Countries</a>\n    <a href=\"/\" class=\"block rounded border p-4 hover:border-primary transition\">Home</a>\n  </div>"
+        "title": "Related Pakistan Tax Calculators",
+        "html": "<div class=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n    <a href=\"/countries/pakistan/income-tax/income-tax-calculator\" class=\"block rounded border p-4 hover:border-primary transition\">Pakistan Income Tax Calculator</a>\n    <a href=\"/countries/pakistan/sales-tax/sales-tax-calculator\" class=\"block rounded border p-4 hover:border-primary transition\">Pakistan Sales Tax Calculator</a>\n    <a href=\"/countries\" class=\"block rounded border p-4 hover:border-primary transition\">All Countries</a>\n  </div>"
     },
     "suggestedArticles": {
-        "title": "Suggested Articles on Hong Kong Tax",
-        "html": "<div class=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n    <a href=\"/blogs/hong-kong-salaries-tax-guide\" class=\"block rounded border p-4 hover:border-primary transition\">Complete Guide to HK Salaries Tax</a>\n    <a href=\"/blogs/hong-kong-tax-calculator-expats-guide\" class=\"block rounded border p-4 hover:border-primary transition\">HK Tax Calculator for Expats Guide</a>\n    <a href=\"/blogs/hong-kong-tax-allowances-deductions\" class=\"block rounded border p-4 hover:border-primary transition\">HK Tax Allowances and Deductions</a>\n  </div>"
+        "title": "Suggested Articles on Pakistan Sales Tax",
+        "html": "<div class=\"grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3\">\n    <a href=\"/blogs/pakistan-sales-tax-guide\" class=\"block rounded border p-4 hover:border-primary transition\">Pakistan Sales Tax Guide</a>\n    <a href=\"/blogs/pakistan-gst-registration\" class=\"block rounded border p-4 hover:border-primary transition\">Pakistan GST Registration Guide</a>\n    <a href=\"/blogs/pakistan-tax-filing-guide\" class=\"block rounded border p-4 hover:border-primary transition\">Pakistan Tax Filing Guide</a>\n  </div>"
     },
     "officialResources": {
         "title": "Official Resources",
-        "html": "<ul class=\"space-y-2\"><li><a href=\"https://www.fbr.gov.pk\" target=\"_blank\" rel=\"noopener noreferrer\">FBR</a></li></ul>"
+        "html": "<ul class=\"space-y-2\"><li><a href=\"https://www.fbr.gov.pk\" target=\"_blank\" rel=\"noopener noreferrer\">FBR Official Website</a></li><li><a href=\"https://iris.fbr.gov.pk\" target=\"_blank\" rel=\"noopener noreferrer\">FBR Iris Portal</a></li><li><a href=\"https://www.fbr.gov.pk/tax-information/sales-tax\" target=\"_blank\" rel=\"noopener noreferrer\">FBR Sales Tax Information</a></li></ul>"
     },
     "faqSchema": {
-        "What is the standard Sales Tax rate in Pakistan?": "Standard rates vary by country and type of goods/services.",
-        "How to calculate Sales Tax from total amount?": "Enter the total amount and select reverse calculation to extract the tax component.",
-        "What are the different Sales Tax rates in Pakistan?": "Rates may include standard, reduced, zero-rated, and exempt categories."
+        "What is the standard Sales Tax rate in Pakistan?": "The standard sales tax rate in Pakistan is 18% on most goods and services. Some items are exempt or taxed at reduced rates.",
+        "How to calculate Sales Tax from total amount?": "To extract sales tax from a gross amount, divide the total by 1 plus the tax rate, then subtract the net amount from the total.",
+        "What are the different Sales Tax rates in Pakistan?": "Pakistan has a standard rate of 18%, reduced rates for certain items, and exemptions for essential goods like unprocessed food."
     }
-},
+  },
 
   "philippines-income-tax-income-tax-calculator": {
     "howToUse": {
