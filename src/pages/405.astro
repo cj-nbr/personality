@@ -3,16 +3,16 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout 
-  title="404 - Page Not Found" 
-  description="The page you are looking for could not be found."
+  title="405 - Method Not Allowed" 
+  description="The requested method is not allowed for this resource."
   canonical="https://finsiva.com/"
 >
   <meta name="robots" content="noindex, nofollow" />
   <div class="min-h-screen bg-canvas dark:bg-primary flex items-center justify-center">
     <div class="max-w-2xl mx-auto px-4 py-16 text-center">
-      <h1 class="text-6xl font-bold text-ink mb-4">404</h1>
-      <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary" data-i18n="pages.not_found">Page Not Found</h2>
-      <p class="text-body text-lg mb-8 dark:text-muted" data-i18n="not_found.message">The page you are looking for could not be found. It may have been moved, deleted, or you entered the wrong URL.</p>
+      <h1 class="text-6xl font-bold text-ink mb-4">405</h1>
+      <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary" data-i18n="pages.method_not_allowed">Method Not Allowed</h2>
+      <p class="text-body text-lg mb-8 dark:text-muted" data-i18n="method_not_allowed.message">The requested method is not allowed for this resource. Please use a different method or visit our homepage.</p>
       <a href="/" class="inline-block rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">
         <span data-i18n="pages.go_home">Go back home</span>
       </a>

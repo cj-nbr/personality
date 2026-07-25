@@ -6,12 +6,13 @@ interface Props {
   title: string;
   description: string;
   breadcrumbs?: Array<{ label: string; href?: string }>;
+  canonical?: string;
 }
 
-const { title, description, breadcrumbs } = Astro.props;
+const { title, description, breadcrumbs, canonical } = Astro.props;
 ---
 
-<Layout title={`${title} | TaxPortal`} description={description}>
+<Layout title={`${title} | TaxPortal`} description={description} {canonical}>
   {breadcrumbs && breadcrumbs.length > 0 && (
     <script type="application/ld+json" slot="head">
       {
@@ -21,7 +22,7 @@ const { title, description, breadcrumbs } = Astro.props;
           "@type": "ListItem",
           "position": index + 1,
           "name": item.label,
-          "item": item.href ? new URL(item.href, Astro.site || "https://personality.com").href : undefined
+          "item": item.href ? new URL(item.href, Astro.site).href : undefined
         }))
       }
     </script>

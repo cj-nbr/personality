@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
-Sitemap: https://personality.com/sitemap-index.xml
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /build/
+Disallow: /cache/
+
+Sitemap: https://finsiva.com/sitemap.xml
