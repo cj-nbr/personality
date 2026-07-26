@@ -7,21 +7,21 @@ export interface TaxYearConfig {
 
 export const taxYears: Record<string, TaxYearConfig> = {
   "united-states": {
-    current: "2026",
-    supported: ["2023", "2024", "2025", "2026"],
-    previous: ["2023", "2024", "2025"],
+    current: "2025",
+    supported: ["2023", "2024", "2025"],
+    previous: ["2023", "2024"],
     future: [],
   },
   india: {
-    current: "2026-27",
-    supported: ["2024-25", "2025-26", "2026-27"],
-    previous: ["2024-25", "2025-26"],
+    current: "2025-26",
+    supported: ["2024-25", "2025-26"],
+    previous: ["2024-25"],
     future: [],
   },
   "hong-kong": {
-    current: "2026/27",
-    supported: ["2024/25", "2025/26", "2026/27"],
-    previous: ["2024/25", "2025/26"],
+    current: "2025/26",
+    supported: ["2024/25", "2025/26"],
+    previous: ["2024/25"],
     future: [],
   },
   singapore: {
@@ -69,9 +69,9 @@ export const taxYears: Record<string, TaxYearConfig> = {
 };
 
 export function getTaxYears(countrySlug: string): string[] {
-  return taxYears[countrySlug]?.supported || ["2024", "2025", "2026"];
+  return taxYears[countrySlug]?.supported || ["2024", "2025"];
 }
 
 export function getCurrentTaxYear(countrySlug: string): string {
-  return taxYears[countrySlug]?.current || "2026";
+  return taxYears[countrySlug]?.current || "2025";
 }
