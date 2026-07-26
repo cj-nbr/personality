@@ -69,9 +69,9 @@ export const taxYears: Record<string, TaxYearConfig> = {
 };
 
 export function getTaxYears(countrySlug: string): string[] {
-  return taxYears[countrySlug]?.supported || ["2023", "2024"];
+  return taxYears[countrySlug]?.supported || ["2024", "2025", "2026"];
 }
 
 export function getCurrentTaxYear(countrySlug: string): string {
-  return taxYears[countrySlug]?.current || "2024";
+  return taxYears[countrySlug]?.current || "2026";
 }
