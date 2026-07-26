@@ -12,7 +12,7 @@ interface Props {
 const { title, description, breadcrumbs, canonical } = Astro.props;
 ---
 
-<Layout title={`${title} | TaxPortal`} description={description} {canonical}>
+<Layout title={`${title} | Finsiva`} description={description} {canonical}>
   {breadcrumbs && breadcrumbs.length > 0 && (
     <script type="application/ld+json" slot="head">
       {
