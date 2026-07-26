@@ -76,6 +76,28 @@ const baseUrl = getBaseUrl();
   </section>
 
   <section class="mb-12">
+    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.tax_system_overview">Tax System Overview</h2>
+    <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+      <p class="text-body leading-relaxed dark:text-muted"><span data-i18n="country.overview">{country.overview}</span></p>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.tax_brackets">Tax Brackets & Rates</h2>
+    <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+      <p class="text-body dark:text-muted">Tax rates and brackets vary by category and taxpayer profile. Use the calculators above to determine your exact liability based on current official rates.</p>
+      <div class="mt-4 space-y-3">
+        {country.taxCategories.map(cat => (
+          <div class="flex items-center justify-between py-2 border-b border-hairline last:border-0 dark:border-overlay-lighter">
+            <span class="text-ink dark:text-on-primary">{cat.name}</span>
+            <a href={`/countries/${country.slug}/${cat.slug}`} class="text-sm font-medium text-link hover:underline dark:text-link">View details →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-12">
     <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.tax_categories">Tax Categories</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {country.taxCategories.map(category => (

@@ -1,9 +1,14 @@
 ---
-// Shared global header
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === "/";
-  const isCountries = currentPath.startsWith("/countries") || currentPath.startsWith("/countries/");
+const isCountries = currentPath.startsWith("/countries") || currentPath.startsWith("/countries/");
 const isAbout = currentPath === "/about";
+const isBlog = currentPath.startsWith("/blogs");
+const isContact = currentPath === "/contact";
+const isPrivacy = currentPath === "/privacy";
+const isTerms = currentPath === "/terms";
+const isEditorial = currentPath === "/editorial-policy";
+const is404 = currentPath === "/404";
 ---
 
 <header class="sticky top-0 z-50 border-b border-hairline bg-canvas/90 backdrop-blur-md dark:border-overlay-light dark:bg-surface/90">
@@ -11,12 +16,13 @@ const isAbout = currentPath === "/about";
     <div class="flex h-16 items-center justify-between">
       <div class="flex items-center gap-8">
         <a href="/" class="flex items-center gap-2 font-bold text-ink dark:text-on-primary" aria-label="Finsiva Home">
-          <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <span class="text-lg text-ink dark:text-on-primary" translate="no">Finsiva</span>
         </a>
         <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
           <a href="/" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isHome ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.home">Home</span></a>
           <a href="/countries" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isCountries ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.countries">Countries</span></a>
+          <a href="/blogs" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isBlog ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.guides">Guides</span></a>
           <a href="/about" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isAbout ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.about_us">About Us</span></a>
         </nav>
       </div>
@@ -24,9 +30,9 @@ const isAbout = currentPath === "/about";
       <div class="flex items-center gap-2">
       <div class="relative">
         <button id="lang-btn" class="flex items-center gap-1 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:overlay-light" aria-expanded="false" aria-haspopup="true">
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <span class="hidden sm:inline" id="lang-label" data-i18n-title="common.select_language">EN</span>
-          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div id="lang-menu" class="hidden absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-lg border border-hairline bg-canvas py-1 shadow-lg dark:border-overlay-lighter dark:bg-surface" role="menu">
           <div class="px-3 py-2">
@@ -49,12 +55,12 @@ const isAbout = currentPath === "/about";
       </div>
 
         <button id="theme-toggle" class="rounded-pill p-2 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light" aria-label="Toggle theme" data-i18n="common.toggle_theme">
-          <svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-          <svg id="theme-icon-light" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <svg id="theme-icon-light" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         </button>
 
         <button id="mobile-menu-btn" class="md:hidden rounded-pill p-2 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light" aria-expanded="false" aria-label="Open menu" data-i18n="common.open_menu">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </div>
@@ -64,7 +70,9 @@ const isAbout = currentPath === "/about";
     <div class="mx-auto max-w-7xl px-4 py-3 space-y-1">
       <a href="/" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.home">Home</span></a>
       <a href="/countries" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.countries">Countries</span></a>
+      <a href="/blogs" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.guides">Guides</span></a>
       <a href="/about" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.about_us">About Us</span></a>
+      <a href="/contact" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.contact">Contact</span></a>
     </div>
   </div>
 </header>
