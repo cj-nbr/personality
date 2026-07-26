@@ -7,12 +7,13 @@ interface Props {
   description: string;
   breadcrumbs?: Array<{ label: string; href?: string }>;
   canonical?: string;
+  schema?: Record<string, unknown>;
 }
 
-const { title, description, breadcrumbs, canonical } = Astro.props;
+const { title, description, breadcrumbs, canonical, schema } = Astro.props;
 ---
 
-<Layout title={`${title} | Finsiva`} description={description} {canonical}>
+<Layout title={`${title} | Finsiva`} description={description} {canonical} {schema}>
   {breadcrumbs && breadcrumbs.length > 0 && (
     <script type="application/ld+json" slot="head">
       {

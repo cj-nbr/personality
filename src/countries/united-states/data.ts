@@ -411,5 +411,84 @@ export const unitedStates: Country = {
     { date: "2025-01-01", title: "2025 Tax Brackets Updated", description: "IRS released updated tax brackets for 2025 with adjusted standard deductions and bracket thresholds." },
     { date: "2024-12-31", title: "SECURE 2.0 Act Provisions", description: "New retirement account rules and increased catch-up contributions for 2025." },
     { date: "2024-01-01", title: "2024 Tax Brackets Updated", description: "IRS released updated tax brackets and inflation adjustments for tax year 2024." }
+  ],
+  lastUpdated: "2025-06-15",
+  taxYear: "2025",
+  filingDeadline: "April 15, 2025 (individuals); October 15, 2025 (with extension)",
+  paymentDeadline: "Quarterly estimated tax payments due April 15, June 15, September 15, and January 15",
+  taxSystemDetails: {
+    howTaxationWorks: "The US federal income tax uses a progressive rate structure where higher portions of income are taxed at higher rates. Tax is collected through withholding (employer deductions), estimated quarterly payments, and annual filing. The self-assessment system requires taxpayers to calculate and report their own tax liability.",
+    whoPaysTax: "US citizens, green card holders, and resident aliens are taxed on worldwide income. Non-resident aliens are taxed only on US-source income. Employers withhold federal income tax, Social Security, and Medicare from employee wages. Self-employed individuals pay self-employment tax and make quarterly estimated payments.",
+    residentVsNonResident: "Resident aliens are taxed on worldwide income like US citizens. Non-resident aliens are taxed only on US-source income. Residency is determined by the Substantial Presence Test (183 days or more over a 3-year period) or green card status.",
+    personalIncomeTax: "The federal income tax uses seven progressive brackets from 10% to 37%. Rates depend on taxable income and filing status. State income tax varies widely — some states have no income tax, while others have top rates above 10%.",
+    businessTaxOverview: "C-Corporations pay a flat 21% federal corporate tax. Pass-through entities (S-Corps, LLCs, partnerships) are not taxed at the entity level — income flows through to owners' personal returns. Self-employed individuals pay self-employment tax (15.3% for Social Security and Medicare).",
+    importantConcepts: [
+      { title: "Tax Year", description: "The US tax year follows the calendar year (January 1 – December 31). Returns for the calendar year are filed the following April." },
+      { title: "Filing Status", description: "Your filing status determines your standard deduction, tax brackets, and eligibility for credits. Options include Single, Married Filing Jointly, Married Filing Separately, Head of Household, and Qualifying Surviving Spouse." },
+      { title: "Adjusted Gross Income (AGI)", description: "AGI is your gross income minus above-the-line deductions. It determines eligibility for many tax credits and deductions." },
+      { title: "Marginal vs Effective Tax Rate", description: "Your marginal rate is the rate on your last dollar of income. Your effective rate is the average rate across all income." }
+    ]
+  },
+  currentTaxBrackets: [
+    { label: "10%", rate: "10%", threshold: "$0 – $11,600", notes: "Single filers" },
+    { label: "12%", rate: "12%", threshold: "$11,601 – $47,150", notes: "Single filers" },
+    { label: "22%", rate: "22%", threshold: "$47,151 – $100,525", notes: "Single filers" },
+    { label: "24%", rate: "24%", threshold: "$100,526 – $191,950", notes: "Single filers" },
+    { label: "32%", rate: "32%", threshold: "$191,951 – $243,725", notes: "Single filers" },
+    { label: "35%", rate: "35%", threshold: "$243,726 – $609,350", notes: "Single filers" },
+    { label: "37%", rate: "37%", threshold: "Above $609,350", notes: "Single filers; different thresholds for MFJ, HOH, MFS" }
+  ],
+  standardDeductions: "2025 standard deduction: $15,000 (single), $30,000 (MFJ), $22,500 (HOH), $15,000 (MFS). Additional $2,000 for seniors and blind.",
+  majorDeductions: [
+    { name: "Standard Deduction", description: "2025 standard deduction: $15,000 (single), $30,000 (MFJ), $22,500 (HOH), $15,000 (MFS)." },
+    { name: "Itemized Deductions", description: "SALT cap of $10,000, mortgage interest on home loans up to $750,000, charitable contributions, medical expenses exceeding 7.5% of AGI." },
+    { name: "Above-the-Line Deductions", description: "Traditional IRA contributions, student loan interest, HSA contributions, educator expenses, self-employment SE deduction." },
+    { name: "Child Tax Credit", description: "Up to $2,000 per qualifying child under 17. Refundable portion up to $1,700 per child." },
+    { name: "Earned Income Tax Credit", description: "Refundable credit for low-to-moderate income workers. Amount varies by income and number of children." }
+  ],
+  credits: [
+    { name: "Child Tax Credit", description: "Up to $2,000 per qualifying child under 17. Partially refundable." },
+    { name: "Earned Income Tax Credit", description: "Refundable credit for low-to-moderate income workers. Up to $7,430 for 3+ children in 2025." },
+    { name: "American Opportunity Tax Credit", description: "Up to $2,500 per year for the first 4 years of post-secondary education." },
+    { name: "Lifetime Learning Credit", description: "Up to $2,000 per tax return for education expenses." },
+    { name: "Child and Dependent Care Credit", description: "Credit for childcare expenses while working or looking for work." }
+  ],
+  importantDates: [
+    { date: "2025-04-15", title: "Federal Tax Filing Deadline", description: "Deadline for individuals to file federal income tax returns (Form 1040) for tax year 2024." },
+    { date: "2025-04-15", title: "First Quarter Estimated Tax Payment", description: "First quarterly estimated tax payment due for individuals." },
+    { date: "2025-06-16", title: "Second Quarter Estimated Tax Payment", description: "Second quarterly estimated tax payment due." },
+    { date: "2025-09-15", title: "Third Quarter Estimated Tax Payment", description: "Third quarterly estimated tax payment due." },
+    { date: "2026-01-15", title: "Fourth Quarter Estimated Tax Payment", description: "Final quarterly estimated tax payment for tax year 2025." },
+    { date: "2025-10-15", title: "Federal Tax Extension Deadline", description: "Extended deadline for filing federal returns (Form 4868 must be filed by April 15th)." }
+  ],
+  officialResources: [
+    { name: "Internal Revenue Service (IRS)", url: "https://www.irs.gov", description: "Official US federal tax agency — tax forms, publications, filing tools, and payment options." },
+    { name: "IRS Free File", url: "https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free", description: "Free tax filing software for eligible taxpayers through IRS partners." },
+    { name: "IRS Tax Brackets", url: "https://www.irs.gov/newsroom/irs-provides-tax-inflation-adjustments-for-tax-year-2025", description: "Official IRS page with current year tax brackets, standard deductions, and contribution limits." },
+    { name: "Taxpayer Advocate Service", url: "https://www.taxpayeradvocate.irs.gov", description: "Independent IRS organization helping taxpayers resolve problems." }
+  ],
+  countryFAQs: [
+    { question: "When is the federal tax filing deadline?", answer: "The federal tax filing deadline is typically April 15th. Extensions are available until October 15th by filing Form 4868." },
+    { question: "Do I need to file if I live abroad?", answer: "US citizens and green card holders must file federal tax returns regardless of where they live abroad. Foreign earned income exclusion may apply." },
+    { question: "What is the standard deduction for 2025?", answer: "The 2025 standard deduction is $15,000 for single filers, $30,000 for married filing jointly, and $22,500 for heads of household." },
+    { question: "What are the 2025 federal tax brackets?", answer: "The 2025 federal income tax brackets are 10%, 12%, 22%, 24%, 32%, 35%, and 37% depending on your taxable income and filing status." },
+    { question: "What is FICA tax?", answer: "FICA (Federal Insurance Contributions Act) tax funds Social Security and Medicare. Employees pay 7.65% (6.2% Social Security + 1.45% Medicare). Employers match the same amount." },
+    { question: "Do I need to pay estimated taxes?", answer: "If you have income not subject to withholding (self-employment, investments, rental income), you likely need to make quarterly estimated tax payments." }
+  ],
+  educationalDisclaimer: "The tax information and calculators on this page are for educational and informational purposes only. They do not constitute professional tax advice. Tax laws are subject to change. Always consult a qualified tax professional for advice specific to your situation.",
+  dataSources: ["Internal Revenue Service (IRS)", "Tax Cuts and Jobs Act (TCJA)", "SECURE 2.0 Act"],
+  calculationMethodology: "Tax calculations follow the Internal Revenue Code and IRS regulations. Brackets and rates are sourced from the latest IRS Revenue Procedure. The standard deduction amounts are adjusted annually for inflation per the Tax Cuts and Jobs Act. Capital gains rates follow the preferential long-term rates established by the American Taxpayer Relief Act of 2012.",
+  salaryCalculators: [
+    { slug: "federal-income-tax", name: "Federal Income Tax Calculator", category: "income-tax" },
+    { slug: "payroll-tax-calculator", name: "Payroll Tax Calculator", category: "payroll-tax" },
+    { slug: "fica-calculator", name: "FICA Tax Calculator", category: "payroll-tax" }
+  ],
+  capitalGainsCalculators: [
+    { slug: "capital-gains-calculator", name: "Capital Gains Tax Calculator", category: "capital-gains-tax" },
+    { slug: "ltcg-calculator", name: "Long-Term Capital Gains Calculator", category: "capital-gains-tax" }
+  ],
+  corporateCalculators: [
+    { slug: "corporate-tax-calculator", name: "Corporate Tax Calculator", category: "corporate-tax" },
+    { slug: "small-business-tax", name: "Small Business Tax Calculator", category: "corporate-tax" }
   ]
 };

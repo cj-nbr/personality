@@ -16,58 +16,109 @@ if (!country) {
 }
 
 const baseUrl = getBaseUrl();
+
+const allCalculators = [
+  ...(country.salaryCalculators || []),
+  ...(country.capitalGainsCalculators || []),
+  ...(country.corporateCalculators || [])
+];
+
+const popularCalcs = country.popularCalculators || [];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "TaxCountry",
+  name: country.name,
+  description: country.overview,
+  url: `${baseUrl}/countries/${country.slug}`,
+  taxSystem: {
+    "@type": "TaxSystem",
+    name: `${country.name} Tax System`,
+    taxAuthority: {
+      "@type": "GovernmentOrganization",
+      name: country.officialTaxAuthority,
+      url: country.taxAuthorityUrl
+    },
+    taxYear: country.taxYear,
+    currency: country.currency
+  },
+  lastUpdated: country.lastUpdated
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  name: `${country.name} Tax FAQs`,
+  url: `${baseUrl}/countries/${country.slug}`,
+  mainEntity: (country.countryFAQs || []).map(faq => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer
+    }
+  }))
+};
 ---
 
 <CountryLayout
-  title={`${country.name} | Finsiva`}
+  title={country.name}
   description={country.overview}
   breadcrumbs={[
     { label: "Countries", href: "/countries" },
     { label: country.name }
   ]}
   canonical={`${baseUrl}/countries/${country.slug}`}
+  schema={schema}
 >
-  <section class="mb-12">
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- STEP 2: COUNTRY HERO -->
+  <section class="mb-10" aria-labelledby={`${country.slug}-hero`}>
     <div class="rounded-2xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft shadow-sm dark:border-overlay-lighter dark:from-surface dark:to-canvas">
       <div class="p-8 sm:p-10 lg:p-12">
         <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div class="flex-1">
             <div class="flex items-center gap-4 mb-4">
-              <img src={country.flag} alt={country.name} class="h-16 w-auto sm:h-20 object-contain" />
+              <img src={country.flag} alt={`Flag of ${country.name}`} class="h-16 w-auto sm:h-20 object-contain" loading="eager" />
               <div>
-                 <h1 class="text-3xl font-bold text-ink sm:text-4xl dark:text-on-primary"><span data-i18n="country.name">{country.name}</span></h1>
-                 <p class="text-sm text-muted mt-1 dark:text-muted"><span data-i18n="country.continent_header">{country.continent}</span></p>
+                <h1 id={`${country.slug}-hero`} class="text-3xl font-bold text-ink sm:text-4xl dark:text-on-primary">{country.name}</h1>
+                <p class="text-sm text-muted mt-1 dark:text-muted">{country.continent}</p>
               </div>
             </div>
-             <p class="text-lg text-body leading-relaxed mt-4 dark:text-muted"><span data-i18n="country.overview">{country.overview}</span></p>
+            <p class="text-lg text-body leading-relaxed mt-4 dark:text-muted">{country.overview}</p>
             <div class="mt-6 flex flex-wrap items-center gap-3">
               <a
-                href={country.taxAuthorityUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-on-primary transition hover:bg-primary-dark"
+                href={`/countries/${country.slug}/income-tax`}
+                class="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-on-primary transition hover:bg-primary-dark shadow-sm"
               >
-                 <span data-i18n="country.official_tax_authority">{country.officialTaxAuthority}</span>
-                <span aria-hidden="true">↗</span>
+                Calculate Your Tax →
+              </a>
+              <a
+                href={`/countries/${country.slug}`}
+                class="inline-flex items-center gap-2 rounded-lg border border-hairline bg-canvas px-5 py-3 text-sm font-medium text-ink transition hover:border-primary dark:border-overlay-lighter dark:bg-surface"
+              >
+                Explore Tax Info
               </a>
             </div>
           </div>
           <div class="grid w-full max-w-xs grid-cols-2 gap-4 lg:w-auto">
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.currency">Currency</p>
-               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.currency_value">{country.currency}</span></p>
+              <p class="text-xs font-medium uppercase tracking-wider text-muted">Currency</p>
+              <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.currency}</p>
             </div>
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.capital">Capital</p>
-               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.capital_value">{country.capital}</span></p>
+              <p class="text-xs font-medium uppercase tracking-wider text-muted">Capital</p>
+              <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary">{country.capital}</p>
             </div>
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.tax_authority">Tax Authority</p>
-               <p class="mt-1 text-sm font-semibold text-ink leading-snug dark:text-on-primary"><span data-i18n="country.official_tax_authority_value">{country.officialTaxAuthority}</span></p>
+              <p class="text-xs font-medium uppercase tracking-wider text-muted">Tax Authority</p>
+              <p class="mt-1 text-sm font-semibold text-ink leading-snug dark:text-on-primary">{country.officialTaxAuthority}</p>
             </div>
             <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.continent">Continent</p>
-               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.continent_value">{country.continent}</span></p>
+              <p class="text-xs font-medium uppercase tracking-wider text-muted">Tax Year</p>
+              <p class="mt-1 text-sm font-semibold text-ink leading-snug dark:text-on-primary">{country.taxYear}</p>
             </div>
           </div>
         </div>
@@ -75,80 +126,319 @@ const baseUrl = getBaseUrl();
     </div>
   </section>
 
-  <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.tax_system_overview">Tax System Overview</h2>
-    <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
-      <p class="text-body leading-relaxed dark:text-muted"><span data-i18n="country.overview">{country.overview}</span></p>
+  <!-- STEP 3: TAX SYSTEM -->
+  <section class="mb-10" aria-labelledby="tax-system-heading">
+    <h2 id="tax-system-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">How Taxation Works</h2>
+    <div class="space-y-6">
+      <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+        <h3 class="text-lg font-semibold text-ink mb-3 dark:text-on-primary">Who Pays Tax</h3>
+        <p class="text-body leading-relaxed dark:text-muted">{country.taxSystemDetails.whoPaysTax}</p>
+      </div>
+      <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+        <h3 class="text-lg font-semibold text-ink mb-3 dark:text-on-primary">Resident vs Non-Resident Rules</h3>
+        <p class="text-body leading-relaxed dark:text-muted">{country.taxSystemDetails.residentVsNonResident}</p>
+      </div>
+      <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+        <h3 class="text-lg font-semibold text-ink mb-3 dark:text-on-primary">Personal Income Tax</h3>
+        <p class="text-body leading-relaxed dark:text-muted">{country.taxSystemDetails.personalIncomeTax}</p>
+      </div>
+      <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+        <h3 class="text-lg font-semibold text-ink mb-3 dark:text-on-primary">Business Tax Overview</h3>
+        <p class="text-body leading-relaxed dark:text-muted">{country.taxSystemDetails.businessTaxOverview}</p>
+      </div>
+      {country.taxSystemDetails.importantConcepts.length > 0 && (
+        <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">Important Concepts</h3>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {country.taxSystemDetails.importantConcepts.map(concept => (
+              <div class="rounded-lg border border-hairline bg-canvas-soft p-4 dark:border-overlay-lighter dark:bg-surface">
+                <h4 class="font-semibold text-ink text-sm dark:text-on-primary">{concept.title}</h4>
+                <p class="mt-1 text-sm text-body dark:text-muted">{concept.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   </section>
 
-  <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.tax_brackets">Tax Brackets & Rates</h2>
+  <!-- STEP 4: CURRENT TAX INFORMATION -->
+  <section class="mb-10" aria-labelledby="tax-brackets-heading">
+    <h2 id="tax-brackets-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Current Tax Brackets & Rates</h2>
+    <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface overflow-x-auto">
+      <table class="w-full text-sm" role="table">
+        <thead>
+          <tr class="border-b border-hairline dark:border-overlay-lighter">
+            <th scope="col" class="pb-3 text-left font-semibold text-muted dark:text-muted">Rate</th>
+            <th scope="col" class="pb-3 text-left font-semibold text-muted dark:text-muted">Threshold</th>
+            <th scope="col" class="pb-3 text-left font-semibold text-muted dark:text-muted">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {country.currentTaxBrackets.map(bracket => (
+            <tr class="border-b border-hairline last:border-0 dark:border-overlay-lighter">
+              <td class="py-3 font-semibold text-ink dark:text-on-primary">{bracket.rate}</td>
+              <td class="py-3 text-body dark:text-muted">{bracket.threshold}</td>
+              <td class="py-3 text-sm text-muted dark:text-muted">{bracket.notes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    {country.standardDeductions && (
+      <div class="mt-4 rounded-xl border border-hairline bg-canvas-soft p-4 dark:border-overlay-lighter dark:bg-surface">
+        <h3 class="font-semibold text-ink text-sm dark:text-on-primary">Standard Deduction</h3>
+        <p class="mt-1 text-sm text-body dark:text-muted">{country.standardDeductions}</p>
+      </div>
+    )}
+    {country.majorDeductions.length > 0 && (
+      <div class="mt-4 rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+        <h3 class="font-semibold text-ink mb-3 dark:text-on-primary">Major Deductions</h3>
+        <div class="space-y-3">
+          {country.majorDeductions.map(deduction => (
+            <div class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <div>
+                <p class="font-semibold text-ink text-sm dark:text-on-primary">{deduction.name}</p>
+                <p class="text-sm text-body dark:text-muted">{deduction.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+    {country.credits.length > 0 && (
+      <div class="mt-4 rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+        <h3 class="font-semibold text-ink mb-3 dark:text-on-primary">Tax Credits</h3>
+        <div class="space-y-3">
+          {country.credits.map(credit => (
+            <div class="flex items-start gap-3">
+              <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <div>
+                <p class="font-semibold text-ink text-sm dark:text-on-primary">{credit.name}</p>
+                <p class="text-sm text-body dark:text-muted">{credit.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </section>
+
+  <!-- STEP 5: IMPORTANT DATES -->
+  {country.importantDates.length > 0 && (
+    <section class="mb-10" aria-labelledby="important-dates-heading">
+      <h2 id="important-dates-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Important Dates</h2>
+      <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+        <div class="space-y-4">
+          {country.importantDates.map(date => (
+            <div class="flex items-start gap-4 border-b border-hairline last:border-0 pb-4 last:pb-0 dark:border-overlay-lighter">
+              <div class="flex-shrink-0 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary dark:bg-surface/20 dark:text-link">
+                {date.date}
+              </div>
+              <div>
+                <h4 class="font-semibold text-ink text-sm dark:text-on-primary">{date.title}</h4>
+                <p class="mt-1 text-sm text-body dark:text-muted">{date.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- STEP 6: OFFICIAL RESOURCES -->
+  <section class="mb-10" aria-labelledby="official-resources-heading">
+    <h2 id="official-resources-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Official Resources</h2>
     <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
-      <p class="text-body dark:text-muted">Tax rates and brackets vary by category and taxpayer profile. Use the calculators above to determine your exact liability based on current official rates.</p>
-      <div class="mt-4 space-y-3">
-        {country.taxCategories.map(cat => (
-          <div class="flex items-center justify-between py-2 border-b border-hairline last:border-0 dark:border-overlay-lighter">
-            <span class="text-ink dark:text-on-primary">{cat.name}</span>
-            <a href={`/countries/${country.slug}/${cat.slug}`} class="text-sm font-medium text-link hover:underline dark:text-link">View details →</a>
-          </div>
+      <p class="text-sm text-body mb-4 dark:text-muted">For the most accurate and up-to-date information, visit the official government tax authority:</p>
+      <div class="space-y-3">
+        {country.officialResources.map(resource => (
+          <a
+            href={resource.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-start gap-3 rounded-lg border border-hairline bg-canvas-soft p-4 transition hover:border-primary dark:border-overlay-lighter dark:bg-surface"
+          >
+            <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+            <div>
+              <p class="font-semibold text-ink text-sm dark:text-on-primary">{resource.name}</p>
+              <p class="text-sm text-body dark:text-muted">{resource.description}</p>
+              <p class="mt-1 text-xs text-muted dark:text-muted">{resource.url}</p>
+            </div>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.tax_categories">Tax Categories</h2>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {country.taxCategories.map(category => (
-        <a
-          href={`/countries/${country.slug}/${category.slug}`}
-          class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-overlay-lighter dark:bg-surface"
-        >
-          <div class="flex items-start justify-between">
-             <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary"><span data-i18n="country.category_name">{category.name}</span></h3>
-            <span aria-hidden="true" class="mt-1 text-lg text-muted transition group-hover:translate-x-1 group-hover:text-primary dark:text-muted dark:group-hover:text-link">→</span>
+  <!-- STEP 7: CALCULATOR DISCOVERY -->
+  <section class="mb-10" aria-labelledby="calculators-heading">
+    <h2 id="calculators-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Tax Calculators</h2>
+    {popularCalcs.length > 0 && (
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">Popular Calculators</h3>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {popularCalcs.map(calc => {
+            const category = country.taxCategories.find(c => c.slug === calc.category);
+            return (
+              <a
+                href={`/countries/${country.slug}/${calc.category}/${calc.slug}`}
+                class="group rounded-xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft p-6 transition hover:border-primary hover:shadow-md dark:border-overlay-lighter dark:from-surface dark:to-canvas"
+              >
+                <p class="text-xs font-medium uppercase tracking-wider text-primary dark:text-link">{category?.name ?? calc.category}</p>
+                <h3 class="mt-2 font-semibold text-ink dark:text-on-primary">{calc.name}</h3>
+                <p class="mt-1 text-sm text-muted dark:text-muted">Calculate your tax liability</p>
+                <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link dark:text-link">
+                  Try calculator <span aria-hidden="true">→</span>
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    )}
+    {allCalculators.length > 0 && (
+      <div class="mb-6">
+        <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">Salary Calculators</h3>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {allCalculators.map(calc => {
+            const category = country.taxCategories.find(c => c.slug === calc.category);
+            return (
+              <a
+                href={`/countries/${country.slug}/${calc.category}/${calc.slug}`}
+                class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-overlay-lighter dark:bg-surface"
+              >
+                <p class="text-xs font-medium uppercase tracking-wider text-primary dark:text-link">{category?.name ?? calc.category}</p>
+                <h3 class="mt-2 font-semibold text-ink dark:text-on-primary">{calc.name}</h3>
+                <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link dark:text-link">
+                  Open calculator <span aria-hidden="true">→</span>
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    )}
+    {country.taxCategories.map(cat => (
+      <div class="mt-6" key={cat.slug}>
+        <h3 class="text-lg font-semibold text-ink mb-3 dark:text-on-primary">{cat.name} Calculators</h3>
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {cat.calculators.map(calc => (
+            <a
+              href={`/countries/${country.slug}/${cat.slug}/${calc.slug}`}
+              class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas-soft p-4 transition hover:border-primary dark:border-overlay-lighter dark:bg-surface"
+            >
+              <div class="flex-1">
+                <p class="font-semibold text-ink text-sm dark:text-on-primary">{calc.name}</p>
+                <p class="text-xs text-muted dark:text-muted">{calc.description}</p>
+              </div>
+              <span class="text-link dark:text-link">→</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- STEP 8: FAQs -->
+  {country.countryFAQs && country.countryFAQs.length > 0 && (
+    <section class="mb-10" aria-labelledby="faqs-heading">
+      <h2 id="faqs-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        {country.countryFAQs.map(faq => (
+          <details class="group rounded-xl border border-hairline bg-canvas dark:border-overlay-lighter dark:bg-surface">
+            <summary class="flex cursor-pointer items-center justify-between p-4 font-semibold text-ink dark:text-on-primary list-none">
+              <span>{faq.question}</span>
+              <svg class="h-5 w-5 text-muted transition-transform group-open:rotate-180 dark:text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <p class="px-4 pb-4 text-body dark:text-muted">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- STEP 9: TRUST -->
+  <section class="mb-10" aria-labelledby="trust-heading">
+    <h2 id="trust-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Trust & Transparency</h2>
+    <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+          <div>
+            <h3 class="font-semibold text-ink text-sm dark:text-on-primary">Educational Disclaimer</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">{country.educationalDisclaimer}</p>
           </div>
-           <p class="mt-2 text-sm text-body line-clamp-2 dark:text-muted"><span data-i18n="country.category_description">{category.description}</span></p>
-          <div class="mt-4 flex items-center gap-4 text-xs text-muted dark:text-muted">
-            <span>{category.calculators.length} <span data-i18n="country.calculators">calculators</span></span>
-            <span>{category.guides.length} <span data-i18n="country.guides">guides</span></span>
-            <span>{category.faqs.length} <span data-i18n="country.faqs">FAQs</span></span>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <div>
+            <h3 class="font-semibold text-ink text-sm dark:text-on-primary">Last Updated</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">{country.lastUpdated}</p>
           </div>
-        </a>
-      ))}
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+          <div>
+            <h3 class="font-semibold text-ink text-sm dark:text-on-primary">Data Sources</h3>
+            <ul class="mt-1 space-y-1 text-sm text-body dark:text-muted">
+              {country.dataSources.map(source => (
+                <li>{source}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+          <div>
+            <h3 class="font-semibold text-ink text-sm dark:text-on-primary">Calculation Methodology</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">{country.calculationMethodology}</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+          <div>
+            <h3 class="font-semibold text-ink text-sm dark:text-on-primary">Privacy-First</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">All calculations are performed locally in your browser. No personal data is collected or stored.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  {country.popularCalculators.length > 0 && (
-    <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.popular_calculators">Popular Calculators</h2>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {country.popularCalculators.map(calc => {
-        const category = country.taxCategories.find(c => c.slug === calc.category);
-        return (
-          <a
-            href={`/countries/${country.slug}/${calc.category}/${calc.slug}`}
-            class="rounded-xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft p-6 transition hover:border-primary hover:shadow-md dark:border-overlay-lighter dark:from-surface dark:to-canvas"
-          >
-             <p class="text-xs font-medium uppercase tracking-wider text-primary dark:text-link">
-               <span data-i18n="country.calc_category_name">{category?.name ?? calc.category}</span>
-             </p>
-             <h3 class="mt-2 font-semibold text-ink dark:text-on-primary"><span data-i18n="country.calc_name">{calc.name}</span></h3>
-            <p class="mt-1 text-sm text-muted dark:text-muted" data-i18n="country.calculate_your_tax">Calculate your tax liability</p>
-            <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link dark:text-link">
-              <span data-i18n="country.try_calculator">Try calculator</span> <span aria-hidden="true">→</span>
-            </span>
-          </a>
-        );
-      })}
-    </div>
-  </section>
-)}
+  <!-- STEP 11: RELATED COUNTRIES -->
+  {country.relatedCountries.length > 0 && (
+    <section class="mb-10" aria-labelledby="related-countries-heading">
+      <h2 id="related-countries-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Related Countries</h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {country.relatedCountries.map(slug => {
+          const related = getCountryBySlug(slug);
+          if (!related) return null;
+          return (
+            <a
+              href={`/countries/${related.slug}`}
+              class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-overlay-lighter dark:bg-surface"
+            >
+              <div class="flex items-center gap-3">
+                <img src={related.flag} alt={`Flag of ${related.name}`} class="h-12 w-auto object-contain" loading="lazy" />
+                <div>
+                  <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">{related.name}</h3>
+                  <p class="text-xs text-muted dark:text-muted">{related.continent}</p>
+                </div>
+              </div>
+              <p class="mt-3 text-sm text-body line-clamp-2 dark:text-muted">{related.overview}</p>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  )}
 
+  <!-- STEP 11: LATEST UPDATES -->
   {country.latestUpdates.length > 0 && (
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.latest_updates">Latest Updates</h2>
+    <section class="mb-10" aria-labelledby="latest-updates-heading">
+      <h2 id="latest-updates-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Latest Updates</h2>
       <div class="space-y-4">
         {country.latestUpdates.map(update => (
           <div class="rounded-xl border border-hairline bg-canvas p-6 transition hover:border-hairline dark:border-overlay-lighter dark:bg-surface">
@@ -161,49 +451,36 @@ const baseUrl = getBaseUrl();
                 })}
               </span>
             </div>
-             <h3 class="font-semibold text-ink dark:text-on-primary"><span data-i18n="country.update_title">{update.title}</span></h3>
-             <p class="mt-2 text-sm text-body dark:text-muted"><span data-i18n="country.update_description">{update.description}</span></p>
+            <h3 class="font-semibold text-ink dark:text-on-primary">{update.title}</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">{update.description}</p>
           </div>
         ))}
       </div>
     </section>
   )}
 
-  {country.relatedCountries.length > 0 && (
-    <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.related_countries">Related Countries</h2>
+  <!-- STEP 10: TAX CATEGORIES -->
+  <section class="mb-10" aria-labelledby="tax-categories-heading">
+    <h2 id="tax-categories-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Tax Categories</h2>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {country.relatedCountries.map(slug => {
-        const related = getCountryBySlug(slug);
-        if (!related) return null;
-        const guides = related.taxCategories.flatMap(cat =>
-          cat.guides.slice(0, 2).map(guide => ({ ...guide, categorySlug: cat.slug }))
-        ).slice(0, 2);
-        return (
-          <div
-            class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-overlay-lighter dark:bg-surface"
-          >
-            <a href={`/countries/${related.slug}`} class="flex items-center gap-3">
-                <img src={related.flag} alt={related.name} class="h-12 w-auto object-contain" />
-               <div>
-                  <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary"><span data-i18n="country.related_name">{related.name}</span></h3>
-                  <p class="text-xs text-muted dark:text-muted"><span data-i18n="country.related_continent">{related.continent}</span></p>
-                </div>
-              </a>
-              <p class="mt-3 text-sm text-body line-clamp-2 dark:text-muted"><span data-i18n="country.related_overview">{related.overview}</span></p>
-              {guides.length > 0 && (
-                <div class="mt-3 space-y-1">
-                  {guides.map(guide => (
-                    <a href={`/countries/${related.slug}/${guide.categorySlug}/${guide.slug}`} class="text-sm text-link hover:underline dark:text-link">
-                      {guide.title}
-                    </a>
-                  ))}
-                </div>
-              )}
+      {country.taxCategories.map(category => (
+        <a
+          href={`/countries/${country.slug}/${category.slug}`}
+          class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-overlay-lighter dark:bg-surface"
+        >
+          <div class="flex items-start justify-between">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">{category.name}</h3>
+            <span aria-hidden="true" class="mt-1 text-lg text-muted transition group-hover:translate-x-1 group-hover:text-primary dark:text-muted dark:group-hover:text-link">→</span>
           </div>
-        );
-      })}
+          <p class="mt-2 text-sm text-body line-clamp-2 dark:text-muted">{category.description}</p>
+          <div class="mt-4 flex items-center gap-4 text-xs text-muted dark:text-muted">
+            <span>{category.calculators.length} calculators</span>
+            <span>{category.guides.length} guides</span>
+            <span>{category.faqs.length} FAQs</span>
+          </div>
+        </a>
+      ))}
     </div>
   </section>
-  )}
+
 </CountryLayout>
