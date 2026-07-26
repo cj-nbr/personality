@@ -3,32 +3,46 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-primary: #0f766e;
-  --color-primary-dark: #115e59;
-  --color-secondary: #f59e0b;
-  --color-accent: #3b82f6;
+  --color-primary: #2563EB;
+  --color-primary-dark: #1D4ED8;
+  --color-secondary: #F59E0B;
+  --color-accent: #3B82F6;
   --color-canvas: #ffffff;
   --color-canvas-soft: #f8fafc;
+  --color-surface: #161B22;
   --color-ink: #0f172a;
   --color-muted: #64748b;
   --color-body: #475569;
   --color-on-primary: #ffffff;
-  --color-hairline: #e2e8f0;
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+  --color-border-dark: rgba(255, 255, 255, 0.15);
+  --color-overlay: rgba(255, 255, 255, 0.1);
   --color-link: #2563eb;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
   --radius-pill: 9999px;
   --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .dark {
-  --color-canvas: #0f172a;
-  --color-canvas-soft: #1e293b;
-  --color-ink: #f8fafc;
-  --color-muted: #94a3b8;
-  --color-body: #cbd5e1;
-  --color-on-primary: #f8fafc;
-  --color-hairline: #334155;
-  --color-link: #60a5fa;
+  --color-canvas: #0B0B0F;
+  --color-canvas-soft: #111827;
+  --color-surface: #161B22;
+  --color-ink: #FFFFFF;
+  --color-muted: #8B949E;
+  --color-body: #C9D1D9;
+  --color-on-primary: #FFFFFF;
+  --color-border: #2A2F3A;
+  --color-border-light: #21262D;
+  --color-border-dark: rgba(255, 255, 255, 0.15);
+  --color-overlay: rgba(255, 255, 255, 0.1);
+  --color-link: #58A6FF;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
 }
 
 html {
@@ -59,7 +73,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 2px solid var(--color-primary, #0f766e);
+  outline: 2px solid var(--color-primary, #2563EB);
   outline-offset: 2px;
 }
 
@@ -70,6 +84,22 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   text-wrap: pretty;
+}
+
+.dark .dark\:overlay-light {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .dark\:overlay-lighter {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark .dark\:border-overlay-light {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .dark\:border-overlay-lighter {
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 @media (prefers-reduced-motion: reduce) {

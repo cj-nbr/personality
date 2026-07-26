@@ -28,7 +28,7 @@ const baseUrl = getBaseUrl();
   canonical={`${baseUrl}/countries/${country.slug}`}
 >
   <section class="mb-12">
-    <div class="rounded-2xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft shadow-sm dark:border-white/15 dark:from-primary dark:to-primary">
+    <div class="rounded-2xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft shadow-sm dark:border-overlay-lighter dark:from-surface dark:to-canvas">
       <div class="p-8 sm:p-10 lg:p-12">
         <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div class="flex-1">
@@ -45,7 +45,7 @@ const baseUrl = getBaseUrl();
                 href={country.taxAuthorityUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white transition hover:bg-primary-dark"
+                class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-on-primary transition hover:bg-primary-dark"
               >
                  <span data-i18n="country.official_tax_authority">{country.officialTaxAuthority}</span>
                 <span aria-hidden="true">↗</span>
@@ -53,19 +53,19 @@ const baseUrl = getBaseUrl();
             </div>
           </div>
           <div class="grid w-full max-w-xs grid-cols-2 gap-4 lg:w-auto">
-            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
+            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
               <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.currency">Currency</p>
                <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.currency_value">{country.currency}</span></p>
             </div>
-            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
+            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
               <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.capital">Capital</p>
                <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.capital_value">{country.capital}</span></p>
             </div>
-            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
+            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
               <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.tax_authority">Tax Authority</p>
                <p class="mt-1 text-sm font-semibold text-ink leading-snug dark:text-on-primary"><span data-i18n="country.official_tax_authority_value">{country.officialTaxAuthority}</span></p>
             </div>
-            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
+            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
               <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.continent">Continent</p>
                <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.continent_value">{country.continent}</span></p>
             </div>
@@ -81,7 +81,7 @@ const baseUrl = getBaseUrl();
       {country.taxCategories.map(category => (
         <a
           href={`/countries/${country.slug}/${category.slug}`}
-          class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary"
+          class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-overlay-lighter dark:bg-surface"
         >
           <div class="flex items-start justify-between">
              <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary"><span data-i18n="country.category_name">{category.name}</span></h3>
@@ -107,7 +107,7 @@ const baseUrl = getBaseUrl();
         return (
           <a
             href={`/countries/${country.slug}/${calc.category}/${calc.slug}`}
-            class="rounded-xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:from-primary dark:to-primary"
+            class="rounded-xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft p-6 transition hover:border-primary hover:shadow-md dark:border-overlay-lighter dark:from-surface dark:to-canvas"
           >
              <p class="text-xs font-medium uppercase tracking-wider text-primary dark:text-link">
                <span data-i18n="country.calc_category_name">{category?.name ?? calc.category}</span>
@@ -129,9 +129,9 @@ const baseUrl = getBaseUrl();
       <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.latest_updates">Latest Updates</h2>
       <div class="space-y-4">
         {country.latestUpdates.map(update => (
-          <div class="rounded-xl border border-hairline bg-canvas p-6 transition hover:border-hairline dark:border-white/15 dark:bg-primary">
+          <div class="rounded-xl border border-hairline bg-canvas p-6 transition hover:border-hairline dark:border-overlay-lighter dark:bg-surface">
             <div class="flex items-center gap-3 mb-2">
-              <span class="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary dark:bg-primary/20 dark:text-link">
+              <span class="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary dark:bg-surface/20 dark:text-link">
                 {new Date(update.date).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
@@ -159,7 +159,7 @@ const baseUrl = getBaseUrl();
         ).slice(0, 2);
         return (
           <div
-            class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary"
+            class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-overlay-lighter dark:bg-surface"
           >
             <a href={`/countries/${related.slug}`} class="flex items-center gap-3">
                 <img src={related.flag} alt={related.name} class="h-12 w-auto object-contain" />
