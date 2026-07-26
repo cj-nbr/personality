@@ -107,9 +107,9 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2025",
         options: [
-          { value: "2023", label: "2023" },
           { value: "2024", label: "2024" },
           { value: "2025", label: "2025" },
+          { value: "2026", label: "2026" },
         ],
       },
     ],
@@ -180,8 +180,8 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024",
         options: [
-          { value: "2023", label: "2023 (YA 2023)" },
           { value: "2024", label: "2024 (YA 2024)" },
+          { value: "2025", label: "2025 (YA 2025)" },
         ],
       },
     ],
@@ -287,8 +287,8 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024-25",
         options: [
-          { value: "2023-24", label: "2023-24" },
           { value: "2024-25", label: "2024-25" },
+          { value: "2025-26", label: "2025-26" },
         ],
       },
     ],
@@ -392,8 +392,8 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024-25",
         options: [
-          { value: "2023-24", label: "2023-24" },
           { value: "2024-25", label: "2024-25" },
+          { value: "2025-26", label: "2025-26" },
         ],
       },
     ],
@@ -495,9 +495,9 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024",
         options: [
-          { value: "2023", label: "2023" },
           { value: "2024", label: "2024" },
           { value: "2025", label: "2025" },
+          { value: "2026", label: "2026" },
         ],
       },
     ],
@@ -601,8 +601,8 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024-25",
         options: [
-          { value: "2023-24", label: "2023-24" },
           { value: "2024-25", label: "2024-25" },
+          { value: "2025-26", label: "2025-26" },
         ],
       },
     ],
@@ -717,8 +717,8 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024-25",
         options: [
-          { value: "2023-24", label: "2023-24" },
           { value: "2024-25", label: "2024-25" },
+          { value: "2025-26", label: "2025-26" },
         ],
       },
     ],
@@ -922,9 +922,9 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024",
         options: [
-          { value: "2023", label: "2023" },
           { value: "2024", label: "2024" },
           { value: "2025", label: "2025" },
+          { value: "2026", label: "2026" },
         ],
       },
     ],
@@ -1143,8 +1143,8 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024-25",
         options: [
-          { value: "2023-24", label: "2023-24 (AY 2024-25)" },
           { value: "2024-25", label: "2024-25 (AY 2025-26)" },
+          { value: "2025-26", label: "2025-26 (AY 2026-27)" },
         ],
       },
     ],
@@ -1283,8 +1283,8 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024-25",
         options: [
-          { value: "2023-24", label: "2023-24" },
           { value: "2024-25", label: "2024-25" },
+          { value: "2025-26", label: "2025-26" },
         ],
       },
     ],
@@ -1361,8 +1361,8 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024-25",
         options: [
-          { value: "2023-24", label: "2023-24" },
           { value: "2024-25", label: "2024-25" },
+          { value: "2025-26", label: "2025-26" },
         ],
       },
     ],
@@ -1422,8 +1422,8 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024-25",
         options: [
-          { value: "2023-24", label: "2023-24" },
           { value: "2024-25", label: "2024-25" },
+          { value: "2025-26", label: "2025-26" },
         ],
       },
     ],
@@ -1488,8 +1488,8 @@ export const taxRules: TaxRule[] = [
         required: true,
         defaultValue: "2024",
         options: [
-          { value: "2023", label: "2023 (YA 2024)" },
           { value: "2024", label: "2024 (YA 2025)" },
+          { value: "2025", label: "2025 (YA 2026)" },
         ],
       },
     ],
@@ -1636,8 +1636,8 @@ export const taxRules: TaxRule[] = [
     description: "Calculate your Indonesian income tax.",
     inputs: [
       { id: "annualIncome", label: "Annual Income", type: "number", required: true, placeholder: "Enter your annual income", validation: { min: 0, step: 1000 }},
-      { id: "taxYear", label: "Tax Year", type: "select", required: true, defaultValue: "2024", options: [
-        { value: "2023", label: "2023" }, { value: "2024", label: "2024" }
+      { id: "taxYear", label: "Tax Year", type: "select", required: true, defaultValue: "2026", options: [
+        { value: "2025", label: "2025" }, { value: "2026", label: "2026" }
       ]}
     ],
     outputs: [
