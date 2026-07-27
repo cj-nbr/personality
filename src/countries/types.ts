@@ -12,17 +12,17 @@ export interface TaxCategory {
       slug: string;
       title: string;
       description: string;
-      image: string;
-      sections: Array<{
+      image?: string;
+      sections?: Array<{
         title: string;
         content: string;
       }>;
-      steps: Array<{
+      steps?: Array<{
         step: number;
         title: string;
         description: string;
       }>;
-      tips: string[];
+      tips?: string[];
     }>;
   faqs: Array<{
     question: string;
@@ -105,6 +105,7 @@ export interface Country {
   standardDeductions: string;
   majorDeductions: TaxDeduction[];
   credits: TaxCredit[];
+  exemptions?: TaxDeduction[];
   importantDates: ImportantDate[];
   officialResources: OfficialResource[];
   taxCategories: TaxCategory[];
