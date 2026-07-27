@@ -944,9 +944,9 @@ const mergedContent = {
           else if (ruleId === 'singapore-stamp-duty-stamp-duty-calculator') calcStampDuty();
           else if (ruleId === 'indonesia-income-tax-income-tax-calculator') calcGenericIncomeTax([[60000000,0],[250000000,0.05],[500000000,0.15],[2000000000,0.25],[2500000000,0.30],[10000000,0.35]]);
           else if (ruleId === 'indonesia-vat-vat-calculator') calcGenericVATorGST(0.11, getInput('calculationType') || 'exclusive');
-          
-          if (ruleId === 'united-states-income-tax-effective-tax-rate') calcEffectiveRate();
+          else if (ruleId === 'united-states-income-tax-effective-tax-rate') calcEffectiveRate();
           else if (ruleId === 'united-states-estate-tax-estate-tax-calculator') calcEstateTax();
+          else if (ruleId === 'united-states-payroll-tax-payroll-tax-calculator') calcFICA();
           else if (ruleId === 'united-states-payroll-tax-fica-calculator') calcFICA();
           else if (ruleId === 'united-states-payroll-tax-self-employment-tax') calcFICA();
           else if (ruleId === 'united-states-corporate-tax-small-business-tax') calcCorporate();
