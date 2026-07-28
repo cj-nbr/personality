@@ -281,30 +281,35 @@ const mergedContent = {
             </div>
           </div>
           <div class="rounded-xl border border-hairline bg-canvas-soft p-6 sm:p-8 dark:bg-surface">
-            {rule ? (
-              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {rule.outputs.map((output) => {
-                  const isHighlighted = ['incomeTax', 'totalTax', 'federalTax', 'capitalGainsTax', 'takeHomePay', 'afterTaxIncome', 'afterTaxGain', 'cess', 'totalDeductions', 'stampDuty', 'propertyTax', 'salariesTax', 'profitsTax', 'totalFICA', 'socialSecurity', 'medicare'].includes(output.id);
-                  return (
-                    <div class={"rounded-lg border p-4 " + (isHighlighted ? "border-primary/30 bg-primary/5 dark:border-primary/20 dark:bg-primary/5" : "border-hairline bg-canvas dark:border-overlay-lighter dark:bg-surface")}>
-                      <p class={"text-sm font-medium text-muted dark:text-muted"} data-i18n={output.label}>{output.label}</p>
-                      <p class={"mt-2 font-bold " + (isHighlighted ? "text-2xl text-primary dark:text-on-primary" : "text-xl text-ink dark:text-on-primary")} id={"result-" + output.id}>
-                        {output.format === "currency" ? formatCurrency(0, country.currency) : output.format === "percentage" ? "0%" : "0"}
-                      </p>
-                      <p class="text-xs text-muted mt-1 dark:text-muted" data-i18n={output.description}>{output.description}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <p class="text-3xl font-bold text-primary dark:text-on-primary" id="result-value">
-                {formatCurrency(0, country.currency)}
-              </p>
-            )}
-            <p class="text-sm text-muted mt-4 dark:text-muted" data-i18n="calculator.estimate_disclaimer">
-              This is an estimate. Consult a tax professional for accurate calculations.
-            </p>
-          </div>
+             {rule ? (
+               <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                 {rule.outputs.map((output) => {
+                   const isHighlighted = ['incomeTax', 'totalTax', 'federalTax', 'capitalGainsTax', 'takeHomePay', 'afterTaxIncome', 'afterTaxGain', 'cess', 'totalDeductions', 'stampDuty', 'propertyTax', 'salariesTax', 'profitsTax', 'totalFICA', 'socialSecurity', 'medicare'].includes(output.id);
+                   return (
+                     <div class={"rounded-lg border p-4 " + (isHighlighted ? "border-primary/30 bg-primary/5 dark:border-primary/20 dark:bg-primary/5" : "border-hairline bg-canvas dark:border-overlay-lighter dark:bg-surface")}>
+                       <p class={"text-sm font-medium text-muted dark:text-muted"} data-i18n={output.label}>{output.label}</p>
+                       <p class={"mt-2 font-bold " + (isHighlighted ? "text-2xl text-primary dark:text-on-primary" : "text-xl text-ink dark:text-on-primary")} id={"result-" + output.id}>
+                         {output.format === "currency" ? formatCurrency(0, country.currency) : output.format === "percentage" ? "0%" : "0"}
+                       </p>
+                       <p class="text-xs text-muted mt-1 dark:text-muted" data-i18n={output.description}>{output.description}</p>
+                     </div>
+                   );
+                 })}
+               </div>
+             ) : (
+               <p class="text-3xl font-bold text-primary dark:text-on-primary" id="result-value">
+                 {formatCurrency(0, country.currency)}
+               </p>
+             )}
+
+             <div id="premium-dashboard-wrapper" class="hidden">
+               <div id="premium-dashboard-container"></div>
+             </div>
+
+             <p class="text-sm text-muted mt-4 dark:text-muted" data-i18n="calculator.estimate_disclaimer">
+               This is an estimate. Consult a tax professional for accurate calculations.
+             </p>
+           </div>
           <div class="no-print mt-4">
             <button id="copy-result-text-btn" class="btn btn-ghost btn-sm text-muted hover:text-ink dark:text-muted dark:hover:text-on-primary" aria-label="Copy result text">
               <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
@@ -455,6 +460,359 @@ const mergedContent = {
         if (resultDiv) resultDiv.classList.remove('hidden');
         if (resultEmpty) resultEmpty.classList.add('hidden');
         if (errorDiv) errorDiv.classList.add('hidden');
+        updatePremiumDashboard();
+      }
+
+      function updatePremiumDashboard() {
+        var wrapper = document.getElementById('premium-dashboard-wrapper');
+        var container = document.getElementById('premium-dashboard-container');
+        if (!wrapper || !container) return;
+
+        var sym = currencySymbols[currencyCode] || '$';
+        var ruleEl = form ? form.getAttribute('data-rule-id') : '';
+
+        function getVal(id) {
+          var el = document.getElementById('result-' + id);
+          if (!el) return null;
+          return el.textContent.trim();
+        }
+
+        function parseNum(text) {
+          if (!text) return 0;
+          return parseFloat(text.replace(/[^0-9.-]/g, '')) || 0;
+        }
+
+        var grossText = getVal('grossIncome') || getVal('totalIncome') || getVal('annualIncome') || '';
+        var taxText = getVal('incomeTax') || getVal('totalTax') || getVal('federalTax') || getVal('profitsTax') || getVal('capitalGainsTax') || getVal('salariesTax') || getVal('propertyTax') || getVal('stampDuty') || getVal('totalFICA') || getVal('niContributions') || getVal('estateTax') || getVal('vehicleTax') || getVal('tokenTax') || getVal('transferFee') || getVal('tdsAmount') || getVal('taxAmount') || getVal('gstAmount') || getVal('vatAmount') || getVal('firstRegistrationTax') || getVal('corporateTax') || getVal('seTax') || '';
+        var netText = getVal('takeHomePay') || getVal('afterTaxIncome') || getVal('afterTaxGain') || getVal('netAmount') || '';
+        var effectiveText = getVal('effectiveRate') || '';
+        var taxableText = getVal('taxableIncome') || getVal('netChargeableIncome') || getVal('netAssessableValue') || '';
+
+        var gross = parseNum(grossText);
+        var tax = parseNum(taxText);
+        var net = parseNum(netText);
+        var effective = parseFloat(effectiveText.replace('%', '')) || 0;
+
+        var monthly = net > 0 ? (net / 12) : 0;
+        var weekly = net > 0 ? (net / 52) : 0;
+        var daily = net > 0 ? (net / 365) : 0;
+
+        var additionalCards = '';
+        var highlightIds = ['incomeTax', 'totalTax', 'federalTax', 'capitalGainsTax', 'takeHomePay', 'afterTaxIncome', 'afterTaxGain', 'cess', 'totalDeductions', 'stampDuty', 'propertyTax', 'salariesTax', 'profitsTax', 'totalFICA', 'socialSecurity', 'medicare', 'grossIncome', 'totalIncome', 'taxableIncome', 'netChargeableIncome', 'grossRentalIncome', 'standardDeduction', 'allowances', 'niContributions', 'corporateTax', 'estateTax', 'seTax', 'deductiblePortion', 'tdsRate', 'tdsAmount', 'taxAmount', 'totalAmount', 'netAmount', 'vatAmount', 'gstAmount', 'firstRegistrationTax', 'stampDuty', 'propertyTax', 'vehicleTax', 'tokenTax', 'transferFee', 'additionalMedicare', 'employerMatch', 'itemizedAmount'];
+        var outputLabels = {
+          'grossIncome': 'Gross Total Income', 'totalDeductions': 'Total Deductions', 'taxableIncome': 'Taxable Income',
+          'incomeTax': 'Income Tax', 'cess': 'Health & Education Cess', 'totalTax': 'Total Tax Liability',
+          'effectiveRate': 'Effective Rate', 'takeHomePay': 'Take-Home Pay', 'federalTax': 'Federal Tax',
+          'stateTax': 'State Tax', 'marginalRate': 'Marginal Tax Rate', 'socialSecurity': 'Social Security',
+          'medicare': 'Medicare', 'additionalMedicare': 'Additional Medicare', 'totalFICA': 'Total FICA',
+          'employerMatch': 'Employer Match', 'corporateTax': 'Federal Tax', 'afterTaxIncome': 'After-Tax Income',
+          'capitalGainsTax': 'Capital Gains Tax', 'afterTaxGain': 'After-Tax Gain', 'grossRentalIncome': 'Gross Rental Income',
+          'standardDeduction': 'Standard Deduction', 'netAssessableValue': 'Net Assessable Value', 'propertyTax': 'Property Tax',
+          'stampDuty': 'Stamp Duty', 'totalCost': 'Total Cost', 'totalIncome': 'Total Income', 'allowances': 'Total Allowances',
+          'netChargeableIncome': 'Net Chargeable Income', 'salariesTax': 'Salaries Tax', 'profitsTax': 'Profits Tax',
+          'estateTax': 'Estate Tax', 'taxableEstate': 'Taxable Estate', 'niContributions': 'NI Contributions',
+          'seTax': 'Self-Employment Tax', 'deductiblePortion': 'Deductible Portion', 'tdsRate': 'TDS Rate',
+          'tdsAmount': 'TDS Deducted', 'netAmount': 'Net Amount', 'taxAmount': 'Tax Amount', 'totalAmount': 'Total Amount',
+          'vatAmount': 'VAT Amount', 'gstAmount': 'GST Amount', 'firstRegistrationTax': 'First Registration Tax',
+          'vehicleTax': 'Vehicle Tax', 'tokenTax': 'Token Tax', 'transferFee': 'Transfer Fee'
+        };
+
+        if (form) {
+          var resultEls = form.querySelectorAll('[id^="result-"]');
+          resultEls.forEach(function(el) {
+            var id = el.id.replace('result-', '');
+            var text = el.textContent.trim();
+            if (!text || text === '0' || text === '0%') return;
+            var isHL = highlightIds.indexOf(id) >= 0;
+            var label = outputLabels[id] || id;
+            additionalCards += '<div class="premium-additional-card' + (isHL ? ' premium-additional-card--highlight' : '') + '">' +
+              '<span class="premium-additional-label">' + label + '</span>' +
+              '<span class="premium-additional-value">' + text + '</span>' +
+              '</div>';
+          });
+        }
+
+        var html = '<div class="premium-result-section">' +
+          '<div id="premium-dashboard-inner" class="premium-dashboard">' +
+            '<div class="premium-dashboard-header">' +
+              '<h2 class="premium-dashboard-title">Results Dashboard</h2>' +
+              '<p class="premium-dashboard-subtitle">Your estimated tax breakdown at a glance</p>' +
+            '</div>' +
+            '<div class="premium-summary-grid">' +
+              '<div class="premium-card premium-card--highlight">' +
+                '<div class="premium-card-icon"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>' +
+                '<div class="premium-card-content"><span class="premium-card-label">Gross Income</span><span class="premium-card-value">' + (grossText || 'N/A') + '</span></div>' +
+              '</div>' +
+              '<div class="premium-card premium-card--tax">' +
+                '<div class="premium-card-icon"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 14l6-6m-5.5.5h.01m4.99 5h.01M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l3.5-2 3.5 2 3.5-2 3.5 2z"/></svg></div>' +
+                '<div class="premium-card-content"><span class="premium-card-label">Total Tax</span><span class="premium-card-value">' + (taxText || 'N/A') + '</span></div>' +
+              '</div>' +
+              '<div class="premium-card premium-card--success">' +
+                '<div class="premium-card-icon"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg></div>' +
+                '<div class="premium-card-content"><span class="premium-card-label">Net Income</span><span class="premium-card-value">' + (netText || 'N/A') + '</span></div>' +
+              '</div>' +
+              '<div class="premium-card premium-card--rate">' +
+                '<div class="premium-card-icon"><svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>' +
+                '<div class="premium-card-content"><span class="premium-card-label">Effective Tax Rate</span><span class="premium-card-value">' + (effectiveText || 'N/A') + '</span></div>' +
+              '</div>' +
+            '</div>' +
+            (net > 0 ? '<div class="premium-frequency-grid">' +
+              '<div class="premium-frequency-card"><span class="premium-frequency-label">Monthly Take-home</span><span class="premium-frequency-value">' + sym + monthly.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '</span></div>' +
+              '<div class="premium-frequency-card"><span class="premium-frequency-label">Weekly Take-home</span><span class="premium-frequency-value">' + sym + weekly.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '</span></div>' +
+              '<div class="premium-frequency-card"><span class="premium-frequency-label">Daily Take-home</span><span class="premium-frequency-value">' + sym + daily.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + '</span></div>' +
+            '</div>' : '') +
+            (gross > 0 || taxableText ? '<div class="tax-breakdown">' +
+              '<h3 class="tax-breakdown-title">Tax Breakdown Flow</h3>' +
+              '<div class="tax-breakdown-flow">' +
+                (grossText ? '<div class="tax-breakdown-step"><span>' + grossText + '</span><span class="text-xs text-muted ml-1">Gross Income</span></div>' : '') +
+                '<span class="tax-breakdown-arrow" aria-hidden="true">→</span>' +
+                (taxableText ? '<div class="tax-breakdown-step"><span>' + taxableText + '</span><span class="text-xs text-muted ml-1">Taxable Income</span></div>' : '') +
+                '<span class="tax-breakdown-arrow" aria-hidden="true">→</span>' +
+                (taxText ? '<div class="tax-breakdown-step tax-breakdown-step--highlight"><span>' + taxText + '</span><span class="text-xs text-muted ml-1">Tax</span></div>' : '') +
+                '<span class="tax-breakdown-arrow" aria-hidden="true">→</span>' +
+                (netText ? '<div class="tax-breakdown-step tax-breakdown-step--highlight"><span>' + netText + '</span><span class="text-xs text-muted ml-1">Net Income</span></div>' : '') +
+              '</div>' +
+            '</div>' : '') +
+            (additionalCards ? '<div class="premium-additional-grid">' + additionalCards + '</div>' : '') +
+          '</div>' +
+        '</div>';
+
+        if (tax > 0 && net > 0) {
+          var chartSvg = buildDonutChart(tax, net, sym);
+          html += '<div class="premium-result-section">' +
+            '<h3 class="premium-section-title">Visual Breakdown</h3>' +
+            '<div class="chart-container" role="img" aria-label="Tax vs Take-home chart">' + chartSvg + '</div>' +
+          '</div>';
+        }
+
+        if (gross > 0 && (tax > 0 || net > 0)) {
+          var insightsHtml = buildInsights(gross, tax, net, effective, sym, ruleId);
+          html += '<div class="premium-result-section">' + insightsHtml + '</div>';
+        }
+
+        var termsHtml = buildTaxExplainer(ruleId);
+        html += '<div class="premium-result-section">' + termsHtml + '</div>';
+
+        html += '<div class="premium-result-section">' +
+          '<div class="result-actions" role="region" aria-label="Result actions">' +
+            '<div class="result-actions-grid">' +
+              '<button id="premium-print-btn" class="result-action-btn result-action-btn--print" aria-label="Print calculator results">' +
+                '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>' +
+                '<span>Print</span>' +
+              '</button>' +
+              '<button id="premium-copy-btn" class="result-action-btn result-action-btn--copy" aria-label="Copy summary to clipboard">' +
+                '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>' +
+                '<span>Copy</span>' +
+              '</button>' +
+              '<button id="premium-pdf-btn" class="result-action-btn result-action-btn--pdf" aria-label="Download PDF report">' +
+                '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>' +
+                '<span>PDF</span>' +
+              '</button>' +
+              '<button id="premium-share-btn" class="result-action-btn result-action-btn--share" aria-label="Share this calculator">' +
+                '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>' +
+                '<span>Share</span>' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+
+        container.innerHTML = html;
+        wrapper.classList.remove('hidden');
+
+        var premiumPrintBtn = document.getElementById('premium-print-btn');
+        if (premiumPrintBtn) premiumPrintBtn.addEventListener('click', function() { window.print(); });
+
+        var premiumCopyBtn = document.getElementById('premium-copy-btn');
+        if (premiumCopyBtn) premiumCopyBtn.addEventListener('click', copyPremiumResult);
+
+        var premiumPdfBtn = document.getElementById('premium-pdf-btn');
+        if (premiumPdfBtn) premiumPdfBtn.addEventListener('click', function() { window.print(); });
+
+        var premiumShareBtn = document.getElementById('premium-share-btn');
+        if (premiumShareBtn) premiumShareBtn.addEventListener('click', sharePremiumResult);
+
+        if (resultWrapper) {
+          var isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          resultWrapper.scrollIntoView({ behavior: isReducedMotion ? 'auto' : 'smooth', block: 'start' });
+        }
+      }
+
+      function buildDonutChart(tax, net, sym) {
+        var total = tax + net;
+        if (total <= 0) return '';
+        var taxPct = (tax / total) * 100;
+        var netPct = (net / total) * 100;
+
+        function polar(cx, cy, r, angle) {
+          var rad = ((angle - 90) * Math.PI) / 180;
+          return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+        }
+
+        function arcCmd(cx, cy, r, startAngle, endAngle, sweep) {
+          var endPoint = polar(cx, cy, r, endAngle);
+          var large = Math.abs(endAngle - startAngle) <= 180 ? '0' : '1';
+          return 'A' + r + ' ' + r + ' 0 ' + large + ' ' + sweep + ' ' + endPoint.x + ' ' + endPoint.y;
+        }
+
+        function donutSegment(cx, cy, R, r, startAngle, endAngle) {
+          var outerStart = polar(cx, cy, R, startAngle);
+          var outerEnd = polar(cx, cy, R, endAngle);
+          var innerEnd = polar(cx, cy, r, endAngle);
+          var innerStart = polar(cx, cy, r, startAngle);
+          return 'M' + outerStart.x + ' ' + outerStart.y +
+                 arcCmd(cx, cy, R, startAngle, endAngle, 1) +
+                 'L' + innerEnd.x + ' ' + innerEnd.y +
+                 arcCmd(cx, cy, r, endAngle, startAngle, 0) +
+                 'Z';
+        }
+
+        var size = 200, cx = 100, cy = 100, R = 80, r = 50;
+        var taxPath = taxPct > 0 ? donutSegment(cx, cy, R, r, 0, taxPct) : '';
+        var netPath = netPct > 0 ? donutSegment(cx, cy, R, r, taxPct, taxPct + netPct) : '';
+        var centerCircle = '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="var(--color-canvas, #ffffff)" />';
+
+        return '<svg viewBox="0 0 ' + size + ' ' + size + '" class="chart-donut" aria-hidden="true">' +
+          (taxPath ? '<path d="' + taxPath + '" fill="#EF4444" />' : '') +
+          (netPath ? '<path d="' + netPath + '" fill="#22C55E" />' : '') +
+          centerCircle +
+          '<text x="' + cx + '" y="' + (cy - 8) + '" text-anchor="middle" class="chart-center-text chart-center-label">Total</text>' +
+          '<text x="' + cx + '" y="' + (cy + 14) + '" text-anchor="middle" class="chart-center-text chart-center-value">' + sym + total.toLocaleString('en-US', {maximumFractionDigits: 0}) + '</text>' +
+        '</svg>' +
+        '<div class="chart-legend" role="list">' +
+          '<div class="chart-legend-item" role="listitem"><span class="chart-legend-color" style="background-color: #EF4444" aria-hidden="true"></span><span class="chart-legend-label">Tax</span><span class="chart-legend-value">' + sym + tax.toLocaleString('en-US', {maximumFractionDigits: 0}) + ' (' + taxPct.toFixed(1) + '%)</span></div>' +
+          '<div class="chart-legend-item" role="listitem"><span class="chart-legend-color" style="background-color: #22C55E" aria-hidden="true"></span><span class="chart-legend-label">Take-home</span><span class="chart-legend-value">' + sym + net.toLocaleString('en-US', {maximumFractionDigits: 0}) + ' (' + netPct.toFixed(1) + '%)</span></div>' +
+        '</div>';
+      }
+
+      function buildInsights(gross, tax, net, effective, sym, ruleId) {
+        if (gross <= 0) return '';
+        var taxPct = gross > 0 ? (tax / gross) * 100 : 0;
+        var netPct = gross > 0 ? (net / gross) * 100 : 0;
+        var insights = [];
+
+        if (taxPct > 0) {
+          insights.push({ text: 'Your total tax represents approximately ' + taxPct.toFixed(1) + '% of your gross income.', type: 'info' });
+        }
+        if (netPct > 50) {
+          insights.push({ text: 'The majority of your income (' + netPct.toFixed(1) + '%) remains after tax.', type: 'success' });
+        } else if (netPct <= 50 && netPct > 0) {
+          insights.push({ text: 'Approximately ' + (100 - netPct).toFixed(1) + '% of your income goes toward taxes.', type: 'warning' });
+        }
+        if (effective > 0 && effective < 15) {
+          insights.push({ text: 'Your effective tax rate of ' + effective.toFixed(1) + '% is relatively low compared to global averages.', type: 'success' });
+        } else if (effective >= 15 && effective < 30) {
+          insights.push({ text: 'Your effective tax rate of ' + effective.toFixed(1) + '% is within a typical range for this income level.', type: 'info' });
+        } else if (effective >= 30) {
+          insights.push({ text: 'Your effective tax rate of ' + effective.toFixed(1) + '% is relatively high. Consider exploring eligible deductions or reliefs.', type: 'warning' });
+        }
+        if (tax > 0 && net > 0) {
+          insights.push({ text: 'For every ' + sym + '1,000 you earn, approximately ' + sym + (taxPct * 10).toFixed(0) + ' goes to tax.', type: 'info' });
+        }
+        if (gross > 0 && tax === 0) {
+          insights.push({ text: 'Your income falls within a tax-free threshold. This is common for lower income brackets.', type: 'success' });
+        }
+        insights = insights.slice(0, 3);
+
+        var items = insights.map(function(ins) {
+          var iconSvg = '';
+          if (ins.type === 'success') iconSvg = '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+          else if (ins.type === 'warning') iconSvg = '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.774-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>';
+          else iconSvg = '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+          return '<div class="insight-card insight-card--' + ins.type + '" role="listitem">' +
+            '<div class="insight-icon" aria-hidden="true">' + iconSvg + '</div>' +
+            '<p class="insight-text">' + ins.text + '</p>' +
+          '</div>';
+        }).join('');
+
+        return '<div class="insights-container" role="region" aria-label="Educational insights">' +
+          '<h3 class="insights-title">Key Insights</h3>' +
+          '<div class="insights-list">' + items + '</div>' +
+        '</div>';
+      }
+
+      function buildTaxExplainer(ruleId) {
+        var terms = [];
+        var isIncomeTax = ruleId.indexOf('income-tax') >= 0 || ruleId.indexOf('salaries-tax') >= 0 || ruleId.indexOf('payroll-tax') >= 0 || ruleId.indexOf('fica') >= 0 || ruleId.indexOf('national-insurance') >= 0;
+        var isVatGst = ruleId.indexOf('gst') >= 0 || ruleId.indexOf('vat') >= 0 || ruleId.indexOf('sst') >= 0;
+        var isProperty = ruleId.indexOf('stamp-duty') >= 0 || ruleId.indexOf('property-tax') >= 0;
+
+        if (isIncomeTax) {
+          terms = [
+            { term: 'Effective Tax Rate', definition: 'The average rate at which your income is taxed. It is calculated by dividing your total tax by your gross income. This rate is usually lower than your marginal rate because of progressive taxation.' },
+            { term: 'Marginal Tax Rate', definition: 'The highest tax rate applied to your last dollar of income. In progressive tax systems, different portions of your income are taxed at different rates.' },
+            { term: 'Taxable Income', definition: 'Your gross income minus allowable deductions, exemptions, and allowances. This is the amount on which your tax is actually calculated.' },
+            { term: 'Take-home Pay', definition: 'The amount you receive after all taxes and deductions have been subtracted from your gross income. This is your actual disposable income.' },
+            { term: 'Progressive Taxation', definition: 'A tax system where higher income levels are taxed at higher rates. As your income increases, you move into higher tax brackets, but only the income within each bracket is taxed at that bracket\'s rate.' }
+          ];
+        } else if (isVatGst) {
+          terms = [
+            { term: 'VAT / GST', definition: 'Value Added Tax or Goods and Services Tax is a consumption tax applied to the value added at each stage of production and distribution.' },
+            { term: 'Tax Inclusive', definition: 'The tax is already included in the displayed price. We calculate the actual tax amount by extracting it from the total.' },
+            { term: 'Tax Exclusive', definition: 'The tax is added on top of the base amount. We calculate the total by applying the tax rate to the base price.' },
+            { term: 'Net Amount', definition: 'The original amount before tax is applied. This is the value of the goods or services excluding tax.' },
+            { term: 'Total Amount', definition: 'The final amount you pay, including both the net amount and the applicable tax.' }
+          ];
+        } else if (isProperty) {
+          terms = [
+            { term: 'Stamp Duty', definition: 'A tax levied on legal documents, typically on property transfers. It is usually calculated as a percentage of the property value or a fixed amount.' },
+            { term: 'Property Tax', definition: 'An annual tax on property ownership, usually based on the assessed value of the property. Rates vary by location and property type.' },
+            { term: 'Net Assessable Value', definition: 'The value of the property used for tax calculation after applying standard deductions and allowances.' },
+            { term: 'Total Cost', definition: 'The complete cost of acquiring or owning the property, including the purchase price plus all applicable taxes and duties.' }
+          ];
+        } else {
+          terms = [
+            { term: 'Effective Rate', definition: 'The average percentage of tax applied to your income or transaction. It shows the true burden relative to the total amount.' },
+            { term: 'Tax Amount', definition: 'The calculated tax liability based on the applicable rate and the transaction value or income.' },
+            { term: 'Net Amount', definition: 'The original amount before tax is applied.' },
+            { term: 'Total Amount', definition: 'The final amount including tax.' }
+          ];
+        }
+
+        var items = terms.map(function(t) {
+          return '<div class="tax-term-card">' +
+            '<h4 class="tax-term-name">' + t.term + '</h4>' +
+            '<p class="tax-term-definition">' + t.definition + '</p>' +
+          '</div>';
+        }).join('');
+
+        return '<div class="tax-explainer" role="region" aria-label="Tax terms explained">' +
+          '<h3 class="tax-explainer-title">Understanding Your Results</h3>' +
+          '<div class="tax-explainer-grid">' + items + '</div>' +
+        '</div>';
+      }
+
+      function copyPremiumResult() {
+        var dashboard = document.getElementById('premium-dashboard-inner');
+        if (!dashboard) return;
+        var text = dashboard.innerText;
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(function() {
+          var btns = document.querySelectorAll('.result-action-btn--copy');
+          btns.forEach(function(btn) {
+            var original = btn.innerHTML;
+            btn.innerHTML = '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Copied!</span>';
+            setTimeout(function() { btn.innerHTML = original; }, 2000);
+          });
+        }).catch(function() {});
+      }
+
+      function sharePremiumResult() {
+        var dashboard = document.getElementById('premium-dashboard-inner');
+        var text = dashboard ? dashboard.innerText : '';
+        var title = document.title || 'Finsiva Tax Calculator Result';
+        var url = window.location.href;
+        if (navigator.share) {
+          navigator.share({ title: title, text: text, url: url }).catch(function() {});
+        } else if (navigator.clipboard) {
+          navigator.clipboard.writeText(url + '\n\n' + text).then(function() {
+            var btn = document.getElementById('premium-share-btn');
+            if (btn) {
+              var original = btn.innerHTML;
+              btn.innerHTML = '<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Copied!</span>';
+              setTimeout(function() { btn.innerHTML = original; }, 2000);
+            }
+          }).catch(function() {});
+        }
       }
 
       function markInvalid(input) {
@@ -992,6 +1350,8 @@ const mergedContent = {
         if (resultDiv) resultDiv.classList.add('hidden');
         if (resultEmpty) resultEmpty.classList.remove('hidden');
         if (errorDiv) errorDiv.classList.add('hidden');
+        var premiumWrapper = document.getElementById('premium-dashboard-wrapper');
+        if (premiumWrapper) premiumWrapper.classList.add('hidden');
         var copyBtn = document.getElementById('copy-result-text-btn');
         if (copyBtn) copyBtn.style.display = 'none';
       }
