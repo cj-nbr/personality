@@ -1,0 +1,79 @@
+---
+interface Props {
+  country: {
+    name: string;
+    flag: string;
+    continent: string;
+    taxSystemSummary: string;
+    taxYear: string;
+    currency: string;
+    capital: string;
+    lastUpdated: string;
+    officialTaxAuthority: string;
+    taxAuthorityUrl: string;
+    slug: string;
+  };
+  popularCalculators: Array<{ slug: string; name: string; category: string }>;
+  salaryCalculators: Array<{ slug: string; name: string; category: string }>;
+}
+
+const { country, popularCalculators, salaryCalculators } = Astro.props;
+---
+
+<section class="country-section compact-hero" aria-labelledby={`${country.slug}-hero`}>
+  <div class="mb-3">
+    <a href="/countries" class="inline-flex items-center gap-1.5 text-sm font-medium text-white/90 hover:underline">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      Back to Countries
+    </a>
+  </div>
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+    <div class="flex items-start gap-3 sm:gap-4">
+      <img
+        src={country.flag}
+        alt={`Flag of ${country.name}`}
+        class="h-10 w-auto sm:h-12 object-contain flex-shrink-0 mt-0.5"
+        loading="eager"
+        width="64"
+        height="48"
+      />
+      <div>
+        <h1 id={`${country.slug}-hero`} class="hero-title">{country.name}</h1>
+        <p class="text-sm sm:text-base text-white/80 mt-0.5">{country.continent}</p>
+      </div>
+    </div>
+    <div class="hero-stats sm:w-auto">
+      <div class="stat-card">
+        <span class="stat-label">Currency</span>
+        <span class="stat-value">{country.currency}</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Capital</span>
+        <span class="stat-value">{country.capital}</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Tax Year</span>
+        <span class="stat-value">{country.taxYear}</span>
+      </div>
+    </div>
+  </div>
+  <p class="hero-description mt-4 text-sm sm:text-base leading-relaxed max-w-4xl text-white/90">{country.taxSystemSummary}</p>
+  <div class="hero-meta mt-3">
+    <span class="hero-meta-item">
+      <svg class="hero-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span>Updated {country.lastUpdated}</span>
+    </span>
+    <span class="hero-meta-item">
+      <svg class="hero-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      <span>{country.officialTaxAuthority}</span>
+    </span>
+  </div>
+  <div class="hero-ctas mt-4">
+    <a href={`/countries/${country.slug}/income-tax`} class="inline-flex items-center justify-center rounded-pill bg-white px-5 py-2.5 text-sm font-semibold text-primary shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0">
+      Calculate Your Tax
+    </a>
+    <a href={`/countries/${country.slug}/income-tax`} class="inline-flex items-center justify-center rounded-pill border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 active:bg-white/20">
+      Popular Calculator →
+    </a>
+  </div>
+</section>

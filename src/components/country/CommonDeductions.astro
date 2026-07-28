@@ -1,0 +1,45 @@
+---
+interface Props {
+  country: {
+    name: string;
+    standardDeductions: string;
+    majorDeductions: Array<{ name: string; description: string }>;
+  };
+}
+
+const { country } = Astro.props;
+---
+
+<section class="country-section" aria-labelledby="deductions-heading">
+  <h2 id="deductions-heading" class="section-title">Common Deductions in {country.name}</h2>
+  <p class="section-description mb-6">
+    Deductions reduce your taxable income. Here are the most common deductions available to {country.name} taxpayers.
+  </p>
+
+  {country.standardDeductions && (
+    <div class="callout callout-success mb-6">
+      <p class="text-sm font-semibold text-success dark:text-success mb-1">Standard Deduction</p>
+      <p class="text-sm text-body dark:text-muted">{country.standardDeductions}</p>
+    </div>
+  )}
+
+  <div class="deductions-grid">
+    {country.majorDeductions.length > 0 && country.majorDeductions.map(deduction => (
+      <div class="deduction-card">
+        <div class="deduction-card-icon">
+          <svg class="w-5 h-5 text-success dark:text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <div>
+          <h4 class="deduction-card-title">{deduction.name}</h4>
+          <p class="deduction-card-text">{deduction.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {country.majorDeductions.length === 0 && (
+    <div class="callout callout-warning">
+      <p class="text-sm text-body dark:text-muted">Common deductions for this country are currently being researched. Please consult a tax professional for the most up-to-date information.</p>
+    </div>
+  )}
+</section>

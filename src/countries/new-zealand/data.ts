@@ -139,6 +139,22 @@ export const newZealand: Country = {
     { date: "2024-01-01", title: "Bright-Line Period Extended", description: "Bright-line test for residential property extended to 10 years for properties acquired after 27 March 2021." }
   ],
   countryFAQs,
+  taxSystemSummary: "New Zealand has a progressive income tax system with rates from 10.5% to 39%, a 15% GST on most goods and services, and no general capital gains tax. The tax year runs from April 1 to March 31, with individual returns due July 7th.",
+  employerWithholding: "New Zealand employers deduct PAYE (Pay As You Earn) income tax and ACC earners levy from employee wages based on the applicable tax code. Employers also deduct KiwiSaver contributions if the employee is a member. Taxpayers file annual tax returns and IRD assesses their final liability.",
+  whoShouldUse: [
+    { type: "Employees", icon: "M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm10 14H4V9h16v10z", description: "Employees working in New Zealand who receive PAYE income and want to estimate their income tax and ACC levy." },
+    { type: "Freelancers & Contractors", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", description: "Self-employed individuals and contractors who earn business income and need to make provisional tax payments." },
+    { type: "Business Owners", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", description: "Business owners and company directors who need to understand corporate tax at 28%, GST registration, and provisional tax obligations." },
+    { type: "Property Investors", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6", description: "Property investors and landlords with rental income who need to estimate tax on rental profits and understand the bright-line test." },
+    { type: "Expats", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", description: "Non-residents and returning New Zealanders who need to understand tax residency rules (183-day rule) and tax obligations on NZ-sourced income." }
+  ],
+  howToUseSteps: [
+    { step: 1, title: "Enter Income", description: "Input your annual income from employment, business, rental, or investments. Include all taxable sources." },
+    { step: 2, title: "Apply Deductions", description: "Enter eligible deductions such as work-related expenses, student loan interest, charitable donations, and home office expenses." },
+    { step: 3, title: "Calculate Tax", description: "The calculator applies the progressive tax rates to your taxable income after deducting all eligible expenses." },
+    { step: 4, title: "Review Effective Rate", description: "Examine your effective tax rate and compare it against the marginal rate to understand your true tax burden." },
+    { step: 5, title: "Plan Provisional Tax", description: "If you are self-employed, use the results to plan your provisional tax installments due during the tax year." }
+  ],
   educationalDisclaimer: "The tax information and calculators on this page are for educational and informational purposes only. They do not constitute professional tax advice. Tax laws are subject to change. Always consult a qualified tax professional for advice specific to your situation.",
   dataSources: ["Inland Revenue Department (IRD) New Zealand", "NZ Budget 2024", "IRD Tax Rate Tables"],
   calculationMethodology: "Tax calculations follow the New Zealand Income Tax Act 2007 and IRD regulations. Progressive rates are applied to taxable income after deductions and credits. GST is calculated on the taxable value of goods and services at 15%."

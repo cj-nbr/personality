@@ -1,0 +1,28 @@
+---
+interface Props {
+  country: {
+    name: string;
+    howToUseSteps: Array<{ step: number; title: string; description: string }>;
+  };
+}
+
+const { country } = Astro.props;
+---
+
+<section class="country-section" aria-labelledby="howto-heading">
+  <h2 id="howto-heading" class="section-title">How to Use the {country.name} Tax Calculator</h2>
+  <p class="section-description mb-6">
+    Get an accurate tax estimate in just a few steps. Here is how to use our calculator effectively.
+  </p>
+  <div class="steps-list">
+    {country.howToUseSteps.map(item => (
+      <div class="step-item">
+        <div class="step-number" aria-hidden="true">{item.step}</div>
+        <div class="step-content">
+          <h4 class="step-title">{item.title}</h4>
+          <p class="step-text">{item.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

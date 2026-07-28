@@ -161,6 +161,22 @@ export const unitedKingdom: Country = {
     { date: "2023-10-06", title: "Autumn Statement Tax Changes", description: "Announcement of new tax measures including National Insurance reductions and property tax updates." }
   ],
   countryFAQs,
+  taxSystemSummary: "The United Kingdom operates a comprehensive tax system administered by HMRC with income tax, National Insurance, VAT, and other taxes. The tax year runs from April 6 to April 5. Residents are taxed on worldwide income while non-residents are taxed only on UK-sourced income.",
+  employerWithholding: "UK employers operate PAYE (Pay As You Earn) to deduct income tax and National Insurance contributions from employee wages before payment. Employers also report employee earnings to HMRC through Real Time Information (RTI) submissions. Self-employed individuals make payments on account twice a year.",
+  whoShouldUse: [
+    { type: "Employees", icon: "M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm10 14H4V9h16v10z", description: "W-2 equivalent employees in the UK who want to estimate their PAYE income tax and National Insurance contributions." },
+    { type: "Freelancers & Contractors", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", description: "Self-employed sole traders and contractors who need to calculate Class 2 and Class 4 National Insurance and file Self Assessment tax returns." },
+    { type: "Business Owners", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", description: "Company directors and limited company owners who need to understand corporation tax, dividend tax, and VAT obligations." },
+    { type: "Expats", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", description: "Non-domiciled individuals and expats working in the UK who need to understand UK tax residency rules and remittance basis." },
+    { type: "Property Owners", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6", description: "Landlords and property investors with rental income who need to estimate income tax, Capital Gains Tax, and Stamp Duty Land Tax." }
+  ],
+  howToUseSteps: [
+    { step: 1, title: "Enter Income", description: "Input your annual employment income, self-employed profits, rental income, dividends, or other taxable income sources." },
+    { step: 2, title: "Choose Tax Year", description: "Select the appropriate tax year (e.g., 2024/25). This determines your personal allowance, tax bands, and NI thresholds." },
+    { step: 3, title: "Review Allowances", description: "Check your personal allowance of £12,570 (subject to tapering above £100,000), Marriage Allowance, and other available reliefs." },
+    { step: 4, title: "Calculate", description: "Click Calculate to see your income tax, National Insurance contributions, effective tax rate, and take-home pay." },
+    { step: 5, title: "Plan Payments", description: "Review your results and plan your Self Assessment payments on account (January 31 and July 31) if you are self-employed." }
+  ],
   educationalDisclaimer: "The tax information and calculators on this page are for educational and informational purposes only. They do not constitute professional tax advice. Tax laws are subject to change. Always consult a qualified tax professional for advice specific to your situation.",
   dataSources: ["HM Revenue & Customs (HMRC)", "UK Budget 2024", "HMRC Tax Circulars"],
   calculationMethodology: "Tax calculations follow the Income Tax Act 2007 and HMRC guidelines. Progressive rates are applied to taxable income after personal allowance and deductions. NI contributions are calculated per the Social Security Contributions and Benefits Act."

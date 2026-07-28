@@ -1,0 +1,56 @@
+---
+interface Props {
+  country: {
+    name: string;
+    currentTaxBrackets: Array<{ label: string; rate: string; threshold: string; notes?: string }>;
+  };
+}
+
+const { country } = Astro.props;
+---
+
+<section class="country-section" aria-labelledby="brackets-heading">
+  <h2 id="brackets-heading" class="section-title">Tax Brackets & Rates</h2>
+  <p class="section-description mb-6">
+    {country.taxYear} income tax brackets for {country.name}. Tax is calculated progressively — higher portions of income are taxed at higher rates.
+  </p>
+
+  <div class="brackets-intro grid grid-cols-1 gap-4 sm:grid-cols-3 mb-8">
+    <div class="bracket-info-card">
+      <h4 class="bracket-info-title">Progressive Tax</h4>
+      <p class="bracket-info-text">Higher portions of income are taxed at higher rates. Only the income within each bracket is taxed at that bracket's rate.</p>
+    </div>
+    <div class="bracket-info-card">
+      <h4 class="bracket-info-title">Marginal Rate</h4>
+      <p class="bracket-info-text">The rate applied to your last dollar of income. It determines the tax on your next dollar earned.</p>
+    </div>
+    <div class="bracket-info-card">
+      <h4 class="bracket-info-title">Effective Rate</h4>
+      <p class="bracket-info-text">The average rate across all your income. Total tax divided by total income gives your true tax burden.</p>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="tax-table" role="table" aria-label="Tax brackets and rates for {country.name}">
+      <caption class="visually-hidden">Tax brackets and rates for {country.name}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Bracket</th>
+          <th scope="col">Rate</th>
+          <th scope="col">Threshold</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {country.currentTaxBrackets.map(bracket => (
+          <tr>
+            <td class="rate-cell">{bracket.label}</td>
+            <td class="threshold-cell">{bracket.rate}</td>
+            <td class="threshold-cell">{bracket.threshold}</td>
+            <td class="notes-cell">{bracket.notes}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>

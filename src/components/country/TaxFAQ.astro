@@ -1,0 +1,28 @@
+---
+interface Props {
+  country: {
+    name: string;
+    countryFAQs: Array<{ question: string; answer: string }>;
+  };
+}
+
+const { country } = Astro.props;
+---
+
+<section class="country-section" aria-labelledby="faqs-heading">
+  <h2 id="faqs-heading" class="section-title">Frequently Asked Questions</h2>
+  <p class="section-description mb-6">
+    Quick answers to common questions about {country.name} taxation, filing requirements, and using our calculators.
+  </p>
+  <div class="faqs-list">
+    {country.countryFAQs && country.countryFAQs.length > 0 && country.countryFAQs.map((faq, index) => (
+      <details class="faq-item">
+        <summary class="faq-question" aria-label={`Toggle answer for: ${faq.question}`}>
+          <span>{faq.question}</span>
+          <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <p class="faq-answer">{faq.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>

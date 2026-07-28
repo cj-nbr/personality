@@ -140,6 +140,21 @@ export const philippines: Country = {
     { date: "2024-01-01", title: "TRAIN 2 Tax Reform", description: "Continuing implementation of tax reform measures including rationalized VAT and enhanced withholding tax system." }
   ],
   countryFAQs,
+  taxSystemSummary: "The Philippines has a graduated income tax system with rates from 0% to 35%, a 12% VAT on most goods and services, and various withholding taxes. The Bureau of Internal Revenue (BIR) administers the tax system. The tax year follows the calendar year.",
+  employerWithholding: "Philippine employers withhold tax on employee compensation based on BIR withholding tax tables (alphalist). Employers deduct and remit withholding tax monthly. The withheld amount is credited against the employee's annual tax liability when filing the annual return.",
+  whoShouldUse: [
+    { type: "Employees", icon: "M20 7h-4V5c0-1.1-.9-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm10 14H4V9h16v10z", description: "Employed individuals receiving compensation income who want to estimate their annual tax after withholding tax credits." },
+    { type: "Freelancers & Contractors", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", description: "Self-employed professionals, contractors, and gig workers who receive professional fees subject to withholding tax." },
+    { type: "Business Owners", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", description: "Business owners and corporations who need to estimate corporate income tax at 25% and VAT obligations at 12%." },
+    { type: "Expats", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", description: "Foreign employees and expats working in the Philippines who need to understand their tax residency status and obligations on Philippine-sourced income." }
+  ],
+  howToUseSteps: [
+    { step: 1, title: "Enter Income", description: "Input your annual compensation income, business income, or other taxable income sources." },
+    { step: 2, title: "Apply Deductions", description: "Enter applicable deductions such as SSS/GSIS, PhilHealth, Pag-IBIG contributions, and other allowable expenses." },
+    { step: 3, title: "Choose Tax Year", description: "Select the appropriate tax year to apply the correct graduated tax rates and thresholds." },
+    { step: 4, title: "Calculate", description: "Click Calculate to see your taxable income, tax liability, and effective tax rate under the graduated system." },
+    { step: 5, title: "Review & File", description: "Review your results and compare against your withholding tax credits to estimate any refund or balance due." }
+  ],
   educationalDisclaimer: "The tax information and calculators on this page are for educational and informational purposes only. They do not constitute professional tax advice. Tax laws are subject to change. Always consult a qualified tax professional for advice specific to your situation.",
   dataSources: ["Bureau of Internal Revenue (BIR) Philippines", "TRAIN Tax Reform Law", "BIR Revenue Regulations"],
   calculationMethodology: "Tax calculations follow the Philippine Tax Code and BIR regulations. Graduated rates are applied to taxable income after deductions and exemptions. VAT is calculated on the taxable value of goods and services at 12%."

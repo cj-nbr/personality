@@ -1,0 +1,64 @@
+---
+interface Props {
+  country: {
+    name: string;
+    slug: string;
+    taxCategories: Array<{
+      slug: string;
+      name: string;
+      description: string;
+    }>;
+    relatedCountries: string[];
+    popularCalculators: Array<{ slug: string; name: string; category: string }>;
+    salaryCalculators: Array<{ slug: string; name: string; category: string }>;
+    capitalGainsCalculators: Array<{ slug: string; name: string; category: string }>;
+    corporateCalculators: Array<{ slug: string; name: string; category: string }>;
+  };
+  getCountryBySlug: (slug: string) => { name: string; flag: string } | undefined;
+}
+
+const { country, getCountryBySlug } = Astro.props;
+---
+
+<section class="country-section" aria-labelledby="related-heading">
+  <h2 id="related-heading" class="section-title">Explore {country.name} Tax</h2>
+  <div class="related-grid">
+    {country.taxCategories.map(cat => (
+      <a href={`/countries/${country.slug}/${cat.slug}`} class="related-card">
+        <h3 class="related-title">{cat.name}</h3>
+        <p class="related-desc">{cat.description}</p>
+        <span class="related-link">View details →</span>
+      </a>
+    ))}
+    {country.relatedCountries.length > 0 && (
+      <div class="related-card related-card--countries">
+        <h3 class="related-title">Related Countries</h3>
+        <div class="related-countries-list">
+          {country.relatedCountries.map(slug => {
+            const related = getCountryBySlug(slug);
+            if (!related) return null;
+            return (
+              <a href={`/countries/${related.slug}`} class="related-country-link">
+                <img src={related.flag} alt={related.name} width="24" height="18" loading="lazy" />
+                <span>{related.name}</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    )}
+  </div>
+
+  <div class="mt-10">
+    <h3 class="subsection-title">Related Calculators</h3>
+    <div class="calculators-grid">
+      {country.popularCalculators.length > 0 && country.popularCalculators.map(calc => (
+        <a href={`/countries/${country.slug}/${calc.category}/${calc.slug}`} class="calc-card">
+          <span class="calc-category">{calc.category.replace(/-/g, ' ')}</span>
+          <h4 class="calc-title">{calc.name}</h4>
+          <span class="calc-cta">Open calculator →</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

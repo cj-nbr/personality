@@ -160,6 +160,22 @@ export const india: Country = {
     { date: "2023-04-01", title: "New Regime Tax Slabs Updated", description: "New tax regime slabs revised with additional benefits and expanded rebate under Section 87A." }
   ],
   countryFAQs,
+  taxSystemSummary: "India operates a self-assessment tax system with progressive income tax rates from 0% to 30%, GST on goods and services, and TDS on payments. The tax year runs April 1 to March 31 with returns due July 31 for individuals.",
+  employerWithholding: "Employers deduct TDS (Tax Deducted at Source) from employee salaries monthly based on applicable tax slabs and remit it to the government. TDS deducted can be claimed as a credit against your total tax liability when filing your return.",
+  whoShouldUse: [
+    { type: "Salaried Employees", icon: "M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm10 14H4V9h16v10z", description: "Employees working for companies and organizations who receive a regular salary. Our calculator helps estimate your tax liability under both old and new regimes." },
+    { type: "Freelancers & Contractors", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", description: "Self-employed professionals, consultants, and gig economy workers who receive income without TDS or with different withholding rules." },
+    { type: "Business Owners", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", description: "Proprietors, partners, and directors who earn income from business or profession and need to estimate advance tax and self-assessment tax." },
+    { type: "Expats in India", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", description: "Non-resident Indians (NRIs) and foreign professionals working in India who need to understand their tax obligations under Indian tax laws." },
+    { type: "Investors", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6", description: "Individuals with income from investments, capital gains, dividends, or rental income who need to calculate their total tax liability." }
+  ],
+  howToUseSteps: [
+    { step: 1, title: "Enter Income", description: "Input your annual salary, other income, and any deductions such as HRA, Section 80C, or home loan interest." },
+    { step: 2, title: "Choose Tax Year & Regime", description: "Select the assessment year and choose between the old tax regime (with deductions) or the new tax regime (simplified rates)." },
+    { step: 3, title: "Review Deductions", description: "Verify all applicable deductions and exemptions. The calculator will apply the correct standard deduction automatically." },
+    { step: 4, title: "Calculate", description: "Click Calculate to see your gross income, total deductions, taxable income, tax liability, cess, effective rate, and take-home pay." },
+    { step: 5, title: "Review Results", description: "Examine your results. Use the effective rate to understand your true tax burden. Consider adjusting investments to optimize your tax position." }
+  ],
   educationalDisclaimer: "The tax information and calculators on this page are for educational and informational purposes only. They do not constitute professional tax advice. Tax laws are subject to change. Always consult a qualified tax professional for advice specific to your situation.",
   dataSources: ["Central Board of Direct Taxes (CBDT)", "Ministry of Finance, Government of India", "Income Tax Department Official Portal"],
   calculationMethodology: "Tax calculations follow the official Indian Income Tax Act, 1961 and Finance Act provisions. Brackets and rates are sourced from the latest CBDT notifications. The new regime rates are applied as per the Finance Act 2024-25. Deductions and exemptions are calculated based on the applicable regime selected by the taxpayer."

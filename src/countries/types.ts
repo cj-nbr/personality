@@ -82,10 +82,12 @@ export interface Country {
   gdp: string;
   officialLanguage: string;
   overview: string;
+  taxSystemSummary: string;
   lastUpdated: string;
   taxYear: string;
   filingDeadline: string;
   paymentDeadline: string;
+  employerWithholding: string;
   taxSystemOverview: {
     incomeTax: string;
     capitalGainsTax: string;
@@ -116,6 +118,16 @@ export interface Country {
   relatedCountries: string[];
   latestUpdates: Array<{ date: string; title: string; description: string }>;
   countryFAQs: CountryFAQ[];
+  whoShouldUse: Array<{
+    type: string;
+    icon: string;
+    description: string;
+  }>;
+  howToUseSteps: Array<{
+    step: number;
+    title: string;
+    description: string;
+  }>;
   educationalDisclaimer: string;
   dataSources: string[];
   calculationMethodology: string;

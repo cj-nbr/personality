@@ -214,6 +214,22 @@ export const hongKong: Country = {
     { date: "2026-02-26", title: "Two-Tiered Profits Tax Rates Updated", description: "Hong Kong budget confirms continuation of two-tiered profits tax rates for corporations and unincorporated businesses." }
   ],
   countryFAQs,
+  taxSystemSummary: "Hong Kong operates a territorial tax system with low tax rates. Only income sourced in Hong Kong is taxable. Salaries tax uses progressive rates from 2% to 17% or a standard rate of 15%, whichever is lower. There is no capital gains tax, no VAT, and no sales tax.",
+  employerWithholding: "Hong Kong employers do not withhold income tax from salaries. Instead, the IRD assesses tax annually based on filed returns. Employers are required to file Employer's Returns (Form BIR56B) reporting employee salaries. Taxpayers pay provisional tax in installments based on the previous year's assessment.",
+  whoShouldUse: [
+    { type: "Salaried Employees", icon: "M20 7h-4V5c0-1.1-.9-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm10 14H4V9h16v10z", description: "Employees working in Hong Kong who receive salaries and need to estimate their salaries tax under the progressive or standard rate system." },
+    { type: "Freelancers & Contractors", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", description: "Self-employed individuals and contractors who earn business or professional income sourced in Hong Kong and need to calculate their tax obligations." },
+    { type: "Business Owners", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", description: "Company owners and partnerships carrying on business in Hong Kong who are subject to profits tax on Hong Kong-sourced profits." },
+    { type: "Expats", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", description: "Foreign professionals and expats working in Hong Kong who need to understand the 60-day rule, salaries tax, and their obligations under IRD rules." },
+    { type: "Property Owners", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6", description: "Property owners and investors with rental income or property transactions who need to estimate property tax and stamp duty liabilities." }
+  ],
+  howToUseSteps: [
+    { step: 1, title: "Enter Income", description: "Input your annual employment income or business profits, including bonuses, allowances, and other benefits." },
+    { step: 2, title: "Add Deductions", description: "Enter MPF contributions, married person's allowance, dependent child allowance, and other allowable deductions." },
+    { step: 3, title: "Calculate Tax", description: "The calculator applies both the progressive rates and the standard rate (15%), then selects whichever is lower." },
+    { step: 4, title: "Review Effective Rate", description: "Compare your effective tax rate against the standard rate to understand your true tax burden after allowances." },
+    { step: 5, title: "Plan Ahead", description: "Use the results to plan your MPF contributions, charitable donations, and other tax-saving strategies for the next year." }
+  ],
   educationalDisclaimer: "The tax information and calculators on this page are for educational and informational purposes only. They do not constitute professional tax advice. Tax laws are subject to change. Always consult a qualified tax professional for advice specific to your situation.",
   dataSources: ["Inland Revenue Department (IRD) Hong Kong", "Hong Kong Budget 2026", "IRD Tax Circulars and Guidelines"],
   calculationMethodology: "Tax calculations follow the Hong Kong Inland Revenue Ordinance and IRD guidelines. Progressive rates and standard rate are applied as per the current assessment year. MPF contribution deductions are based on the MPF Schemes Ordinance. Allowances and deductions are applied as per the Salaries Tax Ordinance."

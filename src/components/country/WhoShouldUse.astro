@@ -1,0 +1,28 @@
+---
+interface Props {
+  country: {
+    name: string;
+    whoShouldUse: Array<{ type: string; icon: string; description: string }>;
+  };
+}
+
+const { country } = Astro.props;
+---
+
+<section class="country-section" aria-labelledby="who-heading">
+  <h2 id="who-heading" class="section-title">Who Should Use This Calculator</h2>
+  <p class="section-description mb-6">
+    Our {country.name} tax calculators are designed for a wide range of users. See if they match your situation.
+  </p>
+  <div class="audience-grid">
+    {country.whoShouldUse.map(audience => (
+      <div class="audience-card">
+        <div class="audience-icon" aria-hidden="true">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={audience.icon}/></svg>
+        </div>
+        <h3 class="audience-title">{audience.type}</h3>
+        <p class="audience-text">{audience.description}</p>
+      </div>
+    ))}
+  </div>
+</section>

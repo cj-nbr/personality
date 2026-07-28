@@ -207,6 +207,21 @@ export const pakistan: Country = {
     { date: "2024-01-01", title: "FBR Digital Initiatives", description: "FBR continues to streamline tax filing and collection through digital platforms." }
   ],
   countryFAQs,
+  taxSystemSummary: "Pakistan operates a self-assessment tax system with progressive income tax rates from 0% to 35% for salaried individuals, corporate tax for companies, and sales tax at 18%. The tax year runs from July 1 to June 30.",
+  employerWithholding: "Pakistani employers deduct tax from employee salaries under Section 149 based on FBR tax slabs and remit it to the government. The monthly tax deducted is credited against the employee's annual tax liability when filing the return.",
+  whoShouldUse: [
+    { type: "Salaried Employees", icon: "M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm10 14H4V9h16v10z", description: "Salaried individuals receiving monthly income with tax deducted at source who want to estimate their annual tax liability and potential refund." },
+    { type: "Freelancers & Contractors", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", description: "Self-employed professionals and freelancers who earn business or professional income and must file annual tax returns with FBR." },
+    { type: "Business Owners", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", description: "Business owners and companies who need to estimate corporate tax, understand sales tax obligations, and manage quarterly advance tax payments." },
+    { type: "Expats", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", description: "Non-resident Pakistanis and foreign workers who need to understand tax residency rules and obligations on Pakistan-sourced income." }
+  ],
+  howToUseSteps: [
+    { step: 1, title: "Enter Income", description: "Input your annual salary, business income, or other taxable income in PKR." },
+    { step: 2, title: "Apply Deductions", description: "Enter allowable deductions such as charitable donations, life insurance premiums, pension contributions, and other approved expenses." },
+    { step: 3, title: "Calculate Tax", description: "The calculator applies FBR's progressive tax slabs to your taxable income after deductions." },
+    { step: 4, title: "Review Effective Rate", description: "Examine your effective tax rate and compare it against the marginal rate to understand your true tax burden." },
+    { step: 5, title: "File Return", description: "Use the results to plan your tax filing. Even if you did not receive a notice from FBR, filing a return is mandatory for eligible taxpayers." }
+  ],
   educationalDisclaimer: "The tax information and calculators on this page are for educational and informational purposes only. They do not constitute professional tax advice. Tax laws are subject to change. Always consult a qualified tax professional for advice specific to your situation.",
   dataSources: ["Federal Board of Revenue (FBR) Pakistan", "Income Tax Ordinance 2001", "FBR Tax Circulars"],
   calculationMethodology: "Tax calculations follow the Income Tax Ordinance 2001 and FBR regulations. Progressive rates are applied to taxable income after deductions and exemptions. Withholding tax rates vary based on filer status and payment type."

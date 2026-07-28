@@ -1884,3 +1884,462 @@ details[open] .faq-chevron {
     color: #333333 !important;
   }
 }
+
+/* ============================================
+   TAX HUB - NEW SECTIONS
+   ============================================ */
+
+/* Info Cards */
+.info-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .info-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .info-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.info-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border, #e2e8f0);
+  background-color: var(--color-canvas, #ffffff);
+  padding: 1.25rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark .info-card {
+  background-color: var(--color-surface, #161B22);
+  border-color: var(--color-border-dark, rgba(255, 255, 255, 0.15));
+}
+
+.info-card:hover {
+  border-color: var(--color-primary, #2563EB);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+}
+
+.info-card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-lg);
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--color-primary, #2563EB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.dark .info-card-icon {
+  background-color: rgba(88, 166, 255, 0.15);
+  color: var(--color-link, #58A6FF);
+}
+
+.info-card-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink, #0f172a);
+  margin-bottom: 0.5rem;
+}
+
+.dark .info-card-title {
+  color: var(--color-on-primary, #FFFFFF);
+}
+
+.info-card-text {
+  font-size: 0.875rem;
+  color: var(--color-body, #475569);
+  line-height: 1.6;
+}
+
+.dark .info-card-text {
+  color: var(--color-muted, #8B949E);
+}
+
+/* Bracket Info */
+.brackets-intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .brackets-intro {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bracket-info-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border, #e2e8f0);
+  background-color: var(--color-canvas-soft, #f8fafc);
+  padding: 1rem;
+}
+
+.dark .bracket-info-card {
+  background-color: var(--color-surface, #161B22);
+  border-color: var(--color-border-dark, rgba(255, 255, 255, 0.15));
+}
+
+.bracket-info-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ink, #0f172a);
+  margin-bottom: 0.375rem;
+}
+
+.dark .bracket-info-title {
+  color: var(--color-on-primary, #FFFFFF);
+}
+
+.bracket-info-text {
+  font-size: 0.8125rem;
+  color: var(--color-muted, #64748b);
+  line-height: 1.55;
+}
+
+.dark .bracket-info-text {
+  color: var(--color-muted, #8B949E);
+}
+
+/* Deductions & Credits Grid */
+.deductions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .deductions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.deduction-card {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border, #e2e8f0);
+  background-color: var(--color-canvas, #ffffff);
+  padding: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.dark .deduction-card {
+  background-color: var(--color-surface, #161B22);
+  border-color: var(--color-border-dark, rgba(255, 255, 255, 0.15));
+}
+
+.deduction-card:hover {
+  border-color: var(--color-primary, #2563EB);
+}
+
+.deduction-card-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-success, #22C55E);
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.deduction-card-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink, #0f172a);
+  margin-bottom: 0.25rem;
+}
+
+.dark .deduction-card-title {
+  color: var(--color-on-primary, #FFFFFF);
+}
+
+.deduction-card-text {
+  font-size: 0.8125rem;
+  color: var(--color-muted, #64748b);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.dark .deduction-card-text {
+  color: var(--color-muted, #8B949E);
+}
+
+.credits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .credits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.credit-card {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border, #e2e8f0);
+  background-color: var(--color-canvas, #ffffff);
+  padding: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.dark .credit-card {
+  background-color: var(--color-surface, #161B22);
+  border-color: var(--color-border-dark, rgba(255, 255, 255, 0.15));
+}
+
+.credit-card:hover {
+  border-color: var(--color-primary, #2563EB);
+}
+
+.credit-card-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-primary, #2563EB);
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.dark .credit-card-icon {
+  color: var(--color-link, #58A6FF);
+}
+
+.credit-card-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink, #0f172a);
+  margin-bottom: 0.25rem;
+}
+
+.dark .credit-card-title {
+  color: var(--color-on-primary, #FFFFFF);
+}
+
+.credit-card-text {
+  font-size: 0.8125rem;
+  color: var(--color-muted, #64748b);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.dark .credit-card-text {
+  color: var(--color-muted, #8B949E);
+}
+
+.exemptions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .exemptions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.exemption-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-light, #f1f5f9);
+  background-color: var(--color-canvas-soft, #f8fafc);
+  padding: 1rem;
+}
+
+.dark .exemption-card {
+  background-color: var(--color-surface, #161B22);
+  border-color: var(--color-border-dark, rgba(255, 255, 255, 0.15));
+}
+
+.exemption-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink, #0f172a);
+  margin-bottom: 0.375rem;
+}
+
+.dark .exemption-title {
+  color: var(--color-on-primary, #FFFFFF);
+}
+
+.exemption-text {
+  font-size: 0.8125rem;
+  color: var(--color-muted, #64748b);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.dark .exemption-text {
+  color: var(--color-muted, #8B949E);
+}
+
+/* Audience Cards */
+.audience-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .audience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .audience-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.audience-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border, #e2e8f0);
+  background-color: var(--color-canvas, #ffffff);
+  padding: 1.25rem;
+  text-align: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark .audience-card {
+  background-color: var(--color-surface, #161B22);
+  border-color: var(--color-border-dark, rgba(255, 255, 255, 0.15));
+}
+
+.audience-card:hover {
+  border-color: var(--color-primary, #2563EB);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.08);
+}
+
+.audience-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius-xl);
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--color-primary, #2563EB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.75rem;
+}
+
+.dark .audience-icon {
+  background-color: rgba(88, 166, 255, 0.15);
+  color: var(--color-link, #58A6FF);
+}
+
+.audience-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-ink, #0f172a);
+  margin-bottom: 0.5rem;
+}
+
+.dark .audience-title {
+  color: var(--color-on-primary, #FFFFFF);
+}
+
+.audience-text {
+  font-size: 0.875rem;
+  color: var(--color-muted, #64748b);
+  line-height: 1.6;
+}
+
+.dark .audience-text {
+  color: var(--color-muted, #8B949E);
+}
+
+/* How To Use Steps */
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.step-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border, #e2e8f0);
+  background-color: var(--color-canvas, #ffffff);
+  padding: 1.25rem;
+  transition: border-color 0.2s ease;
+}
+
+.dark .step-item {
+  background-color: var(--color-surface, #161B22);
+  border-color: var(--color-border-dark, rgba(255, 255, 255, 0.15));
+}
+
+.step-item:hover {
+  border-color: var(--color-primary, #2563EB);
+}
+
+.step-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--color-primary, #2563EB);
+  color: var(--color-on-primary, #ffffff);
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dark .step-number {
+  background-color: var(--color-link, #58A6FF);
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-ink, #0f172a);
+  margin-bottom: 0.25rem;
+}
+
+.dark .step-title {
+  color: var(--color-on-primary, #FFFFFF);
+}
+
+.step-text {
+  font-size: 0.875rem;
+  color: var(--color-muted, #64748b);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dark .step-text {
+  color: var(--color-muted, #8B949E);
+}
+
+/* Subsection Title */
+.subsection-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-ink, #0f172a);
+  margin-bottom: 1rem;
+}
+
+.dark .subsection-title {
+  color: var(--color-on-primary, #FFFFFF);
+}

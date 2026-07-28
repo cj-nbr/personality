@@ -1,0 +1,52 @@
+---
+interface Props {
+  country: {
+    name: string;
+    credits: Array<{ name: string; description: string }>;
+    exemptions?: Array<{ name: string; description: string }>;
+  };
+}
+
+const { country } = Astro.props;
+---
+
+<section class="country-section" aria-labelledby="credits-heading">
+  <h2 id="credits-heading" class="section-title">Tax Credits in {country.name}</h2>
+  <p class="section-description mb-6">
+    Tax credits directly reduce your tax liability. Here are the major credits available in {country.name}.
+  </p>
+
+  <div class="credits-grid">
+    {country.credits.length > 0 && country.credits.map(credit => (
+      <div class="credit-card">
+        <div class="credit-card-icon">
+          <svg class="w-5 h-5 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <div>
+          <h4 class="credit-card-title">{credit.name}</h4>
+          <p class="credit-card-text">{credit.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {country.exemptions && country.exemptions.length > 0 && (
+    <div class="mt-8">
+      <h3 class="subsection-title">Exemptions</h3>
+      <div class="exemptions-grid">
+        {country.exemptions.map(exemption => (
+          <div class="exemption-card">
+            <h4 class="exemption-title">{exemption.name}</h4>
+            <p class="exemption-text">{exemption.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {country.credits.length === 0 && (
+    <div class="callout callout-warning">
+      <p class="text-sm text-body dark:text-muted">Specific tax credits for this country are limited or not widely available. Please consult a tax professional for details.</p>
+    </div>
+  )}
+</section>

@@ -475,6 +475,22 @@ export const unitedStates: Country = {
     { question: "What is FICA tax?", answer: "FICA (Federal Insurance Contributions Act) tax funds Social Security and Medicare. Employees pay 7.65% (6.2% Social Security + 1.45% Medicare). Employers match the same amount." },
     { question: "Do I need to pay estimated taxes?", answer: "If you have income not subject to withholding (self-employment, investments, rental income), you likely need to make quarterly estimated tax payments." }
   ],
+  taxSystemSummary: "The United States has a progressive federal income tax system with rates from 10% to 37%, payroll taxes through FICA, state and local income taxes, and capital gains taxes. Tax residents are taxed on worldwide income, while non-residents are taxed only on US-source income. The tax year follows the calendar year, with returns due April 15th.",
+  employerWithholding: "Employers withhold federal income tax, Social Security (6.2%), and Medicare (1.45%) from employee wages based on Form W-4. Additional Medicare tax of 0.9% applies to high earners. Self-employed individuals pay self-employment tax (15.3%) and make quarterly estimated payments.",
+  whoShouldUse: [
+    { type: "Employees", icon: "M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm10 14H4V9h16v10z", description: "W-2 employees with federal and state income tax withholding who want to estimate their tax liability and take-home pay." },
+    { type: "Freelancers & Contractors", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", description: "1099 contractors and gig workers who receive income without withholding and need to calculate self-employment tax and quarterly estimated payments." },
+    { type: "Self-Employed", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", description: "Business owners and sole proprietors who pay self-employment tax, need to estimate quarterly payments, and want to understand their effective tax rate." },
+    { type: "Investors", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6", description: "Individuals with capital gains, dividends, or investment income who need to estimate their total tax burden across ordinary and preferential rates." },
+    { type: "Expats", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", description: "US citizens and green card holders living abroad who must file US tax returns on worldwide income and may qualify for foreign earned income exclusion." }
+  ],
+  howToUseSteps: [
+    { step: 1, title: "Enter Income", description: "Input your annual income including wages, salaries, tips, freelance income, investment income, and any other earnings." },
+    { step: 2, title: "Choose Tax Year", description: "Select the tax year to apply the correct IRS brackets, standard deductions, and contribution limits." },
+    { step: 3, title: "Select Filing Status", description: "Choose your filing status: Single, Married Filing Jointly, Head of Household, etc. This determines your tax brackets and standard deduction." },
+    { step: 4, title: "Review Deductions", description: "Choose between standard deduction and itemized deductions. Enter itemized amounts if applicable, or use the standard deduction." },
+    { step: 5, title: "Calculate & Review", description: "Click Calculate to see your taxable income, federal tax, effective rate, marginal rate, and take-home pay. Review results and compare scenarios." }
+  ],
   educationalDisclaimer: "The tax information and calculators on this page are for educational and informational purposes only. They do not constitute professional tax advice. Tax laws are subject to change. Always consult a qualified tax professional for advice specific to your situation.",
   dataSources: ["Internal Revenue Service (IRS)", "Tax Cuts and Jobs Act (TCJA)", "SECURE 2.0 Act"],
   calculationMethodology: "Tax calculations follow the Internal Revenue Code and IRS regulations. Brackets and rates are sourced from the latest IRS Revenue Procedure. The standard deduction amounts are adjusted annually for inflation per the Tax Cuts and Jobs Act. Capital gains rates follow the preferential long-term rates established by the American Taxpayer Relief Act of 2012.",

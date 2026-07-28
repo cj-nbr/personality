@@ -160,6 +160,22 @@ export const malaysia: Country = {
     { date: "2024-01-01", title: "Updated SST Rates", description: "LHDNM confirmed current Sales and Service Tax rates for the year." }
   ],
   countryFAQs,
+  taxSystemSummary: "Malaysia has a progressive income tax system with rates from 0% to 30% for residents, and a flat 30% for non-residents. The country also imposes Sales and Service Tax (SST) and has no capital gains tax on most assets.",
+  employerWithholding: "Malaysian employers deduct monthly tax instalments (PCB) from employee salaries based on the LHDNM tax tables and remit them to the tax authority. The PCB deducted is credited against the employee's final tax liability when filing the annual return.",
+  whoShouldUse: [
+    { type: "Salaried Employees", icon: "M20 7h-4V5c0-1.1-.9-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm10 14H4V9h16v10z", description: "Employees working in Malaysia who receive monthly salaries with PCB withholding and need to estimate their annual tax liability." },
+    { type: "Freelancers & Contractors", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", description: "Self-employed consultants, contractors, and gig workers who earn business or professional income and must make their own tax payments." },
+    { type: "Business Owners", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", description: "Company owners and SMEs who need to estimate corporate tax at 24%, understand SST compliance, and claim business deductions." },
+    { type: "Expats", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", description: "Foreign professionals and expats working in Malaysia who need to determine their tax residency status (182-day rule) and obligations." },
+    { type: "Property Owners", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6", description: "Property investors and landlords who need to understand Real Property Gains Tax (RPGT) on property disposals." }
+  ],
+  howToUseSteps: [
+    { step: 1, title: "Enter Income", description: "Input your annual employment income, business income, rental income, or other chargeable income." },
+    { step: 2, title: "Apply Reliefs", description: "Enter eligible personal reliefs including EPF contributions, life insurance premiums, education expenses, and medical expenses." },
+    { step: 3, title: "Calculate Tax", description: "The calculator applies the progressive tax rates to your chargeable income after deducting all eligible reliefs." },
+    { step: 4, title: "Review Effective Rate", description: "Examine your effective tax rate and compare it against the headline rates to understand your actual burden." },
+    { step: 5, title: "Plan Ahead", description: "Use the results to plan your EPF contributions, charitable donations, and other tax-saving strategies for the next year." }
+  ],
   educationalDisclaimer: "The tax information and calculators on this page are for educational and informational purposes only. They do not constitute professional tax advice. Tax laws are subject to change. Always consult a qualified tax professional for advice specific to your situation.",
   dataSources: ["Lembaga Hasil Dalam Negeri Malaysia (LHDNM)", "Malaysian Budget 2024", "LHDNM Tax Circulars"],
   calculationMethodology: "Tax calculations follow the Malaysian Income Tax Act 1967 and LHDNM regulations. Progressive rates are applied to chargeable income after reliefs and deductions. SST rates are applied as per the Sales Tax Act 2018 and Service Tax Act 2018."

@@ -138,6 +138,21 @@ export const indonesia: Country = {
     { date: "2024-01-01", title: "Updated Tax Rates", description: "DJP released updated withholding tax rates and fiscal year guidelines for 2024." }
   ],
   countryFAQs,
+  taxSystemSummary: "Indonesia operates a self-assessment tax system with progressive personal income tax rates from 5% to 35%, corporate tax at 22%, and VAT at 11%. The tax year follows the calendar year, with returns due March 31 for individuals.",
+  employerWithholding: "Indonesian employers deduct withholding tax (PPh 21) from employee salaries based on the applicable tax slabs and remit it to the DJP. The withholding acts as a credit against the employee's annual tax liability when filing the annual return.",
+  whoShouldUse: [
+    { type: "Salaried Employees", icon: "M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5h4v2h-4V5zm10 14H4V9h16v10z", description: "Employees receiving monthly salaries with PPh 21 withholding who want to estimate their annual tax liability and potential refund." },
+    { type: "Freelancers & Contractors", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", description: "Self-employed professionals and gig workers who receive income subject to final or non-final withholding tax." },
+    { type: "Business Owners", icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4", description: "Company owners and SMEs who need to estimate corporate income tax and understand the 22% rate and available incentives." },
+    { type: "Expats", icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", description: "Foreign workers and expats in Indonesia who need to understand tax residency rules (183-day rule) and their obligations on Indonesian-sourced income." }
+  ],
+  howToUseSteps: [
+    { step: 1, title: "Enter Income", description: "Input your annual gross income from all sources including salary, business, rental, and investment income." },
+    { step: 2, title: "Apply Deductions", description: "Enter applicable deductions such as non-taxable income, marriage allowance, child allowance, and medical expenses." },
+    { step: 3, title: "Choose Tax Year", description: "Select the appropriate tax year to apply the correct progressive tax brackets and thresholds." },
+    { step: 4, title: "Calculate", description: "Click Calculate to see your taxable income, tax liability, and effective tax rate under Indonesia's progressive system." },
+    { step: 5, title: "Review & Optimize", description: "Review your tax position. Consider maximizing allowable deductions and planning for advance tax installments if required." }
+  ],
   educationalDisclaimer: "The tax information and calculators on this page are for educational and informational purposes only. They do not constitute professional tax advice. Tax laws are subject to change. Always consult a qualified tax professional for advice specific to your situation.",
   dataSources: ["Direktorat Jenderal Pajak (DJP)", "Indonesian Ministry of Finance", "DJP Tax Circulars"],
   calculationMethodology: "Tax calculations follow the Indonesian Income Tax Law and DJP regulations. Progressive rates are applied to taxable income after deductions and allowances. VAT is calculated on the taxable value of goods and services at the prevailing rate."
