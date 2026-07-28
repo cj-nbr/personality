@@ -64,6 +64,98 @@ const suggestedArticles = country.taxCategories
     slug: '/countries/' + country.slug + '/' + cat.slug
   }));
 
+const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+function buildDefaultContent() {
+  return {
+    overview: {
+      title: "Overview",
+      html: `<p>This ${country.name} ${category.name.toLowerCase()} calculator helps you estimate your ${calculator.name.toLowerCase()} quickly and accurately. Enter your income and other details below to see an estimate of your tax liability, effective tax rate, and take-home pay. This tool is updated regularly to reflect the latest tax laws and regulations for ${country.name}.</p><p>Use this calculator for planning and estimation purposes. For official tax advice, consult a qualified tax professional familiar with ${country.name} tax law.</p>`
+    },
+    howToUse: {
+      title: "How to Use",
+      html: `<p>Use this ${country.name} ${category.name} calculator to estimate your tax liability:</p><ol class="list-decimal pl-6 space-y-2"><li>Enter your <strong>annual income</strong> or relevant amount in the field provided.</li><li>Select your <strong>filing status</strong>, <strong>tax year</strong>, or other required options.</li><li>Click <strong>Calculate</strong> to see your estimated tax results.</li></ol><p>You can click <strong>Reset</strong> to clear the form and start over. Review the results carefully and use them as an estimate only.</p>`
+    },
+    understandingResults: {
+      title: "Understanding Results",
+      html: `<p><strong>Taxable Income:</strong> Income subject to tax after deductions.<br><strong>Tax Amount:</strong> Total tax liability.<br><strong>Effective Rate:</strong> Tax as a percentage of your total income.<br><strong>Take-Home Pay:</strong> Income after tax.</p>`
+    },
+    formula: {
+      title: "Formula",
+      html: `<p>Tax is computed using applicable rates and rules for ${country.name}. Review the detailed methodology above for assumptions and calculations.</p>`
+    },
+    workedExample: {
+      title: "Example Calculation",
+      html: `<p>Let's say you have an annual income of ${country.currency === 'USD' ? '$50,000' : country.currency === 'GBP' ? '£40,000' : country.currency === 'INR' ? '₹500,000' : country.currency === 'HKD' ? 'HK$300,000' : country.currency === 'SGD' ? 'S$50,000' : country.currency === 'MYR' ? 'RM60,000' : country.currency === 'NZD' ? 'NZ$50,000' : country.currency === 'PKR' ? 'PKR 1,200,000' : country.currency === 'PHP' ? 'PHP 400,000' : country.currency === 'IDR' ? 'Rp 75,000,000' : '50,000'}.</p><p>After applying the ${country.name} ${category.name.toLowerCase()} rules and deductions, your estimated tax liability and take-home pay will be calculated automatically by the tool above. Try entering your own values to see personalized results.</p>`
+    },
+    benefits: {
+      title: "Benefits of Using This Calculator",
+      html: `<ul class="list-disc pl-6 space-y-2"><li>Fast, instant tax estimates without manual calculations.</li><li>Up-to-date tax rates and slabs for ${country.name}.</li><li>Compare different scenarios by adjusting your inputs.</li><li>Understand your effective tax rate and take-home pay.</li><li>Plan your finances better with accurate estimates.</li></ul>`
+    },
+    limitations: {
+      title: "Limitations",
+      html: `<ul class="list-disc pl-6 space-y-2"><li>This is an estimate; actual tax may vary based on your full financial situation.</li><li>Does not account for every possible deduction, credit, or exemption.</li><li>Tax laws change frequently; verify current rates with official sources.</li><li>For complex situations (multiple income sources, business income, foreign income), consult a tax professional.</li></ul>`
+    },
+    taxSlabs: {
+      title: "Tax Slabs",
+      html: `<p>${country.name} ${category.name} slabs vary based on income level and taxpayer profile. Use this calculator to determine your exact liability under current rules.</p>`
+    },
+    commonMistakes: {
+      title: "Common Mistakes",
+      html: `<ul class="list-disc pl-6 space-y-2"><li>Not updating inputs for the correct tax year.</li><li>Using incorrect residency or employment status.</li><li>Forgetting to account for all income sources.</li><li>Not considering eligible deductions and reliefs.</li></ul>`
+    },
+    faq: [
+      { question: "What is the standard tax rate?", answer: "Tax rates vary by income level and jurisdiction. The calculator applies the most common rates for your selected profile." },
+      { question: "How accurate is this calculator?", answer: "This calculator provides estimates based on publicly available tax rules. For precise calculations, consult a tax professional or your local tax authority." },
+      { question: "Do I need to file a tax return?", answer: "Tax filing requirements vary by country and income level. Check with your local tax authority to determine if you need to file a return." }
+    ],
+    relatedCalculators: {
+      title: "Related Calculators",
+      html: `<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">\n    <a href="/countries/${country.slug}" class="block rounded border p-4 hover:border-primary transition">More ${country.name} Calculators</a>\n    <a href="/countries" class="block rounded border p-4 hover:border-primary transition">All Countries</a>\n    <a href="/" class="block rounded border p-4 hover:border-primary transition">Home</a>\n  </div>`
+    },
+    suggestedArticles: {
+      title: "Suggested Articles",
+      html: `<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">\n    <a href="/countries/${country.slug}/${category.slug}" class="block rounded border p-4 hover:border-primary transition">${category.name} Guide</a>\n    <a href="/countries/${country.slug}" class="block rounded border p-4 hover:border-primary transition">${country.name} Tax Overview</a>\n    <a href="/" class="block rounded border p-4 hover:border-primary transition">All Calculators</a>\n  </div>`
+    },
+    officialResources: {
+      title: "Official Government Resources",
+      html: `<ul class="space-y-2"><li><a href="${country.taxAuthorityUrl}" target="_blank" rel="noopener noreferrer">${country.officialTaxAuthority}</a></li></ul><p>Always verify tax calculations with the latest information from official government sources.</p>`
+    },
+    educationalDisclaimer: {
+      title: "Educational Disclaimer",
+      text: `This calculator is provided for informational and educational purposes only. It does not constitute legal, financial, or tax advice. Tax laws are complex and subject to change. Always consult a qualified tax professional or your local tax authority for advice specific to your circumstances.`
+    },
+    relatedCountry: {
+      title: "Related Country",
+      html: `<a href="/countries/${country.slug}" class="block rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary"><h3 class="text-lg font-semibold text-ink dark:text-on-primary">${country.name} Tax Overview</h3><p class="text-sm text-muted mt-1 dark:text-muted">Browse all ${country.name} tax calculators and guides.</p></a>`
+    },
+    faqSchema: {
+      "What is the standard tax rate?": "Tax rates vary by country and type of income. Check the latest official guidelines.",
+      "How do I calculate tax?": "Enter your details in the calculator and click Calculate for an estimate."
+    }
+  };
+}
+
+const defaultContent = buildDefaultContent();
+const mergedContent = {
+  howToUse: content?.howToUse || defaultContent.howToUse,
+  understandingResults: content?.understandingResults || defaultContent.understandingResults,
+  formula: content?.formula || defaultContent.formula,
+  workedExample: content?.workedExample || defaultContent.workedExample,
+  taxSlabs: content?.taxSlabs || defaultContent.taxSlabs,
+  commonMistakes: content?.commonMistakes || defaultContent.commonMistakes,
+  benefits: content?.benefits || defaultContent.benefits,
+  limitations: content?.limitations || defaultContent.limitations,
+  relatedCalculators: content?.relatedCalculators || defaultContent.relatedCalculators,
+  suggestedArticles: content?.suggestedArticles || defaultContent.suggestedArticles,
+  officialResources: content?.officialResources || defaultContent.officialResources,
+  educationalDisclaimer: content?.educationalDisclaimer || defaultContent.educationalDisclaimer,
+  relatedCountry: content?.relatedCountry || defaultContent.relatedCountry,
+  faq: content?.faq || defaultContent.faq,
+  faqSchema: content?.faqSchema || defaultContent.faqSchema,
+  overview: content?.overview || defaultContent.overview,
+};
+
 ---
 
 <CountryLayout
@@ -76,21 +168,26 @@ const suggestedArticles = country.taxCategories
     { label: calculator.name }
   ]}
 >
-  <div class="mb-8">
-    <h1 class="text-4xl font-bold text-ink dark:text-on-primary" data-i18n={calculator.name}>{calculator.name}</h1>
-    <p class="mt-2 text-lg text-body dark:text-muted" data-i18n={calculator.description}>{calculator.description}</p>
+  <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h1 class="text-4xl font-bold text-ink dark:text-on-primary" data-i18n={calculator.name}>{calculator.name}</h1>
+      <p class="mt-2 text-lg text-body dark:text-muted" data-i18n={calculator.description}>{calculator.description}</p>
+    </div>
   </div>
 
-  <div class="rounded-lg border border-hairline bg-canvas p-8 dark:border-white/15 dark:bg-primary">
-    <p class="text-body leading-relaxed dark:text-muted">
-      <span data-i18n="calculator.calculate_using">Calculate your</span> 
-      {category.name.toLowerCase()} 
-      <span data-i18n="calculator.using_this">using this</span> 
-      {country.name} 
-      <span data-i18n="calculator.calculator_enter">calculator. Enter your information below to get an estimate.</span>
-    </p>
+  <div class="mb-4 flex items-center gap-3 text-sm text-muted dark:text-muted">
+    <span class="tag tag-primary">{country.name}</span>
+    <span class="tag">{category.name}</span>
+    <span class="tag">Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
+  </div>
 
-    <div class="mt-8">
+  <div class="rounded-lg border border-hairline bg-canvas p-8 dark:border-overlay-lighter dark:bg-surface">
+    <div id="calc-overview" class="mb-8">
+      <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary" set:html={mergedContent.overview.title}></h2>
+      <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={mergedContent.overview.html}></div>
+    </div>
+
+    <div class="mb-8">
       <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="calculator.input_heading">Calculator Input</h2>
       
       {rule ? (
@@ -100,13 +197,13 @@ const suggestedArticles = country.taxCategories
               <div>
                 <label for={input.id} class="block text-sm font-medium text-ink mb-2 dark:text-on-primary">
                   <span data-i18n={input.label}>{input.label}</span>
-                  {input.required && <span class="text-red-500 ml-1">*</span>}
+                  {input.required && <span class="text-danger ml-1">*</span>}
                 </label>
                 
                 {input.type === "select" ? (
                   <select
                     id={input.id}
-                    class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
+                    class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-overlay-lighter dark:bg-surface dark:text-on-primary"
                   >
                     {input.options?.map((opt) => (
                       <option value={opt.value} selected={opt.value === input.defaultValue} data-i18n={opt.label}>{opt.label}</option>
@@ -119,7 +216,7 @@ const suggestedArticles = country.taxCategories
                     autocomplete="off"
                     placeholder={input.placeholder}
                     data-i18n-placeholder={input.placeholder}
-                    class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-white/15 dark:bg-primary dark:text-on-primary"
+                    class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-overlay-lighter dark:bg-surface dark:text-on-primary"
                   />
                 )}
                 
@@ -134,7 +231,7 @@ const suggestedArticles = country.taxCategories
             <button
               type="button"
               id="calc-btn"
-              class="rounded-lg bg-primary px-6 py-3 text-white font-medium hover:bg-primary-dark transition dark:bg-on-primary dark:text-primary"
+              class="rounded-lg bg-primary px-6 py-3 text-on-primary font-medium hover:bg-primary-dark transition dark:bg-on-primary dark:text-primary"
               data-i18n="calculator.calculate"
             >
               Calculate
@@ -142,7 +239,7 @@ const suggestedArticles = country.taxCategories
             <button
               type="button"
               id="reset-btn"
-              class="rounded-lg border border-hairline px-6 py-3 text-ink font-medium hover:bg-canvas-soft transition dark:border-white/15 dark:bg-primary dark:text-on-primary dark:hover:bg-white/10"
+              class="rounded-lg border border-hairline px-6 py-3 text-ink font-medium hover:bg-canvas-soft transition dark:border-overlay-lighter dark:bg-surface dark:text-on-primary dark:hover:overlay-light"
               data-i18n="calculator.reset"
             >
               Reset
@@ -155,45 +252,81 @@ const suggestedArticles = country.taxCategories
         </form>
       )}
 
-      <div id="result" class="mt-8 hidden">
-        <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary" data-i18n="results.title">Results</h3>
-        <div class="rounded-lg bg-canvas-soft p-6 dark:bg-primary">
-          {rule ? (
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {rule.outputs.map((output) => (
-                <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
-                  <p class="text-sm text-muted dark:text-muted" data-i18n={output.label}>{output.label}</p>
-                  <p class="text-2xl font-bold text-primary dark:text-on-primary" id={`result-${output.id}`}>
-                    {output.format === "currency" ? formatCurrency(0, country.currency) : output.format === "percentage" ? "0%" : "0"}
-                  </p>
-                  <p class="text-xs text-muted mt-1 dark:text-muted" data-i18n={output.description}>{output.description}</p>
-                </div>
-              ))}
+      <div id="result-wrapper" class="mt-8" aria-live="polite" aria-atomic="true">
+        <div id="calc-announcement" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+        <div id="result-empty" class="rounded-xl border-2 border-dashed border-hairline bg-canvas-soft p-8 text-center dark:border-overlay-lighter dark:bg-surface">
+          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 dark:bg-on-primary/10">
+            <svg class="h-6 w-6 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m-6 4h6m-6 4h4M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <p class="text-lg font-medium text-ink dark:text-on-primary">Your calculation results will appear here.</p>
+          <p class="mt-1 text-sm text-muted dark:text-muted">Enter your details above and click Calculate to see your estimated tax.</p>
+        </div>
+
+        <div id="result" class="hidden" role="region" aria-label="Calculation results">
+          <div class="no-print mb-4 flex flex-wrap items-center justify-between gap-3">
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary" data-i18n="results.title">Results</h3>
+            <div class="flex flex-wrap items-center gap-2">
+              <button id="print-btn" class="btn btn-secondary btn-sm" aria-label="Print calculator results" onclick="window.print()">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                Print
+              </button>
+              <button id="copy-result-btn" class="btn btn-secondary btn-sm" aria-label="Copy result to clipboard">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                Copy
+              </button>
+              <button id="share-btn" class="btn btn-secondary btn-sm" aria-label="Share this calculator">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                <span data-i18n="actions.share">Share</span>
+              </button>
             </div>
-          ) : (
-            <p class="text-3xl font-bold text-primary dark:text-on-primary" id="result-value">
-              {formatCurrency(0, country.currency)}
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas-soft p-6 sm:p-8 dark:bg-surface">
+            {rule ? (
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {rule.outputs.map((output) => {
+                  const isHighlighted = ['incomeTax', 'totalTax', 'federalTax', 'capitalGainsTax', 'takeHomePay', 'afterTaxIncome', 'afterTaxGain', 'cess', 'totalDeductions', 'stampDuty', 'propertyTax', 'salariesTax', 'profitsTax', 'totalFICA', 'socialSecurity', 'medicare'].includes(output.id);
+                  return (
+                    <div class={"rounded-lg border p-4 " + (isHighlighted ? "border-primary/30 bg-primary/5 dark:border-primary/20 dark:bg-primary/5" : "border-hairline bg-canvas dark:border-overlay-lighter dark:bg-surface")}>
+                      <p class={"text-sm font-medium text-muted dark:text-muted"} data-i18n={output.label}>{output.label}</p>
+                      <p class={"mt-2 font-bold " + (isHighlighted ? "text-2xl text-primary dark:text-on-primary" : "text-xl text-ink dark:text-on-primary")} id={"result-" + output.id}>
+                        {output.format === "currency" ? formatCurrency(0, country.currency) : output.format === "percentage" ? "0%" : "0"}
+                      </p>
+                      <p class="text-xs text-muted mt-1 dark:text-muted" data-i18n={output.description}>{output.description}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <p class="text-3xl font-bold text-primary dark:text-on-primary" id="result-value">
+                {formatCurrency(0, country.currency)}
+              </p>
+            )}
+            <p class="text-sm text-muted mt-4 dark:text-muted" data-i18n="calculator.estimate_disclaimer">
+              This is an estimate. Consult a tax professional for accurate calculations.
             </p>
-          )}
-          <p class="text-sm text-muted mt-4 dark:text-muted" data-i18n="calculator.estimate_disclaimer">
-            This is an estimate. Consult a tax professional for accurate calculations.
-          </p>
+          </div>
+          <div class="no-print mt-4">
+            <button id="copy-result-text-btn" class="btn btn-ghost btn-sm text-muted hover:text-ink dark:text-muted dark:hover:text-on-primary" aria-label="Copy result text">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              Copy
+            </button>
+          </div>
         </div>
       </div>
 
-      <div id="calc-error" class="mt-4 hidden">
-        <p class="text-sm text-red-600 dark:text-red-400" data-i18n="calculator.error">Please enter valid values for all required fields</p>
+      <div id="calc-error" class="mt-4 hidden" role="alert">
+         <p class="text-sm text-danger mt-4" data-i18n="calculator.error">Please enter valid values for all required fields</p>
       </div>
     </div>
   </div>
 
   {rule && rule.examples && rule.examples.length > 0 && (
     <div class="mt-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="example.title">Example Calculation</h2>
-      <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={mergedContent.workedExample?.title || "Example Calculation"}></h2>
+      <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div>
-            <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary" data-i18n={rule.examples[0].title}>{rule.examples[0].title}</h3>
+            <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary" set:html={rule.examples[0].title}></h3>
             <div class="space-y-2">
               {Object.entries(rule.examples[0].inputs).map(([key, value]) => {
                 const inputDef = rule.inputs.find(i => i.id === key);
@@ -226,7 +359,7 @@ const suggestedArticles = country.taxCategories
             </div>
           </div>
         </div>
-        <p class="mt-4 text-sm text-muted dark:text-muted" data-i18n={rule.examples[0].explanation}>{rule.examples[0].explanation}</p>
+        <p class="mt-4 text-sm text-muted dark:text-muted" set:html={rule.examples[0].explanation}></p>
       </div>
     </div>
   )}
@@ -234,12 +367,12 @@ const suggestedArticles = country.taxCategories
   {rule && rule.formulas && rule.formulas.length > 0 && (
     <div class="mt-12">
       <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="methodology.title">Calculation Methodology</h2>
-      <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
+      <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
         <div class="space-y-6">
           {rule.formulas.map((formula) => (
             <div>
               <h3 class="text-lg font-semibold text-ink dark:text-on-primary" data-i18n={formula.name}>{formula.name}</h3>
-              <code class="block mt-2 rounded-lg bg-canvas-soft p-3 text-sm font-mono text-primary dark:bg-primary dark:text-on-primary">
+              <code class="block mt-2 rounded-lg bg-canvas-soft p-3 text-sm font-mono text-primary dark:bg-surface dark:text-on-primary">
                 {formula.formula}
               </code>
               <p class="mt-2 text-sm text-body dark:text-muted" data-i18n={formula.description}>{formula.description}</p>
@@ -256,7 +389,11 @@ const suggestedArticles = country.taxCategories
       var calcBtn = document.getElementById('calc-btn');
       var resetBtn = document.getElementById('reset-btn');
       var resultDiv = document.getElementById('result');
+      var resultEmpty = document.getElementById('result-empty');
+      var resultWrapper = document.getElementById('result-wrapper');
       var errorDiv = document.getElementById('calc-error');
+      var copyResultBtn = document.getElementById('copy-result-btn');
+      var shareBtn = document.getElementById('share-btn');
       var ruleId = form ? form.getAttribute('data-rule-id') : '';
       var currencyCode = form ? form.getAttribute('data-country-currency') || 'USD' : 'USD';
 
@@ -307,35 +444,54 @@ const suggestedArticles = country.taxCategories
       function showError() {
         if (errorDiv) errorDiv.classList.remove('hidden');
         if (resultDiv) resultDiv.classList.add('hidden');
+        if (resultEmpty) resultEmpty.classList.remove('hidden');
       }
 
       function hideError() {
         if (errorDiv) errorDiv.classList.add('hidden');
       }
 
+      function showResults() {
+        if (resultDiv) resultDiv.classList.remove('hidden');
+        if (resultEmpty) resultEmpty.classList.add('hidden');
+        if (errorDiv) errorDiv.classList.add('hidden');
+      }
+
       function markInvalid(input) {
-        input.classList.add('border-red-500');
+        input.classList.add('border-danger');
       }
 
       function clearInvalid(input) {
-        input.classList.remove('border-red-500');
+        input.classList.remove('border-danger');
       }
 
       // ============================================================
       // CALCULATOR IMPLEMENTATIONS
       // ============================================================
 
-      function pTax(income, brackets) {
-        var tax = 0, prev = 0;
-        for (var i = 0; i < brackets.length; i++) {
-          var lim = brackets[i][0], r = brackets[i][1];
-          if (income > prev) {
-            var taxable = Math.min(income, lim) - prev;
-            tax += taxable * r;
-          }
-          prev = lim;
+      function calcGenericIncomeTax(brackets) {
+        var income = getInput('annualIncome') || 0;
+        var tax = pTax(income, brackets);
+        var effectiveRate = income > 0 ? (tax / income * 100) : 0;
+        setOutput('taxableIncome', income, 'currency');
+        setOutput('incomeTax', tax, 'currency');
+        setOutput('effectiveRate', effectiveRate, 'percentage');
+        setOutput('takeHomePay', income - tax, 'currency');
+      }
+
+      function calcHKProfitsTax() {
+        var profits = getInput('assessableProfits') || 0;
+        var businessType = getInput('businessType') || 'c_corp';
+        var tax = 0;
+        if (businessType === 'c_corp') {
+          tax = Math.min(profits, 2000000) * 0.0825 + Math.max(0, profits - 2000000) * 0.165;
+        } else {
+          tax = Math.min(profits, 2000000) * 0.075 + Math.max(0, profits - 2000000) * 0.15;
         }
-        return tax;
+        var effectiveRate = profits > 0 ? (tax / profits * 100) : 0;
+        setOutput('incomeTax', tax, 'currency');
+        setOutput('effectiveRate', effectiveRate, 'percentage');
+        setOutput('takeHomePay', profits - tax, 'currency');
       }
 
       function calcUSFederalIncomeTax() {
@@ -788,9 +944,9 @@ const suggestedArticles = country.taxCategories
           else if (ruleId === 'singapore-stamp-duty-stamp-duty-calculator') calcStampDuty();
           else if (ruleId === 'indonesia-income-tax-income-tax-calculator') calcGenericIncomeTax([[60000000,0],[250000000,0.05],[500000000,0.15],[2000000000,0.25],[2500000000,0.30],[10000000,0.35]]);
           else if (ruleId === 'indonesia-vat-vat-calculator') calcGenericVATorGST(0.11, getInput('calculationType') || 'exclusive');
-          
-          if (ruleId === 'united-states-income-tax-effective-tax-rate') calcEffectiveRate();
+          else if (ruleId === 'united-states-income-tax-effective-tax-rate') calcEffectiveRate();
           else if (ruleId === 'united-states-estate-tax-estate-tax-calculator') calcEstateTax();
+          else if (ruleId === 'united-states-payroll-tax-payroll-tax-calculator') calcFICA();
           else if (ruleId === 'united-states-payroll-tax-fica-calculator') calcFICA();
           else if (ruleId === 'united-states-payroll-tax-self-employment-tax') calcFICA();
           else if (ruleId === 'united-states-corporate-tax-small-business-tax') calcCorporate();
@@ -819,65 +975,149 @@ const suggestedArticles = country.taxCategories
           else if (ruleId === 'pakistan-vehicle-tax-sindh-vehicle-tax-calculator') calcPKSindhVehicleTax();
           else if (ruleId === 'pakistan-vehicle-tax-islamabad-vehicle-tax-calculator') calcPKIslamabadVehicleTax();
           else if (ruleId === 'singapore-stamp-duty-stamp-duty-calculator') calcStampDuty();
-else { hideError(); return; }
+          else { hideError(); return; }
 
-          if (resultDiv) resultDiv.classList.remove('hidden');
+          showResults();
+          if (resultWrapper) {
+            var isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            resultWrapper.scrollIntoView({ behavior: isReducedMotion ? 'auto' : 'smooth', block: 'start' });
+          }
+          var liveRegion = document.getElementById('calc-announcement');
+          if (liveRegion) liveRegion.textContent = 'Calculation complete. Results updated.';
         } catch(e) { showError(); }
       }
 
       function reset() {
         form.reset();
         if (resultDiv) resultDiv.classList.add('hidden');
+        if (resultEmpty) resultEmpty.classList.remove('hidden');
         if (errorDiv) errorDiv.classList.add('hidden');
+        var copyBtn = document.getElementById('copy-result-text-btn');
+        if (copyBtn) copyBtn.style.display = 'none';
+      }
+
+      function copyResult() {
+        if (!resultDiv) return;
+        var text = resultDiv.innerText;
+        if (!text) return;
+        navigator.clipboard.writeText(text).then(function() {
+          var copyTextBtn = document.getElementById('copy-result-text-btn');
+          if (copyTextBtn) {
+            copyTextBtn.innerHTML = '<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Copied!';
+            setTimeout(function(){ copyTextBtn.innerHTML = '<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg> Copy'; }, 2000);
+          }
+        }).catch(function() {});
+      }
+
+      function shareResult() {
+        if (!resultDiv || resultDiv.classList.contains('hidden')) return;
+        var text = resultDiv.innerText || '';
+        var title = document.title || 'Finsiva Tax Calculator Result';
+        var url = window.location.href;
+        if (navigator.share) {
+          navigator.share({ title: title, text: text, url: url }).catch(function(){});
+        } else if (navigator.clipboard) {
+          navigator.clipboard.writeText(url + '\n\n' + text).then(function() {
+            var btn = document.getElementById('share-btn');
+            if (btn) {
+              btn.textContent = 'Link copied!';
+              setTimeout(function(){ btn.innerHTML = '<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg> Share'; }, 2000);
+            }
+          }).catch(function(){});
+        }
       }
 
       if (calcBtn) calcBtn.addEventListener('click', calculate);
       if (resetBtn) resetBtn.addEventListener('click', reset);
+      var copyTextBtn = document.getElementById('copy-result-text-btn');
+      if (copyTextBtn) copyTextBtn.addEventListener('click', copyResult);
+      if (copyResultBtn) copyResultBtn.addEventListener('click', copyResult);
+      if (shareBtn) shareBtn.addEventListener('click', shareResult);
     })();
   </script>
 
   {content && (
     <>
-      <section class="mt-12">
-        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.howToUse.title}></h2>
-        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
-          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.howToUse.html}></div>
+      <section class="mt-12" aria-labelledby="howto-heading">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h2 id="howto-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={mergedContent.howToUse?.title}></h2>
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={mergedContent.howToUse?.html}></div>
         </div>
       </section>
 
-      <section class="mt-12">
-        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.understandingResults.title}></h2>
-        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
-          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.understandingResults.html}></div>
+      <section class="mt-12" aria-labelledby="understanding-heading">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h2 id="understanding-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={mergedContent.understandingResults?.title}></h2>
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={mergedContent.understandingResults?.html}></div>
         </div>
       </section>
 
-      <section class="mt-12">
-        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.formula.title}></h2>
-        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
-          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.formula.html}></div>
+      <section class="mt-12" aria-labelledby="formula-heading">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h2 id="formula-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={mergedContent.formula?.title}></h2>
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={mergedContent.formula?.html}></div>
         </div>
       </section>
 
-      <section class="mt-12">
-        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.taxSlabs.title}></h2>
-        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
-          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.taxSlabs.html}></div>
+      <section class="mt-12" aria-labelledby="worked-heading">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h2 id="worked-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={mergedContent.workedExample?.title}></h2>
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={mergedContent.workedExample?.html}></div>
         </div>
       </section>
 
-      <section class="mt-12">
-        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.commonMistakes.title}></h2>
-        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
-          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.commonMistakes.html}></div>
+      <section class="mt-12" aria-labelledby="benefits-heading">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h2 id="benefits-heading" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary" set:html={mergedContent.benefits?.title}></h2>
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={mergedContent.benefits?.html}></div>
         </div>
       </section>
 
-      <section class="mt-12">
-        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Related Calculators</h2>
+      <section class="mt-12" aria-labelledby="limitations-heading">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h2 id="limitations-heading" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary" set:html={mergedContent.limitations?.title}></h2>
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={mergedContent.limitations?.html}></div>
+        </div>
+      </section>
+
+      <section class="mt-12" aria-labelledby="slabs-heading">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h2 id="slabs-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={mergedContent.taxSlabs?.title}></h2>
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={mergedContent.taxSlabs?.html}></div>
+        </div>
+      </section>
+
+      <section class="mt-12" aria-labelledby="mistakes-heading">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h2 id="mistakes-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={mergedContent.commonMistakes?.title}></h2>
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={mergedContent.commonMistakes?.html}></div>
+        </div>
+      </section>
+
+      {mergedContent.faq && mergedContent.faq.length > 0 && (
+        <section class="mt-12" aria-labelledby="faq-heading">
+          <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h2 id="faq-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              {mergedContent.faq.map((faq, idx) => (
+                <details class="group border-b border-hairline last:border-0 dark:border-overlay-lighter">
+                  <summary class="flex items-center justify-between py-4 text-left cursor-pointer list-none">
+                    <span class="text-lg font-medium text-ink dark:text-on-primary">{faq.question}</span>
+                    <svg class="h-5 w-5 text-muted group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                  </summary>
+                  <div class="pb-4 text-body dark:text-muted">{faq.answer}</div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section class="mt-12" aria-labelledby="related-calculators-heading">
+        <h2 id="related-calculators-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Related Calculators</h2>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {relatedCalculators.map(rc => (
-            <a href={`/countries/${country.slug}/${rc.categorySlug}/${rc.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+            <a href={`/countries/${country.slug}/${rc.categorySlug}/${rc.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
               <h3 class="font-semibold text-ink dark:text-on-primary">{rc.name}</h3>
               <p class="text-sm text-muted mt-1 dark:text-muted">{category.name} - {country.name}</p>
             </a>
@@ -885,28 +1125,49 @@ else { hideError(); return; }
         </div>
       </section>
 
-      <section class="mt-12">
-        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Suggested Articles</h2>
+      <section class="mt-12" aria-labelledby="suggested-articles-heading">
+        <h2 id="suggested-articles-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Suggested Articles</h2>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {suggestedArticles.map(article => (
-            <a href={article.slug.startsWith('/') ? article.slug : `/blogs/${article.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
+            <a href={article.slug.startsWith('/') ? article.slug : `/blogs/${article.slug}`} class="rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
               <h3 class="font-semibold text-ink dark:text-on-primary">{article.title}</h3>
             </a>
           ))}
         </div>
       </section>
 
-      <section class="mt-12">
-        <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={content.officialResources.title}></h2>
-        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-white/15 dark:bg-primary">
-          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={content.officialResources.html}></div>
+      <section class="mt-12" aria-labelledby="related-country-heading">
+        <h2 id="related-country-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Related Country</h2>
+        {mergedContent.relatedCountry ? (
+          <div set:html={mergedContent.relatedCountry.html}></div>
+        ) : (
+          <a href={`/countries/${country.slug}`} class="block rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="text-lg font-semibold text-ink dark:text-on-primary">{country.name} Tax Overview</h3>
+            <p class="text-sm text-muted mt-1 dark:text-muted">Browse all {country.name} tax calculators and guides.</p>
+          </a>
+        )}
+      </section>
+
+      <section class="mt-12" aria-labelledby="official-heading">
+        <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h2 id="official-heading" class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" set:html={mergedContent.officialResources?.title}></h2>
+          <div class="prose max-w-none text-body dark:text-muted space-y-4" set:html={mergedContent.officialResources?.html}></div>
         </div>
       </section>
+
+      {mergedContent.educationalDisclaimer && (
+        <section class="mt-12" aria-labelledby="disclaimer-heading">
+          <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h2 id="disclaimer-heading" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary" set:html={mergedContent.educationalDisclaimer?.title}></h2>
+            <p class="text-sm text-muted dark:text-muted" set:html={mergedContent.educationalDisclaimer?.text}></p>
+          </div>
+        </section>
+      )}
 
       <script type="application/ld+json" set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: Object.entries(content.faqSchema).map(([name, text]) => ({
+        mainEntity: Object.entries(mergedContent.faqSchema).map(([name, text]) => ({
           "@type": "Question",
           name,
           acceptedAnswer: {
@@ -914,6 +1175,30 @@ else { hideError(); return; }
             text: `<p>${text}</p>`
           }
         }))
+      })}></script>
+
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": `${calculator.name} - ${country.name}`,
+        "description": `How to use the ${calculator.name} to estimate your tax liability in ${country.name}.`,
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Enter your income",
+            "text": "Enter your annual income or relevant amount in the calculator inputs."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Select options",
+            "text": "Choose your filing status, tax year, and any other required options."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Calculate",
+            "text": "Click the Calculate button to see your estimated tax results."
+          }
+        ]
       })}></script>
     </>
   )}

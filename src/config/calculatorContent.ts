@@ -3,15 +3,27 @@ export interface RichCalculatorSection {
   html: string;
 }
 
+export interface RichFAQItem {
+  question: string;
+  answer: string;
+}
+
 export interface RichCalculatorContent {
+  overview: RichCalculatorSection;
   howToUse: RichCalculatorSection;
   understandingResults: RichCalculatorSection;
   formula: RichCalculatorSection;
+  workedExample: RichCalculatorSection;
+  benefits: RichCalculatorSection;
+  limitations: RichCalculatorSection;
   taxSlabs: RichCalculatorSection;
   commonMistakes: RichCalculatorSection;
+  faq: RichFAQItem[];
   relatedCalculators: RichCalculatorSection;
   suggestedArticles: RichCalculatorSection;
   officialResources: RichCalculatorSection;
+  relatedCountry: RichCalculatorSection;
+  educationalDisclaimer: { title: string; text: string };
   faqSchema: Record<string, string>;
 }
 
@@ -53,6 +65,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard deduction for Income Tax in United States?": "Standard deductions vary by country. Check the latest official guidelines for your jurisdiction.",
         "How to calculate Income Tax on salary in United States?": "Enter your annual income, select your tax year, and use the calculator to get an estimate.",
         "What are the Income Tax slabs in United States?": "Slabs vary by income level and tax year. The calculator shows the applicable rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -93,6 +140,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard deduction for Income Tax in Malaysia?": "Standard deductions vary by country. Check the latest official guidelines for your jurisdiction.",
         "How to calculate Income Tax on salary in Malaysia?": "Enter your annual income, select your tax year, and use the calculator to get an estimate.",
         "What are the Income Tax slabs in Malaysia?": "Slabs vary by income level and tax year. The calculator shows the applicable rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -133,6 +215,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard Sst rate in Malaysia?": "Standard rates vary by country and type of goods/services.",
         "How to calculate Sst from total amount?": "Enter the total amount and select reverse calculation to extract the tax component.",
         "What are the different Sst rates in Malaysia?": "Rates may include standard, reduced, zero-rated, and exempt categories."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -173,6 +290,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard deduction for Income Tax in New Zealand?": "Standard deductions vary by country. Check the latest official guidelines for your jurisdiction.",
         "How to calculate Income Tax on salary in New Zealand?": "Enter your annual income, select your tax year, and use the calculator to get an estimate.",
         "What are the Income Tax slabs in New Zealand?": "Slabs vary by income level and tax year. The calculator shows the applicable rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -213,6 +365,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard Gst rate in New Zealand?": "Standard rates vary by country and type of goods/services.",
         "How to calculate Gst from total amount?": "Enter the total amount and select reverse calculation to extract the tax component.",
         "What are the different Gst rates in New Zealand?": "Rates may include standard, reduced, zero-rated, and exempt categories."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -260,6 +447,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the tax rate for freelancers and sole proprietors in Pakistan?": "Freelancers and sole proprietors are taxed at the same progressive rates as individuals, ranging from 0% to 35% on net business income.",
         "Can I use an online tax calculator for official tax filing?": "Our online tax calculator Pakistan is for estimation and planning only. For official filing, use the FBR Iris portal.",
         "What is the penalty for non-filing tax in Pakistan?": "FBR may impose penalties up to PKR 100,000 or more for non-filing. Non-filers also face higher withholding tax rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
   },
 
@@ -300,6 +522,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard Sales Tax rate in Pakistan?": "The standard sales tax rate in Pakistan is 18% on most goods and services. Some items are exempt or taxed at reduced rates.",
         "How to calculate Sales Tax from total amount?": "To extract sales tax from a gross amount, divide the total by 1 plus the tax rate, then subtract the net amount from the total.",
         "What are the different Sales Tax rates in Pakistan?": "Pakistan has a standard rate of 18%, reduced rates for certain items, and exemptions for essential goods like unprocessed food."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
   },
 
@@ -340,6 +597,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard deduction for Income Tax in Philippines?": "Standard deductions vary by country. Check the latest official guidelines for your jurisdiction.",
         "How to calculate Income Tax on salary in Philippines?": "Enter your annual income, select your tax year, and use the calculator to get an estimate.",
         "What are the Income Tax slabs in Philippines?": "Slabs vary by income level and tax year. The calculator shows the applicable rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -380,6 +672,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard Vat rate in Philippines?": "Standard rates vary by country and type of goods/services.",
         "How to calculate Vat from total amount?": "Enter the total amount and select reverse calculation to extract the tax component.",
         "What are the different Vat rates in Philippines?": "Rates may include standard, reduced, zero-rated, and exempt categories."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -420,6 +747,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard deduction for Income Tax in United Kingdom?": "Standard deductions vary by country. Check the latest official guidelines for your jurisdiction.",
         "How to calculate Income Tax on salary in United Kingdom?": "Enter your annual income, select your tax year, and use the calculator to get an estimate.",
         "What are the Income Tax slabs in United Kingdom?": "Slabs vary by income level and tax year. The calculator shows the applicable rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -460,6 +822,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard Vat rate in United Kingdom?": "Standard rates vary by country and type of goods/services.",
         "How to calculate Vat from total amount?": "Enter the total amount and select reverse calculation to extract the tax component.",
         "What are the different Vat rates in United Kingdom?": "Rates may include standard, reduced, zero-rated, and exempt categories."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -499,6 +896,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "faqSchema": {
         "What is the National Insurance rate in United Kingdom?": "Rates vary by income level and employment type.",
         "How to calculate employer National Insurance contributions?": "Enter annual earnings and employment type to get an estimate."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -539,6 +971,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard deduction for Income Tax in United States?": "Standard deductions vary by country. Check the latest official guidelines for your jurisdiction.",
         "How to calculate Income Tax on salary in United States?": "Enter your annual income, select your tax year, and use the calculator to get an estimate.",
         "What are the Income Tax slabs in United States?": "Slabs vary by income level and tax year. The calculator shows the applicable rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -578,6 +1045,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "faqSchema": {
         "What is the Payroll Tax rate in United States?": "Rates vary by income level and employment type.",
         "How to calculate employer Payroll Tax contributions?": "Enter annual earnings and employment type to get an estimate."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -617,6 +1119,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "faqSchema": {
         "What is the corporate tax rate in United States?": "Corporate tax rates vary by jurisdiction and business structure.",
         "How to calculate corporate tax?": "Enter taxable income and entity type to estimate corporate tax liability."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -656,6 +1193,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "faqSchema": {
         "What is the capital gains tax rate in United States?": "Capital gains tax rates depend on holding period and asset type.",
         "How to calculate capital gains tax?": "Enter your gain amount, cost basis, and holding period to estimate tax."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -696,6 +1268,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard deduction for Income Tax in India?": "Standard deductions vary by country. Check the latest official guidelines for your jurisdiction.",
         "How to calculate Income Tax on salary in India?": "Enter your annual income, select your tax year, and use the calculator to get an estimate.",
         "What are the Income Tax slabs in India?": "Slabs vary by income level and tax year. The calculator shows the applicable rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -736,6 +1343,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard Gst rate in India?": "Standard rates vary by country and type of goods/services.",
         "How to calculate Gst from total amount?": "Enter the total amount and select reverse calculation to extract the tax component.",
         "What are the different Gst rates in India?": "Rates may include standard, reduced, zero-rated, and exempt categories."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -775,6 +1417,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "faqSchema": {
         "What is the TDS rate in India?": "TDS rates vary by payment type and recipient status.",
         "When is TDS deducted?": "TDS is deducted at the time of payment by the payer."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -850,6 +1527,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the minimum salary to pay tax in HK?": "The minimum salary to pay tax in Hong Kong depends on your personal allowances. With basic allowances and deductions, many taxpayers earning below approximately HKD 200,000 per year pay no taxes.",
         "Are taxes in Hong Kong high?": "No, taxes in Hong Kong are not high. The maximum salaries tax rate is 17%, and the standard rate is 15% of net income. With personal allowances, many residents pay little to no tax.",
         "Is $50,000 HKD a good salary?": "Whether $50,000 HKD is a good salary depends on your lifestyle, benefits, and tax obligations. Use our Hong Kong net salary calculator or Hong Kong take home pay calculator to see your actual take-home pay after tax, MPF, and other deductions."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
   },
 
@@ -893,6 +1605,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "How to calculate assessable profits in Hong Kong?": "Assessable profits are computed by starting with your net profits per accounts, then making adjustments for non-deductible expenses, capital allowances, and any other tax adjustments under the Inland Revenue Ordinance.",
         "Can I use the two-tiered rates if I have multiple companies?": "Only one entity within a group of connected entities can elect to use the two-tiered rates. Connected entities must nominate which entity will benefit from the reduced rate.",
         "What are the common deductions for profits tax?": "Common deductions include rent, salaries, utilities, depreciation (capital allowances), charitable donations, and business-related expenses. Use our Hong Kong corporate tax calculator to estimate your deductions."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
   },
 
@@ -933,6 +1680,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard deduction for Income Tax in Singapore?": "Standard deductions vary by country. Check the latest official guidelines for your jurisdiction.",
         "How to calculate Income Tax on salary in Singapore?": "Enter your annual income, select your tax year, and use the calculator to get an estimate.",
         "What are the Income Tax slabs in Singapore?": "Slabs vary by income level and tax year. The calculator shows the applicable rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -973,6 +1755,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard Gst rate in Singapore?": "Standard rates vary by country and type of goods/services.",
         "How to calculate Gst from total amount?": "Enter the total amount and select reverse calculation to extract the tax component.",
         "What are the different Gst rates in Singapore?": "Rates may include standard, reduced, zero-rated, and exempt categories."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -1012,6 +1829,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "faqSchema": {
         "What is the stamp duty rate in Singapore?": "Stamp duty rates vary by property price and buyer type.",
         "How is stamp duty calculated?": "Stamp duty is typically calculated as a percentage of the property purchase price with tiered rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -1052,6 +1904,41 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard deduction for Income Tax in Indonesia?": "Standard deductions vary by country. Check the latest official guidelines for your jurisdiction.",
         "How to calculate Income Tax on salary in Indonesia?": "Enter your annual income, select your tax year, and use the calculator to get an estimate.",
         "What are the Income Tax slabs in Indonesia?": "Slabs vary by income level and tax year. The calculator shows the applicable rates."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
 },
 
@@ -1092,8 +1979,44 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
         "What is the standard Vat rate in Indonesia?": "Standard rates vary by country and type of goods/services.",
         "How to calculate Vat from total amount?": "Enter the total amount and select reverse calculation to extract the tax component.",
         "What are the different Vat rates in Indonesia?": "Rates may include standard, reduced, zero-rated, and exempt categories."
+    },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
     }
-},
+}
+,
   "hong-kong-salaries-tax-salary-tax-computation": {
     "howToUse": { "title": "How to Use", "html": "<p>Use this Hong Kong Salary Tax Computation tool to get a detailed breakdown of your salaries tax.</p>" },
     "understandingResults": { "title": "Understanding Results", "html": "<p><strong>Total Income:</strong> Gross employment income. <strong>Salaries Tax:</strong> Tax computed under progressive or standard rate, whichever is lower.</p>" },
@@ -1103,7 +2026,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/salaries-tax/salaries-tax-calculator'>Salaries Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/blogs/hong-kong-salaries-tax-guide'>Salaries Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "How are salaries tax deductions applied?":"Deductions and allowances reduce your net chargeable income before tax calculation." }
+    "faqSchema": { "How are salaries tax deductions applied?":"Deductions and allowances reduce your net chargeable income before tax calculation." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-salaries-tax-hk-net-salary-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate your take-home pay after tax and MPF in Hong Kong.</p>" },
@@ -1114,7 +2072,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/salaries-tax/salaries-tax-calculator'>Salaries Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/blogs/hong-kong-mpf-tax-guide'>MPF Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "What affects take-home pay in Hong Kong?":"Salaries tax and MPF contributions reduce your take-home pay." }
+    "faqSchema": { "What affects take-home pay in Hong Kong?":"Salaries tax and MPF contributions reduce your take-home pay." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-salaries-tax-hong-kong-tax-calculator-for-expats": {
     "howToUse": { "title": "How to Use", "html": "<p>Estimate your Hong Kong tax as a foreign employee or expat.</p>" },
@@ -1125,7 +2118,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/salaries-tax/salaries-tax-calculator'>Salaries Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/blogs/hong-kong-tax-residency'>Tax Residency Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "Do expats pay tax in Hong Kong?":"Yes, on Hong Kong-sourced employment income." }
+    "faqSchema": { "Do expats pay tax in Hong Kong?":"Yes, on Hong Kong-sourced employment income." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-salaries-tax-hong-kong-income-tax-for-foreigners-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate income tax for foreigners working in Hong Kong.</p>" },
@@ -1136,7 +2164,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/salaries-tax/salaries-tax-calculator'>Salaries Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/blogs/hong-kong-tax-residency'>Tax Residency Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "What taxes do foreigners pay in Hong Kong?":"Foreigners pay salaries tax on HK-sourced employment income and MPF." }
+    "faqSchema": { "What taxes do foreigners pay in Hong Kong?":"Foreigners pay salaries tax on HK-sourced employment income and MPF." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-profits-tax-hk-corporate-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate corporate tax for Hong Kong limited companies.</p>" },
@@ -1147,7 +2210,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/profits-tax/profits-tax-calculator'>Profits Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/hong-kong/profits-tax/profits-tax-guide'>Profits Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "What is the corporate tax rate in Hong Kong?":"Corporations pay 16.5%. Unincorporated pay 15%. Only HK-sourced profits are taxable." }
+    "faqSchema": { "What is the corporate tax rate in Hong Kong?":"Corporations pay 16.5%. Unincorporated pay 15%. Only HK-sourced profits are taxable." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-profits-tax-profit-tax-computation": {
     "howToUse": { "title": "How to Use", "html": "<p>Get a detailed breakdown of your Hong Kong profit tax computation.</p>" },
@@ -1158,7 +2256,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/profits-tax/profits-tax-calculator'>Profits Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/hong-kong/profits-tax'>Profits Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "What is assessable profits?":"Net profits arising from or derived from Hong Kong, after allowable deductions." }
+    "faqSchema": { "What is assessable profits?":"Net profits arising from or derived from Hong Kong, after allowable deductions." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-stamp-duty-hk-property-stamp-duty-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate Hong Kong property stamp duty.</p>" },
@@ -1169,7 +2302,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/stamp-duty/stamp-duty-calculator'>Stamp Duty Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/blogs/hong-kong-stamp-duty-guide'>Stamp Duty Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "What is stamp duty on residential property in Hong Kong?":"Scale 2 rates apply." }
+    "faqSchema": { "What is stamp duty on residential property in Hong Kong?":"Scale 2 rates apply." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-stamp-duty-stamp-duty-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Estimate stamp duty for Hong Kong property purchases.</p>" },
@@ -1180,7 +2348,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/stamp-duty/hk-property-stamp-duty-calculator'>HK Property Stamp Duty</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/blogs/hong-kong-stamp-duty-guide'>Stamp Duty Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "How is HK stamp duty calculated?":"It is calculated using Scale 2 rates." }
+    "faqSchema": { "How is HK stamp duty calculated?":"It is calculated using Scale 2 rates." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-stamp-duty-rental-stamp-duty-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate stamp duty on rental agreements and leases in Hong Kong.</p>" },
@@ -1191,7 +2394,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/stamp-duty/stamp-duty-calculator'>Stamp Duty Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/blogs/hong-kong-stamp-duty-guide'>Stamp Duty Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "What is stamp duty on a rental agreement in Hong Kong?":"It is a fixed amount based on lease term." }
+    "faqSchema": { "What is stamp duty on a rental agreement in Hong Kong?":"It is a fixed amount based on lease term." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-stamp-duty-first-registration-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate first registration tax for Hong Kong vehicles.</p>" },
@@ -1202,7 +2440,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/stamp-duty/stamp-duty-calculator'>Stamp Duty Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/blogs/hong-kong-car-tax-guide'>Hong Kong Car Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.gov.hk'>Transport Department</a>" },
-    "faqSchema": { "Is there a First Registration Tax exemption for electric vehicles?":"Yes, EVs enjoy full or partial FRT waiver." }
+    "faqSchema": { "Is there a First Registration Tax exemption for electric vehicles?":"Yes, EVs enjoy full or partial FRT waiver." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-property-tax-property-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate Hong Kong property tax on rental income. Enter annual rental income and any irrecoverable rent.</p>" },
@@ -1213,7 +2486,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/property-tax/hk-rental-tax-deduction-calculator'>HK Rental Tax Deduction Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/blogs/hong-kong-property-tax-guide'>Property Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "What is the property tax rate in Hong Kong?":"Standard rate is 15% on net assessable value after deductions." }
+    "faqSchema": { "What is the property tax rate in Hong Kong?":"Standard rate is 15% on net assessable value after deductions." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "hong-kong-property-tax-hk-rental-tax-deduction-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Estimate rental tax deductions and property tax liability.</p>" },
@@ -1224,7 +2532,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/hong-kong/property-tax/property-tax-calculator'>Property Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/blogs/hong-kong-property-tax-guide'>Property Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.ird.gov.hk'>Hong Kong IRD</a>" },
-    "faqSchema": { "What can I deduct from rental income for HK property tax?":"20% standard deduction plus irrecoverable rent and allowable expenses." }
+    "faqSchema": { "What can I deduct from rental income for HK property tax?":"20% standard deduction plus irrecoverable rent and allowable expenses." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "united-states-income-tax-effective-tax-rate": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate your effective tax rate. Enter your income and taxes paid.</p>" },
@@ -1235,7 +2578,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/united-states/income-tax/federal-income-tax'>Federal Income Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/united-states/income-tax'>Income Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.irs.gov'>IRS</a>" },
-    "faqSchema": { "What is effective tax rate?":"Total tax as a percentage of gross income." }
+    "faqSchema": { "What is effective tax rate?":"Total tax as a percentage of gross income." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "united-states-payroll-tax-fica-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate Social Security and Medicare taxes on your wages.</p>" },
@@ -1246,7 +2624,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/united-states/payroll-tax/payroll-tax-calculator'>Payroll Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/united-states/payroll-tax'>Payroll Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.irs.gov'>IRS</a>" },
-    "faqSchema": { "What is FICA tax?":"FICA is 6.2% Social Security + 1.45% Medicare." }
+    "faqSchema": { "What is FICA tax?":"FICA is 6.2% Social Security + 1.45% Medicare." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "united-states-payroll-tax-self-employment-tax": {
     "howToUse": { "title": "How to Use", "html": "<p>Estimate SE tax for freelancers and independent contractors.</p>" },
@@ -1257,7 +2670,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/united-states/payroll-tax/payroll-tax-calculator'>Payroll Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/united-states/payroll-tax'>Payroll Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.irs.gov'>IRS</a>" },
-    "faqSchema": { "What is self-employment tax?":"SE tax is 15.3% of 92.35% of net self-employment earnings." }
+    "faqSchema": { "What is self-employment tax?":"SE tax is 15.3% of 92.35% of net self-employment earnings." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "united-states-corporate-tax-small-business-tax": {
     "howToUse": { "title": "How to Use", "html": "<p>Estimate taxes for pass-through business entities.</p>" },
@@ -1268,7 +2716,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/united-states/corporate-tax/corporate-tax-calculator'>Corporate Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/united-states/corporate-tax'>Corporate Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.irs.gov'>IRS</a>" },
-    "faqSchema": { "Do small businesses pay corporate tax?":"Pass-through entities do not pay entity-level tax." }
+    "faqSchema": { "Do small businesses pay corporate tax?":"Pass-through entities do not pay entity-level tax." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "united-states-capital-gains-tax-ltcg-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate long-term capital gains tax on property or investments.</p>" },
@@ -1279,7 +2762,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/united-states/capital-gains-tax/capital-gains-calculator'>Capital Gains Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/united-states/capital-gains-tax'>Capital Gains Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.irs.gov'>IRS</a>" },
-    "faqSchema": { "What is long-term capital gains tax?":"Gains on assets held >1 year taxed at 0%, 15%, or 20%." }
+    "faqSchema": { "What is long-term capital gains tax?":"Gains on assets held >1 year taxed at 0%, 15%, or 20%." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "united-states-estate-tax-estate-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Estimate federal estate tax liability. Enter estate value and marital status.</p>" },
@@ -1290,7 +2808,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/united-states/estate-tax/estate-tax-calculator'>Estate Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/united-states/estate-tax'>Estate Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.irs.gov'>IRS</a>" },
-    "faqSchema": { "What is the federal estate tax exemption for 2025?":"$13.61 million per individual ($27.22 million for married couples)." }
+    "faqSchema": { "What is the federal estate tax exemption for 2025?":"$13.61 million per individual ($27.22 million for married couples)." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-income-tax-salary-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate your Pakistan income tax on salary.</p>" },
@@ -1301,7 +2854,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/income-tax/income-tax-calculator'>Income Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/income-tax'>Income Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "How is salary tax calculated in Pakistan?":"Using FBR progressive slabs on annual taxable income." }
+    "faqSchema": { "How is salary tax calculated in Pakistan?":"Using FBR progressive slabs on annual taxable income." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-income-tax-business-income-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate income tax for business and freelancers in Pakistan.</p>" },
@@ -1312,7 +2900,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/income-tax/income-tax-calculator'>Income Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/income-tax'>Income Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "How is business income tax calculated?":"Net business income is taxed at applicable progressive slab rates." }
+    "faqSchema": { "How is business income tax calculated?":"Net business income is taxed at applicable progressive slab rates." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-income-tax-capital-gain-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate capital gains tax on property and shares in Pakistan.</p>" },
@@ -1323,7 +2946,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/property-tax'>Property Tax</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/property-tax'>Property Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "What is the capital gains tax rate in Pakistan?":"Short-term: 10%. Long-term property: 15%. Long-term shares: 20%." }
+    "faqSchema": { "What is the capital gains tax rate in Pakistan?":"Short-term: 10%. Long-term property: 15%. Long-term shares: 20%." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-sales-tax-gst-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate GST inclusive or exclusive amounts.</p>" },
@@ -1334,7 +2992,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/sales-tax/sales-tax-calculator'>Sales Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/sales-tax'>Sales Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "What is the GST rate in Pakistan?":"18%." }
+    "faqSchema": { "What is the GST rate in Pakistan?":"18%." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-property-tax-property-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate property tax in Pakistan by province.</p>" },
@@ -1345,7 +3038,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/property-tax/token-tax-calculator'>Token Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/property-tax'>Property Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "How is property tax calculated?":"Provincial authorities levy tax based on annual value." }
+    "faqSchema": { "How is property tax calculated?":"Provincial authorities levy tax based on annual value." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-property-tax-capital-gain-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate capital gains tax on property sales in Pakistan.</p>" },
@@ -1356,7 +3084,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/property-tax/property-tax-calculator'>Property Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/property-tax'>Property Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "What is CGT on property?":"Long-term residential: 15%. Commercial: 20%. Short-term: 10%." }
+    "faqSchema": { "What is CGT on property?":"Long-term residential: 15%. Commercial: 20%. Short-term: 10%." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-property-tax-token-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate token tax for property and vehicle registration.</p>" },
@@ -1367,7 +3130,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/vehicle-tax/vehicle-tax-calculator'>Vehicle Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/vehicle-tax'>Vehicle Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "What is token tax?":"A fixed fee for vehicle or property registration." }
+    "faqSchema": { "What is token tax?":"A fixed fee for vehicle or property registration." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-property-tax-rental-income-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate tax on rental income from property in Pakistan.</p>" },
@@ -1378,7 +3176,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/income-tax/income-tax-calculator'>Income Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/property-tax'>Property Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "Is rental income taxable in Pakistan?":"Yes, net rental income is taxable at individual slab rates." }
+    "faqSchema": { "Is rental income taxable in Pakistan?":"Yes, net rental income is taxable at individual slab rates." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-vehicle-tax-vehicle-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate vehicle token tax in Pakistan by province.</p>" },
@@ -1389,7 +3222,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/vehicle-tax/sindh-vehicle-tax-calculator'>Sindh Vehicle Tax</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/vehicle-tax'>Vehicle Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "How much is token tax in Pakistan?":"PKR 50-$500 depending on engine capacity and province." }
+    "faqSchema": { "How much is token tax in Pakistan?":"PKR 50-$500 depending on engine capacity and province." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-vehicle-tax-sindh-vehicle-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate Sindh vehicle token tax and transfer fees.</p>" },
@@ -1400,7 +3268,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/vehicle-tax/vehicle-tax-calculator'>Vehicle Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/vehicle-tax'>Vehicle Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "What is Sindh vehicle token tax?":"Provincial token tax based on engine capacity." }
+    "faqSchema": { "What is Sindh vehicle token tax?":"Provincial token tax based on engine capacity." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   },
   "pakistan-vehicle-tax-islamabad-vehicle-tax-calculator": {
     "howToUse": { "title": "How to Use", "html": "<p>Calculate Islamabad vehicle token tax.</p>" },
@@ -1411,7 +3314,42 @@ export const calculatorContent: Record<string, RichCalculatorContent> = {
     "relatedCalculators": { "title": "Related Calculators", "html": "<a href='/countries/pakistan/vehicle-tax/vehicle-tax-calculator'>Vehicle Tax Calculator</a>" },
     "suggestedArticles": { "title": "Suggested Articles", "html": "<a href='/countries/pakistan/vehicle-tax'>Vehicle Tax Guide</a>" },
     "officialResources": { "title": "Official Resources", "html": "<a href='https://www.fbr.gov.pk'>FBR Pakistan</a>" },
-    "faqSchema": { "What is Islamabad token tax?":"ICT levies token tax on vehicles based on engine capacity." }
+    "faqSchema": { "What is Islamabad token tax?":"ICT levies token tax on vehicles based on engine capacity." },
+
+    "overview": {
+      "title": "Overview",
+      "html": "<p>This calculator helps you estimate your tax liability. Enter your details below for an estimate based on current tax rules.</p>"
+    },
+    "workedExample": {
+      "title": "Example Calculation",
+      "html": "<p>Example: with an annual income of $50,000, the estimated tax would be calculated using the applicable rates. Use the calculator above for your specific situation.</p>"
+    },
+    "benefits": {
+      "title": "Benefits of Using This Calculator",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>Instant tax estimates</li><li>Up-to-date rates</li><li>Easy to use</li><li>Helps with financial planning</li></ul>"
+    },
+    "limitations": {
+      "title": "Limitations",
+      "html": "<ul class=\"list-disc pl-6 space-y-2\"><li>This is an estimate only</li><li>Does not cover all deductions or credits</li><li>Tax laws change frequently</li><li>Consult a professional for complex situations</li></ul>"
+    },
+    "faq": [
+      {
+        "question": "What is the standard tax rate?",
+        "answer": "Rates vary by income level and jurisdiction."
+      },
+      {
+        "question": "How accurate is this calculator?",
+        "answer": "This calculator provides estimates based on current tax rules. For precise calculations, consult a tax professional."
+      }
+    ],
+    "relatedCountry": {
+      "title": "Related Country",
+      "html": "<p>Explore tax calculators for other countries.</p>"
+    },
+    "educationalDisclaimer": {
+      "title": "Educational Disclaimer",
+      "text": "This calculator is for informational and educational purposes only. It does not constitute legal or tax advice. Always consult a qualified professional."
+    }
   }
 
 

@@ -16,172 +16,519 @@ if (!country) {
 }
 
 const baseUrl = getBaseUrl();
+
+const allCalculators = [
+  ...(country.salaryCalculators || []),
+  ...(country.capitalGainsCalculators || []),
+  ...(country.corporateCalculators || [])
+];
+
+const popularCalcs = country.popularCalculators || [];
+
+const hasExemptions = country.exemptions && country.exemptions.length > 0;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "TaxCountry",
+  name: country.name,
+  description: country.overview,
+  url: `${baseUrl}/countries/${country.slug}`,
+  taxSystem: {
+    "@type": "TaxSystem",
+    name: `${country.name} Tax System`,
+    taxAuthority: {
+      "@type": "GovernmentOrganization",
+      name: country.officialTaxAuthority,
+      url: country.taxAuthorityUrl
+    },
+    taxYear: country.taxYear,
+    currency: country.currency
+  },
+  lastUpdated: country.lastUpdated
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  name: `${country.name} Tax FAQs`,
+  url: `${baseUrl}/countries/${country.slug}`,
+  mainEntity: (country.countryFAQs || []).map(faq => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Countries", item: `${baseUrl}/countries` },
+    { "@type": "ListItem", position: 2, name: country.name, item: `${baseUrl}/countries/${country.slug}` }
+  ]
+};
+
+const govOrgSchema = {
+  "@context": "https://schema.org",
+  "@type": "GovernmentOrganization",
+  name: country.officialTaxAuthority,
+  url: country.taxAuthorityUrl,
+  description: `Official tax authority for ${country.name}`
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: `${country.name} Tax Guide`,
+  description: country.overview,
+  url: `${baseUrl}/countries/${country.slug}`,
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+      { "@type": "ListItem", position: 2, name: "Countries", item: `${baseUrl}/countries` },
+      { "@type": "ListItem", position: 3, name: country.name, item: `${baseUrl}/countries/${country.slug}` }
+    ]
+  },
+  about: {
+    "@type": "TaxCountry",
+    name: country.name,
+    taxAuthority: {
+      "@type": "GovernmentOrganization",
+      name: country.officialTaxAuthority
+    }
+  }
+};
 ---
 
 <CountryLayout
-  title={`${country.name} | TaxPortal`}
-  description={country.overview}
+  title={`${country.name} Tax Guide | ${country.taxYear} Tax Brackets, Rates & Calculators`}
+  description={`${country.name} tax guide: ${country.taxYear} tax brackets, rates, deductions, credits, filing deadlines, and official government resources. Calculate your tax with our free ${country.name} tax calculators.`}
+  keywords={`${country.name} tax, ${country.name} tax calculator, ${country.name} tax brackets, ${country.name} income tax, ${country.name} tax rates, ${country.name} tax deductions, ${country.name} tax credits, ${country.name} filing deadline, ${country.name} tax authority, ${country.name} tax guide`}
   breadcrumbs={[
     { label: "Countries", href: "/countries" },
-    { label: country.name }
+    { label: country.name, href: `/countries/${country.slug}` }
   ]}
   canonical={`${baseUrl}/countries/${country.slug}`}
+  schema={schema}
+  image={country.flag}
+  imageAlt={`${country.name} tax guide - ${country.taxYear} tax brackets, rates, deductions, and credits`}
+  robots="index,follow"
 >
-  <section class="mb-12">
-    <div class="rounded-2xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft shadow-sm dark:border-white/15 dark:from-primary dark:to-primary">
-      <div class="p-8 sm:p-10 lg:p-12">
-        <div class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-          <div class="flex-1">
-            <div class="flex items-center gap-4 mb-4">
-              <img src={country.flag} alt={country.name} class="h-16 w-auto sm:h-20 object-contain" />
-              <div>
-                 <h1 class="text-3xl font-bold text-ink sm:text-4xl dark:text-on-primary"><span data-i18n="country.name">{country.name}</span></h1>
-                 <p class="text-sm text-muted mt-1 dark:text-muted"><span data-i18n="country.continent_header">{country.continent}</span></p>
-              </div>
-            </div>
-             <p class="text-lg text-body leading-relaxed mt-4 dark:text-muted"><span data-i18n="country.overview">{country.overview}</span></p>
-            <div class="mt-6 flex flex-wrap items-center gap-3">
-              <a
-                href={country.taxAuthorityUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-white transition hover:bg-primary-dark"
-              >
-                 <span data-i18n="country.official_tax_authority">{country.officialTaxAuthority}</span>
-                <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </div>
-          <div class="grid w-full max-w-xs grid-cols-2 gap-4 lg:w-auto">
-            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.currency">Currency</p>
-               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.currency_value">{country.currency}</span></p>
-            </div>
-            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.capital">Capital</p>
-               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.capital_value">{country.capital}</span></p>
-            </div>
-            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.tax_authority">Tax Authority</p>
-               <p class="mt-1 text-sm font-semibold text-ink leading-snug dark:text-on-primary"><span data-i18n="country.official_tax_authority_value">{country.officialTaxAuthority}</span></p>
-            </div>
-            <div class="rounded-xl border border-hairline bg-canvas p-4 dark:border-white/15 dark:bg-primary">
-              <p class="text-xs font-medium uppercase tracking-wider text-muted" data-i18n="country.continent">Continent</p>
-               <p class="mt-1 text-lg font-semibold text-ink dark:text-on-primary"><span data-i18n="country.continent_value">{country.continent}</span></p>
-            </div>
-          </div>
-        </div>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(govOrgSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+
+
+
+<!-- SECTION 1: COMPACT HERO -->
+<section class="country-section compact-hero" aria-labelledby={`${country.slug}-hero`}>
+  <div class="mb-3">
+    <a href="/countries" class="inline-flex items-center gap-1.5 text-sm font-medium text-link hover:underline dark:text-link">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      Back to Countries
+    </a>
+  </div>
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+    <div class="flex items-start gap-3 sm:gap-4">
+      <img 
+        src={country.flag} 
+        alt={`Flag of ${country.name}`} 
+        class="h-10 w-auto sm:h-12 object-contain flex-shrink-0 mt-0.5" 
+        loading="eager" 
+        width="64" 
+        height="48" 
+      />
+      <div>
+        <h1 id={`${country.slug}-hero`} class="hero-title">{country.name}</h1>
+        <p class="text-sm sm:text-base text-white/80 mt-0.5">{country.continent}</p>
       </div>
     </div>
-  </section>
+    <div class="hero-stats sm:w-auto">
+      <div class="stat-card">
+        <span class="stat-label">Currency</span>
+        <span class="stat-value">{country.currency}</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Capital</span>
+        <span class="stat-value">{country.capital}</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Tax Year</span>
+        <span class="stat-value">{country.taxYear}</span>
+      </div>
+    </div>
+  </div>
+  <p class="hero-description mt-4 text-sm sm:text-base leading-relaxed max-w-4xl">{country.overview}</p>
+  <div class="hero-meta mt-3">
+    <span class="hero-meta-item">
+      <svg class="hero-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span>Updated {country.lastUpdated}</span>
+    </span>
+    <span class="hero-meta-item">
+      <svg class="hero-meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      <span>{country.officialTaxAuthority}</span>
+    </span>
+  </div>
+  <div class="hero-ctas mt-4">
+    <a href={`/countries/${country.slug}/income-tax`} class="inline-flex items-center justify-center rounded-pill bg-white px-5 py-2.5 text-sm font-semibold text-primary shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0">
+      Calculate Your Tax
+    </a>
+    <a href={`/countries/${country.slug}/income-tax`} class="inline-flex items-center justify-center rounded-pill border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 active:bg-white/20">
+      Popular Calculator →
+    </a>
+  </div>
+</section>
 
-  <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.tax_categories">Tax Categories</h2>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {country.taxCategories.map(category => (
-        <a
-          href={`/countries/${country.slug}/${category.slug}`}
-          class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary"
-        >
-          <div class="flex items-start justify-between">
-             <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary"><span data-i18n="country.category_name">{category.name}</span></h3>
-            <span aria-hidden="true" class="mt-1 text-lg text-muted transition group-hover:translate-x-1 group-hover:text-primary dark:text-muted dark:group-hover:text-link">→</span>
-          </div>
-           <p class="mt-2 text-sm text-body line-clamp-2 dark:text-muted"><span data-i18n="country.category_description">{category.description}</span></p>
-          <div class="mt-4 flex items-center gap-4 text-xs text-muted dark:text-muted">
-            <span>{category.calculators.length} <span data-i18n="country.calculators">calculators</span></span>
-            <span>{category.guides.length} <span data-i18n="country.guides">guides</span></span>
-            <span>{category.faqs.length} <span data-i18n="country.faqs">FAQs</span></span>
-          </div>
-        </a>
+<!-- SECTION 2: COUNTRY OVERVIEW -->
+<section class="country-section" aria-labelledby="overview-heading">
+  <h2 id="overview-heading" class="section-title">How Taxation Works in {country.name}</h2>
+  <p class="section-description mb-6">
+    Understand the basics of {country.name}'s tax system, who pays tax, and how rates apply to individuals and businesses.
+  </p>
+  <div class="overview-grid">
+    <div class="overview-card">
+      <h3 class="overview-card-title">
+        <svg class="w-5 h-5 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        Tax System
+      </h3>
+      <p class="overview-card-text">{country.taxSystemDetails.howTaxationWorks}</p>
+    </div>
+    <div class="overview-card">
+      <h3 class="overview-card-title">
+        <svg class="w-5 h-5 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Residents
+      </h3>
+      <p class="overview-card-text">{country.taxSystemDetails.whoPaysTax}</p>
+    </div>
+    <div class="overview-card">
+      <h3 class="overview-card-title">
+        <svg class="w-5 h-5 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        Non-Residents
+      </h3>
+      <p class="overview-card-text">{country.taxSystemDetails.residentVsNonResident}</p>
+    </div>
+    <div class="overview-card">
+      <h3 class="overview-card-title">
+        <svg class="w-5 h-5 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        Individuals
+      </h3>
+      <p class="overview-card-text">{country.taxSystemDetails.personalIncomeTax}</p>
+    </div>
+    <div class="overview-card">
+      <h3 class="overview-card-title">
+        <svg class="w-5 h-5 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        Businesses
+      </h3>
+      <p class="overview-card-text">{country.taxSystemDetails.businessTaxOverview}</p>
+    </div>
+  </div>
+  {country.taxSystemDetails.importantConcepts.length > 0 && (
+    <div class="concepts-grid mt-6">
+      {country.taxSystemDetails.importantConcepts.map(concept => (
+        <div class="concept-card">
+          <h4 class="concept-title">{concept.title}</h4>
+          <p class="concept-text">{concept.description}</p>
+        </div>
       ))}
     </div>
-  </section>
+  )}
+</section>
 
-  {country.popularCalculators.length > 0 && (
-    <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.popular_calculators">Popular Calculators</h2>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {country.popularCalculators.map(calc => {
-        const category = country.taxCategories.find(c => c.slug === calc.category);
-        return (
-          <a
-            href={`/countries/${country.slug}/${calc.category}/${calc.slug}`}
-            class="rounded-xl border border-hairline bg-gradient-to-br from-canvas to-canvas-soft p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:from-primary dark:to-primary"
-          >
-             <p class="text-xs font-medium uppercase tracking-wider text-primary dark:text-link">
-               <span data-i18n="country.calc_category_name">{category?.name ?? calc.category}</span>
-             </p>
-             <h3 class="mt-2 font-semibold text-ink dark:text-on-primary"><span data-i18n="country.calc_name">{calc.name}</span></h3>
-            <p class="mt-1 text-sm text-muted dark:text-muted" data-i18n="country.calculate_your_tax">Calculate your tax liability</p>
-            <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link dark:text-link">
-              <span data-i18n="country.try_calculator">Try calculator</span> <span aria-hidden="true">→</span>
-            </span>
-          </a>
-        );
-      })}
-    </div>
-  </section>
-)}
+<!-- SECTION 3: CURRENT TAX INFORMATION -->
+<section class="country-section" aria-labelledby="tax-info-heading">
+  <h2 id="tax-info-heading" class="section-title">Current Tax Information</h2>
+  <p class="section-description mb-6">
+    {country.taxYear} tax slabs, rates, thresholds, and key deductions for {country.name}.
+  </p>
 
-  {country.latestUpdates.length > 0 && (
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.latest_updates">Latest Updates</h2>
-      <div class="space-y-4">
-        {country.latestUpdates.map(update => (
-          <div class="rounded-xl border border-hairline bg-canvas p-6 transition hover:border-hairline dark:border-white/15 dark:bg-primary">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary dark:bg-primary/20 dark:text-link">
-                {new Date(update.date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric"
-                })}
-              </span>
-            </div>
-             <h3 class="font-semibold text-ink dark:text-on-primary"><span data-i18n="country.update_title">{update.title}</span></h3>
-             <p class="mt-2 text-sm text-body dark:text-muted"><span data-i18n="country.update_description">{update.description}</span></p>
-          </div>
+  <div class="table-responsive">
+    <table class="tax-table" role="table" aria-label="Tax brackets and rates for {country.name}">
+      <caption class="visually-hidden">Tax brackets and rates for {country.name}</caption>
+      <thead>
+        <tr>
+          <th scope="col">Rate</th>
+          <th scope="col">Threshold</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {country.currentTaxBrackets.map(bracket => (
+          <tr>
+            <td class="rate-cell">{bracket.rate}</td>
+            <td class="threshold-cell">{bracket.threshold}</td>
+            <td class="notes-cell">{bracket.notes}</td>
+          </tr>
         ))}
-      </div>
-    </section>
-  )}
+      </tbody>
+    </table>
+  </div>
 
-  {country.relatedCountries.length > 0 && (
-    <section class="mb-12">
-    <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary" data-i18n="country.related_countries">Related Countries</h2>
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {country.relatedCountries.map(slug => {
-        const related = getCountryBySlug(slug);
-        if (!related) return null;
-        const guides = related.taxCategories.flatMap(cat =>
-          cat.guides.slice(0, 2).map(guide => ({ ...guide, categorySlug: cat.slug }))
-        ).slice(0, 2);
-        return (
-          <div
-            class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary"
-          >
-            <a href={`/countries/${related.slug}`} class="flex items-center gap-3">
-                <img src={related.flag} alt={related.name} class="h-12 w-auto object-contain" />
-               <div>
-                  <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary"><span data-i18n="country.related_name">{related.name}</span></h3>
-                  <p class="text-xs text-muted dark:text-muted"><span data-i18n="country.related_continent">{related.continent}</span></p>
-                </div>
-              </a>
-              <p class="mt-3 text-sm text-body line-clamp-2 dark:text-muted"><span data-i18n="country.related_overview">{related.overview}</span></p>
-              {guides.length > 0 && (
-                <div class="mt-3 space-y-1">
-                  {guides.map(guide => (
-                    <a href={`/countries/${related.slug}/${guide.categorySlug}/${guide.slug}`} class="text-sm text-link hover:underline dark:text-link">
-                      {guide.title}
-                    </a>
-                  ))}
-                </div>
-              )}
-          </div>
-        );
-      })}
+  <div class="tax-details-grid mt-6">
+    {country.standardDeductions && (
+      <div class="tax-detail-card">
+        <h3 class="tax-detail-title">Standard Deduction</h3>
+        <p class="tax-detail-text">{country.standardDeductions}</p>
+      </div>
+    )}
+    {country.majorDeductions.length > 0 && (
+      <div class="tax-detail-card">
+        <h3 class="tax-detail-title">Major Deductions</h3>
+        <ul class="deduction-list">
+          {country.majorDeductions.map(deduction => (
+            <li class="deduction-item">
+              <svg class="deduction-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <div>
+                <strong class="deduction-name">{deduction.name}</strong>
+                <p class="deduction-desc">{deduction.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    {country.credits.length > 0 && (
+      <div class="tax-detail-card">
+        <h3 class="tax-detail-title">Tax Credits</h3>
+        <ul class="deduction-list">
+          {country.credits.map(credit => (
+            <li class="deduction-item">
+              <svg class="deduction-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <div>
+                <strong class="deduction-name">{credit.name}</strong>
+                <p class="deduction-desc">{credit.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    {hasExemptions && (
+      <div class="tax-detail-card">
+        <h3 class="tax-detail-title">Exemptions</h3>
+        <ul class="deduction-list">
+          {country.exemptions!.map(exemption => (
+            <li class="deduction-item">
+              <svg class="deduction-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <div>
+                <strong class="deduction-name">{exemption.name}</strong>
+                <p class="deduction-desc">{exemption.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- SECTION 4: IMPORTANT DATES -->
+<section class="country-section" aria-labelledby="dates-heading">
+  <h2 id="dates-heading" class="section-title">Important Dates</h2>
+  <p class="section-description mb-6">
+    Key deadlines for {country.name} tax filing, payments, and important milestones.
+  </p>
+  <div class="dates-grid">
+    <div class="date-card">
+      <span class="date-label">Tax Year</span>
+      <span class="date-value">{country.taxYear}</span>
     </div>
-  </section>
+    <div class="date-card">
+      <span class="date-label">Filing Deadline</span>
+      <span class="date-value">{country.filingDeadline}</span>
+    </div>
+    <div class="date-card">
+      <span class="date-label">Payment Deadline</span>
+      <span class="date-value">{country.paymentDeadline}</span>
+    </div>
+    <div class="date-card">
+      <span class="date-label">Extensions</span>
+      <span class="date-value">Check with {country.officialTaxAuthority} for extension policies</span>
+    </div>
+  </div>
+  {country.importantDates.length > 0 && (
+    <div class="dates-list mt-6">
+      {country.importantDates.map(date => (
+        <div class="date-item">
+          <time class="date-badge" datetime={date.date}>{date.date}</time>
+          <div class="date-content">
+            <h4 class="date-title">{date.title}</h4>
+            <p class="date-desc">{date.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   )}
+</section>
+
+<!-- SECTION 5: GOVERNMENT RESOURCES -->
+<section class="country-section" aria-labelledby="resources-heading">
+  <h2 id="resources-heading" class="section-title">Government Resources</h2>
+  <div class="resources-intro">
+    <p>For the most accurate and up-to-date information, visit the official government tax authority. Below are the most useful official portals, forms, and support resources for {country.name} taxpayers.</p>
+  </div>
+  <div class="resources-grid">
+    {country.officialResources.map(resource => (
+      <a href={resource.url} target="_blank" rel="noopener noreferrer" class="resource-card">
+        <svg class="resource-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        <div class="resource-content">
+          <h3 class="resource-name">{resource.name}</h3>
+          <p class="resource-desc">{resource.description}</p>
+          <p class="resource-url">{resource.url}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- SECTION 6: POPULAR CALCULATORS -->
+<section class="country-section" aria-labelledby="calculators-heading">
+  <h2 id="calculators-heading" class="section-title">Popular {country.name} Calculators</h2>
+  <p class="section-subtitle">
+    Estimate your tax liability with our free {country.name} calculators. All calculations run locally in your browser — no data is collected.
+  </p>
+  <div class="calculators-grid">
+    {popularCalcs.length > 0 && popularCalcs.map(calc => {
+      const category = country.taxCategories.find(c => c.slug === calc.category);
+      return (
+        <a href={`/countries/${country.slug}/${calc.category}/${calc.slug}`} class="calc-card">
+          <span class="calc-category">{category?.name ?? calc.category}</span>
+          <h3 class="calc-title">{calc.name}</h3>
+          <p class="calc-desc">Estimate your {country.name} {calc.name.toLowerCase()} with current rates and rules.</p>
+          <span class="calc-cta">Try calculator →</span>
+        </a>
+      );
+    })}
+    {allCalculators.length > 0 && allCalculators.map(calc => {
+      const category = country.taxCategories.find(c => c.slug === calc.category);
+      return (
+        <a href={`/countries/${country.slug}/${calc.category}/${calc.slug}`} class="calc-card calc-card--outline">
+          <span class="calc-category">{category?.name ?? calc.category}</span>
+          <h3 class="calc-title">{calc.name}</h3>
+          <span class="calc-cta">Open calculator →</span>
+        </a>
+      );
+    })}
+  </div>
+</section>
+
+<!-- SECTION 7: FAQs -->
+<section class="country-section" aria-labelledby="faqs-heading">
+  <h2 id="faqs-heading" class="section-title">Frequently Asked Questions</h2>
+  <p class="section-description mb-6">
+    Quick answers to common questions about {country.name} taxation, filing requirements, and using our calculators.
+  </p>
+  <div class="faqs-list">
+    {country.countryFAQs && country.countryFAQs.length > 0 && country.countryFAQs.map((faq, index) => (
+      <details class="faq-item">
+        <summary class="faq-question" aria-label={`Toggle answer for: ${faq.question}`}>
+          <span>{faq.question}</span>
+          <svg class="faq-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <p class="faq-answer">{faq.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<!-- SECTION 8: TRUST & TRANSPARENCY -->
+<section class="country-section" aria-labelledby="trust-heading">
+  <h2 id="trust-heading" class="section-title">Trust & Transparency</h2>
+  <div class="trust-grid">
+    <div class="trust-item">
+      <svg class="trust-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <div>
+        <h3 class="trust-title">Last Updated</h3>
+        <p class="trust-text">{country.lastUpdated}</p>
+      </div>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      <div>
+        <h3 class="trust-title">Educational Disclaimer</h3>
+        <p class="trust-text">{country.educationalDisclaimer}</p>
+      </div>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+      <div>
+        <h3 class="trust-title">Calculation Methodology</h3>
+        <p class="trust-text">{country.calculationMethodology}</p>
+      </div>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+      <div>
+        <h3 class="trust-title">Data Sources</h3>
+        <ul class="trust-sources">
+          {country.dataSources.map(source => (
+            <li>{source}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="trust-item">
+      <svg class="trust-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+      <div>
+        <h3 class="trust-title">Privacy-First</h3>
+        <p class="trust-text">All calculations are performed locally in your browser. No personal data is collected, stored, or transmitted to any server. Your financial information never leaves your device.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9: INTERNAL LINKS & RELATED CONTENT -->
+<section class="country-section" aria-labelledby="related-heading">
+  <h2 id="related-heading" class="section-title">Explore {country.name} Tax</h2>
+  <div class="related-grid">
+    {country.taxCategories.map(cat => (
+      <a href={`/countries/${country.slug}/${cat.slug}`} class="related-card">
+        <h3 class="related-title">{cat.name}</h3>
+        <p class="related-desc">{cat.description}</p>
+        <span class="related-link">View details →</span>
+      </a>
+    ))}
+    {country.relatedCountries.length > 0 && (
+      <div class="related-card related-card--countries">
+        <h3 class="related-title">Related Countries</h3>
+        <div class="related-countries-list">
+          {country.relatedCountries.map(slug => {
+            const related = getCountryBySlug(slug);
+            if (!related) return null;
+            return (
+              <a href={`/countries/${related.slug}`} class="related-country-link">
+                <img src={related.flag} alt={related.name} width="24" height="18" loading="lazy" />
+                <span>{related.name}</span>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- SECTION 10: TAX CATEGORIES -->
+<section class="country-section" aria-labelledby="categories-heading">
+  <h2 id="categories-heading" class="section-title">Tax Categories</h2>
+  <div class="categories-grid">
+    {country.taxCategories.map(category => (
+      <a href={`/countries/${country.slug}/${category.slug}`} class="category-card">
+        <h3 class="category-title">{category.name}</h3>
+        <p class="category-desc">{category.description}</p>
+        <div class="category-meta">
+          <span>{category.calculators.length} calculators</span>
+          <span>{category.guides.length} guides</span>
+          <span>{category.faqs.length} FAQs</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
 </CountryLayout>

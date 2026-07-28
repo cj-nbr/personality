@@ -1,286 +1,507 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { countries } from "../data/countries";
+import { getBaseUrl } from "../utils/routing";
+
+const baseUrl = getBaseUrl();
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much tax will I pay?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Your tax depends on your total income, deductions, filing status, and jurisdiction. Our tax estimator uses current tax slabs and rules to provide an accurate estimate. Select your country, enter your income details, and review the instant breakdown." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate my tax liability?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Start with your total income from all sources, subtract allowable deductions and exemptions to arrive at taxable income, then apply the relevant tax slab rates. Our income tax calculator automates this using the latest official rates and rules." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is an income tax calculator?",
+      "acceptedAnswer": { "@type": "Answer", "text": "An income tax calculator is an online tool that estimates tax owed based on income, deductions, and applicable tax laws. It helps you understand take-home pay, effective tax rate, and potential refund. Finsiva supports multiple countries and tax types." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a tax calculator free to use?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. All core tax calculators on Finsiva are completely free with no paywalls, subscriptions, or hidden charges. Calculations run locally in your browser with no registration required." }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are online tax calculators?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Online tax calculators provide estimates based on official tax rules and slab rates. They are accurate for planning purposes but may differ from final liability due to jurisdiction-specific nuances. Always verify important tax decisions with local tax authorities or a qualified professional." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate income tax online?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Select your country, enter your annual income, choose your filing status and tax year, then input applicable deductions. Our tax estimator instantly computes your tax liability and take-home pay. All calculations run locally in your browser." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate tax on salary?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Enter your gross salary into the salary tax calculator along with allowances, bonuses, and deductions. The tool applies relevant PAYE, Social Security, and local tax rules for your country. Use the monthly calculator for detailed breakdowns of earnings after tax." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use a tax calculator for multiple countries?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Finsiva supports income tax, salary tax, payroll tax, GST, VAT, and more across 10+ countries. Each calculator is tailored to the specific tax rules of the country you select, so you get accurate estimates for every jurisdiction." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is better: old tax regime or new tax regime?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The choice depends on your deductions and income level. Taxpayers with significant deductions like home loan interest, retirement contributions, and insurance often benefit from the old regime. Those with fewer deductions may prefer the new regime lower slab rates." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I legally reduce my tax using deductions?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Claim all eligible deductions and credits such as retirement contributions, mortgage interest, charitable donations, education expenses, and business costs. Our tax estimator shows how each deduction lowers your tax base and increases your take-home pay." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate my net salary after tax?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Our net salary calculator takes your gross salary and subtracts income tax, Social Security contributions, and other deductions to show your take-home pay. It provides a detailed breakdown of every deduction so you understand where your money goes." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are online tax calculators secure and private?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Finsiva is built with privacy by design. All calculations run entirely in your browser. We do not collect, store, or transmit your income, deduction, or any financial data to any server. Your information stays on your device." }
+    },
+    {
+      "@type": "Question",
+      "name": "How often are tax rates updated on Finsiva?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We update our calculators whenever tax rules, slabs, thresholds, or regulations change. Our platform is actively maintained to reflect the latest official rates from government tax authorities across all supported countries." }
+    },
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Finsiva Tax Calculator -- Free Online Tax Estimator for Global Taxes",
+      "description": "Use our free tax calculator to estimate income tax, salary tax, and take-home pay across multiple countries. Accurate, privacy-first, and always free.",
+      "url": baseUrl,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": baseUrl },
+      "author": { "@type": "Organization", "name": "Finsiva" },
+      "publisher": { "@type": "Organization", "name": "Finsiva", "logo": { "@type": "ImageObject", "url": baseUrl + "/logo.png" } },
+      "datePublished": "2025-01-01",
+      "dateModified": "2026-01-01"
+    }
+  ]
+};
 ---
 
-<Layout 
-  title="Tax Calculator - Pakistan Tax Calculator, Income Tax Calculator, Salary Tax Calculator & FBR Tax Calculator | TaxPortal" 
-  description="Use our free Pakistan tax calculator for accurate income tax, sales tax, property tax, token tax, and vehicle tax calculations. Estimate your Pakistan salary tax, take-home pay, and FBR tax liability with our easy-to-use online tax calculator tools for individuals and businesses."
-  keywords="tax calculator, tax calculator pakistan, tax calculator pk, calculate income tax pakistan, income tax calculation in pakistan, tax on salary in pakistan, duty calculator pakistan, calculate tax on salary pakistan, gst calculator pakistan, income tax on salary in pakistan, islamabad token tax calculator, kpk property tax calculator, online tax calculator pakistan, pak salary tax calculator, pak tax calculator, pakistan gst calculator, pk tax calculator, property tax calculator karachi, property tax calculator pakistan, property tax calculator punjab pakistan, rental income tax calculator pakistan, rental tax calculator pakistan, sindh token tax calculator, sindh vehicle tax calculator, sindh vehicle transfer fee calculator, tax calculation on salary in pakistan, token tax calculator islamabad, token tax calculator sindh, vehicle tax calculator sindh, advance tax calculation in pakistan, agriculture income tax calculator pakistan, business income tax calculator pakistan, business tax calculator pakistan, calculate salary tax pakistan, calculate tax on salary pakistan 2022, calculation of income tax in pakistan, capital gain tax calculator pakistan, capital gain tax on property in pakistan 2021 22 calculator, capital gain tax pakistan 2022, custom duty calculator karachi, excise and taxation islamabad token tax calculator, excise and taxation sindh token tax calculator, gain tax calculator pakistan, gst formula in pakistan, income tax 2022 calculator pakistan, income tax calculation formula in excel pakistan 2022 23, income tax calculator 2021 22 pakistan, income tax calculator 2021 pakistan, income tax calculator 2022 23 pakistan, income tax calculator 2022 pakistan, income tax calculator for business pakistan, income tax calculator for salaried person in pakistan, income tax calculator pakistan 2021 22, income tax calculator pakistan 2022, income tax calculator pakistan 2022 23, income tax formula pakistan, income tax in pakistan calculator, income tax on salary in pakistan 2022 23, income tax slab 2022 23 pakistan for salaried person, islamabad excise tax calculator, islamabad excise token tax calculator, islamabad vehicle token tax calculator, karachi token tax calculator, kpk excise token tax calculator, lahore token tax calculator, monthly income tax calculator pakistan, motor vehicle tax calculator karachi, mtmis sindh token tax calculator, new tax on salary in pakistan, new tax slab 2022 23 pakistan calculator, online income tax calculator pakistan, online salary tax calculator pakistan, online tax calculator sindh, online token tax calculator islamabad, pak income tax calculator, pakistan fbr tax calculator, pakistan income tax calculator 2022, pakistan salary tax calculator 2022, pakistan tax calculator 2022, pakistan tax calculator 2022 23, property gain tax calculator pakistan, property rent tax calculator 2021 22 pakistan, property tax calculation in punjab pakistan, property tax calculator in karachi, property tax calculator islamabad, property tax calculator lahore, property tax calculator peshawar, property tax calculator rawalpindi, property tax calculator sindh, rent tax calculator 2021 22 pakistan, rent tax calculator 2022 23 pakistan, rent tax calculator 2022 pakistan, salaried tax slab 2023 pakistan, salary calculator 2022 23 pakistan, salary calculator in pakistan, salary income tax calculator 2021 22 pakistan, salary income tax calculator pakistan, salary tax calculator 2020 21 pakistan, salary tax calculator 2020 21 pakistan excel, salary tax calculator 2021 22 pakistan, salary tax calculator 2021 22 pakistan excel, salary tax calculator 2022 23 pakistan, salary tax calculator 2022 pakistan, salary tax calculator 2023 pakistan, salary tax calculator islamabad, salary tax calculator karachi, salary tax calculator lahore, salary tax calculator pakistan 2021 22, salary tax calculator pakistan 2022, salary tax calculator pakistan 2022 23, salary tax slabs 2020 21 pakistan calculator, salary tax slabs 2021 22 pakistan calculator, salary tax slabs 2021 22 pakistan calculator 2021 22, salary tax slabs 2022 23 pakistan calculator, sale tax calculator pakistan, sales tax calculation formula pakistan, sales tax calculator pakistan, sindh excise token tax calculator, sindh property tax calculator, sindh vehicle token tax calculator, tax calculation pakistan, tax calculator 2021 22 pakistan, tax calculator 2021 pakistan, tax calculator 2021 to 2022 pakistan, tax calculator 2022 23 pakistan, tax calculator 2022 pakistan, tax calculator 2022 to 2023 pakistan, tax calculator 2023 pakistan, tax calculator on salary pakistan, tax calculator pakistan 2021, tax calculator pakistan 2021 2022, tax calculator pakistan 2021 22, tax calculator pakistan 2022, tax calculator pakistan 2022 23, tax credit calculator pakistan, tax deduction calculator pakistan, tax on gratuity calculator pakistan, tax on salary calculator pakistan, tax on salary in pakistan 2022, tax on salary in pakistan calculator, tax pakistan calculator, tax rebate calculator pakistan, tax return calculator pakistan, tax slab 2022 23 pakistan calculator, tax slab calculator pakistan, taxcalculator pk 2021 22, token tax calculator faisalabad, token tax calculator islamabad 2020 21, token tax calculator karachi, token tax calculator kpk, token tax calculator lahore, token tax calculator multan, token tax calculator rawalpindi, token tax islamabad calculator, vehicle tax calculator islamabad, vehicle tax calculator pakistan, vehicle token tax calculator islamabad, vehicle token tax calculator lahore, vehicle token tax calculator sindh, withholding tax calculator pakistan, www excise punjab gov pk tax calculator, zakat calculator pakistan 2020 in urdu, zakat calculator pakistan 2021 in urdu"
-  image="https://finsiva.com/og-image.png"
+<Layout
+  title="Tax Calculator | Free Online Tax Estimator | Finsiva"
+  description="Free tax calculator to estimate income tax, salary tax, and take-home pay. Accurate, privacy-first results for 10+ countries. Try Finsiva now."
+  canonical={baseUrl}
+  robots="index,follow"
+  schema={homepageSchema}
+  image="/og-image.svg"
+  imageAlt="Finsiva tax calculator dashboard showing income tax estimates across multiple countries"
 >
-  <div class="min-h-screen bg-canvas dark:bg-primary">
+  <article id="main-content" class="min-h-screen bg-canvas dark:bg-canvas">
     <section class="relative overflow-hidden">
-      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-canvas-soft to-canvas dark:from-primary dark:to-primary" aria-hidden="true"></div>
-      <div class="relative mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-bold tracking-tight text-ink sm:text-5xl dark:text-on-primary"><span data-i18n="home.taxportal_home">TaxPortal</span></h1>
-        <p class="mt-4 max-w-3xl mx-auto text-lg text-body dark:text-muted" data-i18n="home.comprehensive_tax_info">
-          Comprehensive <strong>tax calculator</strong> tools for Pakistan and worldwide. Estimate Pakistan income tax, FBR tax, sales tax, property tax, token tax, and vehicle tax with our free <strong>Pakistan tax calculator</strong> suite.
+      <div class="pointer-events-none absolute inset-0" style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 40%, #1E40AF 100%);" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-white/10 blur-3xl" aria-hidden="true"></div>
+      <div class="relative mx-auto max-w-7xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
+        <span class="section-label text-white/80">Trusted by millions worldwide</span>
+        <h1 class="hero-title text-4xl font-extrabold tracking-tight text-white sm:text-5xl" style="line-height:1.05; max-width: 56rem; margin-left: auto; margin-right: auto;">Tax Calculator — Free, Accurate & Private</h1>
+        <p class="hero-description mt-4 max-w-2xl mx-auto text-lg text-white/90 sm:text-xl" style="line-height:1.6;">
+          Estimate income tax, salary tax, and take-home pay for any country in seconds. No registration, no data collection — just accurate, privacy-first results powered by official tax rules.
         </p>
-        <div class="mt-8 flex items-center justify-center gap-4">
-          <a href="/countries" class="rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary"><span data-i18n="home.explore_countries">Explore Countries</span></a>
+        <div class="mt-10 flex flex-col items-center justify-center gap-6 sm:flex-row">
+          <a href="/countries" class="hero-btn-primary inline-flex items-center justify-center gap-2 rounded-pill bg-[#111827] px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-black/20 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:bg-[#1F2937] hover:shadow-xl hover:shadow-black/30 active:translate-y-0 active:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2">Start Calculating Taxes</a>
+          <a href="#how-it-works" class="hero-btn-secondary inline-flex items-center justify-center gap-2 rounded-pill border border-white/40 px-8 py-3.5 text-base font-semibold text-white transition-all duration-200 ease-out hover:bg-white/10 hover:border-white active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2">See How It Works</a>
         </div>
       </div>
     </section>
-
-    <section class="border-t border-hairline dark:border-white/10">
+    <section id="why-choose-finsiva" class="border-t border-hairline dark:border-overlay-light" aria-labelledby="why-choose-heading">
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="home.featured_countries">Pakistan Tax Calculators</span></h2>
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <a href="/countries/pakistan" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-lg dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-            <img src="/logos/pakistan.png" alt="Pakistan" class="h-16 w-auto mb-4 object-contain" />
-            <h3 class="text-xl font-semibold text-ink group-hover:text-primary dark:text-on-primary">Pakistan Tax Calculator</h3>
-            <p class="text-sm text-muted mt-1 dark:text-muted">Complete tax estimation for Pakistan</p>
-            <p class="text-sm text-body mt-3 line-clamp-2 dark:text-muted">Calculate your Pakistan income tax, FBR tax, sales tax, property tax, token tax, and vehicle tax with our comprehensive free tools.</p>
-            <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline dark:text-link">Explore Pakistan taxes <span aria-hidden="true">→</span></span>
-          </a>
-          <a href="/countries/pakistan/income-tax/income-tax-calculator" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-lg dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-            <img src="/logos/pakistan.png" alt="Pakistan" class="h-16 w-auto mb-4 object-contain" />
-            <h3 class="text-xl font-semibold text-ink group-hover:text-primary dark:text-on-primary">Pakistan Income Tax Calculator</h3>
-            <p class="text-sm text-muted mt-1 dark:text-muted">Estimate your income tax</p>
-            <p class="text-sm text-body mt-3 line-clamp-2 dark:text-muted">Use our Pakistan income tax calculator to estimate your FBR tax liability under the latest tax slabs for salaried individuals and businesses.</p>
-            <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline dark:text-link">Calculate income tax <span aria-hidden="true">→</span></span>
-          </a>
-          <a href="/countries/pakistan/sales-tax/sales-tax-calculator" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-lg dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-            <img src="/logos/pakistan.png" alt="Pakistan" class="h-16 w-auto mb-4 object-contain" />
-            <h3 class="text-xl font-semibold text-ink group-hover:text-primary dark:text-on-primary">Pakistan Sales Tax Calculator</h3>
-            <p class="text-sm text-muted mt-1 dark:text-muted">Estimate sales tax on transactions</p>
-            <p class="text-sm text-body mt-3 line-clamp-2 dark:text-muted">Calculate Pakistan sales tax at 18% standard rate on goods and services with our online GST calculator for Pakistan.</p>
-            <span class="inline-block mt-4 text-sm font-medium text-link group-hover:underline dark:text-link">Calculate sales tax <span aria-hidden="true">→</span></span>
-          </a>
+        <h2 id="why-choose-heading" class="text-3xl font-semibold text-ink mb-12 text-center dark:text-on-primary">Why Choose Finsiva</h2>
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 dark:bg-surface/20">
+              <svg class="h-6 w-6 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-ink dark:text-on-primary">10+ Countries</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Income tax, salary tax, payroll, GST, VAT, and more across India, the US, the UK, Australia, Canada, Singapore, and beyond — all in one platform.</p>
+          </div>
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 dark:bg-surface/20">
+              <svg class="h-6 w-6 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-ink dark:text-on-primary">Privacy First</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Every calculation runs exclusively in your browser. Your financial data is never collected, stored, or transmitted to any server.</p>
+          </div>
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 dark:bg-surface/20">
+              <svg class="h-6 w-6 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-ink dark:text-on-primary">Instant Results</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Get detailed tax estimates in seconds with no registration, no waiting, and no complicated forms to fill out.</p>
+          </div>
+          <div class="text-center">
+            <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 dark:bg-surface/20">
+              <svg class="h-6 w-6 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="mt-4 text-lg font-semibold text-ink dark:text-on-primary">Always Updated</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Tax rules change every year. Our calculators reflect the latest official rates, thresholds, and regulations for every supported country.</p>
+          </div>
         </div>
       </div>
     </section>
-
-    <section class="border-t border-hairline bg-canvas-soft dark:border-white/10 dark:bg-primary">
+    <section id="countries-supported" class="border-t border-hairline bg-canvas-soft dark:border-overlay-light dark:bg-canvas" aria-labelledby="countries-heading">
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="home.popular_calculators">Popular Calculators</span></h2>
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {countries.flatMap(c => c.popularCalculators.map(pc => ({ ...pc, country: c }))).slice(0, 6).map(item => (
-            <a href={`/countries/${item.country.slug}/${item.category}/${item.slug}`} class="rounded-lg border border-hairline bg-canvas p-6 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-              <div class="flex items-center gap-3 mb-3">
-                 <img src={item.country.flag} alt={item.country.name} class="h-8 w-auto object-contain" />
-                <span class="text-sm text-muted dark:text-muted">{item.country.name}</span>
-              </div>
-              <h3 class="font-semibold text-ink dark:text-on-primary"><span data-i18n="home.calculator.name">{item.name}</span></h3>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="border-t border-hairline dark:border-white/10">
-      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary"><span data-i18n="home.all_countries">All Countries</span></h2>
+        <h2 id="countries-heading" class="text-3xl font-semibold text-ink mb-4 dark:text-on-primary">Countries Supported</h2>
+        <p class="max-w-3xl text-lg text-body mb-10 dark:text-muted">Explore tax calculators tailored to the rules of each country. Select your country to view income tax slabs, payroll deductions, GST, VAT, and more.</p>
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {countries.map(country => (
-            <a href={`/countries/${country.slug}`} class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas p-4 hover:border-primary transition dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-              <img src={country.flag} alt={country.name} class="h-10 w-auto object-contain" />
+            <a href={`/countries/${country.slug}`} class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas p-4 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary" aria-label={`View tax calculators for ${country.name}`}>
+              <img src={country.flag} alt={`${country.name} flag`} width="32" height="24" loading="lazy" class="h-8 w-auto object-contain" title={country.name} />
               <span class="font-medium text-ink dark:text-on-primary">{country.name}</span>
             </a>
           ))}
-         </div>
-       </div>
-     </section>
-
-     <section class="border-t border-hairline dark:border-white/10">
-       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-         <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">About Our Pakistan Tax Calculator Tools</h2>
-         <div class="prose max-w-none text-body dark:text-muted space-y-6">
-           <p>Welcome to TaxPortal, your comprehensive source for a free online <strong>Pakistan tax calculator</strong> and <strong>tax calculator pk</strong> suite designed to simplify tax planning and estimation for individuals, freelancers, and businesses in Pakistan. Whether you need a basic <strong>Pakistan income tax calculator</strong>, an advanced <strong>income tax calculator pakistan 2022</strong>, or a specialized tool such as a <strong>sales tax calculator pakistan</strong>, <strong>property tax calculator pakistan</strong>, or <strong>token tax calculator islamabad</strong>, our platform provides accurate, up-to-date calculations based on official FBR tax slabs and statutory rates.</p>
-           
-           <p>Our <strong>tax calculator Pakistan</strong> tools cover a wide range of use cases for the 2024/25 tax year and beyond. Salaried individuals can rely on our <strong>Pakistan income tax calculator</strong> to estimate their income tax liability under the progressive tax slabs announced by the Federal Board of Revenue. Use our <strong>calculate income tax pakistan</strong> tool to <strong>calculate tax on salary pakistan</strong> with accurate FBR rates, or try our <strong>online tax calculator pakistan</strong> to see your exact <strong>Pakistan salary tax calculator</strong> results. Our <strong>income tax calculator 2022 pakistan</strong> and <strong>tax calculator pakistan 2022</strong> support prior-year planning for tax refunds and advance tax calculations.</p>
-           
-           <p>Property owners and investors can use our <strong>property tax calculator pakistan</strong> and <strong>property tax calculator karachi</strong> to calculate property tax and capital gains tax on residential and commercial transactions. Our <strong>sindh property tax calculator</strong> and <strong>property tax calculator punjab pakistan</strong> support provincial property tax calculations, while the <strong>rental income tax calculator pakistan</strong> and <strong>rent tax calculator 2022 pakistan</strong> help landlords estimate rental income tax. Whether you need a <strong>property tax calculator islamabad</strong> or a <strong>property tax calculator lahore</strong>, our tools provide instant estimates based on current Pakistan tax rates.</p>
-           
-           <p>Business owners and self-employed individuals can estimate their obligations with our <strong>business income tax calculator pakistan</strong> and <strong>business tax calculator pakistan</strong>. Calculate your <strong>income tax calculator for business pakistan</strong>, understand <strong>capital gain tax calculator pakistan</strong>, and compute your <strong>advance tax calculation in pakistan</strong> with ease. Our <strong>Pakistan corporate tax calculator</strong> supports both incorporated and unincorporated businesses, helping you plan for <strong>tax calculator pakistan 2022 23</strong> and current year obligations.</p>
-           
-           <p>Vehicle owners can use our <strong>sindh vehicle tax calculator</strong>, <strong>islamabad vehicle token tax calculator</strong>, and <strong>token tax calculator karachi</strong> to calculate token tax and vehicle transfer fees. Our <strong>sindh vehicle transfer fee calculator</strong> and <strong>motor vehicle tax calculator karachi</strong> help you estimate provincial vehicle taxes. Whether you need a <strong>token tax calculator sindh</strong> or <strong>vehicle tax calculator pakistan</strong>, our tools provide instant estimates based on current provincial rates.</p>
-           
-           <p>From simple use cases like <strong>pak income tax calculator</strong> and <strong>pakistan fbr tax calculator</strong> to advanced needs like <strong>capital gain tax on property in pakistan 2021 22 calculator</strong> and <strong>property gain tax calculator pakistan</strong>, TaxPortal provides accurate, browser-based tools that respect your privacy. Whether you need to <strong>calculate tax on salary pakistan</strong> for the current year or review prior obligations with <strong>salary tax calculator 2020 21 pakistan</strong>, our calculators deliver instant results without requiring personal data. Use our <strong>monthly income tax calculator pakistan</strong> to plan your salary negotiations, or try the <strong>property tax calculator rawalpindi</strong> before buying property. Explore our full suite of <strong>pak tax calculator</strong> tools today and take control of your Pakistan tax planning.</p>
+        </div>
+        <div class="mt-6">
+          <a href="/countries" class="inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">View all countries</a>
+        </div>
+      </div>
+    </section>
+    <section id="popular-calculators" class="border-t border-hairline dark:border-overlay-light" aria-labelledby="calculators-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="calculators-heading" class="text-3xl font-semibold text-ink mb-4 dark:text-on-primary">Popular Tax Calculators</h2>
+        <p class="max-w-3xl text-lg text-body mb-10 dark:text-muted">Choose from a growing library of calculator categories. Each tool is designed around the tax structure of the country you select.</p>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="/countries" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Income Tax Calculator</h3>
+            <p class="text-sm text-body dark:text-muted">Estimate income tax across multiple countries with up-to-date slab rates, deductions, and filing status options.</p>
+          </a>
+          <a href="/countries" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Salary Tax Calculator</h3>
+            <p class="text-sm text-body dark:text-muted">Calculate tax on salary including allowances, bonuses, and employer contributions with detailed breakdowns.</p>
+          </a>
+          <a href="/countries" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Payroll Tax Calculator</h3>
+            <p class="text-sm text-body dark:text-muted">Estimate payroll taxes, employer contributions, and net pay for businesses and employees.</p>
+          </a>
+          <a href="/countries" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">GST Calculator</h3>
+            <p class="text-sm text-body dark:text-muted">Calculate GST inclusive and exclusive amounts quickly and accurately for Indian businesses.</p>
+          </a>
+          <a href="/countries" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">VAT Calculator</h3>
+            <p class="text-sm text-body dark:text-muted">Estimate VAT on domestic and cross-border transactions with support for multiple European rates.</p>
+          </a>
+          <a href="/countries" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Sales Tax Calculator</h3>
+            <p class="text-sm text-body dark:text-muted">Calculate sales tax on purchases for e-commerce, retail, and everyday transactions.</p>
+          </a>
+          <a href="/countries" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Capital Gains Tax Calculator</h3>
+            <p class="text-sm text-body dark:text-muted">Estimate capital gains tax on stocks, real estate, and other investments for short-term and long-term gains.</p>
+          </a>
+          <a href="/countries" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Property Tax Calculator</h3>
+            <p class="text-sm text-body dark:text-muted">Estimate property tax, stamp duty, and related costs for residential and commercial real estate.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section id="how-it-works" class="border-t border-hairline dark:border-overlay-light" aria-labelledby="how-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="how-heading" class="text-3xl font-semibold text-ink mb-12 text-center dark:text-on-primary">How It Works</h2>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div class="text-center">
+            <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-hairline bg-canvas text-lg font-bold text-ink dark:border-overlay-lighter dark:bg-surface dark:text-on-primary" aria-hidden="true">1</span>
+            <h3 class="mt-4 text-lg font-semibold text-ink dark:text-on-primary">Choose Your Country</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Select the country whose tax rules apply to your situation. Each country has dedicated tax categories and calculators prepared for local requirements.</p>
+          </div>
+          <div class="text-center">
+            <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-hairline bg-canvas text-lg font-bold text-ink dark:border-overlay-lighter dark:bg-surface dark:text-on-primary" aria-hidden="true">2</span>
+            <h3 class="mt-4 text-lg font-semibold text-ink dark:text-on-primary">Enter Your Details</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Provide your income, deductions, filing status, and other relevant details. No sensitive personal data is required — all inputs stay on your device.</p>
+          </div>
+          <div class="text-center">
+            <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-hairline bg-canvas text-lg font-bold text-ink dark:border-overlay-lighter dark:bg-surface dark:text-on-primary" aria-hidden="true">3</span>
+            <h3 class="mt-4 text-lg font-semibold text-ink dark:text-on-primary">Review Your Estimate</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">See your tax liability, effective rate, and take-home pay instantly. Use the results to plan your finances or prepare for filing with confidence.</p>
           </div>
         </div>
-      </section>
-
-      <section class="border-t border-hairline bg-canvas-soft dark:border-white/10 dark:bg-primary">
-        <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-          <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Pakistan Tax Blog</h2>
-          <p class="text-lg text-body dark:text-muted mb-8">Latest guides, tips, and updates on Pakistan taxes for individuals, freelancers, and businesses.</p>
-          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <a href="/blogs/pakistan-income-tax-guide" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-              <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">Pakistan Income Tax Guide 2024/25</h3>
-              <p class="text-sm text-muted mt-2 dark:text-muted">FBR tax slabs, rates, and how to calculate your income tax in Pakistan.</p>
-              <span class="inline-block mt-3 text-sm font-medium text-link group-hover:underline dark:text-link">Read guide <span aria-hidden="true">→</span></span>
-            </a>
-            <a href="/blogs/pakistan-sales-tax-guide" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-              <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">Pakistan Sales Tax Guide</h3>
-              <p class="text-sm text-muted mt-2 dark:text-muted">Sales tax registration, 18% GST rates, and filing requirements in Pakistan.</p>
-              <span class="inline-block mt-3 text-sm font-medium text-link group-hover:underline dark:text-link">Read guide <span aria-hidden="true">→</span></span>
-            </a>
-            <a href="/blogs/pakistan-property-tax-guide" class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md dark:border-white/15 dark:bg-primary dark:hover:border-primary">
-              <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary">Pakistan Property Tax Guide</h3>
-              <p class="text-sm text-muted mt-2 dark:text-muted">Property tax, capital gains tax, and token tax for property transactions in Pakistan.</p>
-              <span class="inline-block mt-3 text-sm font-medium text-link group-hover:underline dark:text-link">Read guide <span aria-hidden="true">→</span></span>
-            </a>
+      </div>
+    </section>
+    <section id="why-millions-use" class="border-t border-hairline bg-canvas-soft dark:border-overlay-light dark:bg-canvas" aria-labelledby="millions-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="millions-heading" class="text-3xl font-semibold text-ink mb-12 text-center dark:text-on-primary">Why Millions Use Tax Calculators</h2>
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div>
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Understand Your Tax Position</h3>
+            <p class="mt-2 text-body dark:text-muted">Tax systems vary dramatically across countries. A tax calculator helps you understand how much of your income goes to taxes and what factors most affect your bill — whether you are a salaried employee, freelancer, or business owner.</p>
+            <p class="mt-2 text-body dark:text-muted">Knowing your tax position before receiving a paycheck or signing a contract gives you a realistic picture of your financial future and helps you negotiate compensation with confidence.</p>
           </div>
-          <div class="mt-8 text-center">
-            <a href="/blogs" class="inline-flex items-center rounded-lg bg-primary px-6 py-3 text-base font-medium text-white transition hover:opacity-90 dark:bg-on-primary dark:text-primary">View All Pakistan Tax Articles</a>
+          <div>
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Plan Deductions and Save</h3>
+            <p class="mt-2 text-body dark:text-muted">Most taxpayers leave money on the table by missing deductions they are entitled to. A calculator helps you model different scenarios — adjusting income thresholds, claiming specific credits, or comparing old versus new regimes — so you can optimize your tax strategy.</p>
+            <p class="mt-2 text-body dark:text-muted">Try different scenarios to see how retirement contributions, mortgage interest, or charitable giving lower your taxable income. This kind of proactive planning is impossible with paper-based estimation.</p>
           </div>
         </div>
-      </section>
-
-      <section class="border-t border-hairline dark:border-white/10">
-        <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-          <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Frequently Asked Questions - Pakistan Tax</h2>
-          <div class="space-y-6">
-            <div>
-              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How much tax is deducted from salary in Pakistan?</h3>
-              <p class="text-body dark:text-muted">Tax deduction from salary in Pakistan depends on your taxable income and FBR tax slabs. For salaried individuals, the monthly tax is calculated based on annual taxable income after deductions. Use our <a href="/countries/pakistan/income-tax/income-tax-calculator" class="text-link hover:underline dark:text-link">Pakistan income tax calculator</a> to estimate your exact monthly tax deduction.</p>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">What is the tax-free limit for salary in Pakistan?</h3>
-              <p class="text-body dark:text-muted">The tax-free limit for salaried individuals in Pakistan is PKR 600,000 per year for the 2024/25 tax year. This means if your annual salary is below PKR 600,000, you may not owe any income tax. Use our <a href="/countries/pakistan/income-tax/income-tax-calculator" class="text-link hover:underline dark:text-link">Pakistan tax calculator</a> to check your tax-free threshold.</p>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">What are the FBR tax slabs for FY 2026–27?</h3>
-              <p class="text-body dark:text-muted">FBR tax slabs for salaried individuals in Pakistan range from 0% to 35% based on annual taxable income. The slabs are progressive, with higher incomes taxed at higher rates. For the latest FY 2026–27 slabs, use our <a href="/countries/pakistan/income-tax/income-tax-calculator" class="text-link hover:underline dark:text-link">Pakistan income tax calculator</a> which is updated with the latest FBR rates.</p>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How is monthly salary tax calculated in Pakistan?</h3>
-              <p class="text-body dark:text-muted">Monthly salary tax in Pakistan is calculated by dividing your annual taxable income by 12, then applying the applicable FBR tax slab. The employer deducts tax at source under Section 159. Use our <a href="/countries/pakistan/income-tax/income-tax-calculator" class="text-link hover:underline dark:text-link">Pakistan salary tax calculator</a> to compute your exact monthly tax.</p>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Are medical and house rent allowances taxable?</h3>
-              <p class="text-body dark:text-muted">Medical allowance and house rent allowance (HRA) in Pakistan are generally taxable as part of your salary income. However, certain exemptions and deductions may apply. Use our <a href="/countries/pakistan/income-tax/income-tax-calculator" class="text-link hover:underline dark:text-link"> Pakistan income tax calculator</a> to understand how these allowances affect your tax.</p>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">How do I calculate tax if I change jobs mid-year?</h3>
-              <p class="text-body dark:text-muted">If you change jobs mid-year, your total income from both employers is combined for the year, and tax is calculated on the aggregate income. Each employer may deduct tax separately, which could result in over-deduction. Use our <a href="/countries/pakistan/income-tax/income-tax-calculator" class="text-link hover:underline dark:text-link">Pakistan tax calculator</a> to compute your annual tax liability and claim a refund if needed.</p>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Who qualifies as a "Salaried Individual" for FBR?</h3>
-              <p class="text-body dark:text-muted">A salaried individual for FBR purposes is any person receiving income from employment, pension, or annuity. This includes government employees, private sector employees, and expatriates working in Pakistan. The <strong>Pakistan tax calculator</strong> applies to all salaried individuals regardless of employment sector.</p>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">What is the tax rate for freelancers and sole proprietors in Pakistan?</h3>
-              <p class="text-body dark:text-muted">Freelancers and sole proprietors in Pakistan are taxed at the same progressive rates as individuals, ranging from 0% to 35% on net business income. They must file annual income tax returns and may be required to pay advance tax. Use our <a href="/countries/pakistan/income-tax/income-tax-calculator" class="text-link hover:underline dark:text-link">business income tax calculator Pakistan</a> to estimate your tax.</p>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">Can I use an online tax calculator for official tax filing?</h3>
-              <p class="text-body dark:text-muted">Our <strong>online tax calculator Pakistan</strong> is designed for estimation and planning purposes only. For official tax filing, you must file through the FBR Iris portal or consult a qualified tax professional. Our calculators provide accurate estimates but do not constitute official tax advice.</p>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-ink mb-2 dark:text-on-primary">What is the penalty for non-filing tax in Pakistan?</h3>
-              <p class="text-body dark:text-muted">The penalty for non-filing of tax returns in Pakistan can be substantial. FBR may impose penalties up to PKR 100,000 or more, and non-filers face higher withholding tax rates on banking, property, and vehicle transactions. Use our <a href="/countries/pakistan/income-tax/income-tax-calculator" class="text-link hover:underline dark:text-link">Pakistan tax calculator</a> to estimate your liability and avoid penalties.</p>
-            </div>
+      </div>
+    </section>
+    <section id="key-features" class="border-t border-hairline dark:border-overlay-light" aria-labelledby="features-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="features-heading" class="text-3xl font-semibold text-ink mb-12 text-center dark:text-on-primary">Features</h2>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Instant Calculations</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Get results in milliseconds with optimized algorithms built for speed and accuracy.</p>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Accurate Estimates</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Calculations based on official tax slabs, statutory rates, and regulatory guidelines from government sources.</p>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Multiple Countries</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">One platform for income tax, GST, VAT, payroll, and more across different jurisdictions worldwide.</p>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Multiple Tax Types</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">From income tax to capital gains, property tax to payroll — all calculator types in one place.</p>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Easy to Use</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Clean interfaces with guided inputs so anyone can estimate their taxes in minutes.</p>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Mobile Friendly</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Responsive design that works on desktop, tablet, and mobile without any app download.</p>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Always Updated</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">We update our calculators whenever tax rules, slabs, or thresholds change in any supported country.</p>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Secure & Private</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">No accounts, no tracking, no data collection. Your financial data stays entirely on your device.</p>
           </div>
         </div>
-      </section>
-
-      <section class="border-t border-hairline dark:border-white/10">
-        <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">How to Use Our Pakistan Tax Calculator</h2>
-          <div class="prose max-w-none text-body dark:text-muted space-y-6">
-            <p>Our <strong>Pakistan tax calculator</strong> is designed to be simple and accurate. Here's how to use it:</p>
-            <ol class="list-decimal pl-6 space-y-2">
-              <li>Select the calculator you need: <strong>income tax calculator pakistan</strong>, <strong>sales tax calculator pakistan</strong>, <strong>property tax calculator</strong>, or <strong>token tax calculator</strong>.</li>
-              <li>Enter your annual income, salary, or property value in PKR.</li>
-              <li>Choose your tax year (e.g., 2024/25, 2023/24) to apply the correct FBR tax slabs.</li>
-              <li>Select your filing status (individual, business, freelancer) and province for provincial taxes.</li>
-              <li>Click <strong>Calculate</strong> to see your tax liability, effective tax rate, and take-home pay.</li>
-            </ol>
-            <p>Use our <strong>online tax calculator pakistan</strong> to plan your taxes, estimate refunds, and understand your FBR obligations. All calculations are performed locally in your browser for privacy.</p>
+      </div>
+    </section>
+    <section id="benefits" class="border-t border-hairline bg-canvas-soft dark:border-overlay-light dark:bg-canvas" aria-labelledby="benefits-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="benefits-heading" class="text-3xl font-semibold text-ink mb-12 text-center dark:text-on-primary">Benefits</h2>
+        <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div>
+            <h3 class="font-semibold text-ink dark:text-on-primary">Save Time</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Automate complex tax computations with instant, accurate results instead of manual spreadsheets or outdated formulas.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink dark:text-on-primary">Reduce Errors</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Built-in logic follows official rules so you avoid common calculation mistakes that can trigger audits or missed refunds.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink dark:text-on-primary">Compare Scenarios</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Test different incomes, deductions, and regimes side by side to make informed financial decisions with confidence.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink dark:text-on-primary">Plan Ahead</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Use quarterly and annual estimates to forecast payments, avoid surprises at tax time, and set aside the right amount.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink dark:text-on-primary">Understand Your Taxes</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Detailed breakdowns explain exactly where your money goes and how deductions and credits affect your final liability.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink dark:text-on-primary">Free Forever</h3>
+            <p class="mt-2 text-sm text-body dark:text-muted">Core calculators remain free with no paywalls, subscriptions, or hidden charges. We believe tax information should be accessible to everyone.</p>
           </div>
         </div>
-      </section>
-
-      <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How much tax is deducted from salary in Pakistan?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "<p>Tax deduction from salary in Pakistan depends on your taxable income and FBR tax slabs. For salaried individuals, the monthly tax is calculated based on annual taxable income after deductions. Use our Pakistan income tax calculator to estimate your exact monthly tax deduction.</p>"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the tax-free limit for salary in Pakistan?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "<p>The tax-free limit for salaried individuals in Pakistan is PKR 600,000 per year for the 2024/25 tax year. If your annual salary is below PKR 600,000, you may not owe any income tax. Use our Pakistan tax calculator to check your tax-free threshold.</p>"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What are the FBR tax slabs for FY 2026–27?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "<p>FBR tax slabs for salaried individuals in Pakistan range from 0% to 35% based on annual taxable income. The slabs are progressive, with higher incomes taxed at higher rates. For the latest FY 2026–27 slabs, use our Pakistan income tax calculator which is updated with the latest FBR rates.</p>"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How is monthly salary tax calculated in Pakistan?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "<p>Monthly salary tax in Pakistan is calculated by dividing your annual taxable income by 12, then applying the applicable FBR tax slab. The employer deducts tax at source under Section 159. Use our Pakistan salary tax calculator to compute your exact monthly tax.</p>"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are medical and house rent allowances taxable?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "<p>Medical allowance and house rent allowance (HRA) in Pakistan are generally taxable as part of your salary income. However, certain exemptions and deductions may apply. Use our Pakistan income tax calculator to understand how these allowances affect your tax.</p>"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I calculate tax if I change jobs mid-year?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "<p>If you change jobs mid-year, your total income from both employers is combined for the year, and tax is calculated on the aggregate income. Each employer may deduct tax separately, which could result in over-deduction. Use our Pakistan tax calculator to compute your annual tax liability and claim a refund if needed.</p>"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Who qualifies as a 'Salaried Individual' for FBR?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "<p>A salaried individual for FBR purposes is any person receiving income from employment, pension, or annuity. This includes government employees, private sector employees, and expatriates working in Pakistan. The Pakistan tax calculator applies to all salaried individuals regardless of employment sector.</p>"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the tax rate for freelancers and sole proprietors in Pakistan?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "<p>Freelancers and sole proprietors in Pakistan are taxed at the same progressive rates as individuals, ranging from 0% to 35% on net business income. They must file annual income tax returns and may be required to pay advance tax. Use our business income tax calculator Pakistan to estimate your tax.</p>"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I use an online tax calculator for official tax filing?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "<p>Our online tax calculator Pakistan is designed for estimation and planning purposes only. For official tax filing, you must file through the FBR Iris portal or consult a qualified tax professional. Our calculators provide accurate estimates but do not constitute official tax advice.</p>"
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the penalty for non-filing tax in Pakistan?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "<p>The penalty for non-filing of tax returns in Pakistan can be substantial. FBR may impose penalties up to PKR 100,000 or more, and non-filers face higher withholding tax rates on banking, property, and vehicle transactions. Use our Pakistan tax calculator to estimate your liability and avoid penalties.</p>"
-            }
-          }
-        ]
-      }
-      </script>
-    </div>
-  </Layout>
+      </div>
+    </section>
+    <section id="why-trust-finsiva" class="border-t border-hairline dark:border-overlay-light" aria-labelledby="trust-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="trust-heading" class="text-3xl font-semibold text-ink mb-12 text-center dark:text-on-primary">Why Trust Finsiva</h2>
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div>
+            <h3 class="font-semibold text-ink dark:text-on-primary">Expert-Reviewed Content</h3>
+            <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">All calculators, guides, and answers are reviewed for accuracy and clarity. We source our tax rules from official government and tax authority publications, and our content is updated whenever legislation changes.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink dark:text-on-primary">Transparent Methodology</h3>
+            <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">We clearly explain the assumptions and formulas behind every estimate. If a limitation or caveat applies — such as rounding differences or jurisdiction-specific edge cases — we say so upfront instead of hiding it.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink dark:text-on-primary">Privacy by Design</h3>
+            <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">Calculations run entirely in your browser. We do not collect, store, or transmit your income, deduction, or any other financial data to any server. Your information never leaves your device.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-ink dark:text-on-primary">Regular Updates</h3>
+            <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">Tax laws change every year. Our platform is actively maintained and updated to reflect new slabs, thresholds, and regulations across all supported countries so you always calculate with current rules.</p>
+          </div>
+        </div>
+        <div class="mt-10 rounded-xl border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+          <h3 class="font-semibold text-ink dark:text-on-primary">Calculation Disclaimer</h3>
+          <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">All calculations provided by Finsiva are estimates based on available tax rules and statutory rates. They are intended for planning and educational purposes only and do not constitute professional tax advice. For important financial decisions, including tax filings, we strongly recommend verifying your results with your local tax authority or a qualified tax professional.</p>
+        </div>
+      </div>
+    </section>
+    <section id="popular-resources" class="border-t border-hairline bg-canvas-soft dark:border-overlay-light dark:bg-canvas" aria-labelledby="resources-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="resources-heading" class="text-3xl font-semibold text-ink mb-4 dark:text-on-primary">Popular Resources</h2>
+        <p class="max-w-3xl text-lg text-body mb-10 dark:text-muted">Deepen your understanding of tax systems worldwide with our guides, tutorials, and explanatory articles.</p>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="/blogs" class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Tax Guides</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Comprehensive walkthroughs of tax systems across 10+ countries.</p>
+          </a>
+          <a href="/blogs" class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Tax Slabs & Rates</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Current income tax slabs, GST rates, VAT percentages, and payroll thresholds by country.</p>
+          </a>
+          <a href="/blogs/old-vs-new-tax-regime-calculator" class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Old vs New Tax Regime</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Compare India old and new tax regimes side by side with practical examples.</p>
+          </a>
+          <a href="/blogs" class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Tax Saving Tips</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Actionable strategies to legally reduce your tax liability through deductions and credits.</p>
+          </a>
+          <a href="/blogs/capital-gains-tax-guide-india" class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Capital Gains Guide</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Understand long-term and short-term capital gains tax on investments in India.</p>
+          </a>
+          <a href="/blogs/hong-kong-salaries-tax-guide" class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Hong Kong Salaries Tax</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Complete guide to HK salaries tax including allowances and deductions.</p>
+          </a>
+          <a href="/blogs/pakistan-income-tax-guide" class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Pakistan Income Tax</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Navigate Pakistan income tax slabs, filing requirements, and tax credits.</p>
+          </a>
+          <a href="/blogs" class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink dark:text-on-primary">All Guides</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Browse the full library of tax guides, calculators, and educational resources.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section id="faq" class="border-t border-hairline dark:border-overlay-light" aria-labelledby="faq-heading">
+      <div class="mx-auto max-w-3xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="faq-heading" class="mb-12 text-center text-3xl font-semibold text-ink dark:text-on-primary">Frequently Asked Questions</h2>
+        <div class="space-y-4" id="faq-accordion">
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for How much tax will I pay?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How much tax will I pay?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">Your tax depends on your total income, deductions, filing status, and jurisdiction. Our tax estimator uses current tax slabs and rules to provide an accurate estimate. Select your country, enter your income details, and review the instant breakdown.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for How do I calculate my tax liability?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How do I calculate my tax liability?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">Start with your total income from all sources, subtract allowable deductions and exemptions to arrive at taxable income, then apply the relevant tax slab rates. Our income tax calculator automates this using the latest official rates and rules.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for What is an income tax calculator?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">What is an income tax calculator?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">An income tax calculator is an online tool that estimates tax owed based on income, deductions, and applicable tax laws. It helps you understand take-home pay, effective tax rate, and potential refund. Finsiva supports multiple countries and tax types.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for Is a tax calculator free to use?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Is a tax calculator free to use?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">Yes. All core tax calculators on Finsiva are completely free with no paywalls, subscriptions, or hidden charges. Calculations run locally in your browser with no registration required.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for How accurate are online tax calculators?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How accurate are online tax calculators?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">Online tax calculators provide estimates based on official tax rules and slab rates. They are accurate for planning purposes but may differ from final liability due to jurisdiction-specific nuances. Always verify important tax decisions with local tax authorities or a qualified professional.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for How do I calculate income tax online?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How do I calculate income tax online?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">Select your country, enter your annual income, choose your filing status and tax year, then input applicable deductions. Our tax estimator instantly computes your tax liability and take-home pay. All calculations run locally in your browser.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for How do I calculate tax on salary?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How do I calculate tax on salary?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">Enter your gross salary into the salary tax calculator along with allowances, bonuses, and deductions. The tool applies relevant PAYE, Social Security, and local tax rules for your country. Use the monthly calculator for detailed breakdowns of earnings after tax.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for Can I use a tax calculator for multiple countries?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Can I use a tax calculator for multiple countries?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">Yes. Finsiva supports income tax, salary tax, payroll tax, GST, VAT, and more across 10+ countries. Each calculator is tailored to the specific tax rules of the country you select, so you get accurate estimates for every jurisdiction.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for Which is better: old tax regime or new tax regime?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Which is better: old tax regime or new tax regime?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">The choice depends on your deductions and income level. Taxpayers with significant deductions like home loan interest, retirement contributions, and insurance often benefit from the old regime. Those with fewer deductions may prefer the new regime lower slab rates.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for How do I legally reduce my tax using deductions?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How do I legally reduce my tax using deductions?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">Claim all eligible deductions and credits such as retirement contributions, mortgage interest, charitable donations, education expenses, and business costs. Our tax estimator shows how each deduction lowers your tax base and increases your take-home pay.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for How do I calculate my net salary after tax?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How do I calculate my net salary after tax?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">Our net salary calculator takes your gross salary and subtracts income tax, Social Security contributions, and other deductions to show your take-home pay. It provides a detailed breakdown of every deduction so you understand where your money goes.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for Are online tax calculators secure and private?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Are online tax calculators secure and private?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">Finsiva is built with privacy by design. All calculations run entirely in your browser. We do not collect, store, or transmit your income, deduction, or any financial data to any server. Your information stays on your device.</p>
+          </details>
+          <details class="group rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-within:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-left" aria-label="Toggle answer for How often are tax rates updated on Finsiva?">
+              <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How often are tax rates updated on Finsiva?</h3>
+              <svg class="h-5 w-5 shrink-0 text-ink transition-transform duration-200 group-open:rotate-180 dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="mt-3 text-sm text-body dark:text-muted">We update our calculators whenever tax rules, slabs, thresholds, or regulations change. Our platform is actively maintained to reflect the latest official rates from government tax authorities across all supported countries.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section id="conclusion" class="border-t border-hairline dark:border-overlay-light" aria-labelledby="conclusion-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 id="conclusion-heading" class="text-3xl font-semibold text-ink mb-6 dark:text-on-primary">Start Calculating Your Taxes Today</h2>
+          <p class="text-lg text-body mb-8 dark:text-muted">
+            Whether you need a simple income tax estimator or a comprehensive suite of tools for salary tax, payroll, and capital gains, Finsiva has you covered. Explore our country-specific calculators and get accurate, private estimates in seconds.
+          </p>
+          <a href="/countries" class="inline-flex items-center gap-2 rounded-pill bg-primary px-8 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Browse All Tax Calculators</a>
+          <p class="mt-6 text-sm text-muted dark:text-muted">
+            <strong class="font-medium text-ink dark:text-on-primary">Important:</strong> All calculations are estimates based on available tax rules. Please verify critical financial decisions with your local tax authority or a qualified tax professional.
+          </p>
+        </div>
+      </div>
+    </section>
+  </article>
+</Layout>
