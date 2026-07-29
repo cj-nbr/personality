@@ -8,6 +8,7 @@ const isContact = currentPath === "/contact";
 const isPrivacy = currentPath === "/privacy";
 const isTerms = currentPath === "/terms";
 const isEditorial = currentPath === "/editorial-policy";
+const isKnowledge = currentPath.startsWith("/knowledge") || currentPath.startsWith("/knowledge/");
 const is404 = currentPath === "/404";
 ---
 
@@ -23,6 +24,7 @@ const is404 = currentPath === "/404";
           <a href="/" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isHome ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.home">Home</span></a>
           <a href="/countries" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isCountries ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.countries">Countries</span></a>
           <a href="/blogs" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isBlog ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.guides">Guides</span></a>
+          <a href="/knowledge" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isKnowledge ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.knowledge_center">Knowledge Center</span></a>
           <a href="/about" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isAbout ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.about_us">About Us</span></a>
         </nav>
       </div>
@@ -70,8 +72,9 @@ const is404 = currentPath === "/404";
     <div class="mx-auto max-w-7xl px-4 py-3 space-y-1">
       <a href="/" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.home">Home</span></a>
       <a href="/countries" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.countries">Countries</span></a>
-      <a href="/blogs" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.guides">Guides</span></a>
-      <a href="/about" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.about_us">About Us</span></a>
+<a href="/blogs" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.guides">Guides</span></a>
+	       <a href="/knowledge" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.knowledge_center">Knowledge Center</span></a>
+	       <a href="/about" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.about_us">About Us</span></a>
       <a href="/contact" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.contact">Contact</span></a>
     </div>
   </div>

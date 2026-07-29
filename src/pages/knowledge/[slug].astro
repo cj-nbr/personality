@@ -1,0 +1,136 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import GuideTOC from "../../components/knowledge/GuideTOC.astro";
+import RelatedGuides from "../../components/knowledge/RelatedGuides.astro";
+import RelatedCalculators from "../../components/knowledge/RelatedCalculators.astro";
+import RelatedCountryPages from "../../components/knowledge/RelatedCountryPages.astro";
+import PrevNextNav from "../../components/knowledge/PrevNextNav.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  return guides.map(guide => ({
+    params: { slug: guide.id },
+    props: { slug: guide.id },
+  }));
+}
+
+const { slug } = Astro.props;
+const guides = await getCollection("guides");
+const guide = guides.find(g => g.id === slug);
+
+if (!guide) {
+  return Astro.redirect("/knowledge");
+}
+
+const { Content, headings } = await render(guide);
+
+const allGuides = guides;
+const currentIndex = allGuides.findIndex(g => g.id === slug);
+const prev = currentIndex > 0 ? allGuides[currentIndex - 1] : null;
+const next = currentIndex < allGuides.length - 1 ? allGuides[currentIndex + 1] : null;
+
+const glossaryTerms = await getCollection("glossary");
+const relatedGlossary = guide.data.relatedGlossary
+  ? glossaryTerms.filter(t => guide.data.relatedGlossary.includes(t.id))
+  : [];
+
+const baseUrl = "https://finsiva.com";
+const currentUrl = `${baseUrl}/knowledge/${guide.id}`;
+
+const guideSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: guide.data.title,
+  description: guide.data.description,
+  url: currentUrl,
+  mainEntityOfPage: { "@type": "WebPage", "@id": currentUrl },
+  author: { "@type": "Organization", name: "Finsiva" },
+  publisher: { "@type": "Organization", name: "Finsiva", logo: { "@type": "ImageObject", url: `${baseUrl}/logo.png` } },
+  datePublished: "2026-01-01",
+  dateModified: guide.data.lastUpdated,
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl },
+      { "@type": "ListItem", "position": 2, "name": "Knowledge Center", "item": `${baseUrl}/knowledge` },
+      { "@type": "ListItem", "position": 3, "name": guide.data.title, "item": currentUrl }
+    ]
+  }
+};
+---
+
+<Layout
+  title={`${guide.data.title} | Finsiva Knowledge Center`}
+  description={guide.data.description}
+  canonical={currentUrl}
+  robots="index,follow"
+  schema={guideSchema}
+  image="/og-image.svg"
+  imageAlt={guide.data.title}
+>
+  <article id="main-content" class="min-h-screen bg-canvas dark:bg-canvas">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[
+        { label: "Home", href: "/" },
+        { label: "Knowledge Center", href: "/knowledge" },
+        { label: guide.data.category, href: `/knowledge/category/${guide.data.category.toLowerCase().replace(/[\/\s]+/g, '-').replace(/-+/g, '-')}` },
+        { label: guide.data.title }
+      ]} />
+
+      <header class="pt-8 pb-12">
+        <span class="inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:bg-primary/20">{guide.data.category}</span>
+        <h1 class="mt-4 text-4xl font-extrabold tracking-tight text-ink dark:text-on-primary sm:text-5xl">{guide.data.title}</h1>
+        <p class="mt-4 text-xl text-body dark:text-muted">{guide.data.description}</p>
+        <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-muted dark:text-muted">
+          <time datetime={guide.data.lastUpdated}>Last updated: {guide.data.lastUpdated}</time>
+          <span aria-hidden="true">·</span>
+          <span>{guide.data.readTime} read</span>
+        </div>
+      </header>
+
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
+        <aside class="lg:col-span-1" aria-label="Table of contents">
+          <div class="sticky top-24">
+            <GuideTOC items={headings.filter(h => h.depth >= 2 && h.depth <= 3).map(h => ({ id: h.slug, label: h.text, level: h.depth }))} />
+          </div>
+        </aside>
+
+        <div class="lg:col-span-3 prose max-w-none prose-headings:mt-10 prose-headings:mb-4 prose-h2:text-2xl prose-h2:font-semibold prose-h2:text-ink dark:prose-h2:text-on-primary prose-h3:text-xl prose-h3:font-semibold prose-h3:text-ink dark:prose-h3:text-on-primary prose-p:text-body prose-p:leading-relaxed prose-p:mt-4 prose-a:text-link prose-a:underline prose-a:decoration-dashed prose-a:underline-offset-4 prose-a:hover:text-primary prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:mt-1 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:text-body dark:prose-blockquote:bg-primary/10">
+          <Content />
+        </div>
+      </div>
+
+      {guide.data.relatedGuides && guide.data.relatedGuides.length > 0 && (
+        <RelatedGuides guides={allGuides.filter(g => guide.data.relatedGuides.includes(g.id)).map(g => ({ title: g.data.title, slug: g.id, category: g.data.category }))} />
+      )}
+
+      {guide.data.relatedCalculators && guide.data.relatedCalculators.length > 0 && (
+        <RelatedCalculators calculators={guide.data.relatedCalculators.map(c => ({ title: c, href: `/countries` }))} />
+      )}
+
+      {guide.data.relatedCountries && guide.data.relatedCountries.length > 0 && (
+        <RelatedCountryPages countries={guide.data.relatedCountries.map(c => ({ name: c, slug: c.toLowerCase().replace(/\s+/g, '-') }))} />
+      )}
+
+      {relatedGlossary.length > 0 && (
+        <section class="mt-12 border-t border-hairline pt-10 dark:border-overlay-light" aria-labelledby="related-glossary-heading">
+          <h2 id="related-glossary-heading" class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Related Glossary Terms</h2>
+          <ul class="space-y-2">
+            {relatedGlossary.map(term => (
+              <li>
+                <a href={`/knowledge/glossary/${term.id}`} class="group flex items-center gap-2 text-sm text-link hover:underline dark:text-link">
+                  <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                  {term.data.term}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <PrevNextNav prev={prev ? { title: prev.data.title, slug: prev.id } : undefined} next={next ? { title: next.data.title, slug: next.id } : undefined} />
+    </div>
+  </article>
+</Layout>

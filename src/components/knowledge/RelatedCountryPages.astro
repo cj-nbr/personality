@@ -1,0 +1,24 @@
+---
+interface Props {
+  countries: Array<{ name: string; slug: string }>;
+  title?: string;
+}
+
+const { countries, title = "Related Country Pages" } = Astro.props;
+---
+
+{countries.length > 0 && (
+  <section class="mt-6 border-t border-hairline pt-8 dark:border-overlay-light" aria-labelledby="related-countries-heading">
+    <h2 id="related-countries-heading" class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">{title}</h2>
+    <ul class="space-y-2">
+      {countries.map((country) => (
+        <li>
+          <a href={`/countries/${country.slug}`} class="group flex items-center gap-2 text-sm text-link hover:underline dark:text-link">
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            {country.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

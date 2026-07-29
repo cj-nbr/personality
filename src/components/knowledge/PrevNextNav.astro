@@ -1,0 +1,27 @@
+---
+interface Props {
+  prev?: { title: string; slug: string };
+  next?: { title: string; slug: string };
+}
+
+const { prev, next } = Astro.props;
+---
+
+{prev || next ? (
+  <nav class="mt-16 border-t border-hairline pt-8 dark:border-overlay-light" aria-label="Guide navigation">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      {prev ? (
+        <a href={`/knowledge/${prev.slug}`} class="group flex items-center gap-3 rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+          <span class="shrink-0 text-sm font-medium text-muted dark:text-muted">← Previous</span>
+          <span class="text-sm font-medium text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">{prev.title}</span>
+        </a>
+      ) : <div />}
+      {next ? (
+        <a href={`/knowledge/${next.slug}`} class="group flex items-center gap-3 rounded-xl border border-hairline bg-canvas p-5 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary sm:text-right">
+          <span class="text-sm font-medium text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">{next.title}</span>
+          <span class="shrink-0 text-sm font-medium text-muted dark:text-muted">Next →</span>
+        </a>
+      ) : <div />}
+    </div>
+  </nav>
+) : null}

@@ -1,0 +1,20 @@
+---
+interface Props {
+  items: Array<{ id: string; label: string; level: number }>;
+}
+
+const { items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <nav aria-label="Table of contents" class="toc-container">
+    <h2 class="text-sm font-semibold uppercase tracking-wider text-ink mb-4 dark:text-on-primary">On this page</h2>
+    <ol class="space-y-1">
+      {items.map((item) => (
+        <li style={`padding-left: ${Math.max(0, (item.level - 2)) * 1}rem`}>
+          <a href={`#${item.id}`} class="block text-sm text-link hover:underline dark:text-link transition">{item.label}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}

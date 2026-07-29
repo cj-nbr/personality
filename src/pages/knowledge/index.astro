@@ -1,0 +1,119 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import KnowledgeHero from "../../components/knowledge/KnowledgeHero.astro";
+import CategoryBrowser from "../../components/knowledge/CategoryBrowser.astro";
+import GuideCard from "../../components/knowledge/GuideCard.astro";
+import { getCollection } from "astro:content";
+
+const guides = await getCollection("guides");
+const categories = [
+  { name: "Income Tax", slug: "income-tax", count: guides.filter(g => g.data.category === "Income Tax").length, description: "Learn about income tax basics, rates, and how your taxable income is calculated." },
+  { name: "Tax Deductions", slug: "tax-deductions", count: guides.filter(g => g.data.category === "Tax Deductions").length, description: "Explore deductions that reduce your taxable income and lower your tax bill." },
+  { name: "Tax Credits", slug: "tax-credits", count: guides.filter(g => g.data.category === "Tax Credits").length, description: "Learn about tax credits that directly reduce your tax liability." },
+  { name: "Payroll Taxes", slug: "payroll-taxes", count: guides.filter(g => g.data.category === "Payroll Taxes").length, description: "Understand Social Security, Medicare, and employer payroll tax obligations." },
+  { name: "Capital Gains", slug: "capital-gains", count: guides.filter(g => g.data.category === "Capital Gains").length, description: "Learn about tax on investment gains, short-term vs long-term holding periods." },
+  { name: "GST / VAT", slug: "gst-vat", count: guides.filter(g => g.data.category === "GST / VAT").length, description: "Understand goods and services tax and value-added tax systems." },
+  { name: "Tax Residency", slug: "tax-residency", count: guides.filter(g => g.data.category === "Tax Residency").length, description: "Understand tax residency rules that determine which country taxes your income." },
+  { name: "Tax Planning", slug: "tax-planning", count: guides.filter(g => g.data.category === "Tax Planning").length, description: "Strategies and principles for lawful tax optimization and financial planning." },
+];
+
+const featuredGuides = guides.filter(g => g.data.featured).slice(0, 3);
+const popularGuides = guides.sort((a, b) => b.data.readTime.localeCompare(a.data.readTime)).slice(0, 4);
+const recentGuides = guides.sort((a, b) => new Date(b.data.lastUpdated).getTime() - new Date(a.data.lastUpdated).getTime()).slice(0, 4);
+
+const baseUrl = "https://finsiva.com";
+
+const knowledgeSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Tax Knowledge Center | Finsiva",
+  description: "Explore our comprehensive tax knowledge center with guides, glossaries, and educational resources on global tax topics.",
+  url: `${baseUrl}/knowledge`,
+  isPartOf: { "@type": "WebSite", "name": "Finsiva", "url": baseUrl },
+  breadcrumb: { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": baseUrl }, { "@type": "ListItem", "position": 2, "name": "Knowledge Center", "item": `${baseUrl}/knowledge` }] }
+};
+---
+
+<Layout
+  title="Tax Knowledge Center | Guides, Glossary & Learning Resources | Finsiva"
+  description="Explore the Finsiva Knowledge Center — comprehensive guides on income tax, deductions, credits, capital gains, payroll taxes, and more. Learn tax concepts with clear explanations and examples."
+  canonical={`${baseUrl}/knowledge`}
+  robots="index,follow"
+  schema={knowledgeSchema}
+  image="/og-image.svg"
+  imageAlt="Finsiva Tax Knowledge Center — guides, glossary, and educational resources"
+>
+  <article id="main-content" class="min-h-screen bg-canvas dark:bg-canvas">
+    <KnowledgeHero
+      title="Tax Knowledge Center"
+      subtitle="Learn & Understand"
+      description="Master tax concepts with expert-written guides, a searchable glossary, and clear explanations. From income tax basics to international tax planning — everything you need to understand how taxes work."
+      ctaLabel="Browse Guides"
+      ctaHref="/knowledge"
+      secondaryLabel="Tax Glossary"
+      secondaryHref="/knowledge/glossary"
+    />
+
+    <section class="border-t border-hairline dark:border-overlay-light" aria-labelledby="featured-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="featured-heading" class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Featured Guides</h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {featuredGuides.map(guide => (
+          <GuideCard title={guide.data.title} description={guide.data.description} slug={guide.id} category={guide.data.category} lastUpdated={guide.data.lastUpdated} readTime={guide.data.readTime} featured={true} />
+        ))}
+        </div>
+      </div>
+    </section>
+
+    <CategoryBrowser categories={categories} />
+
+    <section class="border-t border-hairline bg-canvas-soft dark:border-overlay-light dark:bg-canvas" aria-labelledby="popular-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="popular-heading" class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Popular Articles</h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {popularGuides.map(guide => (
+          <GuideCard title={guide.data.title} description={guide.data.description} slug={guide.id} category={guide.data.category} lastUpdated={guide.data.lastUpdated} readTime={guide.data.readTime} />
+        ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-hairline dark:border-overlay-light" aria-labelledby="recent-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="recent-heading" class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Recently Added</h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {recentGuides.map(guide => (
+          <GuideCard title={guide.data.title} description={guide.data.description} slug={guide.id} category={guide.data.category} lastUpdated={guide.data.lastUpdated} readTime={guide.data.readTime} />
+        ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-hairline bg-canvas-soft dark:border-overlay-light dark:bg-canvas" aria-labelledby="glossary-cta-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div class="rounded-xl border border-hairline bg-canvas p-8 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Tax Glossary</h3>
+            <p class="mt-2 text-body dark:text-muted">Quick definitions for essential tax terms. From AGI to withholding — understand the language of taxes.</p>
+            <a href="/knowledge/glossary" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Browse Glossary</a>
+          </div>
+          <div class="rounded-xl border border-hairline bg-canvas p-8 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Tax Calculators</h3>
+            <p class="mt-2 text-body dark:text-muted">Put your knowledge into practice with our free, instant tax calculators for 10+ countries.</p>
+            <a href="/countries" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Try a Calculator</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-hairline dark:border-overlay-light" aria-labelledby="country-hub-cta-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="rounded-xl border border-hairline bg-canvas p-8 text-center dark:border-overlay-lighter dark:bg-surface">
+          <h3 class="text-2xl font-semibold text-ink dark:text-on-primary">Country Tax Hubs</h3>
+          <p class="mt-2 text-body dark:text-muted">Explore tax calculators, guides, and rates tailored to specific countries.</p>
+          <a href="/countries" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Explore Country Hubs</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</Layout>

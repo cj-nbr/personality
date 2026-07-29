@@ -1,0 +1,12 @@
+---
+import CalloutBox from "./CalloutBox.astro";
+interface Props {
+  title?: string;
+}
+
+const { title = "Warning" } = Astro.props;
+---
+
+<CalloutBox type="warning" title={title}>
+  <slot />
+</CalloutBox>

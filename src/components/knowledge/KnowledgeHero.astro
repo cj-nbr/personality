@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  description: string;
+  ctaLabel: string;
+  ctaHref: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const { title, subtitle, description, ctaLabel, ctaHref, secondaryLabel, secondaryHref } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-primary-dark" aria-labelledby="knowledge-hero-heading">
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute top-0 left-1/4 h-[300px] w-[300px] rounded-full bg-white/5 blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 h-[250px] w-[250px] rounded-full bg-blue-400/10 blur-3xl"></div>
+  </div>
+  <div class="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-block rounded-full bg-white/10 px-4 py-1 text-sm font-medium text-white/90">{subtitle}</span>
+      <h1 id="knowledge-hero-heading" class="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">{title}</h1>
+      <p class="mt-6 text-lg text-white/80 leading-relaxed">{description}</p>
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href={ctaHref} class="inline-flex items-center justify-center gap-2 rounded-pill bg-white px-8 py-3.5 text-base font-semibold text-primary shadow-lg shadow-black/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-dark">{ctaLabel}</a>
+        {secondaryLabel && secondaryHref && (
+          <a href={secondaryHref} class="inline-flex items-center justify-center gap-2 rounded-pill border border-white/30 px-8 py-3.5 text-base font-semibold text-white transition-all duration-200 hover:bg-white/10 hover:border-white/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-2 focus-visible:ring-offset-primary-dark">{secondaryLabel}</a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+---
+interface Props {
+  terms: Array<{ term: string; slug: string; category: string }>;
+}
+
+const { terms } = Astro.props;
+---
+
+<div class="glossary-search">
+  <div class="relative mb-8">
+    <input
+      type="search"
+      id="glossary-search"
+      placeholder="Search glossary terms..."
+      aria-label="Search glossary terms"
+      class="w-full rounded-lg border border-hairline bg-canvas px-4 py-3 pl-10 text-ink placeholder:text-muted focus:border-primary focus:outline-none dark:border-overlay-lighter dark:bg-surface dark:text-on-primary dark:placeholder:text-muted"
+    />
+    <svg class="absolute left-3 top-3.5 h-5 w-5 text-muted dark:text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+  </div>
+  <div id="glossary-results" class="space-y-3">
+    {terms.map((term) => (
+      <a href={`/knowledge/glossary/${term.slug}`} class="glossary-term-item block rounded-lg border border-hairline bg-canvas p-4 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary" data-term={term.term.toLowerCase()} data-category={term.category.toLowerCase()}>
+        <div class="flex items-center justify-between">
+          <span class="font-semibold text-ink dark:text-on-primary">{term.term}</span>
+          <span class="text-xs text-muted dark:text-muted">{term.category}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+  <p id="glossary-no-results" class="hidden text-center text-sm text-muted dark:text-muted">No terms match your search.</p>
+</div>
+
+<script is:inline>
+  (function() {
+    var searchInput = document.getElementById('glossary-search');
+    var resultsContainer = document.getElementById('glossary-results');
+    var noResults = document.getElementById('glossary-no-results');
+    var termItems = resultsContainer ? Array.from(resultsContainer.querySelectorAll('.glossary-term-item')) : [];
+
+    if (searchInput && resultsContainer) {
+      searchInput.addEventListener('input', function() {
+        var query = searchInput.value.toLowerCase().trim();
+        var visibleCount = 0;
+        termItems.forEach(function(item) {
+          var term = item.getAttribute('data-term') || '';
+          var category = item.getAttribute('data-category') || '';
+          var match = !query || term.includes(query) || category.includes(query);
+          item.style.display = match ? '' : 'none';
+          if (match) visibleCount++;
+        });
+        if (noResults) {
+          noResults.classList.toggle('hidden', visibleCount > 0);
+        }
+      });
+    }
+  })();
+</script>

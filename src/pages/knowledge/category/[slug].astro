@@ -1,0 +1,55 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import GuideCard from "../../../components/knowledge/GuideCard.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  const categories = [...new Set(guides.map(g => g.data.category))];
+  return categories.map(cat => ({
+    params: { slug: cat.toLowerCase().replace(/[\/\s]+/g, '-').replace(/-+/g, '-') },
+    props: { category: cat },
+  }));
+}
+
+const { category } = Astro.props;
+const guides = await getCollection("guides");
+const categoryGuides = guides.filter(g => g.data.category === category);
+
+if (categoryGuides.length === 0) {
+  return Astro.redirect("/knowledge");
+}
+
+const baseUrl = "https://finsiva.com";
+---
+
+<Layout
+  title={`${category} Guides | Finsiva Knowledge Center`}
+  description={`Explore our collection of educational guides on ${category}. Clear, expert-written explanations to help you understand tax concepts.`}
+  canonical={`${baseUrl}/knowledge/category/${category.toLowerCase().replace(/\s+/g, '-')}`}
+  robots="index,follow"
+  image="/og-image.svg"
+  imageAlt={`${category} guides — Finsiva Knowledge Center`}
+>
+  <article id="main-content" class="min-h-screen bg-canvas dark:bg-canvas">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[
+        { label: "Home", href: "/" },
+        { label: "Knowledge Center", href: "/knowledge" },
+        { label: category }
+      ]} />
+
+      <header class="pt-8 pb-12">
+        <h1 class="text-4xl font-extrabold tracking-tight text-ink dark:text-on-primary sm:text-5xl">{category} Guides</h1>
+        <p class="mt-4 text-xl text-body dark:text-muted">{categoryGuides.length} comprehensive guide{categoryGuides.length !== 1 ? 's' : ''} to help you understand {category.toLowerCase()} concepts.</p>
+      </header>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {categoryGuides.map(guide => (
+          <GuideCard title={guide.data.title} description={guide.data.description} slug={guide.id} category={guide.data.category} lastUpdated={guide.data.lastUpdated} readTime={guide.data.readTime} featured={guide.data.featured} />
+        ))}
+      </div>
+    </div>
+  </article>
+</Layout>
