@@ -6,16 +6,19 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<nav aria-label="Breadcrumb" class="mb-6 text-sm">
+<nav aria-label="Breadcrumb" class="mb-6 text-sm" itemscope itemtype="https://schema.org/BreadcrumbList">
   <ol class="flex flex-wrap items-center gap-2">
     {items.map((item, i) => (
-      <li class="flex items-center gap-2">
+      <li class="flex items-center gap-2" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
         {i > 0 && <span class="text-muted dark:text-muted" aria-hidden="true">/</span>}
         {item.href ? (
-          <a href={item.href} class="text-link hover:underline dark:text-link">{item.label}</a>
+          <a href={item.href} class="text-link hover:underline dark:text-link" itemProp="item">
+            <span itemProp="name">{item.label}</span>
+          </a>
         ) : (
-          <span class="font-medium text-ink dark:text-on-primary" aria-current="page">{item.label}</span>
+          <span class="font-medium text-ink dark:text-on-primary" aria-current="page" itemProp="name">{item.label}</span>
         )}
+        <meta itemProp="position" content={String(i + 1)} />
       </li>
     ))}
   </ol>
