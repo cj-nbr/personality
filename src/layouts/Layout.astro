@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import Header from "../components/Header.astro";
-import SearchModal from "../components/SearchModal.astro";
 import { loadLocales, setLang, getLang, getDict, detectLanguage } from "../i18n";
 import en from "../i18n/translations/en.json";
 import hi from "../i18n/translations/hi.json";
@@ -14,7 +13,6 @@ import ja from "../i18n/translations/ja.json";
 import ar from "../i18n/translations/ar.json";
 import pt from "../i18n/translations/pt.json";
 import ru from "../i18n/translations/ru.json";
-import { getSearchIndex } from "../data/search-index";
 
 loadLocales({ en, hi, es, fr, de, zh, "zh-TW": zhTW, ja, ar, pt, ru });
 
@@ -43,7 +41,6 @@ const {
   howToSchema,
   itemListSchema
 } = Astro.props;
-const searchData = await getSearchIndex();
 const initialLang = detectLanguage();
 setLang(initialLang);
 const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
@@ -194,7 +191,6 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
       )}
       <title>{title}</title>
       <slot name="head" />
-      <script type="application/json" id="search-data" set:html={JSON.stringify(searchData)}></script>
     </head>
   <body class="min-h-screen bg-canvas text-ink antialiased dark:bg-surface dark:text-on-primary">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-pill focus:bg-primary focus:px-4 focus:py-2 focus:text-on-primary focus:ring-2 focus:ring-primary focus:ring-offset-2">Skip to main content</a>
@@ -202,48 +198,46 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
     <main id="main-content" class="min-h-screen">
       <slot />
     </main>
-    <SearchModal searchData={searchData} />
-    <footer class="border-t border-hairline bg-canvas dark:border-overlay-light dark:bg-surface" role="contentinfo" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" class="sr-only">Site footer</h2>
+    <footer class="border-t border-hairline bg-canvas dark:border-overlay-light dark:bg-surface">
       <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div class="space-y-4">
-            <h3 class="text-sm font-semibold uppercase tracking-wider text-ink dark:text-on-primary">Calculators</h3>
-            <ul class="space-y-2" role="list">
-              <li><a href="/countries" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Income Tax</a></li>
-              <li><a href="/countries" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Salary Tax</a></li>
-              <li><a href="/countries" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Payroll Tax</a></li>
-              <li><a href="/countries" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">GST/VAT</a></li>
-              <li><a href="/countries" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Capital Gains</a></li>
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-ink dark:text-on-primary">Popular Calculators</h3>
+            <ul class="space-y-2">
+              <li><a href="/countries" class="text-sm text-link hover:underline dark:text-link">Income Tax Calculator</a></li>
+              <li><a href="/countries" class="text-sm text-link hover:underline dark:text-link">Salary Tax Calculator</a></li>
+              <li><a href="/countries" class="text-sm text-link hover:underline dark:text-link">Payroll Tax Calculator</a></li>
+              <li><a href="/countries" class="text-sm text-link hover:underline dark:text-link">GST Calculator</a></li>
+              <li><a href="/countries" class="text-sm text-link hover:underline dark:text-link">VAT Calculator</a></li>
             </ul>
           </div>
           <div class="space-y-4">
-            <h3 class="text-sm font-semibold uppercase tracking-wider text-ink dark:text-on-primary">Countries</h3>
-            <ul class="space-y-2" role="list">
-              <li><a href="/countries/india" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">India</a></li>
-              <li><a href="/countries/united-states" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">United States</a></li>
-              <li><a href="/countries/united-kingdom" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">United Kingdom</a></li>
-              <li><a href="/countries/hong-kong" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Hong Kong</a></li>
-              <li><a href="/countries/singapore" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Singapore</a></li>
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-ink dark:text-on-primary">Popular Countries</h3>
+            <ul class="space-y-2">
+              <li><a href="/countries/india" class="text-sm text-link hover:underline dark:text-link">India Tax</a></li>
+              <li><a href="/countries/united-states" class="text-sm text-link hover:underline dark:text-link">United States Tax</a></li>
+              <li><a href="/countries/united-kingdom" class="text-sm text-link hover:underline dark:text-link">UK Tax</a></li>
+              <li><a href="/countries/hong-kong" class="text-sm text-link hover:underline dark:text-link">Hong Kong Tax</a></li>
+              <li><a href="/countries/singapore" class="text-sm text-link hover:underline dark:text-link">Singapore Tax</a></li>
             </ul>
           </div>
           <div class="space-y-4">
             <h3 class="text-sm font-semibold uppercase tracking-wider text-ink dark:text-on-primary">Resources</h3>
-            <ul class="space-y-2" role="list">
-              <li><a href="/blogs" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Tax Guides</a></li>
-              <li><a href="/knowledge" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Knowledge Center</a></li>
-              <li><a href="/knowledge/glossary" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Tax Glossary</a></li>
-              <li><a href="/countries" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Tax Slabs & Rates</a></li>
-            </ul>
+              <ul class="space-y-2">
+                <li><a href="/blogs" class="text-sm text-link hover:underline dark:text-link">Tax Guides</a></li>
+                <li><a href="/knowledge" class="text-sm text-link hover:underline dark:text-link">Knowledge Center</a></li>
+                <li><a href="/knowledge/glossary" class="text-sm text-link hover:underline dark:text-link">Tax Glossary</a></li>
+                <li><a href="/countries" class="text-sm text-link hover:underline dark:text-link">Tax Slabs & Rates</a></li>
+              </ul>
           </div>
           <div class="space-y-4">
             <h3 class="text-sm font-semibold uppercase tracking-wider text-ink dark:text-on-primary">Company</h3>
-            <ul class="space-y-2" role="list">
-              <li><a href="/about" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">About Us</a></li>
-              <li><a href="/contact" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Contact</a></li>
-              <li><a href="/privacy" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Privacy Policy</a></li>
-              <li><a href="/terms" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Terms of Service</a></li>
-              <li><a href="/sitemap.xml" class="text-sm text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-link">Sitemap</a></li>
+            <ul class="space-y-2">
+              <li><a href="/about" class="text-sm text-link hover:underline dark:text-link">About Us</a></li>
+              <li><a href="/contact" class="text-sm text-link hover:underline dark:text-link">Contact</a></li>
+              <li><a href="/privacy" class="text-sm text-link hover:underline dark:text-link">Privacy Policy</a></li>
+              <li><a href="/terms" class="text-sm text-link hover:underline dark:text-link">Terms of Service</a></li>
+              <li><a href="/sitemap.xml" class="text-sm text-link hover:underline dark:text-link">Sitemap</a></li>
             </ul>
           </div>
         </div>

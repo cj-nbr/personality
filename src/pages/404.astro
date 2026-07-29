@@ -1,52 +1,21 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Breadcrumbs from "../components/Breadcrumbs.astro";
 ---
 
-<Layout
-  title="404 - Page Not Found | Finsiva"
-  description="The page you are looking for could not be found. It may have been moved, deleted, or you entered the wrong URL."
+<Layout 
+  title="404 - Page Not Found" 
+  description="The page you are looking for could not be found."
   canonical="https://finsiva.com/"
-  robots="noindex, nofollow"
 >
-  <article id="main-content" class="min-h-screen bg-canvas dark:bg-canvas">
-    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
-      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "404" }]} />
-      <div class="text-center">
-        <span class="text-6xl font-extrabold text-primary dark:text-link" aria-hidden="true">404</span>
-        <h1 class="mt-4 text-3xl font-bold text-ink dark:text-on-primary">Page Not Found</h1>
-        <p class="mt-4 text-lg text-body dark:text-muted">The page you are looking for could not be found. It may have been moved, deleted, or you entered the wrong URL.</p>
-        <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row">
-          <a href="/" class="btn btn-primary inline-flex items-center gap-2">
-            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-            Go back home
-          </a>
-          <a href="/countries" class="btn btn-secondary inline-flex items-center gap-2">
-            Browse Countries
-          </a>
-        </div>
-        <div class="mt-12 rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-lighter dark:bg-surface">
-          <h2 class="text-lg font-semibold text-ink dark:text-on-primary">Popular Destinations</h2>
-          <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <a href="/countries/india" class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas p-3 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
-              <span class="text-xl" aria-hidden="true">🇮🇳</span>
-              <span class="text-sm font-medium text-ink dark:text-on-primary">India Tax</span>
-            </a>
-            <a href="/countries/united-states" class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas p-3 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
-              <span class="text-xl" aria-hidden="true">🇺🇸</span>
-              <span class="text-sm font-medium text-ink dark:text-on-primary">United States Tax</span>
-            </a>
-            <a href="/countries/united-kingdom" class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas p-3 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
-              <span class="text-xl" aria-hidden="true">🇬🇧</span>
-              <span class="text-sm font-medium text-ink dark:text-on-primary">UK Tax</span>
-            </a>
-            <a href="/countries/hong-kong" class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas p-3 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
-              <span class="text-xl" aria-hidden="true">🇭🇰</span>
-              <span class="text-sm font-medium text-ink dark:text-on-primary">Hong Kong Tax</span>
-            </a>
-          </div>
-        </div>
-      </div>
+  <meta name="robots" content="noindex, nofollow" />
+  <div class="min-h-screen bg-canvas dark:bg-canvas flex items-center justify-center">
+    <div class="max-w-2xl mx-auto px-4 py-16 text-center">
+      <h1 class="text-6xl font-bold text-ink mb-4">404</h1>
+      <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary" data-i18n="pages.not_found">Page Not Found</h2>
+      <p class="text-body text-lg mb-8 dark:text-muted" data-i18n="not_found.message">The page you are looking for could not be found. It may have been moved, deleted, or you entered the wrong URL.</p>
+      <a href="/" class="inline-block rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">
+        <span data-i18n="pages.go_home">Go back home</span>
+      </a>
     </div>
-  </article>
+  </div>
 </Layout>

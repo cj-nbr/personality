@@ -12,31 +12,25 @@ const isKnowledge = currentPath.startsWith("/knowledge") || currentPath.startsWi
 const is404 = currentPath === "/404";
 ---
 
-<header class="sticky top-0 z-50 border-b border-hairline bg-canvas/90 backdrop-blur-md dark:border-overlay-light dark:bg-surface/90" role="banner">
+<header class="sticky top-0 z-50 border-b border-hairline bg-canvas/90 backdrop-blur-md dark:border-overlay-light dark:bg-surface/90">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-8">
         <a href="/" class="flex items-center gap-2 font-bold text-ink dark:text-on-primary" aria-label="Finsiva Home">
           <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <span class="text-lg text-ink dark:text-on-primary" translate="no">Finsiva</span>
         </a>
         <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
-          <a href="/" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isHome ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:bg-surface/50"}`}><span data-i18n="common.home">Home</span></a>
-          <a href="/countries" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isCountries ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:bg-surface/50"}`}><span data-i18n="common.countries">Countries</span></a>
-          <a href="/blogs" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isBlog ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:bg-surface/50"}`}><span data-i18n="common.guides">Guides</span></a>
-          <a href="/knowledge" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isKnowledge ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:bg-surface/50"}`}><span data-i18n="common.knowledge_center">Knowledge Center</span></a>
-          <a href="/about" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isAbout ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:bg-surface/50"}`}><span data-i18n="common.about_us">About Us</span></a>
+          <a href="/" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isHome ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.home">Home</span></a>
+          <a href="/countries" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isCountries ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.countries">Countries</span></a>
+          <a href="/blogs" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isBlog ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.guides">Guides</span></a>
+          <a href="/knowledge" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isKnowledge ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.knowledge_center">Knowledge Center</span></a>
+          <a href="/about" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isAbout ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.about_us">About Us</span></a>
         </nav>
       </div>
 
       <div class="flex items-center gap-2">
-        <button id="search-trigger" class="hidden sm:flex rounded-pill px-3 py-2 text-sm text-muted hover:bg-canvas-soft dark:text-muted dark:hover:bg-surface/50 items-center gap-2 transition" aria-label="Open search (Ctrl+K)" data-i18n-title="common.search_placeholder">
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-          <span class="hidden lg:inline">Search...</span>
-          <kbd class="hidden lg:inline-flex items-center gap-0.5 rounded border border-hairline px-1.5 py-0.5 text-[10px] font-medium text-muted dark:border-overlay-lighter dark:text-muted">⌘K</kbd>
-        </button>
-
-        <div class="relative">
+      <div class="relative">
         <button id="lang-btn" class="flex items-center gap-1 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:overlay-light" aria-expanded="false" aria-haspopup="true">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <span class="hidden sm:inline" id="lang-label" data-i18n-title="common.select_language">EN</span>
@@ -78,9 +72,9 @@ const is404 = currentPath === "/404";
     <div class="mx-auto max-w-7xl px-4 py-3 space-y-1">
       <a href="/" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.home">Home</span></a>
       <a href="/countries" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.countries">Countries</span></a>
-      <a href="/blogs" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.guides">Guides</span></a>
-      <a href="/knowledge" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.knowledge_center">Knowledge Center</span></a>
-      <a href="/about" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.about_us">About Us</span></a>
+<a href="/blogs" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.guides">Guides</span></a>
+	       <a href="/knowledge" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.knowledge_center">Knowledge Center</span></a>
+	       <a href="/about" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.about_us">About Us</span></a>
       <a href="/contact" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.contact">Contact</span></a>
     </div>
   </div>

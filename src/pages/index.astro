@@ -166,7 +166,7 @@ const homepageSchema = {
           {countries.map(country => (
             <a href={`/countries/${country.slug}`} class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas p-4 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary" aria-label={`View tax calculators for ${country.name}`}>
               <img src={country.flag} alt={`${country.name} flag`} width="32" height="24" loading="lazy" class="h-8 w-auto object-contain" title={country.name} />
-              <span class="font-medium text-ink dark:text-on-primary">{country.name}</span>
+              <span class="min-w-0 font-medium text-ink dark:text-on-primary">{country.name}</span>
             </a>
           ))}
         </div>
