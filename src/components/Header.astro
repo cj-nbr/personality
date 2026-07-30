@@ -12,7 +12,7 @@ const isKnowledge = currentPath.startsWith("/knowledge") || currentPath.startsWi
 const is404 = currentPath === "/404";
 ---
 
-<header class="sticky top-0 z-50 border-b border-hairline bg-canvas/90 backdrop-blur-md dark:border-overlay-light dark:bg-surface/90" role="banner">
+<header class="sticky top-0 z-50 border-b border-hairline bg-canvas/90 backdrop-blur-md dark:border-overlay-light dark:bg-surface/90">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
       <div class="flex items-center gap-3">
@@ -30,18 +30,18 @@ const is404 = currentPath === "/404";
       </div>
 
       <div class="flex items-center gap-1">
-        <button id="search-trigger" class="hidden md:flex items-center gap-2 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:overlay-light border border-hairline dark:border-overlay-light transition-colors" aria-label="Open search" data-i18n-title="common.search">
+        <button id="search-trigger" class="btn btn-ghost hidden md:flex items-center gap-2 text-sm font-medium text-ink dark:text-on-primary" aria-label="Open search" data-i18n-title="common.search">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           <span class="hidden lg:inline" data-i18n="common.search">Search</span>
           <kbd class="hidden xl:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-medium text-muted bg-canvas-soft dark:bg-surface border border-hairline dark:border-overlay-light rounded ml-1"><span class="text-xs">⌘</span>K</kbd>
         </button>
 
-        <button id="search-trigger-mobile" class="md:hidden rounded-pill p-2.5 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light transition-colors" aria-label="Open search" data-i18n-title="common.search">
+        <button id="search-trigger-mobile" class="btn btn-ghost md:hidden p-2.5 text-ink" aria-label="Open search" data-i18n-title="common.search">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         </button>
 
         <div class="relative">
-        <button id="lang-btn" class="flex items-center gap-1 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:overlay-light transition-colors" aria-expanded="false" aria-haspopup="true" aria-label="Select language">
+        <button id="lang-btn" class="btn btn-ghost flex items-center gap-1 text-sm font-medium text-ink dark:text-on-primary" aria-expanded="false" aria-haspopup="true" aria-label="Select language">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <span class="hidden sm:inline" id="lang-label" data-i18n-title="common.select_language">EN</span>
           <svg class="h-3 w-3 transition-transform duration-200" id="lang-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -66,12 +66,12 @@ const is404 = currentPath === "/404";
         </div>
       </div>
 
-        <button id="theme-toggle" class="rounded-pill p-2.5 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light transition-colors" aria-label="Toggle theme" data-i18n="common.toggle_theme">
+        <button id="theme-toggle" class="btn btn-ghost p-2.5 text-ink dark:text-on-primary" aria-label="Toggle theme" data-i18n="common.toggle_theme">
           <svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           <svg id="theme-icon-light" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         </button>
 
-        <button id="mobile-menu-btn" class="md:hidden rounded-pill p-2.5 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light transition-colors" aria-expanded="false" aria-label="Open navigation menu" data-i18n="common.open_menu">
+        <button id="mobile-menu-btn" class="btn btn-ghost md:hidden p-2.5 text-ink" aria-expanded="false" aria-label="Open navigation menu" data-i18n="common.open_menu">
           <svg id="menu-icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           <svg id="menu-icon-close" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>

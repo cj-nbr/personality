@@ -12,7 +12,7 @@ interface Props {
 const { title, description, slug, category, lastUpdated, readTime, featured = false } = Astro.props;
 ---
 
-<article class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+<article class="card group dark:border-overlay-lighter dark:bg-surface">
   {featured && (
     <span class="inline-block rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary dark:bg-primary/20">Featured</span>
   )}

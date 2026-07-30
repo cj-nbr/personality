@@ -18,7 +18,7 @@ const { countries, searchQuery, selectedContinent } = Astro.props;
   {countries.map(country => (
     <a 
       href={`/countries/${country.slug}`}
-      class="group rounded-xl border border-hairline bg-canvas p-6 transition hover:border-primary hover:shadow-lg dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary"
+      class="card group dark:border-overlay-lighter dark:bg-surface"
     >
       <img src={country.flag} alt={country.name} class="h-10 w-auto mb-4 object-contain" />
       <h3 class="text-lg font-semibold text-ink group-hover:text-primary dark:text-on-primary">{country.name}</h3>

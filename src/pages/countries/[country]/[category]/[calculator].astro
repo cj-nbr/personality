@@ -203,7 +203,7 @@ const mergedContent = {
                 {input.type === "select" ? (
                   <select
                     id={input.id}
-                    class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-overlay-lighter dark:bg-surface dark:text-on-primary"
+                    class="form-select"
                   >
                     {input.options?.map((opt) => (
                       <option value={opt.value} selected={opt.value === input.defaultValue} data-i18n={opt.label}>{opt.label}</option>
@@ -216,7 +216,7 @@ const mergedContent = {
                     autocomplete="off"
                     placeholder={input.placeholder}
                     data-i18n-placeholder={input.placeholder}
-                    class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-overlay-lighter dark:bg-surface dark:text-on-primary"
+                    class="form-input"
                   />
                 )}
                 
@@ -231,7 +231,7 @@ const mergedContent = {
             <button
               type="button"
               id="calc-btn"
-              class="rounded-lg bg-primary px-6 py-3 text-on-primary font-medium hover:bg-primary-dark transition dark:bg-on-primary dark:text-primary"
+              class="btn btn-primary"
               data-i18n="calculator.calculate"
             >
               Calculate
@@ -239,7 +239,7 @@ const mergedContent = {
             <button
               type="button"
               id="reset-btn"
-              class="rounded-lg border border-hairline px-6 py-3 text-ink font-medium hover:bg-canvas-soft transition dark:border-overlay-lighter dark:bg-surface dark:text-on-primary dark:hover:overlay-light"
+              class="btn btn-secondary"
               data-i18n="calculator.reset"
             >
               Reset
@@ -254,12 +254,12 @@ const mergedContent = {
 
       <div id="result-wrapper" class="mt-8" aria-live="polite" aria-atomic="true">
         <div id="calc-announcement" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
-        <div id="result-empty" class="rounded-xl border-2 border-dashed border-hairline bg-canvas-soft p-8 text-center dark:border-overlay-lighter dark:bg-surface">
-          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 dark:bg-on-primary/10">
+        <div id="result-empty" class="empty-state rounded-xl border-2 border-dashed border-hairline bg-canvas-soft dark:border-overlay-lighter dark:bg-surface">
+          <div class="empty-state-icon mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 dark:bg-on-primary/10">
             <svg class="h-6 w-6 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m-6 4h6m-6 4h4M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
           </div>
-          <p class="text-lg font-medium text-ink dark:text-on-primary">Your calculation results will appear here.</p>
-          <p class="mt-1 text-sm text-muted dark:text-muted">Enter your details above and click Calculate to see your estimated tax.</p>
+          <p class="empty-state-title text-lg font-medium text-ink dark:text-on-primary">Your calculation results will appear here.</p>
+          <p class="empty-state-description mt-1 text-sm text-muted dark:text-muted">Enter your details above and click Calculate to see your estimated tax.</p>
         </div>
 
         <div id="result" class="hidden" role="region" aria-label="Calculation results">
@@ -280,7 +280,7 @@ const mergedContent = {
               </button>
             </div>
           </div>
-          <div class="rounded-xl border border-hairline bg-canvas-soft p-6 sm:p-8 dark:bg-surface">
+          <div class="card dark:border-overlay-lighter dark:bg-surface">
              {rule ? (
                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                  {rule.outputs.map((output) => {
