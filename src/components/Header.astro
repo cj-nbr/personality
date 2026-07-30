@@ -12,80 +12,81 @@ const isKnowledge = currentPath.startsWith("/knowledge") || currentPath.startsWi
 const is404 = currentPath === "/404";
 ---
 
-<header class="sticky top-0 z-50 border-b border-hairline bg-canvas/90 backdrop-blur-md dark:border-overlay-light dark:bg-surface/90">
+<header class="sticky top-0 z-50 border-b border-hairline bg-canvas/90 backdrop-blur-md dark:border-overlay-light dark:bg-surface/90" role="banner">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-16 items-center justify-between">
-      <div class="flex items-center gap-8">
+      <div class="flex items-center gap-3">
         <a href="/" class="flex items-center gap-2 font-bold text-ink dark:text-on-primary" aria-label="Finsiva Home">
           <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <span class="text-lg text-ink dark:text-on-primary" translate="no">Finsiva</span>
         </a>
         <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
-          <a href="/" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isHome ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.home">Home</span></a>
-          <a href="/countries" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isCountries ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.countries">Countries</span></a>
-          <a href="/blogs" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isBlog ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.guides">Guides</span></a>
-          <a href="/knowledge" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isKnowledge ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.knowledge_center">Knowledge Center</span></a>
-          <a href="/about" class={`rounded-pill px-3 py-2 text-sm font-medium transition ${isAbout ? "bg-canvas-soft text-ink dark:bg-surface dark:text-on-primary" : "text-ink dark:text-on-primary"}`}><span data-i18n="common.about_us">About Us</span></a>
+          <a href="/" class={`nav-link rounded-pill px-3 py-2 text-sm font-medium transition ${isHome ? "nav-link-active" : "text-ink dark:text-on-primary"}`} aria-current={isHome ? "page" : undefined}><span data-i18n="common.home">Home</span></a>
+          <a href="/countries" class={`nav-link rounded-pill px-3 py-2 text-sm font-medium transition ${isCountries ? "nav-link-active" : "text-ink dark:text-on-primary"}`} aria-current={isCountries ? "page" : undefined}><span data-i18n="common.countries">Countries</span></a>
+          <a href="/blogs" class={`nav-link rounded-pill px-3 py-2 text-sm font-medium transition ${isBlog ? "nav-link-active" : "text-ink dark:text-on-primary"}`} aria-current={isBlog ? "page" : undefined}><span data-i18n="common.guides">Guides</span></a>
+          <a href="/knowledge" class={`nav-link rounded-pill px-3 py-2 text-sm font-medium transition ${isKnowledge ? "nav-link-active" : "text-ink dark:text-on-primary"}`} aria-current={isKnowledge ? "page" : undefined}><span data-i18n="common.knowledge_center">Knowledge Center</span></a>
+          <a href="/about" class={`nav-link rounded-pill px-3 py-2 text-sm font-medium transition ${isAbout ? "nav-link-active" : "text-ink dark:text-on-primary"}`} aria-current={isAbout ? "page" : undefined}><span data-i18n="common.about_us">About Us</span></a>
         </nav>
       </div>
 
-      <div class="flex items-center gap-2">
-        <button id="search-trigger" class="hidden md:flex items-center gap-2 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:overlay-light border border-hairline dark:border-overlay-light" aria-label="Open search" data-i18n-title="common.search">
+      <div class="flex items-center gap-1">
+        <button id="search-trigger" class="hidden md:flex items-center gap-2 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:overlay-light border border-hairline dark:border-overlay-light transition-colors" aria-label="Open search" data-i18n-title="common.search">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           <span class="hidden lg:inline" data-i18n="common.search">Search</span>
           <kbd class="hidden xl:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-medium text-muted bg-canvas-soft dark:bg-surface border border-hairline dark:border-overlay-light rounded ml-1"><span class="text-xs">⌘</span>K</kbd>
         </button>
 
-        <button id="search-trigger-mobile" class="md:hidden rounded-pill p-2 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light" aria-label="Open search" data-i18n-title="common.search">
+        <button id="search-trigger-mobile" class="md:hidden rounded-pill p-2.5 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light transition-colors" aria-label="Open search" data-i18n-title="common.search">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         </button>
 
         <div class="relative">
-        <button id="lang-btn" class="flex items-center gap-1 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:overlay-light" aria-expanded="false" aria-haspopup="true">
+        <button id="lang-btn" class="flex items-center gap-1 rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary hover:bg-canvas-soft dark:hover:overlay-light transition-colors" aria-expanded="false" aria-haspopup="true" aria-label="Select language">
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <span class="hidden sm:inline" id="lang-label" data-i18n-title="common.select_language">EN</span>
-          <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="h-3 w-3 transition-transform duration-200" id="lang-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
-        <div id="lang-menu" class="hidden absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-lg border border-hairline bg-canvas py-1 shadow-lg dark:border-overlay-lighter dark:bg-surface" role="menu">
+        <div id="lang-menu" class="hidden absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-lg border border-hairline bg-canvas py-1 shadow-lg dark:border-overlay-lighter dark:bg-surface transition-opacity duration-200" role="menu" aria-label="Language selection">
           <div class="px-3 py-2">
-            <input type="text" id="lang-search" data-i18n-placeholder="common.search_placeholder" placeholder="Search languages..." class="w-full rounded-md border border-hairline bg-canvas px-2 py-1 text-sm dark:border-overlay-lighter dark:bg-surface dark:text-on-primary" />
+            <input type="text" id="lang-search" data-i18n-placeholder="common.search_placeholder" placeholder="Search languages..." class="w-full rounded-md border border-hairline bg-canvas px-2 py-1.5 text-sm dark:border-overlay-lighter dark:bg-surface dark:text-on-primary" />
           </div>
           <div id="lang-list" class="max-h-64 overflow-y-auto py-1">
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="en"><span data-i18n="language.english">English</span></button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="hi"><span data-i18n="language.hindi">हिन्दी</span></button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="es"><span data-i18n="language.spanish">Español</span></button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="fr"><span data-i18n="language.french">Français</span></button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="de"><span data-i18n="language.german">Deutsch</span></button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="zh"><span data-i18n="language.chinese">中文</span></button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="zh-TW"><span data-i18n="language.chinese_traditional">繁體中文</span></button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="ja"><span data-i18n="language.japanese">日本語</span></button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="ar"><span data-i18n="language.arabic">العربية</span></button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="pt"><span data-i18n="language.portuguese">Português</span></button>
-            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light" data-lang="ru"><span data-i18n="language.russian">Русский</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="en"><span data-i18n="language.english">English</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="hi"><span data-i18n="language.hindi">हिन्दी</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="es"><span data-i18n="language.spanish">Español</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="fr"><span data-i18n="language.french">Français</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="de"><span data-i18n="language.german">Deutsch</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="zh"><span data-i18n="language.chinese">中文</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="zh-TW"><span data-i18n="language.chinese_traditional">繁體中文</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="ja"><span data-i18n="language.japanese">日本語</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="ar"><span data-i18n="language.arabic">العربية</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="pt"><span data-i18n="language.portuguese">Português</span></button>
+            <button class="w-full text-left px-3 py-2 text-sm hover:bg-canvas-soft dark:hover:overlay-light transition-colors" data-lang="ru"><span data-i18n="language.russian">Русский</span></button>
           </div>
         </div>
       </div>
 
-        <button id="theme-toggle" class="rounded-pill p-2 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light" aria-label="Toggle theme" data-i18n="common.toggle_theme">
+        <button id="theme-toggle" class="rounded-pill p-2.5 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light transition-colors" aria-label="Toggle theme" data-i18n="common.toggle_theme">
           <svg id="theme-icon-dark" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
           <svg id="theme-icon-light" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         </button>
 
-        <button id="mobile-menu-btn" class="md:hidden rounded-pill p-2 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light" aria-expanded="false" aria-label="Open menu" data-i18n="common.open_menu">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <button id="mobile-menu-btn" class="md:hidden rounded-pill p-2.5 text-ink hover:bg-canvas-soft dark:text-on-primary dark:hover:overlay-light transition-colors" aria-expanded="false" aria-label="Open navigation menu" data-i18n="common.open_menu">
+          <svg id="menu-icon-open" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="menu-icon-close" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden border-t border-hairline dark:border-overlay-light">
+  <div id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-300 ease-in-out" style="max-height:0;opacity:0;" role="navigation" aria-label="Mobile navigation">
     <div class="mx-auto max-w-7xl px-4 py-3 space-y-1">
-      <a href="/" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.home">Home</span></a>
-      <a href="/countries" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.countries">Countries</span></a>
-<a href="/blogs" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.guides">Guides</span></a>
-	       <a href="/knowledge" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.knowledge_center">Knowledge Center</span></a>
-	       <a href="/about" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.about_us">About Us</span></a>
-      <a href="/contact" class="block rounded-pill px-3 py-2 text-sm font-medium text-ink dark:text-on-primary"><span data-i18n="common.contact">Contact</span></a>
+      <a href="/" class="mobile-nav-link block rounded-pill px-4 py-3 text-sm font-medium text-ink dark:text-on-primary transition-colors"><span data-i18n="common.home">Home</span></a>
+      <a href="/countries" class="mobile-nav-link block rounded-pill px-4 py-3 text-sm font-medium text-ink dark:text-on-primary transition-colors"><span data-i18n="common.countries">Countries</span></a>
+      <a href="/blogs" class="mobile-nav-link block rounded-pill px-4 py-3 text-sm font-medium text-ink dark:text-on-primary transition-colors"><span data-i18n="common.guides">Guides</span></a>
+      <a href="/knowledge" class="mobile-nav-link block rounded-pill px-4 py-3 text-sm font-medium text-ink dark:text-on-primary transition-colors"><span data-i18n="common.knowledge_center">Knowledge Center</span></a>
+      <a href="/about" class="mobile-nav-link block rounded-pill px-4 py-3 text-sm font-medium text-ink dark:text-on-primary transition-colors"><span data-i18n="common.about_us">About Us</span></a>
+      <a href="/contact" class="mobile-nav-link block rounded-pill px-4 py-3 text-sm font-medium text-ink dark:text-on-primary transition-colors"><span data-i18n="common.contact">Contact</span></a>
     </div>
   </div>
 </header>
@@ -96,12 +97,16 @@ const is404 = currentPath === "/404";
     var langMenu = document.getElementById('lang-menu');
     var langSearch = document.getElementById('lang-search');
     var langButtons = langMenu ? langMenu.querySelectorAll('button[data-lang]') : [];
-    var langLabel = langBtn ? langBtn.querySelector('span') : null;
+    var langLabel = langBtn ? langBtn.querySelector('#lang-label') : null;
+    var langChevron = document.getElementById('lang-chevron');
     var mobileBtn = document.getElementById('mobile-menu-btn');
     var mobileMenu = document.getElementById('mobile-menu');
+    var menuIconOpen = document.getElementById('menu-icon-open');
+    var menuIconClose = document.getElementById('menu-icon-close');
     var themeToggle = document.getElementById('theme-toggle');
     var themeIconDark = document.getElementById('theme-icon-dark');
     var themeIconLight = document.getElementById('theme-icon-light');
+    var mobileNavLinks = mobileMenu ? mobileMenu.querySelectorAll('.mobile-nav-link') : [];
 
     function updateThemeIcon() {
       var isDark = document.documentElement.classList.contains('dark');
@@ -131,8 +136,11 @@ const is404 = currentPath === "/404";
     if (langBtn && langMenu) {
       langBtn.addEventListener('click', function(e) {
         e.stopPropagation();
-        var expanded = langMenu.classList.toggle('hidden');
-        langBtn.setAttribute('aria-expanded', String(!expanded));
+        var isHidden = langMenu.classList.toggle('hidden');
+        langBtn.setAttribute('aria-expanded', String(!isHidden));
+        if (langChevron) {
+          langChevron.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
       });
 
       langButtons.forEach(function(btn) {
@@ -144,14 +152,17 @@ const is404 = currentPath === "/404";
             var labelMap = {en:'EN',hi:'HI',es:'ES',fr:'FR',de:'DE',zh:'ZH',ja:'JA',ar:'AR',pt:'PT',ru:'RU', 'zh-TW':'ZH-TW'};
             langLabel.textContent = labelMap[lang] || lang.toUpperCase();
           }
-        langMenu.classList.add('hidden');
-        langBtn.setAttribute('aria-expanded', 'false');
-        var event = new CustomEvent('lang-change', { bubbles: true, detail: { lang: lang } });
-        document.documentElement.dispatchEvent(event);
-        try {
-          if (typeof setLang === 'function') setLang(lang);
-        } catch (e) {}
-        setTimeout(function() { window.location.reload(); }, 50);
+          langMenu.classList.add('hidden');
+          langBtn.setAttribute('aria-expanded', 'false');
+          if (langChevron) {
+            langChevron.style.transform = 'rotate(0deg)';
+          }
+          var event = new CustomEvent('lang-change', { bubbles: true, detail: { lang: lang } });
+          document.documentElement.dispatchEvent(event);
+          try {
+            if (typeof setLang === 'function') setLang(lang);
+          } catch (e) {}
+          setTimeout(function() { window.location.reload(); }, 50);
         });
       });
 
@@ -208,6 +219,9 @@ const is404 = currentPath === "/404";
         if (langMenu && !langMenu.contains(e.target) && e.target !== langBtn) {
           langMenu.classList.add('hidden');
           if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
+          if (langChevron) {
+            langChevron.style.transform = 'rotate(0deg)';
+          }
         }
       });
     }
@@ -230,11 +244,70 @@ const is404 = currentPath === "/404";
       });
     });
 
+    function openMobileMenu() {
+      if (!mobileMenu || !mobileBtn) return;
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      mobileMenu.style.opacity = '1';
+      mobileMenu.classList.remove('hidden');
+      mobileBtn.setAttribute('aria-expanded', 'true');
+      if (menuIconOpen) menuIconOpen.classList.add('hidden');
+      if (menuIconClose) menuIconClose.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      var firstLink = mobileMenu.querySelector('a');
+      if (firstLink) firstLink.focus();
+    }
+
+    function closeMobileMenu() {
+      if (!mobileMenu || !mobileBtn) return;
+      mobileMenu.style.maxHeight = '0';
+      mobileMenu.style.opacity = '0';
+      mobileBtn.setAttribute('aria-expanded', 'false');
+      if (menuIconOpen) menuIconOpen.classList.remove('hidden');
+      if (menuIconClose) menuIconClose.classList.add('hidden');
+      document.body.style.overflow = '';
+      mobileBtn.focus();
+    }
+
+    function isMobileMenuOpen() {
+      return mobileMenu && mobileMenu.style.opacity === '1';
+    }
+
+    function setActiveMobileNav() {
+      var currentPath = window.location.pathname;
+      mobileNavLinks.forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (!href) return;
+        var isActive = false;
+        if (href === '/') {
+          isActive = currentPath === '/';
+        } else if (href === '/countries') {
+          isActive = currentPath.startsWith('/countries');
+        } else if (href === '/blogs') {
+          isActive = currentPath.startsWith('/blogs');
+        } else if (href === '/knowledge') {
+          isActive = currentPath.startsWith('/knowledge');
+        } else if (href === '/about') {
+          isActive = currentPath === '/about';
+        } else if (href === '/contact') {
+          isActive = currentPath === '/contact';
+        }
+        if (isActive) {
+          link.classList.add('mobile-nav-link-active');
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.classList.remove('mobile-nav-link-active');
+          link.removeAttribute('aria-current');
+        }
+      });
+    }
+
     if (mobileBtn && mobileMenu) {
       mobileBtn.addEventListener('click', function() {
-        mobileMenu.classList.toggle('hidden');
-        var expanded = mobileMenu.classList.contains('hidden');
-        mobileBtn.setAttribute('aria-expanded', String(!expanded));
+        if (isMobileMenuOpen()) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
       });
 
       mobileBtn.addEventListener('keydown', function(e) {
@@ -244,5 +317,49 @@ const is404 = currentPath === "/404";
         }
       });
     }
+
+    mobileNavLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (isMobileMenuOpen()) {
+          closeMobileMenu();
+        }
+      });
+    });
+
+    setActiveMobileNav();
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (langMenu && !langMenu.classList.contains('hidden')) {
+          langMenu.classList.add('hidden');
+          if (langBtn) langBtn.setAttribute('aria-expanded', 'false');
+          if (langChevron) {
+            langChevron.style.transform = 'rotate(0deg)';
+          }
+          langBtn.focus();
+          return;
+        }
+        if (isMobileMenuOpen()) {
+          closeMobileMenu();
+        }
+      }
+    });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        if (window.innerWidth >= 768 && mobileMenu) {
+          mobileMenu.style.maxHeight = '';
+          mobileMenu.style.opacity = '';
+          mobileMenu.classList.remove('hidden');
+          document.body.style.overflow = '';
+          if (menuIconOpen) menuIconOpen.classList.add('hidden');
+          if (menuIconClose) menuIconClose.classList.add('hidden');
+        }
+      }, 150);
+    });
+
+    window.addEventListener('popstate', setActiveMobileNav);
   })();
 </script>

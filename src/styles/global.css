@@ -89,7 +89,88 @@ h4 { font-size: 1.125rem; font-weight: 600; }
 }
 
 #mobile-menu {
-  transition: max-height 0.3s ease;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-ink, #0f172a);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: var(--color-canvas-soft, #f8fafc);
+  color: var(--color-ink, #0f172a);
+}
+
+.dark .nav-link:hover {
+  background-color: var(--color-surface, #161B22);
+  color: var(--color-on-primary, #ffffff);
+}
+
+.nav-link-active {
+  background-color: var(--color-canvas-soft, #f8fafc);
+  color: var(--color-primary, #2563EB);
+  font-weight: 600;
+}
+
+.dark .nav-link-active {
+  background-color: var(--color-surface, #161B22);
+  color: var(--color-link, #58A6FF);
+}
+
+.nav-link-active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: var(--color-primary, #2563EB);
+}
+
+.dark .nav-link-active::after {
+  background-color: var(--color-link, #58A6FF);
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-ink, #0f172a);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-nav-link:hover {
+  background-color: var(--color-canvas-soft, #f8fafc);
+  color: var(--color-primary, #2563EB);
+}
+
+.dark .mobile-nav-link:hover {
+  background-color: var(--color-surface, #161B22);
+  color: var(--color-link, #58A6FF);
+}
+
+.mobile-nav-link-active {
+  background-color: var(--color-canvas-soft, #f8fafc);
+  color: var(--color-primary, #2563EB);
+  font-weight: 600;
+}
+
+.dark .mobile-nav-link-active {
+  background-color: var(--color-surface, #161B22);
+  color: var(--color-link, #58A6FF);
 }
 
 a, button {
