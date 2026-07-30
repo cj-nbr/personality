@@ -3242,3 +3242,32 @@ details[open] .faq-chevron {
 .dark .calc-empty-desc {
   color: var(--color-muted, #8B949E);
 }
+
+/* ============================================
+   GLOBAL SEARCH
+   ============================================ */
+
+.search-highlight {
+  background-color: rgba(245, 158, 11, 0.3);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.dark .search-highlight {
+  background-color: rgba(245, 158, 11, 0.2);
+}
+
+.search-result-item a {
+  text-decoration: none;
+}
+
+.search-result-item:focus-visible {
+  outline: 2px solid var(--color-primary, #2563EB);
+  outline-offset: -2px;
+  border-radius: 8px;
+}
+
+.search-result-badge {
+  flex-shrink: 0;
+}
