@@ -18,6 +18,7 @@ interface Props {
 }
 
 const { country, popularCalculators, salaryCalculators } = Astro.props;
+const primaryCategory = popularCalculators.length > 0 ? popularCalculators[0].category : "salaries-tax";
 ---
 
 <section class="country-section compact-hero" aria-labelledby={`${country.slug}-hero`}>
@@ -69,10 +70,10 @@ const { country, popularCalculators, salaryCalculators } = Astro.props;
     </span>
   </div>
   <div class="hero-ctas mt-4">
-    <a href={`/countries/${country.slug}/income-tax`} class="inline-flex items-center justify-center rounded-pill bg-white px-5 py-2.5 text-sm font-semibold text-primary shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0">
+    <a href={`/countries/${country.slug}/${primaryCategory}`} class="inline-flex items-center justify-center rounded-pill bg-white px-5 py-2.5 text-sm font-semibold text-primary shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:translate-y-0">
       Calculate Your Tax
     </a>
-    <a href={`/countries/${country.slug}/income-tax`} class="inline-flex items-center justify-center rounded-pill border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 active:bg-white/20">
+    <a href={`/countries/${country.slug}/${primaryCategory}`} class="inline-flex items-center justify-center rounded-pill border border-white/40 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 active:bg-white/20">
       Popular Calculator →
     </a>
   </div>

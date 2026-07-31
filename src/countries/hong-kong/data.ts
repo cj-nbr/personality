@@ -193,9 +193,10 @@ export const hongKong: Country = {
   officialResources,
   taxCategories,
   popularCalculators: [
+    { slug: "hk-property-stamp-duty-calculator", name: "HK Property Stamp Duty Calculator", category: "stamp-duty" },
+    { slug: "stamp-duty-calculator", name: "Stamp Duty Calculator", category: "stamp-duty" },
     { slug: "salaries-tax-calculator", name: "Salaries Tax Calculator", category: "salaries-tax" },
     { slug: "profits-tax-calculator", name: "Profits Tax Calculator", category: "profits-tax" },
-    { slug: "hk-property-stamp-duty-calculator", name: "HK Property Stamp Duty Calculator", category: "stamp-duty" },
     { slug: "property-tax-calculator", name: "Property Tax Calculator", category: "property-tax" }
   ],
   salaryCalculators: [
