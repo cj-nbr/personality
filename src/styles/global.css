@@ -400,6 +400,12 @@ p {
   outline-offset: 2px;
 }
 
+@media (max-width: 767px) {
+  header .btn {
+    padding: 0.625rem;
+  }
+}
+
 /* -- Card Standardization -- */
 .card {
   border-radius: var(--radius-lg);
