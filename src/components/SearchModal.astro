@@ -253,6 +253,7 @@ const searchItems = buildSearchItems(
       renderResults([], '');
       input.focus();
       announceToScreenReader('Search dialog opened');
+      document.dispatchEvent(new CustomEvent('search:opened'));
     }
 
     function closeModal() {
@@ -268,6 +269,7 @@ const searchItems = buildSearchItems(
         lastFocusedElement.focus();
       }
       announceToScreenReader('Search dialog closed');
+      document.dispatchEvent(new CustomEvent('search:closed'));
     }
 
     function announceToScreenReader(message) {
@@ -526,5 +528,8 @@ const searchItems = buildSearchItems(
     window.addEventListener('beforeunload', function() {
       document.removeEventListener('keydown', onGlobalKeyDown);
     });
+
+    window.openSearchModal = openModal;
+    window.closeSearchModal = closeModal;
   })();
 </script>

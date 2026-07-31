@@ -31,7 +31,8 @@ const is404 = currentPath === "/404";
 
       <div class="flex items-center gap-1">
         <button id="search-trigger" class="btn btn-ghost flex items-center gap-2 text-sm font-medium text-ink dark:text-on-primary" aria-label="Open search" data-i18n-title="common.search">
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <svg id="search-icon-open" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <svg id="search-icon-close" class="h-4 w-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           <span class="hidden lg:inline" data-i18n="common.search">Search</span>
           <kbd class="hidden xl:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-medium text-muted bg-canvas-soft dark:bg-surface border border-hairline dark:border-overlay-light rounded ml-1"><span class="text-xs">⌘</span>K</kbd>
         </button>
@@ -223,18 +224,33 @@ const is404 = currentPath === "/404";
     }
 
     var searchTrigger = document.getElementById('search-trigger');
+    var searchIconOpen = document.getElementById('search-icon-open');
+    var searchIconClose = document.getElementById('search-icon-close');
+
+    function updateSearchIcon(open) {
+      if (searchIconOpen) searchIconOpen.classList.toggle('hidden', open);
+      if (searchIconClose) searchIconClose.classList.toggle('hidden', !open);
+      if (searchTrigger) searchTrigger.setAttribute('aria-label', open ? 'Close search' : 'Open search');
+    }
+
     if (searchTrigger) {
       searchTrigger.addEventListener('click', function() {
         var modal = document.getElementById('search-modal');
-        if (modal) {
-          modal.classList.remove('hidden');
-          var input = document.getElementById('search-input');
-          if (input) {
-            input.focus();
-          }
+        if (modal && modal.classList.contains('hidden')) {
+          window.openSearchModal && window.openSearchModal();
+        } else {
+          window.closeSearchModal && window.closeSearchModal();
         }
       });
     }
+
+    document.addEventListener('search:opened', function() {
+      updateSearchIcon(true);
+    });
+
+    document.addEventListener('search:closed', function() {
+      updateSearchIcon(false);
+    });
 
     function openMobileMenu() {
       if (!mobileMenu || !mobileBtn) return;
