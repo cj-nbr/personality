@@ -30,14 +30,10 @@ const is404 = currentPath === "/404";
       </div>
 
       <div class="flex items-center gap-1">
-        <button id="search-trigger" class="btn btn-ghost hidden md:flex items-center gap-2 text-sm font-medium text-ink dark:text-on-primary" aria-label="Open search" data-i18n-title="common.search">
+        <button id="search-trigger" class="btn btn-ghost flex items-center gap-2 text-sm font-medium text-ink dark:text-on-primary" aria-label="Open search" data-i18n-title="common.search">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           <span class="hidden lg:inline" data-i18n="common.search">Search</span>
           <kbd class="hidden xl:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-medium text-muted bg-canvas-soft dark:bg-surface border border-hairline dark:border-overlay-light rounded ml-1"><span class="text-xs">⌘</span>K</kbd>
-        </button>
-
-        <button id="search-trigger-mobile" class="btn btn-ghost md:hidden p-2.5 text-ink" aria-label="Open search" data-i18n-title="common.search">
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         </button>
 
         <div class="relative">
@@ -226,13 +222,9 @@ const is404 = currentPath === "/404";
       });
     }
 
-    var searchTriggers = [
-      document.getElementById('search-trigger'),
-      document.getElementById('search-trigger-mobile')
-    ].filter(Boolean);
-
-    searchTriggers.forEach(function(btn) {
-      btn.addEventListener('click', function() {
+    var searchTrigger = document.getElementById('search-trigger');
+    if (searchTrigger) {
+      searchTrigger.addEventListener('click', function() {
         var modal = document.getElementById('search-modal');
         if (modal) {
           modal.classList.remove('hidden');
@@ -242,7 +234,7 @@ const is404 = currentPath === "/404";
           }
         }
       });
-    });
+    }
 
     function openMobileMenu() {
       if (!mobileMenu || !mobileBtn) return;
