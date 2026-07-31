@@ -7,25 +7,23 @@ import Layout from "../layouts/Layout.astro";
     <main class="min-h-screen">
       <div class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
         <h1 class="text-4xl font-bold text-ink mb-8 dark:text-on-primary">Contact Us</h1>
-        
+
         <div class="prose max-w-none space-y-6 text-body dark:text-muted">
           <p>We value your feedback and inquiries. Whether you have a question, suggestion, or need assistance, please reach out to us.</p>
-          
+
           <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Get in Touch</h2>
           <p>For general inquiries, feedback, or suggestions about Finsiva, please contact us through the following channels:</p>
-          
+
           <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
             <h3 class="font-semibold text-ink mb-2 dark:text-on-primary">Email</h3>
-            <p class="text-body dark:text-muted">support@finsiva.com</p>
+            <p class="text-body dark:text-muted"><a href="mailto:ornacasa11@gmail.com" class="text-link hover:underline dark:text-link">ornacasa11@gmail.com</a></p>
           </div>
-          
+
           <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Feedback</h2>
           <p>We welcome your suggestions for new calculators, countries, or features. Your input helps us improve Finsiva for everyone.</p>
-          
+
           <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Send a Message</h2>
-          <form class="space-y-4" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="contact" />
-            <p class="hidden" aria-hidden="true"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <form action="https://formspree.io/f/xpqvelrz" method="POST" class="space-y-4">
             <div>
               <label for="contact-name" class="block text-sm font-medium text-ink mb-1 dark:text-on-primary">Name</label>
               <input type="text" id="contact-name" name="name" required class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-overlay-lighter dark:bg-surface dark:text-on-primary" />
@@ -44,8 +42,8 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <button type="submit" class="rounded-lg bg-primary px-6 py-3 text-sm font-medium text-on-primary transition hover:bg-primary-dark dark:bg-on-primary dark:text-primary">Send Message</button>
           </form>
-          
-<h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Partnerships</h2>
+
+          <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Partnerships</h2>
           <p>If you are interested in partnering with Finsiva or have business inquiries, please reach out with your proposal. You can also learn more about our mission on the <a href="/about" class="text-link hover:underline dark:text-link">About</a> page.</p>
 
           <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Quick Links</h2>
