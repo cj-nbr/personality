@@ -38,22 +38,12 @@ const popularCalcs = country.popularCalculators || [];
 
 const schema = {
   "@context": "https://schema.org",
-  "@type": "TaxCountry",
+  "@type": "Country",
   name: country.name,
   description: country.overview,
   url: `${baseUrl}/countries/${country.slug}`,
-  taxSystem: {
-    "@type": "TaxSystem",
-    name: `${country.name} Tax System`,
-    taxAuthority: {
-      "@type": "GovernmentOrganization",
-      name: country.officialTaxAuthority,
-      url: country.taxAuthorityUrl
-    },
-    taxYear: country.taxYear,
-    currency: country.currency
-  },
-  lastUpdated: country.lastUpdated
+  currency: country.currency,
+  dateModified: country.lastUpdated
 };
 
 const faqSchema = {
@@ -103,7 +93,7 @@ const webPageSchema = {
     ]
   },
   about: {
-    "@type": "TaxCountry",
+    "@type": "Country",
     name: country.name,
     taxAuthority: {
       "@type": "GovernmentOrganization",

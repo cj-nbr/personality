@@ -145,7 +145,7 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
           "operatingSystem": "Web",
           "offers": {
             "@type": "Offer",
-            "price": "0",
+            "price": 0,
             "priceCurrency": "USD"
           },
           "browserRequirements": "Requires JavaScript. Requires HTML5.",
@@ -156,8 +156,8 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
               "urlTemplate": "https://finsiva.com/countries/{Country}/{TaxType}"
             },
             "object": {
-              "@type": "Tax",
-              "taxType": "IncomeTax"
+              "@type": "Thing",
+              "name": "Tax Calculation"
             }
           }
         }
