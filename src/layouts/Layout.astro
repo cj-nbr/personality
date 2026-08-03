@@ -191,8 +191,16 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
         <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
       )}
       <title>{title}</title>
-      <slot name="head" />
-    </head>
+    <slot name="head" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KGQ9X41EPQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KGQ9X41EPQ');
+    </script>
+  </head>
   <body class="min-h-screen bg-canvas text-ink antialiased dark:bg-surface dark:text-on-primary">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded-pill focus:bg-primary focus:px-4 focus:py-2 focus:text-on-primary focus:ring-2 focus:ring-primary focus:ring-offset-2">Skip to main content</a>
     <SearchModal />
