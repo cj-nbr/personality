@@ -35,17 +35,12 @@ const { title, description, breadcrumbs, canonical, schema, image, imageAlt, key
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      "itemListElement": breadcrumbs.map((item, index) => {
-        const listItem: Record<string, unknown> = {
-          "@type": "ListItem",
-          "position": index + 1,
-          "name": item.label,
-        };
-        if (item.href) {
-          listItem.item = new URL(item.href, Astro.site).href;
-        }
-        return listItem;
-      })
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Countries",
+        "item": "https://finsiva.com/countries/"
+      }]
     })} slot="head" />
   )}
   <div class="min-h-screen bg-canvas dark:bg-canvas">

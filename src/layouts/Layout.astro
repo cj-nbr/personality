@@ -45,6 +45,7 @@ const {
 const initialLang = detectLanguage();
 setLang(initialLang);
 const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
+const pageUrl = canonical || `${Astro.site}${Astro.url.pathname}`;
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -149,12 +150,12 @@ const webPageSchema = {
     <meta name="application-name" content="Finsiva Tax Calculator" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <link rel="canonical" href={canonical || new URL(Astro.url.pathname, Astro.site).href} />
+    <link rel="canonical" href={canonical || `${Astro.site}${Astro.url.pathname}`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    <meta property="og:url" content={canonical || new URL(Astro.url.pathname, Astro.site).href} />
+    <meta property="og:url" content={canonical || `${Astro.site}${Astro.url.pathname}`} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image || "/og-image.svg"} />
@@ -165,19 +166,19 @@ const webPageSchema = {
     <meta property="og:site_name" content="Finsiva" />
     <meta property="og:locale" content="en_US" />
     <meta name="twitter:domain" content="finsiva.com" />
-    <link rel="alternate" hreflang="en-US" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="en-GB" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="hi-IN" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="es" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="fr" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="de" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="zh-CN" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="zh-TW" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="ja" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="ar" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="pt" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="ru" href={new URL(Astro.url.pathname, Astro.site).href} />
-    <link rel="alternate" hreflang="x-default" href={new URL(Astro.url.pathname, Astro.site).href} />
+    <link rel="alternate" hreflang="en-US" href={pageUrl} />
+    <link rel="alternate" hreflang="en-GB" href={pageUrl} />
+    <link rel="alternate" hreflang="hi-IN" href={pageUrl} />
+    <link rel="alternate" hreflang="es" href={pageUrl} />
+    <link rel="alternate" hreflang="fr" href={pageUrl} />
+    <link rel="alternate" hreflang="de" href={pageUrl} />
+    <link rel="alternate" hreflang="zh-CN" href={pageUrl} />
+    <link rel="alternate" hreflang="zh-TW" href={pageUrl} />
+    <link rel="alternate" hreflang="ja" href={pageUrl} />
+    <link rel="alternate" hreflang="ar" href={pageUrl} />
+    <link rel="alternate" hreflang="pt" href={pageUrl} />
+    <link rel="alternate" hreflang="ru" href={pageUrl} />
+    <link rel="alternate" hreflang="x-default" href={pageUrl} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@finsiva" />
     <meta name="twitter:creator" content="@finsiva" />
