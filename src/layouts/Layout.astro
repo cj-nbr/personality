@@ -45,6 +45,82 @@ const {
 const initialLang = detectLanguage();
 setLang(initialLang);
 const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Finsiva",
+  "url": "https://finsiva.com",
+  "description": "Universal tax calculator platform for accurate tax estimates across multiple countries",
+  "logo": "https://finsiva.com/logo.png",
+  "sameAs": [
+    "https://twitter.com/finsiva",
+    "https://linkedin.com/company/finsiva"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "ornacasa11@gmail.com",
+    "contactType": "customer support"
+  }
+};
+
+const webSiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Finsiva",
+  "url": "https://finsiva.com",
+  "description": "Universal tax calculator platform for accurate tax estimates across multiple countries",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://finsiva.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+const webApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Finsiva Tax Calculator",
+  "url": "https://finsiva.com",
+  "description": "Free online tax calculator for income tax, salary tax, payroll tax, GST, VAT, and more across multiple countries.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": 0,
+    "priceCurrency": "USD"
+  },
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "potentialAction": {
+    "@type": "CalculateAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://finsiva.com/countries/{Country}/{TaxType}"
+    },
+    "object": {
+      "@type": "Thing",
+      "name": "Tax Calculation"
+    }
+  }
+};
+
+const webPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Finsiva - Universal Tax Calculator",
+  "description": "Free online tax calculator for income tax, salary tax, payroll tax, GST, VAT, and more across multiple countries.",
+  "url": "https://finsiva.com",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Finsiva",
+    "url": "https://finsiva.com"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Finsiva Tax Calculator",
+    "applicationCategory": "FinanceApplication"
+  }
+};
 ---
 
 <!doctype html>
@@ -109,86 +185,10 @@ const initialDir = initialLang === 'ar' ? 'rtl' : 'auto';
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image || "/og-image.svg"} />
     <meta name="twitter:image:alt" content={imageAlt} />
-      <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Finsiva",
-          "url": "https://finsiva.com",
-          "description": "Universal tax calculator platform for accurate tax estimates across multiple countries",
-          "logo": "https://finsiva.com/logo.png",
-          "sameAs": [
-            "https://twitter.com/finsiva",
-            "https://linkedin.com/company/finsiva"
-          ],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "ornacasa11@gmail.com",
-            "contactType": "customer support"
-          }
-        }
-      </script>
-      <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Finsiva",
-          "url": "https://finsiva.com",
-          "description": "Universal tax calculator platform for accurate tax estimates across multiple countries",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://finsiva.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        }
-      </script>
-      <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Finsiva Tax Calculator",
-          "url": "https://finsiva.com",
-          "description": "Free online tax calculator for income tax, salary tax, payroll tax, GST, VAT, and more across multiple countries.",
-          "applicationCategory": "FinanceApplication",
-          "operatingSystem": "Web",
-          "offers": {
-            "@type": "Offer",
-            "price": 0,
-            "priceCurrency": "USD"
-          },
-          "browserRequirements": "Requires JavaScript. Requires HTML5.",
-          "potentialAction": {
-            "@type": "CalculateAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://finsiva.com/countries/{Country}/{TaxType}"
-            },
-            "object": {
-              "@type": "Thing",
-              "name": "Tax Calculation"
-            }
-          }
-        }
-      </script>
-      <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "Finsiva - Universal Tax Calculator",
-          "description": "Free online tax calculator for income tax, salary tax, payroll tax, GST, VAT, and more across multiple countries.",
-          "url": "https://finsiva.com",
-          "isPartOf": {
-            "@type": "WebSite",
-            "name": "Finsiva",
-            "url": "https://finsiva.com"
-          },
-          "about": {
-            "@type": "SoftwareApplication",
-            "name": "Finsiva Tax Calculator",
-            "applicationCategory": "FinanceApplication"
-          }
-        }
-      </script>
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webSiteSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webApplicationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
       {schema && JSON.stringify(schema) !== '{}' && (
         <script type="application/ld+json" set:html={JSON.stringify(schema)} />
       )}
