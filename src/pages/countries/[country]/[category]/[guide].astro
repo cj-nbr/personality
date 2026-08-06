@@ -113,9 +113,7 @@ if (!country || !category || !guide) {
     <div class="rounded-xl border border-hairline bg-canvas-soft p-8 dark:border-overlay-light dark:bg-surface">
       <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Official Resources</h2>
       <p class="text-body dark:text-muted">For the most accurate and up-to-date information, visit the official tax authority:</p>
-      <a href={country.taxAuthorityUrl} target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-on-primary transition hover:bg-primary-dark dark:bg-on-primary dark:text-primary">
-        {country.officialTaxAuthority} <span aria-hidden="true">↗</span>
-      </a>
+      <a href={country.taxAuthorityUrl} target="_blank" rel="noopener" class="mt-4 btn btn-primary">Official Tax Authority <span aria-hidden="true">↗</span></a>
     </div>
 
     <aside class="mt-8 rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface" aria-label="Related calculators">
