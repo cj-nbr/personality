@@ -1005,19 +1005,19 @@ pre code {
   background: linear-gradient(135deg, var(--color-primary, #2563EB) 0%, #1D4ED8 100%);
   color: #ffffff;
   border-radius: var(--radius-xl);
-  padding: 1.5rem;
+  padding: 2.5rem;
   overflow: hidden;
 }
 
 @media (min-width: 640px) {
   .compact-hero {
-    padding: 2rem;
+    padding: 2.75rem;
   }
 }
 
 @media (min-width: 1024px) {
   .compact-hero {
-    padding: 2.5rem;
+    padding: 3rem;
   }
 }
 
@@ -1044,6 +1044,29 @@ pre code {
 .compact-hero p {
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
+}
+
+.hero-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr minmax(280px, 400px);
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero-right {
+  display: flex;
 }
 
 .hero-meta {
@@ -1076,27 +1099,24 @@ pre code {
 
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-top: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
   width: 100%;
   min-width: 0;
 }
 
-@media (min-width: 640px) {
-  .hero-stats {
-    grid-template-columns: repeat(3, 1fr);
-    margin-top: 1.5rem;
-  }
-}
-
 .stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-lg);
-  padding: 0.875rem;
+  padding: 1.5rem;
   text-align: center;
   backdrop-filter: blur(8px);
+  min-width: 0;
 }
 
 .stat-value {
@@ -1104,6 +1124,9 @@ pre code {
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.01em;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 @media (min-width: 640px) {
@@ -1117,7 +1140,7 @@ pre code {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.7);
-  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Overview Cards */
