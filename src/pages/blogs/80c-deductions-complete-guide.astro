@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "80C Deductions Complete Guide: Save Up to ₹1.5 Lakh Tax";
 const description = "Complete guide to Section 80C deductions under the Indian Income Tax Act. Learn about PPF, ELSS, NSC, home loan principal, life insurance, and other investments to save tax. Includes planning tips, common mistakes, and a comparison of eligible instruments.";
@@ -7,9 +7,10 @@ const image = "/images/blogs/section-80c-deductions-guide.jpg";
 const author = "Maya Lin";
 const lastUpdated = "July 2026";
 const readTime = "14 min read";
+const authorBio = "Tax planning specialist with 8+ years of experience in Indian personal taxation and investment advisory.";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author={author} authorBio={authorBio} lastUpdated={lastUpdated} readTime={readTime}>
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -110,6 +111,54 @@ const readTime = "14 min read";
           </div>
         </article>
 
+        <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=1200&q=80" alt="Indian rupee and tax savings" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+
+        <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+        <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+          <li>Section 80C was introduced in the Finance Act of 1961 and has undergone multiple revisions over the decades.</li>
+          <li>ELSS is the only Section 80C instrument that offers market-linked returns with the shortest lock-in period of just 3 years.</li>
+          <li>The ₹1.5 lakh limit under Section 80C combined with the additional ₹50,000 under NPS can result in total deductions of up to ₹2 lakh.</li>
+          <li>Tuition fees for up to two children can be claimed under Section 80C, making it one of the most underutilized deductions.</li>
+        </ul>
+
+        <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+        <div class="space-y-4">
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. What is the maximum deduction available under Section 80C?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>₹1 lakh</li>
+              <li>₹1.5 lakh</li>
+              <li>₹2 lakh</li>
+              <li>₹2.5 lakh</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. Which 80C instrument has the shortest lock-in period?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>PPF (15 years)</li>
+              <li>ELSS (3 years)</li>
+              <li>NSC (5 years)</li>
+              <li>5-year Fixed Deposit (5 years)</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. Which of the following is NOT eligible under Section 80C?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>EPF contribution</li>
+              <li>Health insurance premium</li>
+              <li>Tuition fees for children</li>
+              <li>Home loan principal repayment</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+        <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+          <li><a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Income Tax Department of India – Official Portal</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Section_80C" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Wikipedia: Section 80C of the Income Tax Act</a></li>
+          <li><a href="https://cleartax.in/s/80c-80-deductions" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">ClearTax: Complete Guide to Section 80C Deductions</a></li>
+        </ul>
+
         <aside class="mt-12 rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-lighter dark:bg-surface" aria-label="Related calculators">
           <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">Related Calculators</h3>
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -122,4 +171,4 @@ const readTime = "14 min read";
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

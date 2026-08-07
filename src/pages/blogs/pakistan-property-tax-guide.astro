@@ -1,12 +1,16 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Pakistan Property Tax Guide: Capital Gains Tax, Token Tax, and Property Tax Calculator";
 const description = "Complete Pakistan property tax guide. Learn property tax rates by province, capital gains tax on property, token tax, and use our Pakistan property tax calculator for estimates.";
 const image = "/images/blogs/pakistan-property-tax-guide.svg";
+const author = "Usman Tariq";
+const authorBio = "Real estate tax specialist covering property taxation across all Pakistani provinces.";
+const lastUpdated = "July 2026";
+const readTime = "10 min read";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author={author} authorBio={authorBio} lastUpdated={lastUpdated} readTime={readTime}>
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -22,7 +26,9 @@ const image = "/images/blogs/pakistan-property-tax-guide.svg";
           <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">Pakistan Property Tax Guide: Capital Gains Tax, Token Tax, and Property Tax Calculator</h1>
           <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 10 min read</p>
 
-          <div class="mt-8 space-y-6 text-body dark:text-muted">
+            <img src="https://images.unsplash.com/photo-1586417475174-a4d2b3f66e23?w=1200&q=80" alt="Pakistan landscape with urban property and buildings" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+
+            <div class="mt-8 space-y-6 text-body dark:text-muted">
             <p>Property ownership in Pakistan involves several layers of taxation, from annual provincial property taxes to federal taxes triggered at the point of sale. Whether you are a homeowner, real estate investor, or property buyer, understanding capital gains tax, provincial property tax, withholding tax, and token tax is essential for accurate financial planning and compliance.</p>
 
             <p>This guide explains provincial property tax rates, capital gains tax on property sales, withholding tax rules, and how to calculate your total property tax liability. You can also use our <a href="/countries/pakistan/property/property-tax-calculator">Pakistan property tax calculator</a> for instant estimates based on the latest rates.</p>
@@ -115,8 +121,55 @@ const image = "/images/blogs/pakistan-property-tax-guide.svg";
               <a href="/blogs/pakistan-token-tax-guide" class="block rounded border p-4 hover:border-primary transition">Pakistan Token Tax Guide</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>Annual property tax (UIPT) is a provincial levy, separate from federal taxes, and is charged on the Annual Rental Value of urban property.</li>
+            <li>Punjab charges UIPT at 5% of the Annual Rental Value, while Sindh's headline 25% rate results in lower actual payments due to conservative valuation tables.</li>
+            <li>For properties acquired on or after July 1, 2024, CGT is a flat 15% for ATL filers regardless of holding period, replacing the previous tiered system.</li>
+            <li>Withholding tax under Section 236K is imposed on the buyer at the time of property purchase, with filers paying 2% to 4.5% depending on property value.</li>
+            <li>Punjab and Islamabad offer approximately a 5% rebate when the full year's property tax is paid on or before September 30.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. Which Pakistani province charges UIPT at 5% of the Annual Rental Value?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) Sindh</li>
+              <li>B) KPK</li>
+              <li>C) Punjab</li>
+              <li>D) Islamabad</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. What is the flat CGT rate for properties acquired on or after July 1, 2024, for ATL filers?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) 10%</li>
+              <li>B) 12.5%</li>
+              <li>C) 15%</li>
+              <li>D) 17.5%</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. What is the maximum early-payment rebate Punjab offers on annual property tax?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) 2%</li>
+              <li>B) 5%</li>
+              <li>C) 10%</li>
+              <li>D) 15%</li>
+            </ul>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Federal Board of Revenue (FBR) – Property Tax Rules</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Taxation_in_Pakistan" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Taxation in Pakistan – Wikipedia</a></li>
+            <li><a href="https://epay.punjab.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">ePay Punjab – Online Property Tax Payment</a></li>
+            <li><a href="https://iris.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">FBR IRIS Portal – Property Transaction Filing</a></li>
+          </ul>
+
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

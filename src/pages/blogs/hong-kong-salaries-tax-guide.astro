@@ -1,12 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Hong Kong Salaries Tax Guide 2024/25: Rates, Allowances & Calculator";
 const description = "Complete Hong Kong salaries tax guide for 2024/25. Learn progressive rates, standard rate, personal allowances, MPF deductions, and how to use our Hong Kong tax calculator.";
 const image = "/images/blogs/hong-kong-salaries-tax-guide.svg";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author="Jessica Liu" authorBio="Jessica Liu is a tax advisor specializing in individual income tax and employment taxation in Hong Kong. She helps professionals and expats optimize their salaries tax liability." lastUpdated="July 2026" readTime="11 min read">
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -21,6 +21,8 @@ const image = "/images/blogs/hong-kong-salaries-tax-guide.svg";
         <article class="prose max-w-none">
           <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">Hong Kong Salaries Tax Guide 2024/25: Rates, Allowances & Calculator</h1>
           <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 11 min read</p>
+
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80" alt="Finance office with tax documents and calculator" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
 
           <div class="mt-8 space-y-6 text-body dark:text-muted">
             <p>Hong Kong salaries tax is one of the lowest-income tax regimes in the world, making it a major draw for professionals and expatriates. For the 2024/25 year of assessment, salaries tax applies to income from employment at rates that start at 2% and rise to a maximum of 17%. This guide covers the 2024/25 salaries tax structure, personal allowances, MPF deductions, filing requirements, and common pitfalls taxpayers face.</p>
@@ -103,8 +105,54 @@ const image = "/images/blogs/hong-kong-salaries-tax-guide.svg";
               <a href="/blogs/hong-kong-tax-residency" class="block rounded border p-4 hover:border-primary transition">Hong Kong Tax Residency</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>Hong Kong salaries tax rates start as low as 2% under the progressive system, making it one of the most favorable income tax regimes in the world.</li>
+            <li>The basic allowance for 2024/25 is HK$132,000, meaning the first HK$132,000 of your net chargeable income is completely tax-free.</li>
+            <li>Taxpayers can choose between the progressive rate and the standard rate each year, and they should always pick the method that produces the lower tax bill.</li>
+            <li>Mandatory Provident Fund (MPF) contributions are deductible up to HK$18,000 per year for each of the employee and employer portions.</li>
+            <li>The IRD's territorial basis means that employment income sourced outside Hong Kong is generally not taxable, even if you are a Hong Kong resident.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Quick Quiz</h2>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. What is the maximum salaries tax rate under the progressive system for 2024/25?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: 15%</li>
+              <li>Option B: 17%</li>
+              <li>Option C: 20%</li>
+              <li>Option D: 25%</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 mt-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. Which of the following is NOT deductible from salaries tax assessable income?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: MPF contributions</li>
+              <li>Option B: Charitable donations</li>
+              <li>Option C: Private living expenses</li>
+              <li>Option D: Home loan interest</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 mt-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. When are individual tax returns typically issued by the IRD?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: January</li>
+              <li>Option B: March</li>
+              <li>Option C: May</li>
+              <li>Option D: July</li>
+            </ul>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.ird.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Inland Revenue Department (IRD) - Hong Kong</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Income_tax_in_Hong_Kong" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Income Tax in Hong Kong - Wikipedia</a></li>
+            <li><a href="https://www.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Hong Kong Government Official Portal</a></li>
+            <li><a href="https://www.pwc.com/hk/en/services/tax/hong-kong-taxation.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">PwC Hong Kong Taxation Overview</a></li>
+          </ul>
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

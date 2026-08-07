@@ -1,12 +1,16 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Pakistan Freelancer Tax Guide: Income Tax for Freelancers and Sole Proprietors";
 const description = "Pakistan freelancer tax guide. Learn tax obligations for freelancers, sole proprietors, and gig workers, progressive tax rates, deductions, and use our business income tax calculator Pakistan.";
 const image = "/images/blogs/pakistan-freelancer-tax-guide.svg";
+const author = "Hassan Raza";
+const authorBio = "Freelance economy expert focusing on IT sector taxation and digital remittances.";
+const lastUpdated = "July 2026";
+const readTime = "10 min read";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author={author} authorBio={authorBio} lastUpdated={lastUpdated} readTime={readTime}>
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -22,7 +26,9 @@ const image = "/images/blogs/pakistan-freelancer-tax-guide.svg";
           <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">Pakistan Freelancer Tax Guide: Income Tax for Freelancers and Sole Proprietors</h1>
           <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 10 min read</p>
 
-          <div class="mt-8 space-y-6 text-body dark:text-muted">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80" alt="Business meeting discussing freelancer taxation" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+
+            <div class="mt-8 space-y-6 text-body dark:text-muted">
             <p>Freelancing has exploded in Pakistan, with software developers, graphic designers, writers, and virtual assistants earning locally and internationally. However, many freelancers remain unclear about their tax obligations. In Pakistan, freelancers and sole proprietors are generally taxed under the business income tax slabs unless their salary income exceeds 75% of their total income. Understanding these rules, allowable deductions, and the final tax regime for export income is essential for compliance and maximizing after-tax earnings.</p>
 
             <p>This guide explains freelancer tax rates in Pakistan, deductions you can claim, advance tax payments, and how to use our <a href="/countries/pakistan/business/business-income-tax-calculator">business income tax calculator Pakistan</a> to estimate your liability. You can also verify the latest rules on <a href="https://www.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">fbr.gov.pk</a>.</p>
@@ -127,8 +133,55 @@ const image = "/images/blogs/pakistan-freelancer-tax-guide.svg";
               <a href="/blogs/pakistan-fbr-tax-slabs" class="block rounded border p-4 hover:border-primary transition">FBR Tax Slabs 2024/25</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>Most Pakistani freelancers are taxed under the business income tax slabs, with rates starting at 15% above the PKR 600,000 exemption threshold.</li>
+            <li>PSEB-registered freelancers pay only 0.25% tax on export income under Section 154A, compared to 1% for unregistered freelancers.</li>
+            <li>At least 80% of foreign-sourced income must be received through official Pakistani banking channels to qualify for the reduced export tax rate.</li>
+            <li>Freelancers with a prior-year tax liability exceeding PKR 1 million are required to pay advance tax in quarterly installments.</li>
+            <li>PSEB registration costs PKR 5,000 initially and PKR 3,500 for annual renewal, valid for one year.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. Under which tax system are most Pakistani freelancers taxed for local client income?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) Salaried income slabs</li>
+              <li>B) Business income slabs</li>
+              <li>C) Final tax regime only</li>
+              <li>D) Flat 10% rate</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. What is the export income tax rate for PSEB-registered freelancers?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) 0.25%</li>
+              <li>B) 0.50%</li>
+              <li>C) 1%</li>
+              <li>D) 5%</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. What percentage of foreign-sourced income must arrive through official banking channels to qualify for Section 154A?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) 50%</li>
+              <li>B) 70%</li>
+              <li>C) 80%</li>
+              <li>D) 90%</li>
+            </ul>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Federal Board of Revenue (FBR) – Official Website</a></li>
+            <li><a href="https://psbe.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Pakistan Software Export Board (PSEB) – Registration and Guidelines</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Taxation_in_Pakistan" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Taxation in Pakistan – Wikipedia</a></li>
+            <li><a href="https://iris.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">FBR IRIS Portal – Freelancer Filing Guide</a></li>
+          </ul>
+
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

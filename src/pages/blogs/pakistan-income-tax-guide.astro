@@ -1,12 +1,16 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Pakistan Income Tax Guide 2024/25: FBR Tax Slabs, Rates & Calculator";
 const description = "Complete Pakistan income tax guide for 2024/25. Learn FBR tax slabs for salaried individuals, tax-free limit, how to calculate income tax in Pakistan, and use our Pakistan tax calculator for accurate estimates.";
 const image = "/images/blogs/pakistan-income-tax-guide.svg";
+const author = "Ayesha Malik";
+const authorBio = "Chartered accountant specializing in Pakistani income tax compliance and financial planning.";
+const lastUpdated = "July 2026";
+const readTime = "10 min read";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author={author} authorBio={authorBio} lastUpdated={lastUpdated} readTime={readTime}>
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -22,7 +26,9 @@ const image = "/images/blogs/pakistan-income-tax-guide.svg";
           <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">Pakistan Income Tax Guide 2024/25: FBR Tax Slabs, Rates & Calculator</h1>
           <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 10 min read</p>
 
-          <div class="mt-8 space-y-6 text-body dark:text-muted">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80" alt="Tax documents, calculator, and filing folders on desk" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+
+            <div class="mt-8 space-y-6 text-body dark:text-muted">
             <p>Pakistan's income tax system is administered by the Federal Board of Revenue (FBR) and governed by the Income Tax Ordinance 2001. Each year, the Finance Act updates tax slabs, exemptions, and deduction limits for the upcoming tax year. For Tax Year 2024/25, Pakistan income tax slabs have been revised, offering a tax-free threshold of PKR 600,000 for salaried individuals while increasing rates across higher income brackets.</p>
 
             <p>Whether you are a salaried employee, business owner, or freelancer, understanding how income tax is calculated in Pakistan is essential for compliance and financial planning. This guide covers FBR tax slabs, allowable deductions, filing requirements, and how to use a Pakistan tax calculator for accurate estimates.</p>
@@ -124,8 +130,55 @@ const image = "/images/blogs/pakistan-income-tax-guide.svg";
               <a href="/blogs/pakistan-tax-filing-guide" class="block rounded border p-4 hover:border-primary transition">Pakistan Tax Filing Guide</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>Pakistan follows a progressive (marginal) tax system where each income band is taxed at a different rate, ensuring higher earners pay a larger share.</li>
+            <li>The tax year in Pakistan runs from July 1 to June 30, with salaried individuals required to file returns by September 30 of the following year.</li>
+            <li>The annual tax-free income threshold for salaried individuals is PKR 600,000 for FY 2024/25.</li>
+            <li>Being on the FBR Active Taxpayer List (ATL) can halve or more the withholding taxes applied to banking, property, and vehicle transactions.</li>
+            <li>A surcharge of up to 9% may apply on high-income earners above certain income thresholds, increasing the effective tax rate beyond the slab rate.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. What is the duration of Pakistan's tax year?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) January 1 to December 31</li>
+              <li>B) April 1 to March 31</li>
+              <li>C) July 1 to June 30</li>
+              <li>D) October 1 to September 30</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. What is the tax-free annual income threshold for salaried individuals in FY 2024/25?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) PKR 500,000</li>
+              <li>B) PKR 550,000</li>
+              <li>C) PKR 600,000</li>
+              <li>D) PKR 650,000</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. By what date must salaried individuals file their income tax returns?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) August 31</li>
+              <li>B) September 15</li>
+              <li>C) September 30</li>
+              <li>D) October 31</li>
+            </ul>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Federal Board of Revenue (FBR) – Official Website</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Taxation_in_Pakistan" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Taxation in Pakistan – Wikipedia</a></li>
+            <li><a href="https://iris.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">FBR IRIS Portal – Income Tax Filing</a></li>
+            <li><a href="https://www.fbr.gov.pk/forms-and-publications" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">FBR Forms and Publications Library</a></li>
+          </ul>
+
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

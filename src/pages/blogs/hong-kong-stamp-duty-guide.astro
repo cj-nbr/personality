@@ -1,12 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Hong Kong Stamp Duty Guide 2024/25: Property & Rental Stamp Duty";
 const description = "Complete Hong Kong stamp duty guide for 2024/25. Learn AVD, BSD, SSD rates, Scale 2 rates, and use our Hong Kong property stamp duty calculator.";
 const image = "/images/blogs/hong-kong-stamp-duty-guide.svg";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author="Andrew Ho" authorBio="Andrew Ho is a tax attorney with extensive experience in Hong Kong property transaction taxes. He advises clients on stamp duty planning, residential conveyancing, and regulatory compliance." lastUpdated="July 2026" readTime="11 min read">
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -21,6 +21,8 @@ const image = "/images/blogs/hong-kong-stamp-duty-guide.svg";
         <article class="prose max-w-none">
           <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">Hong Kong Stamp Duty Guide 2024/25: Property & Rental Stamp Duty</h1>
           <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 11 min read</p>
+
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80" alt="Tax documents and stamp duty paperwork" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
 
           <div class="mt-8 space-y-6 text-body dark:text-muted">
             <p>Hong Kong stamp duty is a transaction tax that applies to property and stock transfers. For homebuyers and investors, understanding the different stamp duty categories is essential to budgeting accurately and avoiding unnecessary costs. This guide covers AVD, BSD, SSD, Scale 2 rates, first-time buyer concessions, rental stamp duty, and how to calculate your obligation using a Hong Kong stamp duty calculator.</p>
@@ -92,8 +94,54 @@ const image = "/images/blogs/hong-kong-stamp-duty-guide.svg";
               <a href="/blogs/hong-kong-salaries-tax-guide" class="block rounded border p-4 hover:border-primary transition">Hong Kong Salaries Tax Guide</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>Hong Kong introduced Buyer's Stamp Duty (BSD) in 2012 specifically to curb demand from non-resident buyers and cool the property market.</li>
+            <li>Special Stamp Duty (SSD) can be as high as 20% if a property is resold within 6 months of purchase.</li>
+            <li>Failure to pay stamp duty within 30 days can result in penalties of up to four times the duty payable.</li>
+            <li>An unstamped instrument is generally not valid for registration or enforcement in Hong Kong courts.</li>
+            <li>Most residential rental agreements are exempt from stamp duty unless the lease exceeds three years.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Quick Quiz</h2>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. What is the standard cap for Ad Valorem Stamp Duty (AVD) on residential property in Hong Kong?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: 5%</li>
+              <li>Option B: 8.5%</li>
+              <li>Option C: 10%</li>
+              <li>Option D: 15%</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 mt-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. Who pays Buyer's Stamp Duty (BSD)?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: Hong Kong permanent residents only</li>
+              <li>Option B: Non-resident purchasers and corporate buyers</li>
+              <li>Option C: All property buyers regardless of residency</li>
+              <li>Option D: Sellers only</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 mt-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. What is the SSD rate for disposing of a property within 12 months of purchase?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: 10%</li>
+              <li>Option B: 15%</li>
+              <li>Option C: 20%</li>
+              <li>Option D: 8.5%</li>
+            </ul>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.ird.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Inland Revenue Department (IRD) - Hong Kong</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Stamp_duty_in_Hong_Kong" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Stamp Duty in Hong Kong - Wikipedia</a></li>
+            <li><a href="https://www.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Hong Kong Government Official Portal</a></li>
+            <li><a href="https://www.pwc.com/hk/en/services/tax/hong-kong-taxation.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">PwC Hong Kong Taxation Overview</a></li>
+          </ul>
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

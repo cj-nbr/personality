@@ -1,12 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Hong Kong eTAX Guide: How to File Taxes Online in 2025";
 const description = "Hong Kong eTAX guide for filing taxes online. Learn how to register for eTAX, file your salaries tax return, check your assessment, and pay tax online.";
 const image = "/images/blogs/hong-kong-etax-guide.svg";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author="Michael Tang" authorBio="Michael Tang is a tax technology specialist covering IRD e-services and digital tax filing." lastUpdated="July 2026" readTime="10 min read">
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -83,8 +83,57 @@ const image = "/images/blogs/hong-kong-etax-guide.svg";
               <a href="/blogs/hong-kong-provisional-tax-guide" class="block rounded border p-4 hover:border-primary transition">Hong Kong Provisional Tax Guide</a>
             </div>
           </div>
+
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80" alt="Computer screen showing online tax filing" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>eTAX processes millions of tax transactions annually, making it one of the most used government e-services in Hong Kong.</li>
+            <li>The eTAX system automatically calculates tax under both the progressive rate and standard rate, helping taxpayers identify the more favorable option.</li>
+            <li>You can apply for a holdover of provisional tax entirely online through eTAX without visiting an IRD office.</li>
+            <li>Payment confirmations through eTAX are instant, and most online payments are reflected within three business days.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+          <div class="space-y-4">
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">1. What is the primary benefit of using eTAX for filing individual tax returns in Hong Kong?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>Higher tax refunds</li>
+                <li>Faster processing and instant confirmation</li>
+                <li>Exemption from provisional tax</li>
+                <li>Automatic audit protection</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">2. Which type of return do most individuals file on eTAX?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>BIR52</li>
+                <li>BIR60</li>
+                <li>BIR56B</li>
+                <li>BIR57</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">3. How long does it typically take for an online payment to be reflected in your eTAX account?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>Instantly</li>
+                <li>Up to 3 business days</li>
+                <li>7 business days</li>
+                <li>14 business days</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.ird.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Inland Revenue Department – Official Site</a></li>
+            <li><a href="https://www.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Hong Kong Government Digital Services</a></li>
+            <li><a href="https://www.cyberport.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Cyberport – Digital Government Initiatives</a></li>
+          </ul>
+
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

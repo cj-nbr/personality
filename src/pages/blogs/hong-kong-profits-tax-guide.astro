@@ -1,12 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Hong Kong Profits Tax Guide 2024/25: Two-Tiered Rates for Businesses";
 const description = "Complete Hong Kong profits tax guide for 2024/25. Learn two-tiered rates, territorial system, assessable profits, and use our Hong Kong profits tax calculator.";
 const image = "/images/blogs/hong-kong-profits-tax-guide.svg";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author="Michael Tang" authorBio="Michael Tang is a tax consultant specializing in Hong Kong corporate and profits tax. With over a decade of experience advising SMEs and multinational firms, he simplifies complex tax topics for business owners." lastUpdated="July 2026" readTime="11 min read">
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -21,6 +21,8 @@ const image = "/images/blogs/hong-kong-profits-tax-guide.svg";
         <article class="prose max-w-none">
           <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">Hong Kong Profits Tax Guide 2024/25: Two-Tiered Rates for Businesses</h1>
           <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 11 min read</p>
+
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80" alt="Hong Kong profits tax calculator and financial documents" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
 
           <div class="mt-8 space-y-6 text-body dark:text-muted">
             <p>Hong Kong profits tax is the tax levied on profits arising from a business, trade, or profession carried on in Hong Kong. For the 2024/25 year of assessment, profits tax applies at two-tiered rates to encourage small and medium enterprises. This guide covers the two-tiered profits tax rates, assessable profits, connected entities, filing obligations, allowable deductions, and provisional tax. Use our <a href="/countries/hong-kong/profits-tax/profits-tax-calculator" class="text-link hover:underline dark:text-link">Hong Kong profits tax calculator</a> to estimate your business tax liability.</p>
@@ -82,8 +84,54 @@ const image = "/images/blogs/hong-kong-profits-tax-guide.svg";
               <a href="/blogs/hong-kong-tax-allowances-deductions" class="block rounded border p-4 hover:border-primary transition">Hong Kong Tax Allowances and Deductions</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>Hong Kong's territorial tax system means profits sourced outside Hong Kong are generally exempt from profits tax, even if received by a Hong Kong company.</li>
+            <li>The two-tiered profits tax rates were introduced in the 2018/19 budget specifically to support small and medium enterprises.</li>
+            <li>Connected entities must share the HK$2 million concession cap, so owning multiple businesses does not automatically multiply your relief.</li>
+            <li>Business losses can be carried forward to offset future profits, subject to continuity of ownership and business rules.</li>
+            <li>The IRD requires businesses to keep accounting records for at least seven years after the relevant year of assessment.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Quick Quiz</h2>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. What is the profits tax rate for corporations in Hong Kong for 2024/25?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: 8.25%</li>
+              <li>Option B: 16.5%</li>
+              <li>Option C: 15%</li>
+              <li>Option D: 20%</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 mt-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. What is the two-tiered profits tax concession cap for unincorporated businesses?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: HK$1 million</li>
+              <li>Option B: HK$2 million</li>
+              <li>Option C: HK$5 million</li>
+              <li>Option D: HK$10 million</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 mt-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. Which of the following is generally exempt from Hong Kong profits tax?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: Rental income</li>
+              <li>Option B: Salaries</li>
+              <li>Option C: Profits sourced outside Hong Kong</li>
+              <li>Option D: Investment income</li>
+            </ul>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.ird.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Inland Revenue Department (IRD) - Hong Kong</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Income_tax_in_Hong_Kong" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Income Tax in Hong Kong - Wikipedia</a></li>
+            <li><a href="https://www.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Hong Kong Government Official Portal</a></li>
+            <li><a href="https://www.pwc.com/hk/en/services/tax/hong-kong-taxation.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">PwC Hong Kong Taxation Overview</a></li>
+          </ul>
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

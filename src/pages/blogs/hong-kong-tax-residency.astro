@@ -1,12 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "How to Qualify as a Hong Kong Tax Resident: Rules and Calculator";
 const description = "Learn how to qualify as a Hong Kong tax resident, understand the 60-day rule, ordinary residency, and use our Hong Kong tax calculator to estimate your obligations.";
-const image = "/images/blogs/hong-kong-tax-residency.svg";
+const image = "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1200&q=80";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author="Sarah Lee" authorBio="Cross-border tax advisor helping individuals and businesses navigate Hong Kong residency rules." lastUpdated="July 2026" readTime="10 min read">
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -80,8 +80,54 @@ const image = "/images/blogs/hong-kong-tax-residency.svg";
               <a href="/blogs/hong-kong-etax-guide" class="block rounded border p-4 hover:border-primary transition">Hong Kong eTAX Guide</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>The 60-day rule exempts non-ordinarily resident individuals from salaries tax if they spend 60 days or fewer in Hong Kong during the year.</li>
+            <li>Ordinary residency is based on a settled, voluntary, and permanent connection to Hong Kong, not just physical presence.</li>
+            <li>Property tax applies regardless of the owner's residency status.</li>
+            <li>Hong Kong's double tax agreements contain tie-breaker rules for individuals considered residents of two jurisdictions.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Quick Quiz</h2>
+          <div class="space-y-4">
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">1. What does the 60-day rule exempt?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>All taxes</li>
+                <li>Salaries tax for non-ordinarily resident individuals spending ≤60 days in HK</li>
+                <li>Property tax</li>
+                <li>Profits tax</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">2. Which factor is NOT considered when determining ordinary residency?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>Permanent place of residence</li>
+                <li>Number of days spent in HK</li>
+                <li>Favorite color</li>
+                <li>Family connections</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">3. Who pays property tax in Hong Kong?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>Only residents</li>
+                <li>Only non-residents</li>
+                <li>Property owners regardless of residency</li>
+                <li>Only corporations</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.ird.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Hong Kong Inland Revenue Department (ird.gov.hk)</a> - Official guidance on tax residency definitions and certificates of residence.</li>
+            <li><a href="https://en.wikipedia.org/wiki/Tax_residency" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Tax Residency - Wikipedia</a> - General overview of tax residency concepts and tie-breaker rules.</li>
+            <li><a href="https://www.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Hong Kong Government Portal (gov.hk)</a> - Government services and official immigration/tax information.</li>
+          </ul>
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

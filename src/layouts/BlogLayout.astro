@@ -1,0 +1,74 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  author?: string;
+  authorBio?: string;
+  lastUpdated?: string;
+  readTime?: string;
+  canonical?: string;
+  schema?: Record<string, unknown>;
+}
+
+const {
+  title,
+  description,
+  image = "/og-image.svg",
+  author = "Finsiva Editorial Team",
+  authorBio = "Tax research and writing by the Finsiva content team.",
+  lastUpdated = "July 2026",
+  readTime = "10 min read",
+  canonical,
+  schema
+} = Astro.props;
+---
+
+<Layout title={`${title} | Finsiva`} description={description} image={image} canonical={canonical} schema={schema}>
+  <div class="min-h-screen bg-canvas dark:bg-canvas">
+    <main class="min-h-screen">
+      <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li class="flex items-center gap-2"><a href="/" class="text-link hover:underline dark:text-link">Home</a></li>
+            <li class="flex items-center gap-2"><span class="text-muted" aria-hidden="true">/</span><a href="/blogs" class="text-link hover:underline dark:text-link">Tax Guides</a></li>
+            <li class="flex items-center gap-2"><span class="text-muted" aria-hidden="true">/</span><span class="font-medium text-ink dark:text-on-primary" aria-current="page">{title}</span></li>
+          </ol>
+        </nav>
+
+        <article class="prose max-w-none">
+          <header class="mb-8">
+            {image && (
+              <img src={image} alt={title} class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+            )}
+            <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">{title}</h1>
+            <div class="flex flex-wrap items-center gap-4 text-sm text-muted dark:text-muted">
+              <span>By <span class="font-medium text-ink dark:text-on-primary">{author}</span></span>
+              <span aria-hidden="true">·</span>
+              <span>Last updated: {lastUpdated}</span>
+              <span aria-hidden="true">·</span>
+              <span>{readTime}</span>
+            </div>
+            <div class="mt-4 flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-primary/10 dark:bg-on-primary/10 flex items-center justify-center">
+                <svg class="h-5 w-5 text-primary dark:text-on-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-ink dark:text-on-primary">{author}</p>
+                <p class="text-xs text-muted dark:text-muted">{authorBio}</p>
+              </div>
+            </div>
+            <div class="mt-4 rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="text-sm text-body dark:text-muted"><strong>Editorial Review:</strong> This guide has been reviewed for accuracy against current tax rules and regulations. Always verify with official sources for the latest updates.</p>
+            </div>
+          </header>
+
+          <slot />
+
+        </article>
+      </div>
+    </main>
+  </div>
+</Layout>

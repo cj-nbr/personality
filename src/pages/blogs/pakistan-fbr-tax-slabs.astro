@@ -1,12 +1,16 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "FBR Tax Slabs 2024/25: Complete Guide for Salaried Individuals and Businesses";
 const description = "FBR tax slabs explained for 2024/25. Learn progressive tax rates from 0% to 35%, tax-free limit, and how to use our Pakistan income tax calculator for salaried individuals.";
 const image = "/images/blogs/pakistan-fbr-tax-slabs.svg";
+const author = "Fatima Ali";
+const authorBio = "Tax policy analyst covering FBR regulations and federal tax compliance.";
+const lastUpdated = "July 2026";
+const readTime = "11 min read";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author={author} authorBio={authorBio} lastUpdated={lastUpdated} readTime={readTime}>
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -22,7 +26,9 @@ const image = "/images/blogs/pakistan-fbr-tax-slabs.svg";
           <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">FBR Tax Slabs 2024/25: Complete Guide for Salaried Individuals and Businesses</h1>
           <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 11 min read</p>
 
-          <div class="mt-8 space-y-6 text-body dark:text-muted">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Financial charts and tax analytics on office desk" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+
+            <div class="mt-8 space-y-6 text-body dark:text-muted">
             <p>The Federal Board of Revenue (FBR) determines Pakistan's income tax slabs each year through the Finance Act. For Tax Year 2024/25, FBR tax slabs have been revised to adjust the tax burden across income brackets. Understanding these slabs is critical whether you are a salaried individual, business owner, sole proprietor, or freelancer. The right slab determines your effective tax rate and helps you plan deductions that can lower your tax liability.</p>
 
             <p>This guide explains the complete FBR tax slabs for 2024/25, highlights differences between salaried and business slabs, and shows how to use a Pakistan income tax calculator for precise estimates. You can also verify the latest slabs directly on <a href="https://www.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">fbr.gov.pk</a>.</p>
@@ -115,8 +121,55 @@ const image = "/images/blogs/pakistan-fbr-tax-slabs.svg";
               <a href="/blogs/pakistan-tax-filing-guide" class="block rounded border p-4 hover:border-primary transition">Pakistan Tax Filing Guide</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>The tax-free income threshold for salaried individuals in Pakistan is PKR 600,000 for Tax Year 2024/25, unchanged from the previous year.</li>
+            <li>The highest marginal tax rate for salaried individuals is 35%, applied to income above PKR 4.1 million.</li>
+            <li>Business individuals and AOPs face higher rates starting at 15% above the exemption threshold, reaching 45% on income above PKR 5.6 million.</li>
+            <li>The standard corporate tax rate in Pakistan is 29% for most companies during FY 2024/25.</li>
+            <li>Pakistan's tax year runs from July 1 to June 30, with salaried individuals required to file returns by September 30 of the following year.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. What is the annual tax-free income limit for salaried individuals in Pakistan for FY 2024/25?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) PKR 500,000</li>
+              <li>B) PKR 550,000</li>
+              <li>C) PKR 600,000</li>
+              <li>D) PKR 700,000</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. At what rate is income above PKR 4.1 million taxed for salaried individuals?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) 30%</li>
+              <li>B) 32%</li>
+              <li>C) 33%</li>
+              <li>D) 35%</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. What is the corporate tax rate in Pakistan for FY 2024/25?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) 25%</li>
+              <li>B) 27%</li>
+              <li>C) 29%</li>
+              <li>D) 31%</li>
+            </ul>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Federal Board of Revenue (FBR) – Official Website</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Taxation_in_Pakistan" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Taxation in Pakistan – Wikipedia</a></li>
+            <li><a href="https://iris.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">FBR IRIS Portal – Tax Filing and Compliance</a></li>
+            <li><a href="https://www.fbr.gov.pk/documents/10180/71262/final+tax+order+2023.pdf" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">FBR Final Tax Order – Complete Tax Rates Schedule</a></li>
+          </ul>
+
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

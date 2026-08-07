@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "GST Complete Guide 2024: GST Rates, Calculator, Filing & Compliance for India";
 const description = "Complete GST guide for India. Learn about GST rates (5%, 12%, 18%, 28%), GST calculator, GST filing process, input tax credit, GST compliance, and latest GST council updates for FY 2024-25.";
@@ -7,9 +7,10 @@ const image = "/images/blogs/gst-complete-guide.jpg";
 const author = "Kira Tanaka";
 const lastUpdated = "July 2026";
 const readTime = "15 min read";
+const authorBio = "GST compliance consultant helping businesses navigate India's indirect tax regime with practical solutions.";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author={author} authorBio={authorBio} lastUpdated={lastUpdated} readTime={readTime}>
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -93,6 +94,54 @@ const readTime = "15 min read";
           </div>
         </article>
 
+        <img src="https://images.unsplash.com/photo-1454165804606-c47de6196ba5?w=1200&q=80" alt="Tax forms and financial documents" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+
+        <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+        <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+          <li>GST was implemented in India on July 1, 2017, replacing 17 different indirect taxes and 23 cesses.</li>
+          <li>India's GST is one of the few dual-GST models in the world, with both Central and State governments levying tax on the same transaction.</li>
+          <li>The GST network processes over 1.2 crore invoices every month, making it one of the largest tax IT systems globally.</li>
+          <li>GSTR-3B is a monthly summary return that must be filed even if there are no transactions, making compliance crucial for all registered businesses.</li>
+        </ul>
+
+        <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+        <div class="space-y-4">
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. When was GST implemented in India?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>July 1, 2016</li>
+              <li>July 1, 2017</li>
+              <li>April 1, 2017</li>
+              <li>January 1, 2018</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. What is the late fee for nil GSTR-3B returns per day?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>₹50</li>
+              <li>₹20</li>
+              <li>₹100</li>
+              <li>No fee for nil returns</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. Which GST rate applies to gold and precious stones?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>0%</li>
+              <li>3%</li>
+              <li>5%</li>
+              <li>18%</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+        <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+          <li><a href="https://www.gst.gov.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">GST Portal – Official Government Website</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Goods_and_Services_Tax_(India)" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Wikipedia: Goods and Services Tax (India)</a></li>
+          <li><a href="https://cleartax.in/s/gst" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">ClearTax: GST Complete Guide</a></li>
+        </ul>
+
         <aside class="mt-12 rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-lighter dark:bg-surface" aria-label="Related calculators">
           <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">Related Calculators</h3>
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -104,4 +153,4 @@ const readTime = "15 min read";
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

@@ -1,12 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Pakistan Tax Filing Guide 2024/25: How to File FBR Income Tax Return";
 const description = "Pakistan tax filing guide for 2024/25. Learn how to file FBR income tax returns online through Iris, required documents, deadlines, and how to claim tax refunds.";
-const image = "/images/blogs/pakistan-tax-filing-guide.svg";
+const image = "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author="Ahmed Khan" authorBio="Tax professional specializing in Pakistani federal tax compliance and IRIS filing procedures." lastUpdated="July 2026" readTime="10 min read">
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -137,8 +137,54 @@ const image = "/images/blogs/pakistan-tax-filing-guide.svg";
               <a href="/blogs/pakistan-fbr-tax-slabs" class="block rounded border p-4 hover:border-primary transition">FBR Tax Slabs 2024/25</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>The FBR IRIS portal allows fully digital income tax return filing, eliminating the need for physical visits.</li>
+            <li>Being on the Active Taxpayer List halves withholding tax on banking transactions, property purchases, and vehicle registration.</li>
+            <li>Late filing penalties start at PKR 10,000 and increase by PKR 1,000 per day until the return is filed.</li>
+            <li>Form 114(I) is the simplified return form specifically designed for salaried individuals, pensioners, and those with primarily salary income.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Quick Quiz</h2>
+          <div class="space-y-4">
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">1. What is the official FBR portal for filing income tax returns?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>eFBR</li>
+                <li>IRIS</li>
+                <li>NTN Portal</li>
+                <li>TaxNet</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">2. How much is the late filing penalty per day in Pakistan?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>PKR 500</li>
+                <li>PKR 1,000</li>
+                <li>PKR 2,000</li>
+                <li>PKR 5,000</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">3. What does ATL stand for in Pakistani tax terminology?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>Annual Tax Levy</li>
+                <li>Active Taxpayer List</li>
+                <li>Advance Tax Limit</li>
+                <li>Automated Tax Line</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink mb-6 dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Federal Board of Revenue (fbr.gov.pk)</a> - Official tax rules, notifications, and Active Taxpayer List verification.</li>
+            <li><a href="https://iris.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">IRIS Portal (iris.fbr.gov.pk)</a> - Online income tax return filing, refunds, and e-payments.</li>
+            <li><a href="https://en.wikipedia.org/wiki/Taxation_in_Pakistan" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Taxation in Pakistan - Wikipedia</a> - General overview of Pakistan's tax system and history.</li>
+          </ul>
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

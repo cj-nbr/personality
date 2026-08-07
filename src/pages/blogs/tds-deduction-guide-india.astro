@@ -1,15 +1,16 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "TDS Deduction Guide 2024: How to Calculate TDS on Salary, Contractors & Professionals";
 const description = "Complete TDS deduction guide for India. Learn how to calculate TDS on salary, TDS rates for different payment types, Section 192, 194C, 194J, TDS due dates, and how to claim TDS refund.";
-const image = "/images/blogs/tds-deduction-guide.jpg";
-const author = "Hana Patel";
+const image = "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80";
+const author = "Neha Gupta";
+const authorBio = "Indian tax compliance writer specializing in TDS, GST, and payroll tax for professionals and businesses.";
 const lastUpdated = "July 2026";
 const readTime = "11 min read";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author={author} authorBio={authorBio} lastUpdated={lastUpdated} readTime={readTime}>
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -88,6 +89,54 @@ const readTime = "11 min read";
             <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">How to Claim TDS Refund</h2>
             <p>If the TDS deducted exceeds your actual tax liability, you are entitled to a refund. File your income tax return (ITR) by the due date and ensure your TDS details in Form 26AS match the TDS certificates issued by the deductor. The refund is processed electronically and credited to your bank account within 4-6 months.</p>
 
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+            <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+              <li>TDS was introduced in India in 1962 to ensure a steady flow of tax revenue and reduce tax evasion at the source of income.</li>
+              <li>The TDS rate for professional fees under Section 194J is 10% for residents, but if the payer does not deduct tax, the rate doubles to 20%.</li>
+              <li>Form 26AS is an annual consolidated tax statement that shows all TDS deductions made against your PAN. It is essential to verify it before filing your ITR.</li>
+              <li>Late deduction of TDS attracts interest at 1% per month, while late payment attracts a higher interest of 1.5% per month.</li>
+              <li>Salaried employees can submit proof of investments to their employer to reduce TDS deductions, but many forget to do so and end up with excess TDS deducted.</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+            <div class="space-y-4">
+              <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+                <p class="font-medium text-ink dark:text-on-primary">1. What is the TDS rate for professional fees under Section 194J for residents?</p>
+                <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                  <li>5%</li>
+                  <li>10%</li>
+                  <li>15%</li>
+                  <li>20%</li>
+                </ul>
+              </div>
+              <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+                <p class="font-medium text-ink dark:text-on-primary">2. Which form shows all TDS deductions made against your PAN?</p>
+                <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                  <li>Form 16</li>
+                  <li>Form 26AS</li>
+                  <li>Form 12BB</li>
+                  <li>Form 16A</li>
+                </ul>
+              </div>
+              <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+                <p class="font-medium text-ink dark:text-on-primary">3. What is the interest rate for late payment of TDS?</p>
+                <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                  <li>1% per month</li>
+                  <li>1.5% per month</li>
+                  <li>2% per month</li>
+                  <li>3% per month</li>
+                </ul>
+              </div>
+            </div>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+            <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+              <li><a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Income Tax Department of India</a> — Official TDS rules, forms, and due dates.</li>
+              <li><a href="https://en.wikipedia.org/wiki/Tax_deducted_at_source" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Wikipedia: Tax Deducted at Source</a> — Comprehensive overview of TDS mechanisms in India.</li>
+              <li><a href="https://www.pwc.com/in/en/services/tax/income-tax.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">PwC India Tax</a> — Expert insights on TDS compliance and regulatory updates.</li>
+              <li><a href="https://www.clear.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">ClearTax</a> — TDS calculator and tax filing resources.</li>
+            </ul>
+
             <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Conclusion</h2>
             <p>TDS is an important aspect of tax compliance in India. Understanding TDS rates, calculation methods, and due dates helps both deductors and deductees stay compliant. Use our <a href="/countries/india/tds/tds-calculator">TDS calculator</a> to compute your TDS liability and plan your tax payments effectively. For more information on Indian taxation, explore our <a href="/countries/india">India tax overview</a>.</p>
           </div>
@@ -104,4 +153,4 @@ const readTime = "11 min read";
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

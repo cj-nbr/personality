@@ -1,12 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Hong Kong Tax Allowances and Deductions 2024/25: Complete Guide";
 const description = "Complete guide to Hong Kong tax allowances and deductions for 2024/25. Learn basic allowance, married person allowance, child allowance, MPF, charitable donations, and more.";
 const image = "/images/blogs/hong-kong-tax-allowances-deductions.svg";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author="Michelle Yip" authorBio="Michelle Yip is a tax planner specializing in personal tax allowances and deductions in Hong Kong. She helps individuals and families maximize their tax savings through strategic planning." lastUpdated="July 2026" readTime="11 min read">
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -21,6 +21,8 @@ const image = "/images/blogs/hong-kong-tax-allowances-deductions.svg";
         <article class="prose max-w-none">
           <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">Hong Kong Tax Allowances and Deductions 2024/25: Complete Guide</h1>
           <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 11 min read</p>
+
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Charts and analytics dashboard for tax planning" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
 
           <div class="mt-8 space-y-6 text-body dark:text-muted">
             <p>Maximizing your tax savings in Hong Kong starts with understanding the available allowances and deductions. These reliefs reduce your net chargeable income or assessable profits, lowering the amount of tax you owe. For 2024/25, the IRD offers a generous set of personal allowances, deductible expenses, and concessions designed to support families, homeowners, retirees, and business owners. Use our <a href="/countries/hong-kong/salaries-tax/salaries-tax-calculator" class="text-link hover:underline dark:text-link">Hong Kong tax calculator</a> to model different allowances and compare the progressive rate versus the standard rate.</p>
@@ -94,8 +96,54 @@ const image = "/images/blogs/hong-kong-tax-allowances-deductions.svg";
               <a href="/blogs/hong-kong-tax-residency" class="block rounded border p-4 hover:border-primary transition">Hong Kong Tax Residency</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>The basic allowance of HK$132,000 means the first HK$132,000 of your net chargeable income is completely tax-free for 2024/25.</li>
+            <li>You can only claim either home loan interest or domestic rent deduction, not both at the same time.</li>
+            <li>Charitable donations are deductible up to 35% of your assessable income after the donations themselves are deducted.</li>
+            <li>The dependent parent and grandparent allowance ranges from HK$51,000 to HK$102,000 depending on the age and living arrangement.</li>
+            <li>Taxpayers should always compare the progressive rate and standard rate calculations to ensure they pay the minimum tax legally owed.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Quick Quiz</h2>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. What is the basic allowance for salaries tax in Hong Kong for 2024/25?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: HK$100,000</li>
+              <li>Option B: HK$132,000</li>
+              <li>Option C: HK$150,000</li>
+              <li>Option D: HK$200,000</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 mt-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. Which of the following is NOT an allowable deduction under salaries tax?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: Charitable donations</li>
+              <li>Option B: MPF contributions</li>
+              <li>Option C: Private living expenses</li>
+              <li>Option D: Self-education expenses</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 mt-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. What is the maximum deductible amount for self-education expenses per year?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Option A: HK$50,000</li>
+              <li>Option B: HK$80,000</li>
+              <li>Option C: HK$100,000</li>
+              <li>Option D: HK$120,000</li>
+            </ul>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink mt-12 mb-6 dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.ird.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Inland Revenue Department (IRD) - Hong Kong</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Income_tax_in_Hong_Kong" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Income Tax in Hong Kong - Wikipedia</a></li>
+            <li><a href="https://www.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Hong Kong Government Official Portal</a></li>
+            <li><a href="https://www.pwc.com/hk/en/services/tax/hong-kong-taxation.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">PwC Hong Kong Taxation Overview</a></li>
+          </ul>
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

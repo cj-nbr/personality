@@ -1,12 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Hong Kong Car Tax Guide: First Registration Tax and Motor Vehicle Tax";
 const description = "Hong Kong car tax guide. Learn about first registration tax, motor vehicle tax, and how to calculate car tax in Hong Kong. Use our HK car tax calculator for estimates.";
 const image = "/images/blogs/hong-kong-car-tax-guide.svg";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author="David Chan" authorBio="David Chan is a tax consultant specializing in Hong Kong transport duties and vehicle registration tax." lastUpdated="July 2026" readTime="10 min read">
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -77,8 +77,57 @@ const image = "/images/blogs/hong-kong-car-tax-guide.svg";
               <a href="/blogs/hong-kong-tax-deadline-calendar" class="block rounded border p-4 hover:border-primary transition">Hong Kong Tax Deadline Calendar</a>
             </div>
           </div>
+
+          <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1200&q=80" alt="Hong Kong skyline and urban traffic" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>Hong Kong's First Registration Tax can exceed 100% of a vehicle's value for high-emission luxury cars.</li>
+            <li>The territory has one of the lowest car ownership rates in the world, with only about 7-8% of households owning a private car.</li>
+            <li>Electric vehicles registered before April 2027 enjoy a full waiver of First Registration Tax, subject to a cap.</li>
+            <li>Motor Vehicle Tax is calculated based on engine capacity, with smaller engines paying significantly less.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+          <div class="space-y-4">
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">1. What is the primary purpose of Hong Kong's First Registration Tax?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>To raise general government revenue</li>
+                <li>To discourage vehicle purchases and reduce traffic congestion</li>
+                <li>To fund road maintenance</li>
+                <li>To subsidize public transport</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">2. Which vehicles currently enjoy a full waiver of First Registration Tax in Hong Kong?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>All hybrid vehicles</li>
+                <li>All purely electric private passenger cars (subject to a cap)</li>
+                <li>All commercial vehicles</li>
+                <li>All vehicles under 1.5L engine</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">3. How is Motor Vehicle Tax (MVT) calculated in Hong Kong?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>Based on vehicle weight</li>
+                <li>Based on engine capacity</li>
+                <li>Based on vehicle value</li>
+                <li>Based on fuel type</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Hong Kong Government Official Portal</a></li>
+            <li><a href="https://www.td.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Transport Department – Official Site</a></li>
+            <li><a href="https://www.eaa.org.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Electric Automobile Association of Hong Kong</a></li>
+          </ul>
+
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

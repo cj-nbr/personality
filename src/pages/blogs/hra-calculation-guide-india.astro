@@ -1,15 +1,16 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "HRA Calculation Guide: How to Calculate HRA Exemption for Income Tax 2024-25";
 const description = "Complete HRA calculation guide for salaried individuals. Learn how to calculate HRA exemption under Section 10(13A), HRA exemption formula, and maximize your tax savings with our HRA calculator.";
-const image = "/images/blogs/hra-calculation-guide.jpg";
-const author = "Lena Park";
+const image = "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80";
+const author = "Priya Sharma";
+const authorBio = "Indian tax writer specializing in HRA, salary exemptions, and personal finance for salaried professionals.";
 const lastUpdated = "July 2026";
 const readTime = "10 min read";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author={author} authorBio={authorBio} lastUpdated={lastUpdated} readTime={readTime}>
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -92,6 +93,54 @@ const readTime = "10 min read";
             <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Can I Claim HRA if I Have No HRA in My Salary?</h2>
             <p>If you do not receive HRA from your employer, you cannot claim HRA exemption under Section 10(13A). However, you may claim a deduction under Section 80GG for rent paid. The maximum deduction under Section 80GG is the least of ₹5,000 per month, rent paid minus 10% of gross total income, or 25% of gross total income.</p>
 
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+            <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+              <li>The HRA exemption is calculated as the lowest of three amounts: actual HRA received, 50% of basic salary for metros (40% for non-metros), or rent paid minus 10% of basic salary.</li>
+              <li>Delhi, Mumbai, Chennai, and Kolkata are the only four cities classified as metro cities for HRA purposes under Indian tax rules.</li>
+              <li>If you pay rent to your parents, you can still claim HRA exemption, but the rent must be at a reasonable rate and backed by a valid rent agreement.</li>
+              <li>Landlords are required to provide their PAN if the annual rent exceeds ₹1 lakh, and tenants must quote it in Form 12BB to claim HRA exemption.</li>
+              <li>HRA exemption is available only under the old tax regime. If you opt for the new regime, you cannot claim HRA exemption.</li>
+            </ul>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+            <div class="space-y-4">
+              <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+                <p class="font-medium text-ink dark:text-on-primary">1. Which of the following is NOT a metro city for HRA purposes?</p>
+                <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                  <li>Delhi</li>
+                  <li>Mumbai</li>
+                  <li>Bangalore</li>
+                  <li>Chennai</li>
+                </ul>
+              </div>
+              <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+                <p class="font-medium text-ink dark:text-on-primary">2. HRA exemption is calculated as the lowest of three amounts. Which of these is NOT one of them?</p>
+                <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                  <li>Actual HRA received</li>
+                  <li>50% of basic salary for metros</li>
+                  <li>Rent paid minus 10% of basic salary</li>
+                  <li>Gross salary minus all deductions</li>
+                </ul>
+              </div>
+              <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+                <p class="font-medium text-ink dark:text-on-primary">3. Under the new tax regime, can you claim HRA exemption?</p>
+                <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                  <li>Yes, partially</li>
+                  <li>Yes, fully</li>
+                  <li>No</li>
+                  <li>Only if you opt out of the new regime</li>
+                </ul>
+              </div>
+            </div>
+
+            <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+            <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+              <li><a href="https://www.incometax.gov.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Income Tax Department of India</a> — Official portal for Section 10(13A) rules and Form 12BB.</li>
+              <li><a href="https://en.wikipedia.org/wiki/House_Rent_Allowance" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Wikipedia: House Rent Allowance</a> — Overview of HRA and its tax treatment in India.</li>
+              <li><a href="https://www.pwc.com/in/en/services/tax/income-tax.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">PwC India Tax</a> — Expert analysis of salary taxation and exemptions.</li>
+              <li><a href="https://www.clear.in" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">ClearTax</a> — HRA calculator and tax planning resources.</li>
+            </ul>
+
             <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Conclusion</h2>
             <p>HRA exemption is one of the most significant tax-saving benefits for salaried individuals under the old tax regime. By understanding the HRA calculation formula and maintaining proper documentation, you can maximize your tax savings. Use our <a href="/countries/india/income-tax/income-tax-calculator">Indian income tax calculator</a> to compute your exact HRA exemption and plan your finances better. For more tax-saving strategies, explore our <a href="/blogs/how-to-save-income-tax-india-2024-25">complete tax-saving guide</a>.</p>
           </div>
@@ -107,4 +156,4 @@ const readTime = "10 min read";
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

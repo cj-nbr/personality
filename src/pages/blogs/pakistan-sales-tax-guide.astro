@@ -1,12 +1,16 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Pakistan Sales Tax Guide 2024/25: 18% GST Rates and FBR Filing";
 const description = "Complete Pakistan sales tax guide for 2024/25. Learn 18% sales tax rates, GST registration, filing requirements, and use our Pakistan sales tax calculator for estimates.";
 const image = "/images/blogs/pakistan-sales-tax-guide.svg";
+const author = "Bilal Ahmed";
+const authorBio = "GST/VAT specialist covering Pakistan's value-added tax system and FBR compliance.";
+const lastUpdated = "July 2026";
+const readTime = "9 min read";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author={author} authorBio={authorBio} lastUpdated={lastUpdated} readTime={readTime}>
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -22,7 +26,9 @@ const image = "/images/blogs/pakistan-sales-tax-guide.svg";
           <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">Pakistan Sales Tax Guide 2024/25: 18% GST Rates and FBR Filing</h1>
           <p class="text-lg text-body dark:text-muted">Last updated: July 2026 | 9 min read</p>
 
-          <div class="mt-8 space-y-6 text-body dark:text-muted">
+            <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=1200&q=80" alt="Pakistani currency coins and banknotes with tax documents" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+
+            <div class="mt-8 space-y-6 text-body dark:text-muted">
             <p>Sales tax in Pakistan is a value-added tax (VAT) governed by the Sales Tax Act 1990 and collected by the Federal Board of Revenue (FBR). It is charged at each stage of the supply chain, but registered businesses can recover the tax paid on purchases, so the final burden falls on the consumer. The standard sales tax rate is <strong>18%</strong> on most goods.</p>
 
             <p>Understanding who must register, how to file monthly returns, and the difference between input tax and output tax is essential for manufacturers, importers, wholesalers, distributors, and retailers. Non-compliance can result in penalties, removal from the Active Taxpayers List, and loss of input tax credits. This guide covers registration thresholds, filing obligations, and how to use a Pakistan sales tax calculator for estimates.</p>
@@ -117,8 +123,55 @@ const image = "/images/blogs/pakistan-sales-tax-guide.svg";
               <a href="/blogs/pakistan-freelancer-tax-guide" class="block rounded border p-4 hover:border-primary transition">Pakistan Freelancer Tax Guide</a>
             </div>
           </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>The standard sales tax rate in Pakistan is 18% on most goods under the Sales Tax Act 1990, with reduced rates of 10% and 12% on certain specified items.</li>
+            <li>Manufacturers with annual turnover exceeding PKR 10 million must register for sales tax, and all importers of taxable goods must register regardless of turnover.</li>
+            <li>Registered businesses can recover input tax paid on purchases, so the final tax burden falls on the end consumer.</li>
+            <li>The complete monthly sales tax return must be e-filed by the 18th of the following month on the IRIS portal, even if there were no taxable transactions.</li>
+            <li>Late filing incurs a penalty of PKR 10,000 or 5% of tax payable, whichever is higher, and may result in removal from the Active Taxpayers List.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. What is the standard sales tax rate on most goods in Pakistan?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) 15%</li>
+              <li>B) 16%</li>
+              <li>C) 17%</li>
+              <li>D) 18%</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. What is the annual turnover threshold for manufacturers to register for sales tax?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) PKR 5 million</li>
+              <li>B) PKR 8 million</li>
+              <li>C) PKR 10 million</li>
+              <li>D) PKR 15 million</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. By what date must the complete monthly sales tax return be e-filed on IRIS?</p>
+            <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A) 10th of the following month</li>
+              <li>B) 15th of the following month</li>
+              <li>C) 18th of the following month</li>
+              <li>D) 20th of the following month</li>
+            </ul>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Federal Board of Revenue (FBR) – Sales Tax Rules</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Sales_tax_in_Pakistan" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Sales Tax in Pakistan – Wikipedia</a></li>
+            <li><a href="https://iris.fbr.gov.pk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">FBR IRIS Portal – Sales Tax Filing</a></li>
+            <li><a href="https://www.fbr.gov.pk/forms-and-publications" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">FBR Sales Tax Forms and Publications</a></li>
+          </ul>
+
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>

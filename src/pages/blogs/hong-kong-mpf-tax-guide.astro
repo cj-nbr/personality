@@ -1,12 +1,12 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BlogLayout from "../../layouts/BlogLayout.astro";
 
 const title = "Hong Kong MPF and Tax: How MPF Contributions Affect Your Tax";
 const description = "Hong Kong MPF and tax guide. Learn how Mandatory Provident Fund contributions reduce your assessable income and use our Hong Kong tax calculator.";
 const image = "/images/blogs/hong-kong-mpf-tax-guide.svg";
 ---
 
-<Layout title={title} description={description} image={image}>
+<BlogLayout title={title} description={description} image={image} author="Emily Wong" authorBio="Emily Wong is a tax advisor specializing in Hong Kong retirement schemes and MPF tax planning." lastUpdated="July 2026" readTime="10 min read">
   <div class="min-h-screen bg-canvas dark:bg-canvas">
     <main class="min-h-screen">
       <div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -74,8 +74,57 @@ const image = "/images/blogs/hong-kong-mpf-tax-guide.svg";
               <a href="/blogs/hong-kong-tax-residency" class="block rounded border p-4 hover:border-primary transition">Hong Kong Tax Residency</a>
             </div>
           </div>
+
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Financial charts showing retirement savings growth" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Interesting Facts</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li>MPF was introduced in Hong Kong in 2000, replacing the earlier ORSO system for most employees.</li>
+            <li>Mandatory MPF contributions are deductible up to HK$18,000 per year for both employee and employer portions.</li>
+            <li>Voluntary contributions enjoy a separate deduction cap of HK$1,500 per year.</li>
+            <li>MPF funds are generally locked until age 65, though early withdrawal is possible under specific circumstances.</li>
+          </ul>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Quick Quiz</h2>
+          <div class="space-y-4">
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">1. What is the annual tax deduction cap for mandatory MPF contributions in Hong Kong?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>HK$12,000</li>
+                <li>HK$18,000</li>
+                <li>HK$24,000</li>
+                <li>HK$36,000</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">2. How much is the voluntary contribution tax deduction cap per year?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>HK$500</li>
+                <li>HK$1,000</li>
+                <li>HK$1,500</li>
+                <li>HK$2,000</li>
+              </ul>
+            </div>
+            <div class="rounded-lg border border-hairline bg-canvas p-4 dark:border-overlay-lighter dark:bg-surface">
+              <p class="font-medium text-ink dark:text-on-primary">3. At what age can MPF funds generally be withdrawn without restrictions?</p>
+              <ul class="mt-2 list-disc pl-6 text-sm text-body dark:text-muted">
+                <li>55</li>
+                <li>60</li>
+                <li>65</li>
+                <li>70</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-semibold text-ink dark:text-on-primary">Further Reading</h2>
+          <ul class="list-disc pl-6 space-y-2 text-body dark:text-muted">
+            <li><a href="https://www.mpfa.org.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Mandatory Provident Fund Schemes Authority</a></li>
+            <li><a href="https://www.ird.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Inland Revenue Department – Official Site</a></li>
+            <li><a href="https://www.gov.hk" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">Hong Kong Government Official Portal</a></li>
+          </ul>
+
         </article>
       </div>
     </main>
   </div>
-</Layout>
+</BlogLayout>
