@@ -41,7 +41,7 @@ const {
         <article class="prose max-w-none">
           <header class="mb-8">
             {image && (
-              <img src={image} alt={title} class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+              <img src={image} alt={title} class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
             )}
             <h1 class="text-4xl font-bold text-ink mb-4 dark:text-on-primary">{title}</h1>
             <div class="flex flex-wrap items-center gap-4 text-sm text-muted dark:text-muted">

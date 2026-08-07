@@ -102,7 +102,7 @@ const guideSchema = {
       </header>
 
       {guide.data.image && (
-        <img src={guide.data.image} alt={guide.data.title} class="mb-8 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="eager" />
+        <img src={guide.data.image} alt={guide.data.title} class="mb-8 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
       )}
 
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-4">

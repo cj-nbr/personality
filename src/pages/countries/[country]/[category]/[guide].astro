@@ -49,7 +49,7 @@ if (!country || !category || !guide) {
   ]}
 >
   <div class="mb-8">
-    <img src={guide.image} alt={guide.title} class="w-full h-48 sm:h-64 object-cover rounded-xl mb-6" />
+    <img src={guide.image} alt={guide.title} class="w-full h-48 sm:h-64 object-cover rounded-xl mb-6" loading="lazy" />
     <h1 class="text-4xl font-bold text-ink dark:text-on-primary" data-i18n="guide.title">{guide.title}</h1>
     <p class="mt-2 text-lg text-body dark:text-muted" data-i18n="guide.description">{guide.description}</p>
   </div>
