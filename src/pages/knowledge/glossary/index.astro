@@ -49,7 +49,7 @@ const glossaryIndexSchema = {
         <p class="mt-4 text-xl text-body dark:text-muted">Searchable definitions for essential tax terms. Each entry includes clear explanations, examples, and links to related guides and calculators.</p>
       </header>
 
-      <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1200&q=80" alt="Tax glossary and financial terminology reference materials" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+      <img src="https://images.unsplash.com/photo-leLj_06wjJQ?w=1200&q=80" alt="Tax glossary and financial terminology reference materials" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
 
       <GlossarySearch terms={glossary.map(t => ({ term: t.data.term, slug: t.id, category: t.data.category }))} />
 
@@ -71,6 +71,96 @@ const glossaryIndexSchema = {
               </ul>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section class="mt-16 border-t border-hairline pt-12 dark:border-overlay-light" aria-labelledby="how-to-use-heading">
+        <h2 id="how-to-use-heading" class="text-3xl font-semibold text-ink mb-6 dark:text-on-primary">How to Use This Glossary</h2>
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div>
+            <p class="text-body dark:text-muted mb-4">This glossary is designed to be both a quick reference and a learning tool. Use the search bar at the top to find terms instantly, or browse by category if you want to explore a subject area in depth. Each entry provides a clear definition, practical examples, and links to related guides and calculators where you can apply the concept.</p>
+            <p class="text-body dark:text-muted mb-4">Click on any term to open its dedicated page. From there, you can follow internal links to explore related vocabulary, read full guides, or jump directly to a calculator that uses the term. If you are new to tax terminology, we recommend starting with the Tax Basics category and working through the terms in the order suggested in our learning path below.</p>
+            <p class="text-body dark:text-muted">Bookmark this page and return whenever you encounter an unfamiliar term in a tax document, news article, or conversation with a financial advisor. The glossary is updated regularly to reflect changes in tax law and emerging financial products.</p>
+          </div>
+          <div class="space-y-4">
+            <div class="rounded-lg border border-hairline bg-surface p-5 dark:border-overlay-lighter dark:bg-surface">
+              <h3 class="font-semibold text-ink dark:text-on-primary">Tip 1: Use the Search</h3>
+              <p class="mt-2 text-sm text-body dark:text-muted">Start typing a term and the glossary filters instantly. You do not need to match the exact capitalization or spacing.</p>
+            </div>
+            <div class="rounded-lg border border-hairline bg-surface p-5 dark:border-overlay-lighter dark:bg-surface">
+              <h3 class="font-semibold text-ink dark:text-on-primary">Tip 2: Check Examples</h3>
+              <p class="mt-2 text-sm text-body dark:text-muted">Most entries include worked examples. These show how the term operates in practice and can clarify ambiguous definitions.</p>
+            </div>
+            <div class="rounded-lg border border-hairline bg-surface p-5 dark:border-overlay-lighter dark:bg-surface">
+              <h3 class="font-semibold text-ink dark:text-on-primary">Tip 3: Follow Links</h3>
+              <p class="mt-2 text-sm text-body dark:text-muted">Related guides and calculators are linked directly. Use them to deepen your understanding and test your knowledge.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-16 border-t border-hairline pt-12 dark:border-overlay-light" aria-labelledby="tax-learning-path-heading">
+        <h2 id="tax-learning-path-heading" class="text-3xl font-semibold text-ink mb-6 dark:text-on-primary">Tax Learning Path</h2>
+        <p class="text-body dark:text-muted mb-8">Not sure where to begin? Follow this suggested order to build your tax knowledge systematically, from foundational terms to advanced concepts.</p>
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white dark:bg-primary">1</div>
+            <div>
+              <h3 class="font-semibold text-ink dark:text-on-primary">Start with Tax Basics</h3>
+              <p class="text-sm text-body dark:text-muted mt-1">Learn core terms like taxable income, filing status, and standard deduction. These form the vocabulary used in every other guide.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white dark:bg-primary">2</div>
+            <div>
+              <h3 class="font-semibold text-ink dark:text-on-primary">Move to Deductions and Credits</h3>
+              <p class="text-sm text-body dark:text-muted mt-1">Understand the difference between above-the-line and itemized deductions, and how tax credits can reduce your bill dollar for dollar.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white dark:bg-primary">3</div>
+            <div>
+              <h3 class="font-semibold text-ink dark:text-on-primary">Explore Tax Types</h3>
+              <p class="text-sm text-body dark:text-muted mt-1">Review income tax, capital gains tax, payroll tax, and corporate tax. Each has its own rules, forms, and calculation methods.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white dark:bg-primary">4</div>
+            <div>
+              <h3 class="font-semibold text-ink dark:text-on-primary">Advance to Filing and Compliance</h3>
+              <p class="text-sm text-body dark:text-muted mt-1">Familiarize yourself with deadlines, payment methods, penalties, and audit procedures. Knowing these keeps you in good standing with tax authorities.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white dark:bg-primary">5</div>
+            <div>
+              <h3 class="font-semibold text-ink dark:text-on-primary">Finish with Advanced Topics</h3>
+              <p class="text-sm text-body dark:text-muted mt-1">Once comfortable with the basics, explore international tax, investment strategies, and specialized credits relevant to your situation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-16 border-t border-hairline pt-12 dark:border-overlay-light" aria-labelledby="common-misconceptions-heading">
+        <h2 id="common-misconceptions-heading" class="text-3xl font-semibold text-ink mb-6 dark:text-on-primary">Common Misconceptions</h2>
+        <p class="text-body dark:text-muted mb-8">Myths about taxes persist because they are repeated in casual conversation or outdated sources. Below, we address some of the most frequent misunderstandings with facts and references.</p>
+        <div class="space-y-6">
+          <div class="rounded-lg border border-hairline bg-surface p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Myth: Filing a tax extension gives you more time to pay</h3>
+            <p class="mt-2 text-body dark:text-muted"><strong class="text-ink dark:text-on-primary">Fact:</strong> An extension only gives you extra time to file your return, not extra time to pay any tax owed. Interest and penalties accrue on unpaid balances from the original due date. Estimate your liability and pay as much as possible by the deadline to minimize charges.</p>
+          </div>
+          <div class="rounded-lg border border-hairline bg-surface p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Myth: You do not need to report income if you are paid in cash</h3>
+            <p class="mt-2 text-body dark:text-muted"><strong class="text-ink dark:text-on-primary">Fact:</strong> All income is taxable regardless of how you receive it. Cash payments are still reportable, and failing to declare them can trigger audits, fines, and criminal charges in extreme cases. Keep accurate records of every transaction.</p>
+          </div>
+          <div class="rounded-lg border border-hairline bg-surface p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Myth: You can claim dependents without proving support</h3>
+            <p class="mt-2 text-body dark:text-muted"><strong class="text-ink dark:text-on-primary">Fact:</strong> To claim a dependent, you must provide more than half of their financial support during the year. Documentation such as receipts, school records, and medical bills may be required if your return is examined.</p>
+          </div>
+          <div class="rounded-lg border border-hairline bg-surface p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Myth: A large refund means you paid too much tax</h3>
+            <p class="mt-2 text-body dark:text-muted"><strong class="text-ink dark:text-on-primary">Fact:</strong> A large refund means you overpaid through withholding or estimated payments throughout the year. That money could have been invested, saved, or used to pay down debt. Adjust your withholding to get closer to break-even and improve your cash flow.</p>
+          </div>
         </div>
       </section>
     </div>

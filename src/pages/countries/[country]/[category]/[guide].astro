@@ -124,5 +124,87 @@ if (!country || !category || !guide) {
         ))}
       </div>
     </aside>
+
+    <section class="mt-12 rounded-xl border border-hairline bg-canvas p-8 dark:border-overlay-lighter dark:bg-surface" aria-labelledby="guide-detailed-overview">
+      <h2 id="guide-detailed-overview" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Detailed Overview</h2>
+      <p class="text-body leading-relaxed dark:text-muted">Understanding {guide.title.toLowerCase()} in {country.name} is essential for every taxpayer, business owner, and financial professional. {country.name} maintains one of the most comprehensive tax frameworks among the supported jurisdictions, with clear rules that balance revenue collection and economic growth. This guide breaks down the core principles, recent legislative updates, and practical steps you need to stay compliant and optimize your tax position.</p>
+      <p class="mt-4 text-body leading-relaxed dark:text-muted">The {category.name.toLowerCase()} landscape in {country.name} evolves regularly. Staying informed about threshold changes, new reliefs, and filing deadlines helps you avoid penalties and take advantage of available benefits. Whether you are an individual taxpayer, a small business operator, or an expatriate navigating local rules, this guide provides the context and actionable steps you need.</p>
+      <p class="mt-4 text-body leading-relaxed dark:text-muted">We recommend using this guide alongside the official resources from {country.officialTaxAuthority} and our interactive calculators for real-time estimates. Combining authoritative sources with practical tools gives you the most reliable planning foundation.</p>
+    </section>
+
+    <section class="mt-8 rounded-xl border border-hairline bg-canvas-soft p-8 dark:border-overlay-light dark:bg-surface" aria-labelledby="guide-key-points">
+      <h2 id="guide-key-points" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Key Points</h2>
+      <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <li class="flex items-start gap-3 text-body dark:text-muted">
+          <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+          <span>Review your {category.name.toLowerCase()} obligations annually to capture threshold or rate changes.</span>
+        </li>
+        <li class="flex items-start gap-3 text-body dark:text-muted">
+          <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+          <span>Keep organized records of income, expenses, and supporting documents for at least {country.taxYear === '2024/25' ? '5' : '6'} years.</span>
+        </li>
+        <li class="flex items-start gap-3 text-body dark:text-muted">
+          <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+          <span>Use official calculators and professional advice for complex situations involving multiple income sources.</span>
+        </li>
+        <li class="flex items-start gap-3 text-body dark:text-muted">
+          <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+          <span>File returns on time to avoid late fees, interest charges, and potential compliance flags.</span>
+        </li>
+        <li class="flex items-start gap-3 text-body dark:text-muted">
+          <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+          <span>Claim all eligible deductions and credits; missing them increases your effective tax rate unnecessarily.</span>
+        </li>
+        <li class="flex items-start gap-3 text-body dark:text-muted">
+          <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+          <span>Understand residency rules; they determine which country can tax your worldwide income.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mt-8 rounded-xl border border-hairline bg-canvas-soft p-8 dark:border-overlay-light dark:bg-surface" aria-labelledby="guide-faq">
+      <h2 id="guide-faq" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Common Questions About {guide.title}</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Do I need to file a return if I earned below the threshold?</h3>
+          <p class="mt-2 text-body dark:text-muted">Even if your income is below the filing threshold, filing a return can be beneficial. You may be eligible for refundable credits or need to report income for loan or visa applications. Check the latest thresholds on the {country.officialTaxAuthority} website.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How often do tax rules change in {country.name}?</h3>
+          <p class="mt-2 text-body dark:text-muted">Tax rules can change annually through budget announcements or mid-year amendments. Major reforms typically occur every few years, but smaller adjustments to thresholds, rates, and reliefs happen more frequently. Subscribe to official updates from {country.officialTaxAuthority}.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Can I amend a return after filing?</h3>
+          <p class="mt-2 text-body dark:text-muted">Yes, most tax authorities allow amended returns within a statutory period, usually 2-3 years from the original filing date. Keep documentation of any corrections and submit the amended form through the official portal or by mail.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-ink dark:text-on-primary">What records should I keep?</h3>
+          <p class="mt-2 text-body dark:text-muted">Maintain records of income, expenses, receipts, invoices, bank statements, and supporting documents for at least the period required by {country.name} tax law. Digital records are generally accepted if they are accurate and accessible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-8 rounded-xl border border-hairline bg-canvas-soft p-8 dark:border-overlay-light dark:bg-surface" aria-labelledby="guide-resources">
+      <h2 id="guide-resources" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Related Resources</h2>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href={country.taxAuthorityUrl} target="_blank" rel="noopener" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+          <h3 class="font-semibold text-ink dark:text-on-primary">{country.officialTaxAuthority}</h3>
+          <p class="text-sm text-muted mt-2 dark:text-muted">Official tax authority website for forms, rates, and guidance.</p>
+        </a>
+        <a href={`/countries/${country.slug}`} class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+          <h3 class="font-semibold text-ink dark:text-on-primary">{country.name} Tax Overview</h3>
+          <p class="text-sm text-muted mt-2 dark:text-muted">Comprehensive overview of all tax categories and calculators for {country.name}.</p>
+        </a>
+        <a href={`/countries/${country.slug}/${category.slug}`} class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+          <h3 class="font-semibold text-ink dark:text-on-primary">{category.name} Calculators</h3>
+          <p class="text-sm text-muted mt-2 dark:text-muted">Interactive tools to estimate your {category.name.toLowerCase()} liability.</p>
+        </a>
+      </div>
+    </section>
+
+    <div class="mt-8 rounded-xl border border-hairline bg-canvas p-8 dark:border-overlay-lighter dark:bg-surface">
+      <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Was this helpful?</h2>
+      <p class="text-body dark:text-muted">We continuously improve our guides based on user feedback. If you found this guide useful, explore our calculators for instant estimates, or visit our <a href="/knowledge" class="text-link hover:underline dark:text-link">Knowledge Center</a> for more tax education.</p>
+    </div>
   </div>
 </CountryLayout>

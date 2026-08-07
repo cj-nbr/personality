@@ -10,15 +10,83 @@ import Layout from "../layouts/Layout.astro";
   <meta name="robots" content="noindex, nofollow" />
   <div class="min-h-screen bg-canvas dark:bg-canvas flex items-center justify-center">
     <div class="max-w-2xl mx-auto px-4 py-16 text-center">
-      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80" alt="Friendly illustration of a lost page" class="mx-auto mb-6 w-full max-w-md rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+      <img src="https://images.unsplash.com/photo-C55M3wxaoB0?w=1200&q=80" alt="Friendly illustration of a lost page" class="mx-auto mb-6 w-full max-w-md rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
       <h1 class="text-6xl font-bold text-ink mb-4">404</h1>
       <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary" data-i18n="pages.not_found">Page Not Found</h2>
-      <p class="text-body text-lg mb-8 dark:text-muted" data-i18n="not_found.message">The page you are looking for could not be found. It may have been moved, deleted, or you entered the wrong URL.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-        <a href="/countries" class="inline-block rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Popular Calculators</a>
-        <a href="/blogs" class="inline-block rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Tax Blog</a>
-        <a href="/contact" class="inline-block rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Contact Us</a>
-      </div>
+       <p class="text-body text-lg mb-8 dark:text-muted" data-i18n="not_found.message">The page you are looking for could not be found. It may have been moved, deleted, or you entered the wrong URL.</p>
+       <p class="text-body text-base mb-8 dark:text-muted">A 404 error means the server could not find the requested resource. This can happen if the page was removed, the URL was typed incorrectly, or the link you followed is outdated. Below are some resources to help you find the tax information you need.</p>
+       <p class="text-body text-base mb-8 dark:text-muted">We update our site frequently to add new calculators, countries, and guides. If you previously accessed a page that no longer exists, it may have been replaced by a newer version with improved features. Check the relevant section of our site to find the latest equivalent resource.</p>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+         <a href="/countries" class="inline-block rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Popular Calculators</a>
+         <a href="/blogs" class="inline-block rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Tax Blog</a>
+         <a href="/contact" class="inline-block rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Contact Us</a>
+       </div>
+
+       <div class="rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface mb-8 text-left">
+         <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Popular Calculators</h3>
+         <p class="text-body dark:text-muted mb-4">Explore our most-used tax calculators for quick estimates and planning:</p>
+         <ul class="space-y-2 text-sm text-body dark:text-muted">
+           <li><a href="/countries/united-states" class="text-link hover:underline dark:text-link">United States Income Tax Calculator</a></li>
+           <li><a href="/countries/india" class="text-link hover:underline dark:text-link">India GST and TDS Calculator</a></li>
+           <li><a href="/countries/hong-kong" class="text-link hover:underline dark:text-link">Hong Kong Salaries Tax Calculator</a></li>
+           <li><a href="/countries/singapore" class="text-link hover:underline dark:text-link">Singapore Income Tax Calculator</a></li>
+           <li><a href="/countries/united-kingdom" class="text-link hover:underline dark:text-link">UK Income Tax Calculator</a></li>
+           <li><a href="/countries/malaysia" class="text-link hover:underline dark:text-link">Malaysia Income Tax Calculator</a></li>
+         </ul>
+       </div>
+
+       <div class="rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface mb-8 text-left">
+         <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Recent Blog Posts</h3>
+         <p class="text-body dark:text-muted mb-4">Stay informed with our latest tax guides and updates:</p>
+         <ul class="space-y-2 text-sm text-body dark:text-muted">
+           <li><a href="/blogs" class="text-link hover:underline dark:text-link">Understanding Tax Brackets in the US</a></li>
+           <li><a href="/blogs" class="text-link hover:underline dark:text-link">GST Compliance Checklist for Small Businesses</a></li>
+           <li><a href="/blogs" class="text-link hover:underline dark:text-link">How to Optimize Your Tax Return in India</a></li>
+           <li><a href="/blogs" class="text-link hover:underline dark:text-link">Capital Gains Tax: Short-Term vs Long-Term</a></li>
+           <li><a href="/blogs" class="text-link hover:underline dark:text-link">Property Tax Guide for Hong Kong Residents</a></li>
+         </ul>
+       </div>
+
+       <div class="rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface mb-8 text-left">
+         <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Browse by Country</h3>
+         <p class="text-body dark:text-muted mb-4">Find tax information tailored to your location:</p>
+         <div class="flex flex-wrap gap-2">
+           <a href="/countries/united-states" class="inline-block rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">United States</a>
+           <a href="/countries/india" class="inline-block rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">India</a>
+           <a href="/countries/hong-kong" class="inline-block rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Hong Kong</a>
+           <a href="/countries/singapore" class="inline-block rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Singapore</a>
+           <a href="/countries/united-kingdom" class="inline-block rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">United Kingdom</a>
+           <a href="/countries/malaysia" class="inline-block rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Malaysia</a>
+           <a href="/countries/indonesia" class="inline-block rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Indonesia</a>
+           <a href="/countries/new-zealand" class="inline-block rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">New Zealand</a>
+           <a href="/countries/pakistan" class="inline-block rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Pakistan</a>
+           <a href="/countries/philippines" class="inline-block rounded-pill bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">Philippines</a>
+         </div>
+       </div>
+
+       <div class="rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface mb-8 text-left">
+         <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Search Tips</h3>
+         <p class="text-body dark:text-muted mb-4">If you reached this page by searching, try these tips to find what you need:</p>
+         <ul class="space-y-2 text-sm text-body dark:text-muted">
+           <li>Check for typos in the URL. A misspelled country name or tax type is a common cause of 404 errors. Pay special attention to hyphens: use "united-states" rather than "united states" or "unitedstates".</li>
+           <li>Use the search box on the <a href="/countries" class="text-link hover:underline dark:text-link">Countries</a> page to find calculators by name or region. The search function matches partial strings, so typing "sing" will find Singapore.</li>
+           <li>Browse the <a href="/blogs" class="text-link hover:underline dark:text-link">Tax Blog</a> for guides that may cover your topic. Our articles cover everything from basic definitions to advanced planning strategies.</li>
+           <li>Visit the <a href="/knowledge" class="text-link hover:underline dark:text-link">Knowledge Center</a> for definitions and explanations of tax terms. If you are unsure about a word or concept, the glossary is a fast way to get up to speed.</li>
+           <li>Start from the <a href="/" class="text-link hover:underline dark:text-link">homepage</a> and navigate using the main menu. Our site is organized by country, calculator type, and topic to help you find resources quickly.</li>
+           <li>If you bookmarked a page that has moved, try removing the trailing slash or searching for the page title in our site search.</li>
+         </ul>
+       </div>
+
+       <div class="rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface mb-8 text-left">
+         <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Still Can't Find It?</h3>
+         <p class="text-body dark:text-muted mb-4">If none of the suggestions above help, you can try one of the following:</p>
+         <ul class="space-y-2 text-sm text-body dark:text-muted">
+           <li>Clear your browser cache and reload the page. Sometimes cached redirects can lead to unexpected errors.</li>
+           <li>Try accessing the site from a different browser or device to rule out local configuration issues.</li>
+           <li>Check our <a href="/blogs" class="text-link hover:underline dark:text-link">blog</a> for recent posts that may reference the content you are looking for.</li>
+           <li>Contact us and describe what you were trying to find. We can help locate the right page or suggest alternative resources.</li>
+         </ul>
+       </div>
       <a href="/" class="inline-block rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">
         <span data-i18n="pages.go_home">Go back home</span>
       </a>

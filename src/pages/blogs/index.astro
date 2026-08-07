@@ -10,7 +10,7 @@ const posts = getSortedPosts();
     <main class="min-h-screen">
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <h1 class="text-4xl font-bold text-ink mb-8 dark:text-on-primary">Tax Blog</h1>
-        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1200&q=80" alt="Tax blog header with financial news" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-EL16ACtwLxg?w=1200&q=80" alt="Tax blog header with financial news" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
         <p class="text-lg text-body dark:text-muted mb-12">Latest tax tips, guides, and updates to help you stay informed and save taxes.</p>
         
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -34,7 +34,36 @@ const posts = getSortedPosts();
           <h2 class="text-xl font-semibold text-ink mb-3 dark:text-on-primary">About Our Blog</h2>
           <p class="text-body dark:text-muted">TaxPortal's blog features expert analysis from tax professionals and financial analysts. Our team of contributors includes Maya Lin (US tax), Kira Tanaka (India GST/TDS), Nora Chen (capital gains), Hana Patel (TDS deductions), Lena Park (Indian tax calculations), and Sora Vance (old vs new tax regimes). Browse our guides for actionable tax strategies and calculators for every tax scenario.</p>
           <p class="mt-3 text-body dark:text-muted">Every article follows a strict editorial process: initial research against official government sources, professional review by at least one qualified contributor, fact-checking before publication, and a post-publication review cycle when tax laws change. We clearly mark content as informational and encourage readers to consult a tax professional for personalized advice.</p>
+          <p class="mt-3 text-body dark:text-muted">Our blog covers a wide range of topics, from basic tax filing tips to advanced strategies for investors and business owners. We publish new articles weekly, with special focus on tax season deadlines, budget announcements, and regulatory updates that affect our supported countries.</p>
+          <p class="mt-3 text-body dark:text-muted">Whether you are filing your first tax return or managing a portfolio of international investments, our blog provides context and clarity that generic financial news often lacks. We explain not just what changed, but why it changed and how it affects real people.</p>
           <p class="mt-3 text-body dark:text-muted"><a href="/about" class="text-link hover:underline dark:text-link">Learn more about our team</a>.</p>
+        </div>
+
+        <div class="mt-12 rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface">
+          <h2 class="text-xl font-semibold text-ink mb-3 dark:text-on-primary">Editorial Standards</h2>
+          <p class="text-body dark:text-muted mb-3">Our blog maintains high editorial standards to ensure that every article is accurate, clear, and useful. Before publication, each post is reviewed for factual correctness against official tax authority sources. We verify tax rates, thresholds, and deadlines to the best of our ability at the time of writing.</p>
+          <p class="text-body dark:text-muted mb-3">We avoid sensationalism and exaggeration. If a tax strategy is speculative or subject to change, we state that explicitly. Readers should treat our articles as starting points for research, not as definitive legal rulings.</p>
+          <p class="text-body dark:text-muted">We update older posts when significant legislative changes occur. Outdated articles are labeled with a revision date so readers can assess their relevance.</p>
+        </div>
+
+        <div class="mt-12 rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface">
+          <h2 class="text-xl font-semibold text-ink mb-3 dark:text-on-primary">Contributor Guidelines</h2>
+          <p class="text-body dark:text-muted mb-3">Finsiva welcomes contributions from tax professionals, financial analysts, and educators who meet our qualification standards. Contributors must demonstrate expertise through credentials such as CPA, CA, ACCA, or equivalent professional designations, or through verifiable experience in tax advisory, compliance, or education.</p>
+          <p class="text-body dark:text-muted mb-3">All submissions are reviewed by our editorial board before publication. We reserve the right to edit for clarity, accuracy, and consistency with our style guide. Contributors retain credit for their work, and bylines include name and relevant qualification.</p>
+          <p class="text-body dark:text-muted">If you are interested in contributing, please send a brief proposal and writing sample to our editorial team via the <a href="/contact" class="text-link hover:underline dark:text-link">Contact</a> page.</p>
+        </div>
+
+        <div class="mt-12 rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface">
+          <h2 class="text-xl font-semibold text-ink mb-3 dark:text-on-primary">Newsletter Signup</h2>
+          <p class="text-body dark:text-muted mb-4">Stay up to date with the latest tax tips, calculator releases, and policy changes. Our newsletter is sent once a month and includes curated articles, upcoming deadline reminders, and exclusive guides for our subscribers.</p>
+          <form action="https://formspree.io/f/xpqvelrz" method="POST" class="space-y-4">
+            <div>
+              <label for="newsletter-email" class="block text-sm font-medium text-ink mb-1 dark:text-on-primary">Email address</label>
+              <input type="email" id="newsletter-email" name="email" required class="w-full rounded-lg border border-hairline bg-canvas px-4 py-2 text-ink focus:border-primary focus:outline-none dark:border-overlay-lighter dark:bg-surface dark:text-on-primary" />
+            </div>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+          <p class="mt-3 text-sm text-muted dark:text-muted">We respect your privacy. Unsubscribe at any time. No spam, ever.</p>
         </div>
       </div>
     </main>

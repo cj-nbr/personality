@@ -105,4 +105,82 @@ if (!country || !category) {
         ))}
     </div>
   </section>
+
+  <section class="mt-12 rounded-xl border border-hairline bg-canvas-soft p-8 dark:border-overlay-light dark:bg-surface" aria-labelledby="category-deep-dive">
+    <h2 id="category-deep-dive" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Deep Dive Into {category.name}</h2>
+    <p class="text-body leading-relaxed dark:text-muted">{category.name} in {country.name} represents one of the most important areas of personal and business finance. Whether you are an employee, a business owner, an investor, or a freelancer, understanding the rules, thresholds, and reliefs within this category helps you make informed decisions and stay compliant with local tax obligations.</p>
+    <p class="mt-4 text-body leading-relaxed dark:text-muted">The tax framework for {category.name.toLowerCase()} is designed to balance revenue generation with economic incentives. Over the years, {country.name} has refined its approach to ensure fairness while encouraging investment, entrepreneurship, and responsible financial planning. Our calculators and guides are updated regularly to reflect these changes, giving you accurate estimates for planning purposes.</p>
+    <p class="mt-4 text-body leading-relaxed dark:text-muted">We recommend starting with the calculators listed above to get a baseline estimate, then reviewing the guides for detailed explanations of how the numbers are derived. If you have specific questions, the FAQ section addresses common scenarios, and our Knowledge Center covers foundational concepts that apply across multiple jurisdictions.</p>
+  </section>
+
+  <section class="mt-8 rounded-xl border border-hairline bg-canvas p-8 dark:border-overlay-lighter dark:bg-surface" aria-labelledby="category-tips">
+    <h2 id="category-tips" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Practical Tips for {country.name} Taxpayers</h2>
+    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <li class="flex items-start gap-3 text-body dark:text-muted">
+        <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+        <span>Review your {category.name.toLowerCase()} position at least annually to capture new thresholds or reliefs.</span>
+      </li>
+      <li class="flex items-start gap-3 text-body dark:text-muted">
+        <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+        <span>Keep detailed records of income, expenses, and supporting documents for easy verification.</span>
+      </li>
+      <li class="flex items-start gap-3 text-body dark:text-muted">
+        <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+        <span>Use our interactive calculators to compare scenarios before making financial decisions.</span>
+      </li>
+      <li class="flex items-start gap-3 text-body dark:text-muted">
+        <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+        <span>Consult a tax professional for complex situations involving multiple income sources or cross-border elements.</span>
+      </li>
+      <li class="flex items-start gap-3 text-body dark:text-muted">
+        <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+        <span>File returns and payments on time to avoid penalties, interest, and compliance issues.</span>
+      </li>
+      <li class="flex items-start gap-3 text-body dark:text-muted">
+        <svg class="mt-0.5 h-5 w-5 text-primary flex-shrink-0 dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 0 0118 0z" /></svg>
+        <span>Claim all eligible deductions and credits; missing them increases your effective tax rate unnecessarily.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="mt-8 rounded-xl border border-hairline bg-canvas-soft p-8 dark:border-overlay-light dark:bg-surface" aria-labelledby="category-resources">
+    <h2 id="category-resources" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Recommended Resources</h2>
+    <p class="text-body leading-relaxed dark:text-muted">For the most accurate and up-to-date information on {category.name.toLowerCase()} in {country.name}, we recommend consulting the following resources. Official tax authority publications provide the definitive rules, while our guides and calculators offer practical explanations and instant estimates.</p>
+    <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <a href={country.taxAuthorityUrl} target="_blank" rel="noopener" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+        <h3 class="font-semibold text-ink dark:text-on-primary">{country.officialTaxAuthority}</h3>
+        <p class="text-sm text-muted mt-2 dark:text-muted">Official forms, rates, guidance, and filing portals.</p>
+      </a>
+      <a href={`/countries/${country.slug}`} class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+        <h3 class="font-semibold text-ink dark:text-on-primary">{country.name} Overview</h3>
+        <p class="text-sm text-muted mt-2 dark:text-muted">All tax categories, calculators, and guides for {country.name}.</p>
+      </a>
+      <a href="/knowledge" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+        <h3 class="font-semibold text-ink dark:text-on-primary">Knowledge Center</h3>
+        <p class="text-sm text-muted mt-2 dark:text-muted">Learn tax fundamentals, glossary terms, and planning strategies.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="mt-8 rounded-xl border border-hairline bg-canvas p-8 dark:border-overlay-lighter dark:bg-surface" aria-labelledby="category-faq-expanded">
+    <h2 id="category-faq-expanded" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Frequently Asked Questions About {category.name}</h2>
+    <div class="space-y-6">
+      <div>
+        <h3 class="text-lg font-semibold text-ink dark:text-on-primary">What documents do I need to file for {category.name.toLowerCase()}?</h3>
+        <p class="mt-2 text-body dark:text-muted">Typical documents include proof of income, expense receipts, bank statements, and identification. Check the specific requirements on the {country.officialTaxAuthority} website, as document lists can vary by taxpayer profile and tax year.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Can I amend my return after submission?</h3>
+        <p class="mt-2 text-body dark:text-muted">Yes, most jurisdictions allow amended returns within a statutory period, usually 2 to 3 years from the original filing date. Keep records of any corrections and submit the amended form through the official portal if available.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-ink dark:text-on-primary">What happens if I miss the filing deadline?</h3>
+        <p class="mt-2 text-body dark:text-muted">Late filings typically result in penalties and interest charges. The exact amount depends on the tax owed and how late the filing is. To minimize costs, file as soon as possible and contact {country.officialTaxAuthority} if you need a payment plan.</p>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-ink dark:text-on-primary">Are there penalties for underreporting income?</h3>
+        <p class="mt-2 text-body dark:text-muted">Underreporting can trigger accuracy-related penalties, especially if the error is substantial or intentional. Maintain accurate records, report all income sources, and use our calculators to cross-check your estimates before filing.</p>
+      </div>
+    </div>
+  </section>
 </CountryLayout>

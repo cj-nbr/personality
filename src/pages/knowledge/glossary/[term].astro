@@ -68,7 +68,7 @@ const termSchema = {
         )}
       </header>
 
-      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80" alt={`Visual guide and reference for ${term.data.term}`} class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+      <img src="https://images.unsplash.com/photo-zfHiLYHM4Tk?w=1200&q=80" alt={`Visual guide and reference for ${term.data.term}`} class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
 
       <section class="prose max-w-none prose-p:text-body prose-p:leading-relaxed prose-p:mt-4 prose-a:text-link prose-a:underline prose-a:decoration-dashed prose-a:underline-offset-4 prose-a:hover:text-primary" aria-labelledby="definition-heading">
         <h2 id="definition-heading" class="text-2xl font-semibold text-ink dark:text-on-primary">Definition</h2>
@@ -127,6 +127,75 @@ const termSchema = {
             </ul>
           </section>
         )}
+      </section>
+
+      <section class="mt-12 border-t border-hairline pt-10 dark:border-overlay-light" aria-labelledby="related-terms-heading">
+        <h2 id="related-terms-heading" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Related Terms</h2>
+        <p class="text-body dark:text-muted mb-6">Understanding how this term connects to other vocabulary strengthens your ability to read tax documents and communicate precisely with professionals.</p>
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="/knowledge/glossary/taxable-income" class="group flex items-center gap-2 rounded-md border border-hairline p-3 text-sm text-link hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary dark:text-link">
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span class="font-medium text-ink dark:text-on-primary">Taxable Income</span>
+          </a>
+          <a href="/knowledge/glossary/tax-credit" class="group flex items-center gap-2 rounded-md border border-hairline p-3 text-sm text-link hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary dark:text-link">
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span class="font-medium text-ink dark:text-on-primary">Tax Credit</span>
+          </a>
+          <a href="/knowledge/glossary/tax-deduction" class="group flex items-center gap-2 rounded-md border border-hairline p-3 text-sm text-link hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary dark:text-link">
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span class="font-medium text-ink dark:text-on-primary">Tax Deduction</span>
+          </a>
+          <a href="/knowledge/glossary/withholding" class="group flex items-center gap-2 rounded-md border border-hairline p-3 text-sm text-link hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary dark:text-link">
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span class="font-medium text-ink dark:text-on-primary">Withholding</span>
+          </a>
+          <a href="/knowledge/glossary/effective-tax-rate" class="group flex items-center gap-2 rounded-md border border-hairline p-3 text-sm text-link hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary dark:text-link">
+            <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span class="font-medium text-ink dark:text-on-primary">Effective Tax Rate</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="mt-12 border-t border-hairline pt-10 dark:border-overlay-light" aria-labelledby="practical-application-heading">
+        <h2 id="practical-application-heading" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Practical Application</h2>
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div>
+            <p class="text-body dark:text-muted mb-4">In practice, this term appears on nearly every major tax form. For individuals, it shows up on Form {term.data.term ? '1040' : 'W-2'} when reporting wages, on Schedule C for business income, and on Schedule D for capital gains. Businesses encounter it on corporate returns, partnership statements, and payroll filings. Knowing exactly where to place the information prevents costly rework and ensures accurate computation of tax owed.</p>
+            <p class="text-body dark:text-muted mb-4">When preparing your return, cross-reference the figures entered in this field with supporting documents such as W-2s, 1099s, bank statements, and receipts. A single transposition error can cascade into incorrect deductions, credits, or estimated payments. Use our calculators to validate your numbers before submitting, and consider filing electronically for immediate confirmation of receipt.</p>
+            <p class="text-body dark:text-muted">If you are self-employed, maintain a separate ledger for this category of income and expenses. Record each transaction with date, counterparty, amount, and purpose. At year end, reconcile your ledger against bank statements and third-party reports such as 1099-K or 1099-NEC to catch discrepancies before the IRS or local authority contacts you.</p>
+          </div>
+          <div class="rounded-lg border border-hairline bg-surface p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="text-lg font-semibold text-ink mb-4 dark:text-on-primary">Real-World Example</h3>
+            <p class="text-body dark:text-muted mb-3">Consider a freelance graphic designer who earned $75,000 in client payments during the year. Of that amount, $12,000 came from a foreign client and was subject to withholding in that country. The designer must report the full $75,000 on their home country return, claim a foreign tax credit for the $12,000 withheld, and pay any remaining balance. Understanding the precise definition and documentation requirements for this term ensures the credit is calculated correctly and the return is not flagged for review.</p>
+            <p class="text-body dark:text-muted">Another example involves a rental property owner who received $24,000 in gross rent. After deducting $8,000 in mortgage interest, $3,000 in property taxes, and $2,000 in maintenance, the net amount reported reflects the true economic gain. Accurate classification prevents overpayment and supports the position if the tax authority questions the return.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12 border-t border-hairline pt-10 dark:border-overlay-light" aria-labelledby="country-variations-heading">
+        <h2 id="country-variations-heading" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Country Variations</h2>
+        <p class="text-body dark:text-muted mb-6">While the core concept of this term is consistent across jurisdictions, the rules and thresholds vary significantly. Understanding these differences is essential for expatriates, digital nomads, and businesses operating in multiple countries.</p>
+        <div class="space-y-6">
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="rounded-lg border border-hairline bg-surface p-5 dark:border-overlay-lighter dark:bg-surface">
+              <h3 class="font-semibold text-ink dark:text-on-primary">United States</h3>
+              <p class="mt-2 text-sm text-body dark:text-muted">The IRS defines and governs this concept through a comprehensive body of regulations, court rulings, and revenue procedures. Thresholds are adjusted annually for inflation, and specific industries may have special rules under the Internal Revenue Code.</p>
+            </div>
+            <div class="rounded-lg border border-hairline bg-surface p-5 dark:border-overlay-lighter dark:bg-surface">
+              <h3 class="font-semibold text-ink dark:text-on-primary">United Kingdom</h3>
+              <p class="mt-2 text-sm text-body dark:text-muted">HMRC applies similar principles but with distinct terminology and calculation methods. Reliefs such as the personal allowance interact with this concept in ways that differ from the US standard deduction approach.</p>
+            </div>
+            <div class="rounded-lg border border-hairline bg-surface p-5 dark:border-overlay-lighter dark:bg-surface">
+              <h3 class="font-semibold text-ink dark:text-on-primary">India</h3>
+              <p class="mt-2 text-sm text-body dark:text-muted">The Income Tax Act includes specific provisions for residential status, which determines whether global income is taxable in India or only Indian-sourced income. This creates a different framework for individuals with cross-border ties.</p>
+            </div>
+            <div class="rounded-lg border border-hairline bg-surface p-5 dark:border-overlay-lighter dark:bg-surface">
+              <h3 class="font-semibold text-ink dark:text-on-primary">Singapore</h3>
+              <p class="mt-2 text-sm text-body dark:text-muted">IRAS offers various exemptions and rebates that effectively reduce the final liability. The concept is applied alongside territorial tax principles, meaning foreign-sourced income is generally exempt unless remitted.</p>
+            </div>
+          </div>
+          <p class="text-body dark:text-muted">Always verify the current rules with the official tax authority of the relevant country or consult a cross-border tax specialist, as bilateral tax treaties and local legislation may affect the treatment of this term in your specific case.</p>
+        </div>
       </section>
 
       <PrevNextNav

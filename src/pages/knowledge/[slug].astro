@@ -181,6 +181,99 @@ const guideSchema = {
         </section>
       )}
 
+      <section class="mt-12 border-t border-hairline pt-10 dark:border-overlay-light" aria-labelledby="summary-heading">
+        <h2 id="summary-heading" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Summary</h2>
+        <p class="text-body dark:text-muted">This guide has walked you through the essential aspects of <strong class="text-ink dark:text-on-primary">{guide.data.title}</strong>, from foundational definitions to practical application. You have learned how this concept fits into the broader tax system, what documentation is required, and how it affects your financial obligations. Whether you are filing your first return or optimizing a complex portfolio, the principles covered here provide a reliable framework for making informed decisions and maintaining compliance with tax authorities.</p>
+        <p class="text-body dark:text-muted mt-4">Remember that tax law is dynamic. Rules, thresholds, and forms are updated regularly by legislatures and revenue agencies. Bookmark this guide and revisit it before each tax season to ensure your strategies remain current. Use our calculators to model your specific situation, and do not hesitate to consult a qualified tax professional for personalized advice.</p>
+      </section>
+
+      <section class="mt-12 border-t border-hairline pt-10 dark:border-overlay-light" aria-labelledby="key-takeaways-heading">
+        <h2 id="key-takeaways-heading" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Key Takeaways</h2>
+        <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <li class="flex items-start gap-3 text-body dark:text-muted">
+            <svg class="h-5 w-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Understanding the precise definition of this term prevents costly errors in tax preparation and planning.</span>
+          </li>
+          <li class="flex items-start gap-3 text-body dark:text-muted">
+            <svg class="h-5 w-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Always cross-reference figures with original source documents such as W-2s, 1099s, or bank statements.</span>
+          </li>
+          <li class="flex items-start gap-3 text-body dark:text-muted">
+            <svg class="h-5 w-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Tax treatment varies significantly by jurisdiction; verify local rules before assuming they match international norms.</span>
+          </li>
+          <li class="flex items-start gap-3 text-body dark:text-muted">
+            <svg class="h-5 w-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Maintaining organized records throughout the year simplifies filing and strengthens your position during an audit.</span>
+          </li>
+          <li class="flex items-start gap-3 text-body dark:text-muted">
+            <svg class="h-5 w-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Consult a tax professional for cross-border income, business expenses, or unusual investment structures.</span>
+          </li>
+          <li class="flex items-start gap-3 text-body dark:text-muted">
+            <svg class="h-5 w-5 shrink-0 text-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Use our calculators and tools regularly to validate assumptions and explore the impact of legislative changes.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="mt-12 border-t border-hairline pt-10 dark:border-overlay-light" aria-labelledby="further-reading-heading">
+        <h2 id="further-reading-heading" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Further Reading</h2>
+        <p class="text-body dark:text-muted mb-6">Deepen your understanding by exploring these related guides. Each one builds on the concepts introduced here and provides practical tools for real-world application.</p>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="/knowledge/tax-brackets-explained" class="group rounded-lg border border-hairline p-4 transition-colors hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">Tax Brackets Explained</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Learn how progressive tax systems work and how brackets affect your effective rate.</p>
+          </a>
+          <a href="/knowledge/tax-deductions-explained" class="group rounded-lg border border-hairline p-4 transition-colors hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">Tax Deductions Explained</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Discover which deductions you qualify for and how to document them properly.</p>
+          </a>
+          <a href="/knowledge/tax-credits-explained" class="group rounded-lg border border-hairline p-4 transition-colors hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">Tax Credits Explained</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Understand refundable and non-refundable credits that can reduce your tax bill.</p>
+          </a>
+          <a href="/knowledge/capital-gains-tax-basics" class="group rounded-lg border border-hairline p-4 transition-colors hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">Capital Gains Tax Basics</h3>
+            <p class="mt-1 text-sm text-body dark:text-muted">Explore how investment profits are taxed and strategies to minimize gains tax.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="mt-12 border-t border-hairline pt-10 dark:border-overlay-light" aria-labelledby="test-knowledge-heading">
+        <h2 id="test-knowledge-heading" class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Test Your Knowledge</h2>
+        <p class="text-body dark:text-muted mb-6">Answer these three questions to reinforce what you have learned. Check your understanding and revisit any sections that feel unclear.</p>
+        <div class="space-y-6">
+          <div class="rounded-lg border border-hairline bg-surface p-6 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">1. What is the primary difference between a tax deduction and a tax credit?</p>
+            <ul class="mt-3 space-y-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>A deduction reduces taxable income, while a credit reduces tax owed dollar for dollar.</li>
+              <li>A credit reduces taxable income, while a deduction reduces tax owed dollar for dollar.</li>
+              <li>There is no difference; they are interchangeable terms.</li>
+              <li>Deductions apply only to businesses, while credits apply only to individuals.</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-surface p-6 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">2. Why is maintaining accurate records important for tax purposes?</p>
+            <ul class="mt-3 space-y-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>It ensures you can substantiate deductions and credits if your return is examined.</li>
+              <li>It guarantees you will receive a larger refund regardless of your tax situation.</li>
+              <li>It eliminates the need to file a tax return altogether.</li>
+              <li>It automatically exempts you from estimated tax payments.</li>
+            </ul>
+          </div>
+          <div class="rounded-lg border border-hairline bg-surface p-6 dark:border-overlay-lighter dark:bg-surface">
+            <p class="font-medium text-ink dark:text-on-primary">3. How do tax brackets affect your effective tax rate?</p>
+            <ul class="mt-3 space-y-2 list-disc pl-6 text-sm text-body dark:text-muted">
+              <li>Your effective rate is typically lower than your marginal rate because only income above each threshold is taxed at the higher rate.</li>
+              <li>Your effective rate equals your marginal rate because all income is taxed at the same percentage.</li>
+              <li>Your effective rate is always higher than your marginal rate due to progressive taxation.</li>
+              <li>Tax brackets have no effect on your effective rate; only deductions matter.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <PrevNextNav prev={prev ? { title: prev.data.title, slug: prev.id } : undefined} next={next ? { title: next.data.title, slug: next.id } : undefined} />
     </div>
   </article>

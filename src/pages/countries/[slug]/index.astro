@@ -188,7 +188,7 @@ const webPageSchema = {
 <div class="border-t border-hairline dark:border-overlay-light" aria-labelledby="country-tax-overview-heading">
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <h2 id="country-tax-overview-heading" class="text-3xl font-semibold text-ink mb-6 text-center dark:text-on-primary">Country Tax Overview</h2>
-    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80" alt={`${country.name} tax overview and financial planning`} class="mx-auto mb-10 w-full max-w-3xl rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+    <img src="https://images.unsplash.com/photo-vUSnNdTMHbg?w=1200&q=80" alt={`${country.name} tax overview and financial planning`} class="mx-auto mb-10 w-full max-w-3xl rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
     <h3 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Key Takeaways</h3>
     <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <li class="card dark:border-overlay-lighter dark:bg-surface">
@@ -216,7 +216,30 @@ const webPageSchema = {
         <p class="mt-1 text-sm text-body dark:text-muted">All calculations run locally in your browser. Your financial data is never collected, stored, or transmitted.</p>
       </li>
     </ul>
+
+    <div class="mt-12 rounded-xl border border-hairline bg-canvas-soft p-8 dark:border-overlay-light dark:bg-surface">
+      <h3 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Recent Updates</h3>
+      <p class="text-body leading-relaxed dark:text-muted">Tax laws in {country.name} are updated regularly to reflect economic conditions, government policy changes, and international agreements. The {country.taxYear} tax year introduced several important adjustments to brackets, thresholds, and reliefs. We update our calculators and guides whenever official changes are published by {country.officialTaxAuthority}. Bookmark this page and check back throughout the year for the latest information.</p>
+    </div>
+
+    <div class="mt-8 rounded-xl border border-hairline bg-canvas p-8 dark:border-overlay-lighter dark:bg-surface">
+      <h3 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Further Reading</h3>
+      <p class="text-body leading-relaxed dark:text-muted">To deepen your understanding of {country.name} taxation, explore our curated collection of guides and tools. Whether you are preparing your annual return, planning investments, or comparing jurisdictions, these resources provide clear explanations and instant estimates.</p>
+      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <a href={`/countries/${country.slug}`} class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+          <h4 class="font-semibold text-ink dark:text-on-primary">{country.name} Calculators</h4>
+          <p class="text-sm text-muted mt-2 dark:text-muted">All interactive tax estimators for {country.name} in one place.</p>
+        </a>
+        <a href="/knowledge" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+          <h4 class="font-semibold text-ink dark:text-on-primary">Tax Knowledge Center</h4>
+          <p class="text-sm text-muted mt-2 dark:text-muted">Learn core tax concepts with expert-written guides and a searchable glossary.</p>
+        </a>
+        <a href="/blogs" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+          <h4 class="font-semibold text-ink dark:text-on-primary">Tax Blog</h4>
+          <p class="text-sm text-muted mt-2 dark:text-muted">Latest tips, updates, and country-specific tax strategies.</p>
+        </a>
+      </div>
+    </div>
   </div>
 </div>
-
 </CountryLayout>

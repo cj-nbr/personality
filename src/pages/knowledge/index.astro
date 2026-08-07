@@ -44,20 +44,38 @@ const knowledgeSchema = {
   imageAlt="Finsiva Tax Knowledge Center — guides, glossary, and educational resources"
 >
   <article id="main-content" class="min-h-screen bg-canvas dark:bg-canvas">
-    <KnowledgeHero
-      title="Tax Knowledge Center"
-      subtitle="Learn & Understand"
-      description="Master tax concepts with expert-written guides, a searchable glossary, and clear explanations. From income tax basics to international tax planning — everything you need to understand how taxes work."
-      ctaLabel="Browse Guides"
-      ctaHref="/knowledge"
-      secondaryLabel="Tax Glossary"
-      secondaryHref="/knowledge/glossary"
-      />
-      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80" alt="Person reviewing financial documents and tax planning materials" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+      <KnowledgeHero
+       title="Tax Knowledge Center"
+       subtitle="Learn & Understand"
+       description="Master tax concepts with expert-written guides, a searchable glossary, and clear explanations. From income tax basics to international tax planning — everything you need to understand how taxes work."
+       ctaLabel="Browse Guides"
+       ctaHref="/knowledge"
+       secondaryLabel="Tax Glossary"
+       secondaryHref="/knowledge/glossary"
+       />
+      <img src="https://images.unsplash.com/photo-UfWqws6yAUc?w=1200&q=80" alt="Person reviewing financial documents and tax planning materials" class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
 
-<section class="border-t border-hairline dark:border-overlay-light" aria-labelledby="featured-heading">
-       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-         <h2 id="featured-heading" class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Featured Guides</h2>
+      <section class="border-t border-hairline bg-canvas-soft dark:border-overlay-light dark:bg-canvas" aria-labelledby="intro-heading">
+        <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <h2 id="intro-heading" class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Why Tax Education Matters</h2>
+          <p class="text-body leading-relaxed dark:text-muted max-w-3xl mb-4">
+            Taxes affect nearly every financial decision you make, from choosing a job offer and buying a home to investing in stocks or starting a business. Yet tax education is rarely taught in schools, leaving many people to learn through costly mistakes, intimidating forms, or last-minute scrambles during filing season.
+          </p>
+          <p class="text-body leading-relaxed dark:text-muted max-w-3xl mb-4">
+            The Finsiva Knowledge Center was created to close that gap. We break down complex tax topics into clear, structured guides that anyone can understand, regardless of their background in finance or accounting. Our goal is not just to help you file taxes, but to help you think strategically about how taxes shape your financial life.
+          </p>
+          <p class="text-body leading-relaxed dark:text-muted max-w-3xl mb-4">
+            Whether you are a student learning about payroll deductions for the first time, a freelancer navigating quarterly estimated payments, or an expatriate trying to understand double-taxation agreements, our guides are organized to meet you where you are and help you progress at your own pace.
+          </p>
+          <p class="text-body leading-relaxed dark:text-muted max-w-3xl">
+            We believe that informed taxpayers are empowered taxpayers. By understanding the why behind tax rules, you can spot opportunities for legitimate savings, avoid common pitfalls, and communicate more effectively with tax professionals when complex situations arise.
+          </p>
+        </div>
+      </section>
+
+      <section class="border-t border-hairline dark:border-overlay-light" aria-labelledby="featured-heading">
+        <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <h2 id="featured-heading" class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Featured Guides</h2>
          <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
          {featuredGuides.map(guide => (
            <GuideCard title={guide.data.title} description={guide.data.description} slug={guide.id} category={guide.data.category} lastUpdated={guide.data.lastUpdated} readTime={guide.data.readTime} featured={true} />
@@ -109,12 +127,45 @@ const knowledgeSchema = {
       </div>
     </section>
 
-    <section class="border-t border-hairline dark:border-overlay-light" aria-labelledby="country-hub-cta-heading">
+    <section class="border-t border-hairline bg-canvas-soft dark:border-overlay-light dark:bg-canvas" aria-labelledby="learning-paths-heading">
+      <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <h2 id="learning-paths-heading" class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Learning Paths</h2>
+        <p class="text-body leading-relaxed dark:text-muted max-w-3xl mb-6">
+          Tax knowledge is most valuable when it is applied in a structured way. Our learning paths are designed sequences of guides that take you from foundational concepts to advanced strategies. Whether you have thirty minutes or thirty days, you can follow a path that matches your schedule and goals.
+        </p>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div class="card dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Beginner: Tax Basics</h3>
+            <p class="mt-2 text-body dark:text-muted">Start here if you are new to taxation. Learn about taxable income, deductions, credits, and how tax brackets work. This path covers the vocabulary and logic you need before diving into country-specific rules.</p>
+            <a href="/knowledge/guides/tax-basics" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Start Learning</a>
+          </div>
+          <div class="card dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Intermediate: Filing and Compliance</h3>
+            <p class="mt-2 text-body dark:text-muted">For individuals who file their own taxes and want to improve accuracy. Covers record keeping, deadline management, common mistakes, and how to use our calculators to cross-check your return.</p>
+            <a href="/knowledge/guides/filing-compliance" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Start Learning</a>
+          </div>
+          <div class="card dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Advanced: Planning and Optimization</h3>
+            <p class="mt-2 text-body dark:text-muted">For experienced taxpayers and small business owners. Explore tax-loss harvesting, retirement account strategies, cross-border considerations, and long-term wealth preservation within legal boundaries.</p>
+            <a href="/knowledge/guides/tax-planning" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Start Learning</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-hairline dark:border-overlay-light" aria-labelledby="certification-heading">
       <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div class="card dark:border-overlay-lighter dark:bg-surface">
-          <h3 class="text-2xl font-semibold text-ink dark:text-on-primary">Country Tax Hubs</h3>
-          <p class="mt-2 text-body dark:text-muted">Explore tax calculators, guides, and rates tailored to specific countries.</p>
-          <a href="/countries" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Explore Country Hubs</a>
+          <h2 id="certification-heading" class="text-3xl font-semibold text-ink mb-6 dark:text-on-primary">Certification and Verification</h2>
+          <p class="text-body leading-relaxed dark:text-muted max-w-3xl mb-4">
+            While Finsiva does not offer formal certification programs, we partner with educational institutions and professional bodies to provide supplementary learning materials. Our guides are aligned with curriculum standards used in accounting and finance programs, making them useful study aids for students pursuing CPA, CA, or ACCA qualifications.
+          </p>
+          <p class="text-body leading-relaxed dark:text-muted max-w-3xl mb-4">
+            Each guide includes learning objectives, key takeaways, and practice questions where applicable. Readers can track their progress by bookmarking completed guides or maintaining a personal study log. We also provide citation-ready summaries for students and researchers who need to reference our content in academic work.
+          </p>
+          <p class="text-body leading-relaxed dark:text-muted max-w-3xl">
+            If you are an educator or institution interested in integrating Finsiva guides into your curriculum, please contact us to discuss licensing, customization, and bulk access options. We are happy to support tax education initiatives that align with our mission of accessibility and accuracy.
+          </p>
         </div>
       </div>
     </section>

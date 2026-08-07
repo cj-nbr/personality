@@ -10,11 +10,45 @@ import Layout from "../layouts/Layout.astro";
   <meta name="robots" content="noindex, nofollow" />
   <div class="min-h-screen bg-canvas dark:bg-canvas flex items-center justify-center">
     <div class="max-w-2xl mx-auto px-4 py-16 text-center">
-      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="Simple server method illustration" class="mx-auto mb-6 w-full max-w-md rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+      <img src="https://images.unsplash.com/photo-6GshdArCK9Q?w=1200&q=80" alt="Simple server method illustration" class="mx-auto mb-6 w-full max-w-md rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
       <h1 class="text-6xl font-bold text-ink mb-4">405</h1>
       <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary" data-i18n="pages.method_not_allowed">Method Not Allowed</h2>
-      <p class="text-body text-lg mb-8 dark:text-muted" data-i18n="method_not_allowed.message">The requested method is not allowed for this resource. Please use a different method or visit our homepage.</p>
-      <p class="text-body text-base mb-8 dark:text-muted">This page accepts standard GET requests for viewing content. Other common methods such as POST, PUT, DELETE, or PATCH are not supported on static pages. If you reached this error via a form or API call, please ensure you are using a GET request or navigate to the intended page.</p>
+       <p class="text-body text-lg mb-8 dark:text-muted" data-i18n="method_not_allowed.message">The requested method is not allowed for this resource. Please use a different method or visit our homepage.</p>
+       <p class="text-body text-base mb-8 dark:text-muted">This page accepts standard GET requests for viewing content. Other common methods such as POST, PUT, DELETE, or PATCH are not supported on static pages. If you reached this error via a form or API call, please ensure you are using a GET request or navigate to the intended page.</p>
+
+       <div class="rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface mb-8 text-left">
+         <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Understanding HTTP Methods</h3>
+         <p class="text-body dark:text-muted mb-4">HTTP methods define the action a client wants to perform on a resource. On Finsiva, most interactions use GET, which retrieves content without modifying data. Here is a quick overview of common methods and when they apply:</p>
+         <ul class="space-y-3 text-sm text-body dark:text-muted">
+           <li><strong>GET</strong> — Retrieves a page or resource. This is the standard method for browsing calculators, reading blog posts, and viewing country guides. All static pages on Finsiva support GET.</li>
+           <li><strong>POST</strong> — Submits data to create or update a resource. Our contact form uses POST, but most calculator pages do not accept POST because calculations happen client-side without server storage.</li>
+           <li><strong>PUT</strong> — Replaces an existing resource. Finsiva does not expose PUT endpoints because we do not allow external modification of published content.</li>
+           <li><strong>DELETE</strong> — Removes a resource. Finsiva does not offer DELETE endpoints for the same reason: content is managed through our internal systems, not public APIs.</li>
+           <li><strong>PATCH</strong> — Partially updates a resource. Like PUT and DELETE, PATCH is not exposed on Finsiva because external write access is disabled by design.</li>
+           <li><strong>OPTIONS</strong> — Describes communication options for a resource. Some browsers send an OPTIONS request as part of a preflight check for cross-origin requests. Finsiva supports OPTIONS responses on supported endpoints.</li>
+           <li><strong>HEAD</strong> — Similar to GET but returns only headers without a body. Finsiva supports HEAD on the same resources that support GET, allowing tools to check availability without downloading full content.</li>
+         </ul>
+         <p class="mt-4 text-body dark:text-muted">If you are a developer integrating with Finsiva, please note that we do not currently offer a public REST or GraphQL API for calculator calculations. All logic is embedded in client-side JavaScript for privacy and performance reasons.</p>
+       </div>
+
+       <div class="rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface mb-8 text-left">
+         <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Valid Alternatives</h3>
+         <p class="text-body dark:text-muted mb-4">If you encountered this error while trying to submit data or access a resource, here are some valid alternatives:</p>
+         <ul class="space-y-2 text-sm text-body dark:text-muted">
+           <li>Navigate directly to the <a href="/countries" class="text-link hover:underline dark:text-link">Countries</a> page and select a calculator from the list.</li>
+           <li>Use the <a href="/knowledge" class="text-link hover:underline dark:text-link">Knowledge Center</a> to find definitions and guides without needing to submit any data.</li>
+           <li>Visit our <a href="/blogs" class="text-link hover:underline dark:text-link">Tax Blog</a> for recent articles and analysis.</li>
+           <li>Try the <a href="/contact" class="text-link hover:underline dark:text-link">Contact form</a> if you need to send us a message; this page supports POST.</li>
+           <li>Return to the <a href="/" class="text-link hover:underline dark:text-link">homepage</a> and browse from there.</li>
+         </ul>
+         <p class="mt-4 text-body dark:text-muted">If you are using a browser extension or script that modifies request methods, try disabling it temporarily. Some ad blockers, privacy tools, or developer utilities can alter outgoing requests in ways that trigger 405 errors.</p>
+       </div>
+
+       <div class="rounded-xl border border-hairline bg-canvas-soft p-6 dark:border-overlay-light dark:bg-surface mb-8 text-left">
+         <h3 class="text-xl font-semibold text-ink mb-4 dark:text-on-primary">Developer Notes</h3>
+         <p class="text-body dark:text-muted mb-4">If you are testing Finsiva with automated tools or scripts, ensure that you are sending GET requests for page loads and POST requests only for the contact form endpoint. Browsers and search engine crawlers should never encounter this error under normal circumstances.</p>
+         <p class="text-body dark:text-muted">If you believe this error appeared incorrectly, please report it to our support team so we can investigate routing or server configuration issues. Include the URL you requested, the HTTP method used, and any relevant headers or request body. Screenshots or curl command examples are helpful for debugging.</p>
+       </div>
       <a href="/" class="inline-block rounded-pill bg-primary px-6 py-3 text-base font-medium text-on-primary transition hover:opacity-90 dark:bg-on-primary dark:text-primary">
         <span data-i18n="pages.go_home">Go back home</span>
       </a>

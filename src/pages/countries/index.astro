@@ -12,45 +12,110 @@ const baseUrl = getBaseUrl();
   description="Explore tax information for countries worldwide. Find income tax, VAT, corporate tax, and more."
   breadcrumbs={[{ label: "Countries" }]}
 >
-  <div class="mb-8">
-    <h1 class="text-4xl font-bold text-ink dark:text-on-primary"><span data-i18n="countries.heading">Countries</span></h1>
-    <p class="mt-2 text-lg text-body dark:text-muted" data-i18n="countries.comprehensive_tax_info" data-i18n-vars={JSON.stringify({ count: countries.length })}>
-      Explore comprehensive tax information for {countries.length} countries.
-    </p>
-  </div>
-  <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80" alt="Global tax documents and financial planning on a desk" class="mb-8 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+   <div class="mb-8">
+     <h1 class="text-4xl font-bold text-ink dark:text-on-primary"><span data-i18n="countries.heading">Countries</span></h1>
+     <p class="mt-2 text-lg text-body dark:text-muted" data-i18n="countries.comprehensive_tax_info" data-i18n-vars={JSON.stringify({ count: countries.length })}>
+       Explore comprehensive tax information for {countries.length} countries.
+     </p>
+   </div>
+   <img src="https://images.unsplash.com/photo-zQXdDfmkevA?w=1200&q=80" alt="Global tax documents and financial planning on a desk" class="mb-8 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
 
-  <div class="mb-8">
-    <div class="relative">
-        <input
-          type="text"
-          id="country-search"
-          placeholder="Search countries..."
-          aria-label="Search countries"
-          data-i18n-placeholder="countries.search_countries"
-          class="form-input"
-        />
-        <svg class="absolute left-3 top-1/2 h-5 w-5 text-muted -translate-y-1/2 dark:text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-      </div>
-      <p class="mt-3 text-sm text-body dark:text-muted">Search by country name or continent to quickly find the tax calculators and guides you need. Results update instantly as you type.</p>
-  </div>
+   <div class="mb-12">
+     <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Why Tax Information Matters</h2>
+     <p class="text-body leading-relaxed dark:text-muted">
+       Understanding tax obligations is one of the most important aspects of personal and business finance. Whether you are a local resident, an expatriate, a freelancer, or a business owner, knowing how much you owe, when payments are due, and what deductions you can claim helps you avoid penalties, maximize refunds, and plan for the future.
+     </p>
+     <p class="mt-4 text-body leading-relaxed dark:text-muted">
+       Tax systems vary significantly from country to country. Progressive income tax in one nation may contrast sharply with a flat-rate regime in another. Value-added tax thresholds, property tax assessments, and capital gains treatment all differ based on local laws. Our goal is to present these differences clearly so you can make informed decisions wherever you live or work.
+     </p>
+     <p class="mt-4 text-body leading-relaxed dark:text-muted">
+       Accurate tax information also supports compliance. Missing a filing deadline or misunderstanding residency rules can lead to avoidable interest charges or audits. By providing up-to-date calculators and guides, we help you stay on top of obligations without needing expensive software or professional consultations for basic scenarios.
+     </p>
+   </div>
 
-  <div class="mb-8">
-      <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary"><span data-i18n="countries.all_countries">All Countries</span></h2>
-    <CountryCard
-      countries={countries.map(c => ({
-        slug: c.slug,
-        name: c.name,
-        flag: c.flag,
-        continent: c.continent,
-        overview: c.overview
-      }))}
-      searchQuery=""
-      selectedContinent=""
-    />
-  </div>
+   <div class="mb-8">
+     <div class="relative">
+         <input
+           type="text"
+           id="country-search"
+           placeholder="Search countries..."
+           aria-label="Search countries"
+           data-i18n-placeholder="countries.search_countries"
+           class="form-input"
+         />
+         <svg class="absolute left-3 top-1/2 h-5 w-5 text-muted -translate-y-1/2 dark:text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+         </svg>
+       </div>
+       <p class="mt-3 text-sm text-body dark:text-muted">Search by country name or continent to quickly find the tax calculators and guides you need. Results update instantly as you type.</p>
+   </div>
+
+   <div class="mb-8">
+       <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary"><span data-i18n="countries.all_countries">All Countries</span></h2>
+     <CountryCard
+       countries={countries.map(c => ({
+         slug: c.slug,
+         name: c.name,
+         flag: c.flag,
+         continent: c.continent,
+         overview: c.overview
+       }))}
+       searchQuery=""
+       selectedContinent=""
+     />
+   </div>
+
+   <div class="mb-12">
+     <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">How to Use This Site</h2>
+     <p class="text-body leading-relaxed dark:text-muted">
+       Finsiva is designed to make international tax research fast and intuitive. Start by selecting a country from the list above or using the search bar. Each country page provides an overview of the tax system, links to specialized calculators, and articles explaining local rules.
+     </p>
+     <p class="mt-4 text-body leading-relaxed dark:text-muted">
+       To calculate tax, enter your income, deductions, and other relevant figures into the calculator. Results update instantly as you type, and you can adjust inputs to see how different scenarios affect your liability. All calculations happen in your browser, so your data never leaves your device.
+     </p>
+     <p class="mt-4 text-body leading-relaxed dark:text-muted">
+       For deeper understanding, explore the <a href="/knowledge" class="text-link hover:underline dark:text-link">Knowledge Center</a> for definitions and explanations, or read the <a href="/blogs" class="text-link hover:underline dark:text-link">Tax Blog</a> for practical strategies. If you have questions, visit the <a href="/contact" class="text-link hover:underline dark:text-link">Contact</a> page.
+     </p>
+   </div>
+
+   <div class="mb-12">
+     <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Popular Destinations</h2>
+     <p class="text-body leading-relaxed dark:text-muted mb-4">
+       Our most visited country pages cover major economies with complex tax systems. Whether you are planning a move, managing remote income, or comparing regimes, these guides are a great place to start.
+     </p>
+     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+       <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+         <h3 class="font-semibold text-ink dark:text-on-primary">United States</h3>
+         <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">Federal and state income tax, capital gains, payroll taxes, and self-employment estimates for one of the world's most complex tax systems.</p>
+         <a href="/countries/united-states" class="mt-3 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Explore US Tax Guides</a>
+       </div>
+       <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+         <h3 class="font-semibold text-ink dark:text-on-primary">India</h3>
+         <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">GST, TDS, income tax slabs, and deductions under both the old and new tax regimes for individuals and businesses.</p>
+         <a href="/countries/india" class="mt-3 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Explore India Tax Guides</a>
+       </div>
+       <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+         <h3 class="font-semibold text-ink dark:text-on-primary">United Kingdom</h3>
+         <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">Income tax bands, National Insurance, capital gains tax, and dividend taxation for UK residents and non-residents.</p>
+         <a href="/countries/united-kingdom" class="mt-3 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Explore UK Tax Guides</a>
+       </div>
+       <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+         <h3 class="font-semibold text-ink dark:text-on-primary">Singapore</h3>
+         <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">Resident and non-resident income tax, tax reliefs, and corporate tax basics for one of Asia's leading financial hubs.</p>
+         <a href="/countries/singapore" class="mt-3 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Explore Singapore Tax Guides</a>
+       </div>
+       <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+         <h3 class="font-semibold text-ink dark:text-on-primary">Hong Kong</h3>
+         <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">Salaries tax, property tax, profits tax, and standard-rate calculations for Hong Kong's territorial tax system.</p>
+         <a href="/countries/hong-kong" class="mt-3 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Explore Hong Kong Tax Guides</a>
+       </div>
+       <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+         <h3 class="font-semibold text-ink dark:text-on-primary">Malaysia</h3>
+         <p class="mt-2 text-sm text-body leading-relaxed dark:text-muted">Income tax, RPGT, and sales tax calculators for residents and non-residents navigating Malaysia's progressive tax structure.</p>
+         <a href="/countries/malaysia" class="mt-3 inline-flex items-center gap-2 text-sm font-medium text-link hover:underline dark:text-link">Explore Malaysia Tax Guides</a>
+       </div>
+     </div>
+   </div>
 
   <script is:inline>
     (function() {
