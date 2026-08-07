@@ -264,6 +264,356 @@ export const taxRules: TaxRule[] = [
       },
     ],
   },
+  // Malaysia - Tax Filing
+  {
+    id: "malaysia-tax-filing-tax-filing-calculator",
+    countrySlug: "malaysia",
+    categorySlug: "tax-filing",
+    calculatorSlug: "tax-filing-calculator",
+    name: "Tax Filing Assistant",
+    description: "Estimate your Malaysian tax liability and prepare for annual filing.",
+    inputs: [
+      {
+        id: "residentStatus",
+        label: "Residency Status",
+        type: "select",
+        required: true,
+        defaultValue: "resident",
+        options: [
+          { value: "resident", label: "Resident Individual" },
+          { value: "non_resident", label: "Non-Resident Individual" },
+        ],
+      },
+      {
+        id: "maritalStatus",
+        label: "Marital Status",
+        type: "select",
+        required: true,
+        defaultValue: "single",
+        options: [
+          { value: "single", label: "Single" },
+          { value: "married", label: "Married" },
+        ],
+      },
+      {
+        id: "annualIncome",
+        label: "Annual Income",
+        type: "number",
+        required: true,
+        placeholder: "Enter your annual income",
+        validation: { min: 0, step: 1000 },
+      },
+      {
+        id: "taxYear",
+        label: "Year of Assessment",
+        type: "select",
+        required: true,
+        defaultValue: "2025",
+        options: [
+          { value: "2024", label: "2024 (YA 2024)" },
+          { value: "2025", label: "2025 (YA 2025)" },
+          { value: "2026", label: "2026 (YA 2026)" },
+        ],
+      },
+    ],
+    outputs: [
+      { id: "taxableIncome", label: "Taxable Income", format: "currency", description: "Chargeable income after reliefs" },
+      { id: "incomeTax", label: "Income Tax", format: "currency", description: "Estimated annual tax liability" },
+      { id: "effectiveRate", label: "Effective Tax Rate", format: "percentage", description: "Tax as percentage of gross income" },
+    ],
+    formulas: [
+      { id: "my_tax_filing", name: "Resident Rates", formula: "Progressive 0% to 30% applied to chargeable income after personal relief", description: "Malaysian resident individual tax rates" },
+    ],
+    examples: [
+      {
+        title: "Resident, RM 80,000, Single, 2025",
+        inputs: { residentStatus: "resident", maritalStatus: "single", annualIncome: 80000, taxYear: "2025" },
+        outputs: { taxableIncome: 71000, incomeTax: 3725, effectiveRate: 4.7 },
+        explanation: "Gross RM80,000 - personal relief RM9,000 = RM71,000. Progressive rates applied."
+      },
+    ],
+  },
+  // Malaysia - Tax Reliefs
+  {
+    id: "malaysia-tax-reliefs-tax-reliefs-calculator",
+    countrySlug: "malaysia",
+    categorySlug: "tax-reliefs",
+    calculatorSlug: "tax-reliefs-calculator",
+    name: "Tax Reliefs Calculator",
+    description: "Calculate total eligible tax reliefs and deductions for Malaysian taxpayers.",
+    inputs: [
+      {
+        id: "annualIncome",
+        label: "Annual Income",
+        type: "number",
+        required: true,
+        placeholder: "Enter your annual income",
+        validation: { min: 0, step: 1000 },
+      },
+      {
+        id: "epfContribution",
+        label: "EPF Contribution (Employee)",
+        type: "number",
+        required: false,
+        defaultValue: 0,
+        placeholder: "Enter your employee EPF contribution",
+        validation: { min: 0, step: 100 },
+      },
+      {
+        id: "lifeInsurance",
+        label: "Life Insurance Premiums",
+        type: "number",
+        required: false,
+        defaultValue: 0,
+        placeholder: "Enter life insurance premiums",
+        validation: { min: 0, step: 100 },
+      },
+      {
+        id: "educationExpense",
+        label: "Education Expense (Child)",
+        type: "number",
+        required: false,
+        defaultValue: 0,
+        placeholder: "Enter education expenses",
+        validation: { min: 0, step: 1000 },
+      },
+      {
+        id: "medicalExpense",
+        label: "Medical Expenses (Parent 60+)",
+        type: "number",
+        required: false,
+        defaultValue: 0,
+        placeholder: "Enter medical expenses",
+        validation: { min: 0, step: 100 },
+      },
+      {
+        id: "taxYear",
+        label: "Year of Assessment",
+        type: "select",
+        required: true,
+        defaultValue: "2025",
+        options: [
+          { value: "2024", label: "2024 (YA 2024)" },
+          { value: "2025", label: "2025 (YA 2025)" },
+        ],
+      },
+    ],
+    outputs: [
+      { id: "totalReliefs", label: "Total Reliefs", format: "currency", description: "Sum of all eligible reliefs" },
+      { id: "chargeableIncome", label: "Chargeable Income", format: "currency", description: "Gross income minus reliefs" },
+      { id: "taxSavings", label: "Tax Savings", format: "currency", description: "Tax saved due to reliefs" },
+    ],
+    formulas: [
+      { id: "my_reliefs", name: "Total Reliefs", formula: "Personal relief RM9,000 + EPF + insurance + education + medical", description: "Sum of statutory and voluntary reliefs" },
+    ],
+    examples: [
+      {
+        title: "RM 100,000 Income with RM 4,000 EPF & RM 3,000 Insurance",
+        inputs: { annualIncome: 100000, epfContribution: 4000, lifeInsurance: 3000, educationExpense: 0, medicalExpense: 0, taxYear: "2025" },
+        outputs: { totalReliefs: 16000, chargeableIncome: 84000, taxSavings: 1421 },
+        explanation: "RM9,000 personal + RM4,000 EPF + RM3,000 insurance = RM16,000. Tax saved at marginal rate."
+      },
+    ],
+  },
+  // Malaysia - Foreign Income
+  {
+    id: "malaysia-foreign-income-foreign-income-calculator",
+    countrySlug: "malaysia",
+    categorySlug: "foreign-income",
+    calculatorSlug: "foreign-income-calculator",
+    name: "Foreign Income Tax Calculator",
+    description: "Calculate tax on worldwide income including foreign-sourced income.",
+    inputs: [
+      {
+        id: "localIncome",
+        label: "Local Employment Income",
+        type: "number",
+        required: true,
+        placeholder: "Enter local income",
+        validation: { min: 0, step: 1000 },
+      },
+      {
+        id: "foreignIncome",
+        label: "Foreign Employment Income",
+        type: "number",
+        required: true,
+        defaultValue: 0,
+        placeholder: "Enter foreign income",
+        validation: { min: 0, step: 1000 },
+      },
+      {
+        id: "taxTreaty",
+        label: "Double Taxation Relief",
+        type: "select",
+        required: true,
+        defaultValue: "no",
+        options: [
+          { value: "yes", label: "Yes - Covered by DTA" },
+          { value: "no", label: "No - No DTA Applied" },
+        ],
+      },
+      {
+        id: "taxYear",
+        label: "Year of Assessment",
+        type: "select",
+        required: true,
+        defaultValue: "2025",
+        options: [
+          { value: "2024", label: "2024 (YA 2024)" },
+          { value: "2025", label: "2025 (YA 2025)" },
+        ],
+      },
+    ],
+    outputs: [
+      { id: "totalIncome", label: "Total Worldwide Income", format: "currency", description: "Local + foreign income" },
+      { id: "foreignIncomeTax", label: "Foreign Source Tax", format: "currency", description: "Tax on foreign income component" },
+      { id: "totalTax", label: "Total Tax Liability", format: "currency", description: "Tax after DTA relief if applicable" },
+      { id: "effectiveRate", label: "Effective Rate", format: "percentage", description: "Tax as percentage of total income" },
+    ],
+    formulas: [
+      { id: "my_foreign", name: "Foreign Income Tax", formula: "Worldwide income taxed at progressive rates; DTA may reduce tax on foreign income", description: "Resident individuals taxed on worldwide income" },
+    ],
+    examples: [
+      {
+        title: "RM 60,000 Local + RM 60,000 Foreign, with DTA, 2025",
+        inputs: { localIncome: 60000, foreignIncome: 60000, taxTreaty: "yes", taxYear: "2025" },
+        outputs: { totalIncome: 120000, foreignIncomeTax: 4500, totalTax: 9000, effectiveRate: 7.5 },
+        explanation: "Total RM120,000 taxed progressively; DTA relief applied to foreign component."
+      },
+    ],
+  },
+  // Malaysia - Rental Income
+  {
+    id: "malaysia-rental-income-rental-income-calculator",
+    countrySlug: "malaysia",
+    categorySlug: "rental-income",
+    calculatorSlug: "rental-income-calculator",
+    name: "Rental Income Tax Calculator",
+    description: "Calculate tax on rental income from Malaysian properties after allowable deductions.",
+    inputs: [
+      {
+        id: "rentalIncome",
+        label: "Annual Rental Income",
+        type: "number",
+        required: true,
+        placeholder: "Enter gross rental income",
+        validation: { min: 0, step: 100 },
+      },
+      {
+        id: "propertyExpenses",
+        label: "Property Expenses",
+        type: "number",
+        required: false,
+        defaultValue: 0,
+        placeholder: "Enter maintenance, repairs, etc.",
+        validation: { min: 0, step: 100 },
+      },
+      {
+        id: "loanInterest",
+        label: "Mortgage / Loan Interest",
+        type: "number",
+        required: false,
+        defaultValue: 0,
+        placeholder: "Enter interest paid on property loan",
+        validation: { min: 0, step: 100 },
+      },
+      {
+        id: "taxYear",
+        label: "Year of Assessment",
+        type: "select",
+        required: true,
+        defaultValue: "2025",
+        options: [
+          { value: "2024", label: "2024 (YA 2024)" },
+          { value: "2025", label: "2025 (YA 2025)" },
+        ],
+      },
+    ],
+    outputs: [
+      { id: "netRentalIncome", label: "Net Rental Income", format: "currency", description: "Rental income minus allowable deductions" },
+      { id: "rentalTax", label: "Rental Tax", format: "currency", description: "Income tax on net rental income" },
+      { id: "effectiveRate", label: "Effective Rate", format: "percentage", description: "Tax as percentage of gross rental" },
+    ],
+    formulas: [
+      { id: "my_rental", name: "Net Rental Income", formula: "Gross rent - (expenses + interest + depreciation)", description: "Allowable deductions include interest, repairs, and wear and tear" },
+    ],
+    examples: [
+      {
+        title: "RM 40,000 Rent, RM 5,000 Expenses, RM 8,000 Interest, 2025",
+        inputs: { rentalIncome: 40000, propertyExpenses: 5000, loanInterest: 8000, taxYear: "2025" },
+        outputs: { netRentalIncome: 27000, rentalTax: 1620, effectiveRate: 4.05 },
+        explanation: "Net RM27,000 added to other income and taxed at progressive rates."
+      },
+    ],
+  },
+  // Malaysia - Business Income
+  {
+    id: "malaysia-business-income-business-income-calculator",
+    countrySlug: "malaysia",
+    categorySlug: "business-income",
+    calculatorSlug: "business-income-calculator",
+    name: "Business Income Tax Calculator",
+    description: "Calculate tax on business income for sole proprietors, partnerships, and SMEs.",
+    inputs: [
+      {
+        id: "businessRevenue",
+        label: "Business Revenue",
+        type: "number",
+        required: true,
+        placeholder: "Enter business revenue",
+        validation: { min: 0, step: 1000 },
+      },
+      {
+        id: "businessExpenses",
+        label: "Business Expenses",
+        type: "number",
+        required: false,
+        defaultValue: 0,
+        placeholder: "Enter eligible business expenses",
+        validation: { min: 0, step: 1000 },
+      },
+      {
+        id: "entityType",
+        label: "Entity Type",
+        type: "select",
+        required: true,
+        defaultValue: "sole_prop",
+        options: [
+          { value: "sole_prop", label: "Sole Proprietor" },
+          { value: "partnership", label: "Partnership" },
+          { value: "sm_e", label: "SME Company" },
+          { value: "company", label: "Large Company" },
+        ],
+      },
+      {
+        id: "taxYear",
+        label: "Year of Assessment",
+        type: "select",
+        required: true,
+        defaultValue: "2025",
+        options: [
+          { value: "2024", label: "2024 (YA 2024)" },
+          { value: "2025", label: "2025 (YA 2025)" },
+        ],
+      },
+    ],
+    outputs: [
+      { id: "chargeableIncome", label: "Chargeable Business Income", format: "currency", description: "Revenue minus expenses" },
+      { id: "businessTax", label: "Business Tax", format: "currency", description: "Tax on business income" },
+      { id: "effectiveRate", label: "Effective Rate", format: "percentage", description: "Tax as percentage of business income" },
+    ],
+    formulas: [
+      { id: "my_business", name: "Business Tax Rates", formula: "Individuals: progressive rates. Companies: 24% or 17% for SMEs on first RM600k", description: "Rates vary by entity type" },
+    ],
+    examples: [
+      {
+        title: "RM 200,000 Revenue, RM 40,000 Expenses, SME Company, 2025",
+        inputs: { businessRevenue: 200000, businessExpenses: 40000, entityType: "sm_e", taxYear: "2025" },
+        outputs: { chargeableIncome: 160000, businessTax: 27200, effectiveRate: 13.6 },
+        explanation: "Chargeable income RM160,000 taxed at progressive rates or 17% for SME (first RM600k)."
+      },
+    ],
+  },
   // New Zealand - Income Tax
   {
     id: "new-zealand-income-tax-income-tax-calculator",

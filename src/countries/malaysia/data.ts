@@ -30,6 +30,81 @@ const taxCategories: TaxCategory[] = [
     faqs: [
       { question: "What is the SST rate?", answer: "Sales Tax: typically 10%. Service Tax: 8%." }
     ]
+  },
+  {
+    slug: "tax-filing",
+    name: "Tax Filing",
+    description: "Guidance on filing personal and business tax returns in Malaysia.",
+    overview: "Step-by-step process for submitting annual tax returns via e-Filing, deadlines, and required documents.",
+    calculators: [
+      { slug: "tax-filing-calculator", name: "Tax Filing Assistant", description: "Estimate your tax liability and prepare for filing." }
+    ],
+    guides: [
+      { slug: "tax-filing-guide", title: "Tax Filing Guide", description: "Complete guide to filing your Malaysian tax return." }
+    ],
+    faqs: [
+      { question: "When is the tax filing deadline?", answer: "April 30 for individuals, June 30 for businesses." }
+    ]
+  },
+  {
+    slug: "tax-reliefs",
+    name: "Tax Reliefs & Deductions",
+    description: "Overview of available tax reliefs, deductions, and exemptions for Malaysian taxpayers.",
+    overview: "Claim reliefs for EPF, life insurance, education, medical expenses, and more to reduce chargeable income.",
+    calculators: [
+      { slug: "tax-reliefs-calculator", name: "Tax Reliefs Calculator", description: "Calculate your total eligible tax reliefs." }
+    ],
+    guides: [
+      { slug: "tax-reliefs-guide", title: "Tax Reliefs Guide", description: "Detailed explanation of all available tax reliefs in Malaysia." }
+    ],
+    faqs: [
+      { question: "What is the maximum EPF contribution eligible for tax relief?", answer: "RM 4,000 per year." }
+    ]
+  },
+  {
+    slug: "foreign-income",
+    name: "Foreign Income",
+    description: "Taxation of foreign-sourced income for Malaysian residents and non-residents.",
+    overview: "Malaysia taxes residents on worldwide income with specific rules for foreign income, including exemptions and double taxation agreements.",
+    calculators: [
+      { slug: "foreign-income-calculator", name: "Foreign Income Tax Calculator", description: "Calculate tax on foreign-sourced income." }
+    ],
+    guides: [
+      { slug: "foreign-income-guide", title: "Foreign Income Guide", description: "Understanding how foreign income is taxed in Malaysia." }
+    ],
+    faqs: [
+      { question: "Is foreign income taxable in Malaysia?", answer: "Resident individuals are taxed on worldwide income; certain foreign income may be exempt under DTAs." }
+    ]
+  },
+  {
+    slug: "rental-income",
+    name: "Rental Income",
+    description: "Taxation of rental income from residential and commercial properties in Malaysia.",
+    overview: "Rental income is subject to income tax after deducting allowable expenses such as maintenance, insurance, and loan interest.",
+    calculators: [
+      { slug: "rental-income-calculator", name: "Rental Income Tax Calculator", description: "Calculate tax on your rental income." }
+    ],
+    guides: [
+      { slug: "rental-income-guide", title: "Rental Income Guide", description: "Guide to reporting and taxing rental income in Malaysia." }
+    ],
+    faqs: [
+      { question: "Can I deduct mortgage interest from rental income?", answer: "Yes, loan interest on the property used to generate rental income is deductible." }
+    ]
+  },
+  {
+    slug: "business-income",
+    name: "Business Income",
+    description: "Taxation of business income for sole proprietors, partnerships, and SMEs in Malaysia.",
+    overview: "Business income is taxed at applicable rates after deducting business expenses, with specific rules for different business structures.",
+    calculators: [
+      { slug: "business-income-calculator", name: "Business Income Tax Calculator", description: "Calculate tax on your business income." }
+    ],
+    guides: [
+      { slug: "business-income-guide", title: "Business Income Guide", description: "Understanding business income taxation for Malaysian SMEs." }
+    ],
+    faqs: [
+      { question: "What is the corporate tax rate for SMEs in Malaysia?", answer: "17% on the first RM 600,000 of chargeable income for qualifying SMEs." }
+    ]
   }
 ];
 
@@ -147,7 +222,12 @@ export const malaysia: Country = {
   taxCategories,
   popularCalculators: [
     { slug: "income-tax-calculator", name: "Income Tax Calculator", category: "income-tax" },
-    { slug: "sst-calculator", name: "SST Calculator", category: "sst" }
+    { slug: "sst-calculator", name: "SST Calculator", category: "sst" },
+    { slug: "tax-filing-calculator", name: "Tax Filing Assistant", category: "tax-filing" },
+    { slug: "tax-reliefs-calculator", name: "Tax Reliefs Calculator", category: "tax-reliefs" },
+    { slug: "foreign-income-calculator", name: "Foreign Income Tax Calculator", category: "foreign-income" },
+    { slug: "rental-income-calculator", name: "Rental Income Tax Calculator", category: "rental-income" },
+    { slug: "business-income-calculator", name: "Business Income Tax Calculator", category: "business-income" }
   ],
   salaryCalculators: [
     { slug: "income-tax-calculator", name: "Income Tax Calculator", category: "income-tax" }
