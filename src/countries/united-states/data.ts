@@ -1,4 +1,4 @@
-import type { Country, TaxCategory } from "../types";
+﻿import type { Country, TaxCategory } from "../types";
 
 const taxCategories: TaxCategory[] = [
   {
@@ -376,6 +376,108 @@ const taxCategories: TaxCategory[] = [
     faqs: [
       { question: "What is the federal estate tax exemption for 2025?", answer: "The 2025 federal estate tax exemption is $13.61 million per individual." },
       { question: "Does everyone pay estate tax when they die?", answer: "No. Only estates exceeding the exemption threshold owe federal estate tax. Most estates are below the threshold." }
+    ]
+  },
+  {
+    slug: "irs-support",
+    name: "IRS Support & Resources",
+    description: "IRS phone numbers, online tools, filing help, and taxpayer assistance resources.",
+    overview: "The Internal Revenue Service (IRS) provides multiple channels for taxpayer assistance including phone support, online tools, in-person help at Taxpayer Assistance Centers, and free tax preparation programs. Understanding how to reach the IRS, what tools are available, and how to get help with specific issues can save you time and frustration during tax season.",
+    calculators: [
+      { slug: "irs-refund-status", name: "IRS Refund Status Checker", description: "Check your federal tax refund status using the IRS Where's My Refund tool." },
+      { slug: "irs-payment-planner", name: "IRS Payment Plan Calculator", description: "Estimate monthly payments for IRS installment agreements and understand total interest." }
+    ],
+    guides: [
+      {
+        slug: "irs-phone-numbers",
+        title: "IRS Phone Numbers and Contact Guide",
+        description: "Comprehensive list of IRS phone numbers for individual taxpayers, refunds, payments, and business inquiries.",
+        image: "https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=1200&q=80",
+        sections: [
+          { title: "General IRS Phone Numbers", content: "The IRS maintains several phone lines for different taxpayer needs. The main individual income tax line is 1-800-829-1040 for questions about personal tax returns, refunds, and account issues. The business and professional tax line is 1-800-829-4933 for business tax questions. For refund status, use the automated Where's My Refund tool online rather than calling, as wait times can be lengthy during tax season." },
+          { title: "Specialized IRS Lines", content: "The IRS offers specialized lines for specific needs including 1-800-829-3676 for tax form requests, 1-800-908-9942 for ordering tax transcripts, and 1-888-339-2934 for the Taxpayer Advocate Service (for unresolved issues). The IRS also has TTY/TDD lines for deaf or hard-of-hearing taxpayers at 1-800-829-4059." },
+          { title: "International Taxpayers", content: "International taxpayers can reach the IRS at 1-267-941-1000 (not toll-free). This line assists with questions about foreign income, international tax treaties, and filing requirements for US citizens living abroad. The IRS also provides assistance through overseas taxpayer assistance centers in select locations." }
+        ],
+        steps: [
+          { step: 1, title: "Identify Your Need", description: "Determine whether your question relates to personal taxes, business taxes, refunds, payments, or forms." },
+          { step: 2, title: "Check Online First", description: "Visit IRS.gov to see if your question can be answered online through FAQs, tools, or your online account." },
+          { step: 3, title: "Call During Off-Peak Hours", description: "Call early morning or late in the afternoon to avoid longest wait times. Avoid Mondays and Fridays if possible." },
+          { step: 4, title: "Prepare Your Information", description: "Have your Social Security number, prior year tax return, and any IRS notices ready before calling." }
+        ],
+        tips: [
+          "Use the IRS Where's My Refund online tool instead of calling for refund status — it updates every 24 hours.",
+          "The IRS online chat feature can answer simple questions without waiting on hold.",
+          "Consider contacting the Taxpayer Advocate Service if you have an unresolved issue causing financial hardship."
+        ]
+      },
+      {
+        slug: "where-is-my-refund",
+        title: "Where's My Refund? Complete Guide",
+        description: "How to check your IRS refund status, expected timelines, and what to do if your refund is delayed.",
+        image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80",
+        sections: [
+          { title: "Using the Online Tool", content: "The IRS Where's My Refund tool is the fastest way to check your refund status. It is available 24/7 on IRS.gov and through the IRS2Go mobile app. You need your Social Security number, filing status, and exact refund amount. The tool shows three stages: Return Received, Refund Approved, and Refund Sent. Most taxpayers can check within 24 hours of electronic filing or four weeks after mailing a paper return." },
+          { title: "Refund Timelines", content: "The IRS aims to issue most refunds within 21 days. Electronic filers with direct deposit receive refunds faster. Refunds with EITC or ACTC may be delayed until mid-February due to additional review. If your refund is taking longer than expected, the tool will indicate if there is an issue or if additional information is needed." },
+          { title: "Common Delay Reasons", content: "Refunds may be delayed for errors on the return, incomplete information, identity theft concerns, amended returns, bankruptcy proceedings, or certain credits requiring verification. In some cases, the IRS may send a letter requesting additional information. Always respond promptly to IRS notices to avoid further delays." }
+        ],
+        steps: [
+          { step: 1, title: "File Your Return", description: "Submit your complete and accurate return electronically or by mail." },
+          { step: 2, title: "Wait the Required Time", description: "Wait 24 hours for e-filing or four weeks for paper returns before checking status." },
+          { step: 3, title: "Check Online", description: "Use the IRS Where's My Refund tool with your SSN, filing status, and refund amount." },
+          { step: 4, title: "Follow Up If Needed", description: "If the tool shows a delay, review any IRS notices and respond promptly." }
+        ],
+        tips: [
+          "Direct deposit is the fastest and safest way to receive your refund.",
+          "Track your refund with the IRS2Go app for mobile updates.",
+          "If you suspect identity theft, file Form 14039 and contact the IRS immediately."
+        ]
+      }
+    ],
+    faqs: [
+      { question: "What is the IRS phone number for individual taxes?", answer: "1-800-829-1040 for personal tax questions. For business inquiries, call 1-800-829-4933." },
+      { question: "How do I check my IRS refund status?", answer: "Use the IRS Where's My Refund tool on IRS.gov or the IRS2Go app. You need your SSN, filing status, and exact refund amount." },
+      { question: "How long does an IRS refund take?", answer: "Most refunds are issued within 21 days. Electronic filers with direct deposit receive refunds faster than paper filers." },
+      { question: "What if I need help with an unresolved IRS issue?", answer: "Contact the Taxpayer Advocate Service at 1-888-339-2934. They assist taxpayers experiencing financial hardship or unresolved tax problems." }
+    ]
+  },
+  {
+    slug: "tax-planning",
+    name: "Tax Planning Strategies",
+    description: "Year-round tax planning tips, strategies to reduce taxes, and optimization techniques.",
+    overview: "Effective tax planning involves making strategic financial decisions throughout the year to minimize your tax liability. This includes timing income and deductions, maximizing retirement contributions, utilizing tax-advantaged accounts, and staying informed about tax law changes. Proactive tax planning can result in significant savings and help you avoid surprises at tax time.",
+    calculators: [
+      { slug: "tax-savings-estimator", name: "Tax Savings Estimator", description: "Estimate potential tax savings from common planning strategies like retirement contributions and deductions." },
+      { slug: "retirement-contribution-calculator", name: "Retirement Contribution Calculator", description: "Calculate tax savings from 401(k), IRA, and HSA contributions." }
+    ],
+    guides: [
+      {
+        slug: "year-round-tax-planning",
+        title: "Year-Round Tax Planning Guide",
+        description: "Strategies to reduce your tax bill throughout the year, not just at tax filing time.",
+        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80",
+        sections: [
+          { title: "Why Tax Planning Matters", content: "Tax planning is not just about filing your return — it is about making informed financial decisions throughout the year that reduce your tax liability. By planning ahead, you can take advantage of deductions, credits, and tax-advantaged accounts before the tax year ends. Waiting until tax season to plan means missing opportunities that cannot be retroactively applied." },
+          { title: "Key Tax Planning Strategies", content: "Maximize retirement contributions to 401(k), 403(b), traditional IRA, and Health Savings Accounts (HSAs). These contributions reduce your taxable income now and help you save for the future. Consider timing deductible expenses like charitable contributions or medical procedures to bunch them into alternate years, allowing you to exceed the standard deduction threshold and benefit from itemizing." },
+          { title: "Tax Loss Harvesting", content: "Tax loss harvesting involves selling investments at a loss to offset capital gains elsewhere in your portfolio. Up to $3,000 of net capital losses can offset ordinary income each year, with excess losses carried forward indefinitely. This strategy is particularly valuable in years when you have large capital gains or when markets are down, allowing you to turn losses into tax savings." }
+        ],
+        steps: [
+          { step: 1, title: "Review Your Withholding", description: "Use the IRS Tax Withholding Estimator to ensure you are not over- or under-withholding throughout the year." },
+          { step: 2, title: "Maximize Retirement Contributions", description: "Contribute the maximum allowable amount to tax-advantaged retirement accounts before year-end." },
+          { step: 3, title: "Plan Major Purchases and Donations", description: "Time charitable contributions, medical procedures, and other deductible expenses to maximize your tax benefit." },
+          { step: 4, title: "Monitor Tax Law Changes", description: "Stay informed about changes to tax rates, deductions, and credits that may affect your planning strategy." }
+        ],
+        tips: [
+          "Adjust your W-4 withholding if you received a large refund or owed money last year.",
+          "Consider making estimated tax payments if you have significant non-wage income.",
+          "Review your investment accounts for tax-loss harvesting opportunities before year-end."
+        ]
+      }
+    ],
+    faqs: [
+      { question: "What is tax planning?", answer: "Tax planning involves making financial decisions throughout the year to minimize your tax liability, such as timing income and deductions and maximizing retirement contributions." },
+      { question: "When should I start tax planning?", answer: "Tax planning should be a year-round activity. Reviewing your withholding, retirement contributions, and deductions quarterly can help you stay on track." },
+      { question: "What is tax loss harvesting?", answer: "Tax loss harvesting involves selling investments at a loss to offset capital gains. Up to $3,000 of net losses can offset ordinary income annually, with excess carried forward." },
+      { question: "How can I reduce my taxable income?", answer: "Contributing to 401(k)s, traditional IRAs, HSAs, and taking advantage of above-the-line deductions can reduce your taxable income." }
     ]
   }
 ];

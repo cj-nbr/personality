@@ -2422,4 +2422,217 @@ export const taxRules: TaxRule[] = [
       { title: "HK$5,000,000 Residential, Citizen", inputs: { propertyPrice: 5000000, buyerType: "citizen", propertyType: "residential" }, outputs: { stampDuty: 87500, totalCost: 5087500 }, explanation: "Scale 2: $100 + 1.5% on $500k + 2.25% on $500k + 3% on $500k = $87,500." }
     ]
   },
+  // United States - Sales Tax Calculator
+  {
+    id: "united-states-sales-tax-sales-tax-calculator",
+    countrySlug: "united-states",
+    categorySlug: "sales-tax",
+    calculatorSlug: "sales-tax-calculator",
+    name: "Sales Tax Calculator",
+    description: "Calculate sales tax on purchases by US state and local rates.",
+    inputs: [
+      { id: "amount", label: "Purchase Amount", type: "number", required: true, placeholder: "Enter purchase amount", validation: { min: 0, step: 0.01 } },
+      { id: "state", label: "State", type: "select", required: true, defaultValue: "CA", options: [
+        { value: "AL", label: "Alabama" }, { value: "AZ", label: "Arizona" }, { value: "CA", label: "California" },
+        { value: "CO", label: "Colorado" }, { value: "FL", label: "Florida" }, { value: "GA", label: "Georgia" },
+        { value: "IL", label: "Illinois" }, { value: "NY", label: "New York" }, { value: "TX", label: "Texas" },
+        { value: "WA", label: "Washington" }
+      ]},
+      { id: "calculationType", label: "Calculation Type", type: "select", required: true, defaultValue: "exclusive", options: [
+        { value: "exclusive", label: "Add Sales Tax (Tax Exclusive)" },
+        { value: "inclusive", label: "Remove Sales Tax (Tax Inclusive)" }
+      ]}
+    ],
+    outputs: [
+      { id: "salesTax", label: "Sales Tax", format: "currency", description: "Estimated sales tax amount" },
+      { id: "totalAmount", label: "Total Amount", format: "currency", description: "Amount including sales tax" },
+      { id: "netAmount", label: "Net Amount", format: "currency", description: "Amount excluding sales tax" }
+    ],
+    formulas: [
+      { id: "sales_tax_us", name: "Sales Tax", formula: "Amount × Combined State + Local Rate", description: "US sales tax varies by state and locality" }
+    ],
+    examples: [
+      { title: "$100 Purchase in California", inputs: { amount: 100, state: "CA", calculationType: "exclusive" }, outputs: { salesTax: 7.25, totalAmount: 107.25, netAmount: 100 }, explanation: "CA base rate 7.25% applied to $100 purchase." }
+    ]
+  },
+  // United States - Property Tax Calculator
+  {
+    id: "united-states-property-tax-property-tax-calculator",
+    countrySlug: "united-states",
+    categorySlug: "property-tax",
+    calculatorSlug: "property-tax-calculator",
+    name: "Property Tax Calculator",
+    description: "Estimate annual property tax based on home value and local rates.",
+    inputs: [
+      { id: "propertyValue", label: "Property Value (USD)", type: "number", required: true, placeholder: "Enter property value", validation: { min: 0, step: 1000 } },
+      { id: "taxRate", label: "Effective Tax Rate (%)", type: "number", required: true, placeholder: "Enter local tax rate", helpText: "Combined county, city, and school district rate", validation: { min: 0, max: 5, step: 0.01 } },
+      { id: "assessmentRatio", label: "Assessment Ratio (%)", type: "number", required: false, defaultValue: 100, placeholder: "Enter assessment ratio", helpText: "Percentage of market value used for assessment", validation: { min: 0, max: 100, step: 1 } }
+    ],
+    outputs: [
+      { id: "assessedValue", label: "Assessed Value", format: "currency", description: "Property value after assessment ratio" },
+      { id: "propertyTax", label: "Annual Property Tax", format: "currency", description: "Estimated annual property tax" },
+      { id: "effectiveRate", label: "Effective Rate", format: "percentage", description: "Tax as percentage of market value" }
+    ],
+    formulas: [
+      { id: "prop_tax_us", name: "Property Tax", formula: "Assessed Value × Tax Rate", description: "Assessed value = Market Value × Assessment Ratio" }
+    ],
+    examples: [
+      { title: "$400,000 Home, 1.2% Tax Rate, 100% Assessment", inputs: { propertyValue: 400000, taxRate: 1.2, assessmentRatio: 100 }, outputs: { assessedValue: 400000, propertyTax: 4800, effectiveRate: 1.2 }, explanation: "$400,000 × 1.2% = $4,800 annual property tax." }
+    ]
+  },
+  // United States - Child Tax Credit Calculator
+  {
+    id: "united-states-tax-credits-child-tax-credit",
+    countrySlug: "united-states",
+    categorySlug: "tax-credits",
+    calculatorSlug: "child-tax-credit",
+    name: "Child Tax Credit Calculator",
+    description: "Estimate your Child Tax Credit based on qualifying children and income.",
+    inputs: [
+      { id: "qualifyingChildren", label: "Qualifying Children (under 17)", type: "number", required: true, placeholder: "Enter number of children", validation: { min: 0, max: 10, step: 1 } },
+      { id: "magi", label: "Modified Adjusted Gross Income", type: "number", required: true, placeholder: "Enter MAGI", validation: { min: 0, step: 1000 } },
+      { id: "filingStatus", label: "Filing Status", type: "select", required: true, defaultValue: "single", options: [
+        { value: "single", label: "Single" },
+        { value: "married_joint", label: "Married Filing Jointly" },
+        { value: "head_of_household", label: "Head of Household" }
+      ]}
+    ],
+    outputs: [
+      { id: "totalCredit", label: "Total Child Tax Credit", format: "currency", description: "Before phase-out" },
+      { id: "phaseOutReduction", label: "Phase-Out Reduction", format: "currency", description: "Amount reduced due to high income" },
+      { id: "finalCredit", label: "Final Credit", format: "currency", description: "Credit after phase-out" },
+      { id: "refundablePortion", label: "Refundable Portion", format: "currency", description: "Up to $1,700 per child" }
+    ],
+    formulas: [
+      { id: "ctc_calc", name: "Child Tax Credit", formula: "$2,000 per qualifying child. Phase-out: $50 per $1,000 over threshold. Refundable up to $1,700.", description: "For 2025 tax year" }
+    ],
+    examples: [
+      { title: "2 Children, MAGI $180,000, Single", inputs: { qualifyingChildren: 2, magi: 180000, filingStatus: "single" }, outputs: { totalCredit: 4000, phaseOutReduction: 0, finalCredit: 4000, refundablePortion: 1700 }, explanation: "Phase-out starts at $200,000 for single. No reduction yet." }
+    ]
+  },
+  // United States - EITC Calculator
+  {
+    id: "united-states-tax-credits-eitc",
+    countrySlug: "united-states",
+    categorySlug: "tax-credits",
+    calculatorSlug: "eitc-calculator",
+    name: "EITC Calculator",
+    description: "Calculate your Earned Income Tax Credit based on income and family size.",
+    inputs: [
+      { id: "earnedIncome", label: "Earned Income", type: "number", required: true, placeholder: "Enter earned income", validation: { min: 0, step: 100 } },
+      { id: "qualifyingChildren", label: "Qualifying Children", type: "number", required: true, placeholder: "Enter number of children", validation: { min: 0, max: 10, step: 1 } },
+      { id: "investmentIncome", label: "Investment Income", type: "number", required: false, defaultValue: 0, placeholder: "Enter investment income", helpText: "Must be below $11,600 for 2025", validation: { min: 0, step: 100 } }
+    ],
+    outputs: [
+      { id: "eitcAmount", label: "EITC Amount", format: "currency", description: "Estimated Earned Income Tax Credit" },
+      { id: "effectiveRate", label: "Effective Rate", format: "percentage", description: "Credit as percentage of earned income" }
+    ],
+    formulas: [
+      { id: "eitc_2025", name: "EITC 2025", formula: "Max $7,430 (3+ children), $5,980 (2 children), $3,965 (1 child), $632 (no children). Phase-out based on income.", description: "2025 EITC amounts and income limits" }
+    ],
+    examples: [
+      { title: "1 Child, $30,000 Earned Income", inputs: { earnedIncome: 30000, qualifyingChildren: 1, investmentIncome: 0 }, outputs: { eitcAmount: 3965, effectiveRate: 13.22 }, explanation: "1 child EITC max is $3,965 for 2025." }
+    ]
+  },
+  // United States - Standard Deduction Calculator
+  {
+    id: "united-states-tax-deductions-standard-deduction",
+    countrySlug: "united-states",
+    categorySlug: "tax-deductions",
+    calculatorSlug: "standard-deduction-calculator",
+    name: "Standard Deduction Calculator",
+    description: "Find your standard deduction amount based on filing status and tax year.",
+    inputs: [
+      { id: "filingStatus", label: "Filing Status", type: "select", required: true, defaultValue: "single", options: [
+        { value: "single", label: "Single" },
+        { value: "married_joint", label: "Married Filing Jointly" },
+        { value: "married_separate", label: "Married Filing Separately" },
+        { value: "head_of_household", label: "Head of Household" }
+      ]},
+      { id: "age", label: "Age", type: "number", required: true, placeholder: "Enter your age", validation: { min: 0, max: 120, step: 1 } },
+      { id: "isBlind", label: "Are you blind?", type: "radio", required: true, defaultValue: "no", options: [
+        { value: "yes", label: "Yes" },
+        { value: "no", label: "No" }
+      ]},
+      { id: "taxYear", label: "Tax Year", type: "select", required: true, defaultValue: "2025", options: [
+        { value: "2024", label: "2024" },
+        { value: "2025", label: "2025" },
+        { value: "2026", label: "2026" }
+      ]}
+    ],
+    outputs: [
+      { id: "standardDeduction", label: "Standard Deduction", format: "currency", description: "Your standard deduction amount" }
+    ],
+    formulas: [
+      { id: "std_ded", name: "Standard Deduction", formula: "Base amount by filing status + additional for age/blindness", description: "2025: $15,000 single, $30,000 MFJ, $22,500 HOH. Additional $1,550/$1,300." }
+    ],
+    examples: [
+      { title: "Single, Age 30, 2025", inputs: { filingStatus: "single", age: 30, isBlind: "no", taxYear: "2025" }, outputs: { standardDeduction: 15000 }, explanation: "Standard deduction for single filer in 2025 is $15,000." }
+    ]
+  },
+  // United States - Tax Refund Calculator
+  {
+    id: "united-states-irs-filing-refunds-refund-calculator",
+    countrySlug: "united-states",
+    categorySlug: "irs-filing-refunds",
+    calculatorSlug: "refund-calculator",
+    name: "Tax Refund Calculator",
+    description: "Estimate your federal tax refund based on income, withholding, and credits.",
+    inputs: [
+      { id: "annualIncome", label: "Total Annual Income", type: "number", required: true, placeholder: "Enter total income", validation: { min: 0, step: 100 } },
+      { id: "federalWithheld", label: "Federal Tax Withheld", type: "number", required: true, placeholder: "Enter federal tax withheld", validation: { min: 0, step: 100 } },
+      { id: "taxCredits", label: "Tax Credits", type: "number", required: false, defaultValue: 0, placeholder: "Enter total tax credits", validation: { min: 0, step: 100 } },
+      { id: "filingStatus", label: "Filing Status", type: "select", required: true, defaultValue: "single", options: [
+        { value: "single", label: "Single" },
+        { value: "married_joint", label: "Married Filing Jointly" },
+        { value: "head_of_household", label: "Head of Household" }
+      ]}
+    ],
+    outputs: [
+      { id: "estimatedTax", label: "Estimated Tax", format: "currency", description: "Estimated tax liability" },
+      { id: "totalPayments", label: "Total Payments", format: "currency", description: "Withholding + credits" },
+      { id: "refundOrBalance", label: "Refund or Balance Due", format: "currency", description: "Positive = refund, negative = balance due" }
+    ],
+    formulas: [
+      { id: "refund_calc", name: "Refund Calculation", formula: "Total Payments - Estimated Tax = Refund/Balance", description: "Simple estimate based on withholding and credits" }
+    ],
+    examples: [
+      { title: "$75,000 Income, $10,000 Withheld, $2,000 Credits", inputs: { annualIncome: 75000, federalWithheld: 10000, taxCredits: 2000, filingStatus: "single" }, outputs: { estimatedTax: 8966, totalPayments: 12000, refundOrBalance: 3034 }, explanation: "Estimated tax $8,966. Total payments $12,000. Refund = $3,034." }
+    ]
+  },
+  // United States - Paycheck Withholding Calculator
+  {
+    id: "united-states-tax-withholding-withholding-calculator",
+    countrySlug: "united-states",
+    categorySlug: "tax-withholding",
+    calculatorSlug: "withholding-calculator",
+    name: "Paycheck Withholding Calculator",
+    description: "Estimate federal income tax withheld from each paycheck based on W-4 inputs.",
+    inputs: [
+      { id: "annualIncome", label: "Annual Salary / Wages", type: "number", required: true, placeholder: "Enter annual income", validation: { min: 0, step: 100 } },
+      { id: "payFrequency", label: "Pay Frequency", type: "select", required: true, defaultValue: "monthly", options: [
+        { value: "weekly", label: "Weekly (52 pay periods)" },
+        { value: "biweekly", label: "Bi-Weekly (26 pay periods)" },
+        { value: "semimonthly", label: "Semi-Monthly (24 pay periods)" },
+        { value: "monthly", label: "Monthly (12 pay periods)" }
+      ]},
+      { id: "filingStatus", label: "Filing Status", type: "select", required: true, defaultValue: "single", options: [
+        { value: "single", label: "Single" },
+        { value: "married", label: "Married" }
+      ]},
+      { id: "dependents", label: "Dependents", type: "number", required: false, defaultValue: 0, placeholder: "Enter number of dependents", validation: { min: 0, max: 10, step: 1 } }
+    ],
+    outputs: [
+      { id: "federalWithholding", label: "Federal Withholding", format: "currency", description: "Estimated federal tax per paycheck" },
+      { id: "annualWithholding", label: "Annual Withholding", format: "currency", description: "Estimated annual federal withholding" },
+      { id: "effectiveRate", label: "Effective Rate", format: "percentage", description: "Withholding as percentage of income" }
+    ],
+    formulas: [
+      { id: "withholding_us", name: "Federal Withholding", formula: "Based on IRS Publication 15-T tables and W-4 inputs", description: "Percentage method or wage bracket method" }
+    ],
+    examples: [
+      { title: "$60,000 Annual Salary, Single, Monthly", inputs: { annualIncome: 60000, payFrequency: "monthly", filingStatus: "single", dependents: 0 }, outputs: { federalWithholding: 450, annualWithholding: 5400, effectiveRate: 9.0 }, explanation: "Approximate monthly withholding of $450 based on 2025 tables." }
+    ]
+  },
 ];
+
