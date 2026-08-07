@@ -184,4 +184,39 @@ const webPageSchema = {
 <!-- SECTION 11: TRUST & TRANSPARENCY -->
 <TrustSection country={country} />
 
+<!-- SECTION 12: COUNTRY TAX OVERVIEW -->
+<div class="border-t border-hairline dark:border-overlay-light" aria-labelledby="country-tax-overview-heading">
+  <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <h2 id="country-tax-overview-heading" class="text-3xl font-semibold text-ink mb-6 text-center dark:text-on-primary">Country Tax Overview</h2>
+    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80" alt={`${country.name} tax overview and financial planning`} class="mx-auto mb-10 w-full max-w-3xl rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+    <h3 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Key Takeaways</h3>
+    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <li class="card dark:border-overlay-lighter dark:bg-surface">
+        <span class="font-semibold text-ink dark:text-on-primary">Tax Year:</span>
+        <p class="mt-1 text-sm text-body dark:text-muted">{country.taxYear} — all rates and thresholds are current for this fiscal year.</p>
+      </li>
+      <li class="card dark:border-overlay-lighter dark:bg-surface">
+        <span class="font-semibold text-ink dark:text-on-primary">Currency:</span>
+        <p class="mt-1 text-sm text-body dark:text-muted">{country.currency} — all calculations are presented in the local currency for easy comparison.</p>
+      </li>
+      <li class="card dark:border-overlay-lighter dark:bg-surface">
+        <span class="font-semibold text-ink dark:text-on-primary">Official Authority:</span>
+        <p class="mt-1 text-sm text-body dark:text-muted">{country.officialTaxAuthority} — verify filings directly with the official tax authority.</p>
+      </li>
+      <li class="card dark:border-overlay-lighter dark:bg-surface">
+        <span class="font-semibold text-ink dark:text-on-primary">Deductions & Credits:</span>
+        <p class="mt-1 text-sm text-body dark:text-muted">Review the Common Deductions and Tax Credits sections to maximize your refund or minimize your payment.</p>
+      </li>
+      <li class="card dark:border-overlay-lighter dark:bg-surface">
+        <span class="font-semibold text-ink dark:text-on-primary">Filing Deadlines:</span>
+        <p class="mt-1 text-sm text-body dark:text-muted">Check Important Tax Information for key dates and avoid late penalties or interest charges.</p>
+      </li>
+      <li class="card dark:border-overlay-lighter dark:bg-surface">
+        <span class="font-semibold text-ink dark:text-on-primary">Privacy First:</span>
+        <p class="mt-1 text-sm text-body dark:text-muted">All calculations run locally in your browser. Your financial data is never collected, stored, or transmitted.</p>
+      </li>
+    </ul>
+  </div>
+</div>
+
 </CountryLayout>

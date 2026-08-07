@@ -68,9 +68,12 @@ const termSchema = {
         )}
       </header>
 
+      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80" alt={`Visual guide and reference for ${term.data.term}`} class="mb-6 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+
       <section class="prose max-w-none prose-p:text-body prose-p:leading-relaxed prose-p:mt-4 prose-a:text-link prose-a:underline prose-a:decoration-dashed prose-a:underline-offset-4 prose-a:hover:text-primary" aria-labelledby="definition-heading">
         <h2 id="definition-heading" class="text-2xl font-semibold text-ink dark:text-on-primary">Definition</h2>
         <p class="mt-2 text-xl text-ink dark:text-on-primary font-medium leading-relaxed">{term.data.definition}</p>
+        <p class="mt-4 text-body dark:text-muted">This term is commonly used in tax preparation and financial planning. Understanding its precise meaning helps you interpret tax forms, evaluate deductions, and communicate effectively with tax professionals.</p>
 
         {term.data.examples && term.data.examples.length > 0 && (
           <>
