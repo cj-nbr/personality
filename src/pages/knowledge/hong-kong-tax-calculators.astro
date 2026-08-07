@@ -1,0 +1,123 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+
+const title = "Hong Kong Tax Calculators 2026: Salaries, Profits & Property";
+const description = "Comprehensive calculator suite for Hong Kong income tax. Calculate salaries tax (2%-17%), profits tax (8.25%-16.5%), property tax (15%), and stamp duty. Includes expat tax calculator and net salary estimator.";
+const baseUrl = "https://finsiva.com";
+const currentUrl = `${baseUrl}/knowledge/hong-kong-tax-calculators`;
+
+const calculatorSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Hong Kong Tax Calculators",
+  description: "Free tools to calculate salaries tax, profits tax, property tax, and stamp duty in Hong Kong with real-time updates.",
+  url: currentUrl,
+  offers: {
+    "@type": "Offer",
+    price: 0,
+    priceCurrency: "HKD"
+  }
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={currentUrl}
+  robots="index,follow"
+  schema={calculatorSchema}
+  image="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1200&q=80"
+  imageAlt="Financial calculator with Hong Kong tax icons"
+>
+  <article id="main-content" class="min-h-screen bg-canvas dark:bg-canvas">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[
+        { label: "Home", href: "/" },
+        { label: "Knowledge Center", href: "/knowledge" },
+        { label: "Tax Calculators" }
+      ]} />
+
+      <header class="pt-8 pb-12">
+        <h1 class="text-4xl font-extrabold tracking-tight text-ink dark:text-on-primary sm:text-5xl">Hong Kong Tax Calculators 2026</h1>
+        <p class="mt-4 text-xl text-body dark:text-muted">All essential tax calculators for Hong Kong individuals and businesses.</p>
+        <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-muted dark:text-muted">
+          <time datetime="2026-08-08">Last updated: August 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>30 min read</span>
+          <span aria-hidden="true">·</span>
+          <span>Knowsedge Center</span>
+        </div>
+      </header>
+
+      <div class="prose max-w-none prose-headings:mt-10 prose-h2:text-2xl prose-h2:font-semibold prose-h2:text-ink dark:prose-h2:text-on-primary">
+        <h2 id="calculator-overview">Smart Tax Planning with Calculators</h2>
+        <p>Our Hong Kong tax calculators help you:
+          - Instantly estimate salaries tax (choose between progressive or standard rate)</p>
+        <p>Calculate profits tax for corporations (8.25%-16.5%)</p>
+        <p>Determine property tax on rental income (15% rate)</p>
+        <p>Calculate stamp duty for property purchases</p>
+      </div>
+
+      <nav aria-label="Calculator Index" class="mb-8 border-b border-hairline pb-6 dark:border-overlay-light">
+        <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Calculator Directory</h2>
+        <ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+          <li><a href="/countries/hong-kong/salaries-tax/salaries-tax-calculator" class="text-link hover:underline dark:text-link">Salaries Tax Calculator</a></li>
+          <li><a href="/countries/hong-kong/profits-tax/profits-tax-calculator" class="text-link hover:underline dark:text-link">Profits Tax Calculator</a></li>
+          <li><a href="/countries/hong-kong/property-tax/property-tax-calculator" class="text-link hover:underline dark:text-link">Property Tax Calculator</a></li>
+          <li><a href="/countries/hong-kong/stamp-duty/hk-property-stamp-duty-calculator" class="text-link hover:underline dark:text-link">Stamp Duty Calculator</a></li>
+          <li><a href="/countries/hong-kong/salaries-tax/hk-net-salary-calculator" class="text-link hover:underline dark:text-link">Net Salary Calculator</a></li>
+          <li><a href="/countries/hong-kong/salaries-tax/hong-kong-tax-calculator-for-expats" class="text-link hover:underline dark:text-link">Expats Tax Calculator</a></li>
+        </ul>
+      </nav>
+
+      <script type="application/ld+json" set:html={JSON.stringify(calculatorSchema)} />
+
+      <!-- CALCULATOR DETAILS -->
+      <div class="prose max-w-none prose-headings:mt-10 prose-h2:text-2xl prose-h2:font-semibold prose-h2:text-ink dark:prose-h2:text-on-primary">
+        <h2 id="salaries-tax-calculator">Salaries Tax Calculator</h2>
+        <p>Calculate your Hong Kong salaries tax using either:
+          - <strong>Progressive rates</strong> (2%-17% on net chargeable income)</p>
+        <p>- <strong>Standard rate</strong> (15% on net income after deductions)</p>
+        <p>Includes MPF contribution deductions and personal allowances.</p>
+
+        <h3>Key Features:</h3>
+        <ul class="list-disc space-y-2">
+          <li>Compare progressive vs standard rate immediately</li>
+          <li>Calculate take-home pay with MPF and deductions</li>
+          <li>Input variable allowances and exemptions</li>
+        </ul>
+      </div>
+
+      <div class="prose max-w-none prose-headings:mt-10 prose-h2:text-2xl prose-h2:font-semibold prose-h2:text-ink dark:prose-h2:text-on-primary">
+        <h2 id="profits-tax-calculator">Profits Tax Calculator</h2>
+        <p>For businesses: Calculate</p>
+        <ul class="list-disc space-y-2">
+          <li>Corporate tax (8.25% first HK$2M, 16.5% thereafter)</li>
+          <li>Unincorporated business tax (7.5% first HK$2M, 15% thereafter)</li>
+          <li>Deductions and exemptions</li>
+        </ul>
+      </div>
+
+      <div class="prose max-w-none prose-headings:mt-10 prose-h2:text-2xl prose-h2:font-semibold prose-h2:text-ink dark:prose-h2:text-on-primary">
+        <h2 id="property-tax-calculator">Property Tax Calculator</h2>
+        <p>Estimate</p>
+        <ul class="list-disc space-y-2">
+          <li>Rental income tax (15% on net assessable value)</li>
+          <li>Deductions for irrecoverable rent and management fees</li>
+          <li>Stamp duty implications for new properties</li>
+        </ul>
+      </div>
+
+      <div class="prose max-w-none prose-headings:mt-10 prose-h2:text-2xl prose-h2:font-semibold prose-h2:text-ink dark:prose-h2:text-on-primary">
+        <h2 id="expat-calculator">Expats Tax Calculator</h2>
+        <p>Special tool for foreign workers:</p>
+        <ul class="list-disc space-y-2">
+          <li>60-day rule compliance check</li>
+          <li>Hong Kong employment income calculation</li>
+          <li>Dual-source income analysis</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</Layout>

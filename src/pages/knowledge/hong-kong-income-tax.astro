@@ -1,0 +1,469 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+
+const title = "Hong Kong Income Tax Guide 2026: Salaries, Profits & Property Tax";
+const description = "Complete guide to Hong Kong income tax for individuals and businesses. Learn salaries tax rates (2%-17%), profits tax (8.25%-16.5%), property tax, and tax calculations for expats and foreigners.";
+const baseUrl = "https://finsiva.com";
+const currentUrl = `${baseUrl}/knowledge/hong-kong-income-tax`;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What is the Hong Kong income tax rate for individuals in 2026?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Hong Kong salaries tax rates for individuals range from 2% to 17% under the progressive system, or 15% under the standard rate - whichever is lower. The basic allowance is HK$132,000 per person for 2026."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "How much is corporate tax in Hong Kong?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Corporate tax in Hong Kong is 8.25% on the first HK$2 million of assessable profits and 16.5% on profits exceeding HK$2 million. Unincorporated businesses pay 7.5% and 15% respectively."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Is Hong Kong income tax for foreigners high?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Hong Kong income tax for foreigners is typically low due to the territorial tax system. Only income sourced in Hong Kong is taxable, and overseas income is generally exempt."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "How do I calculate Hong Kong salaries tax?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Use our Hong Kong salaries tax calculator or follow the progressive tax brackets from 2% to 17% on net chargeable income after deducting MPF contributions and personal allowances."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "What is the Hong Kong tax bracket for 2026?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Hong Kong progressive tax brackets for 2026: HK$50,000 at 2%, next HK$50,000 at 6%, next HK$40,000 at 10%, next HK$40,000 at 14%, and above HK$200,000 at 17%."
+      }
+    }
+  ]
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Hong Kong Income Tax Guide 2026: Salaries, Profits & Property Tax",
+  description: "Complete guide to Hong Kong income tax for individuals and businesses. Learn all tax rates, brackets, deductions and how to calculate your tax liability.",
+  url: currentUrl,
+  author: { "@type": "Organization", name: "Finsiva" },
+  dateModified: "2026-08-08"
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={currentUrl}
+  robots="index,follow"
+  schema={articleSchema}
+  image="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=1200&q=80"
+  imageAlt="Hong Kong skyline with tax calculation charts"
+>
+  <article id="main-content" class="min-h-screen bg-canvas dark:bg-canvas">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[
+        { label: "Home", href: "/" },
+        { label: "Knowledge Center", href: "/knowledge" },
+        { label: "Hong Kong Income Tax" }
+      ]} />
+
+      <header class="pt-8 pb-12">
+        <h1 class="text-4xl font-extrabold tracking-tight text-ink dark:text-on-primary sm:text-5xl">Hong Kong Income Tax Guide 2026</h1>
+        <p class="mt-4 text-xl text-body dark:text-muted">Complete guide to salaries tax, profits tax, property tax, and tax rates for individuals, expatriates, and businesses in Hong Kong.</p>
+        <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-muted dark:text-muted">
+          <time datetime="2026-08-08">Last updated: August 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>25 min read</span>
+          <span aria-hidden="true">·</span>
+          <span>Knowsedge Center</span>
+        </div>
+      </header>
+
+      <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=1200&q=80" alt="Hong Kong skyline with tax calculation charts" class="mb-8 w-full rounded-lg object-cover max-h-80 sm:max-h-96" loading="lazy" />
+
+      <nav aria-label="Table of contents" class="mb-8 border-b border-hairline pb-6 dark:border-overlay-light">
+        <h2 class="text-2xl font-semibold text-ink mb-4 dark:text-on-primary">Table of Contents</h2>
+        <ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+          <li><a href="#hk-income-tax-rate" class="text-link hover:underline dark:text-link">Hong Kong Income Tax Rate</a></li>
+          <li><a href="#salaries-tax" class="text-link hover:underline dark:text-link">Hong Kong Salaries Tax</a></li>
+          <li><a href="#profits-tax" class="text-link hover:underline dark:text-link">Hong Kong Profits Tax</a></li>
+          <li><a href="#property-tax" class="text-link hover:underline dark:text-link">Hong Kong Property Tax</a></li>
+          <li><a href="#tax-brackets" class="text-link hover:underline dark:text-link">Hong Kong Tax Brackets</a></li>
+          <li><a href="#deductions-credits" class="text-link hover:underline dark:text-link">Deductions & Credits</a></li>
+          <li><a href="#expats" class="text-link hover:underline dark:text-link">Tax for Foreigners</a></li>
+          <li><a href="#calculators" class="text-link hover:underline dark:text-link">Calculators</a></li>
+        </ul>
+      </nav>
+
+      <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+      <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+      <!-- CONTENT STARTS HERE -->
+      <div class="prose max-w-none prose-headings:mt-10 prose-headings:mb-4 prose-h2:text-2xl prose-h2:font-semibold prose-h2:text-ink dark:prose-h2:text-on-primary prose-h3:text-xl prose-h3:font-semibold prose-h3:text-ink dark:prose-h3:text-on-primary prose-p:text-body prose-p:leading-relaxed prose-a:text-link prose-a:underline prose-a:decoration-dashed prose-a:underline-offset-4 prose-a:hover:text-primary prose-ul:list-disc prose-ul:pl-6 prose-ol:list-decimal prose-ol:pl-6 prose-li:mt-2 prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-primary/5 prose-blockquote:pl-4 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:text-body dark:prose-blockquote:bg-primary/10">
+        <h2 id="hk-income-tax-rate">Hong Kong Income Tax Rate</h2>
+        <p><strong>Hong Kong income tax</strong> is one of the lowest in the world, making it a popular destination for expats and businesses. The city operates a <strong>FY Hong Kong taxation system</strong> with only two main direct taxes: Salaries Tax and Profits Tax.</p>
+
+        <h3 id="main-tax-types">Main Tax Types in Hong Kong</h3>
+        <p>Hong Kong imposes the following direct taxes:</p>
+        <ul>
+          <li><strong>Salaries Tax</strong>: On employment income for individuals</li>
+          <li><strong>Profits Tax</strong>: On business profits for companies and unincorporated businesses</li>
+          <li><strong>Property Tax</strong>: On rental income from Hong Kong properties</li>
+          <li><strong>Stamp Duty</strong>: On property transactions and certain legal documents</li>
+        </ul>
+
+        <h3 id="territorial-tax-system">Territorial Tax System</h3>
+        <p>Hong Kong operates a <strong>territorial tax system in Hong Kong</strong>, meaning only income sourced in Hong Kong is taxable. This makes <strong>hong kong foreign source income exemption</strong> a key feature of the regime. Overseas income is generally exempt under <strong>foreign sourced income exemption hong kong</strong>.</p>
+
+        <h2 id="salaries-tax">Hong Kong Salaries Tax Rate 2026</h2>
+        <p><strong>Hk salary tax rate</strong> and <strong>hk salaries tax</strong> are calculated using two methods - progressive rates or the standard rate, whichever is lower.</p>
+
+        <h3>Hong Kong Individual Tax Rate Structure</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Net Chargeable Income (HKD)</th>
+              <th>Tax Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>First HK$50,000</td>
+              <td>2%</td>
+            </tr>
+            <tr>
+              <td>HK$50,001 - HK$100,000</td>
+              <td>6%</td>
+            </tr>
+            <tr>
+              <td>HK$100,001 - HK$150,000</td>
+              <td>10%</td>
+            </tr>
+            <tr>
+              <td>HK$150,001 - HK$200,000</td>
+              <td>14%</td>
+            </tr>
+            <tr>
+              <td>Above HK$200,000</td>
+              <td>17%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Standard Rate vs Progressive Rate</h3>
+        <p>Taxpayers can choose between:</p>
+        <ul>
+          <li><strong>Progressive rate</strong>: 2% to 17% on net chargeable income</li>
+          <li><strong>Standard rate</strong>: 15% on net income (whichever is lower)</li>
+        </ul>
+        <p>The <strong>hk personal tax rate</strong> effectively provides tax-free allowance of HK$132,000 plus deductions.</p>
+
+        <h2 id="profits-tax">Hong Kong Corporate Tax Rate</h2>
+        <p><strong>Corporate income tax in Hong Kong</strong> uses a two-tier system.</p>
+
+        <h3>Company Tax Rate Hong Kong</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Profits</th>
+              <th>Corporations</th>
+              <th>Unincorporated Businesses</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>First HK$2 million</td>
+              <td>8.25%</td>
+              <td>7.5%</td>
+            </tr>
+            <tr>
+              <td>Above HK$2 million</td>
+              <td>16.5%</td>
+              <td>15%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Profit Tax HK Calculations</h3>
+        <p>Only profits <strong>sourced in hong kong</strong> are taxable. Overseas profits are exempt under the territorial system.</p>
+
+        <h2 id="property-tax">Hong Kong Rental Income Tax</h2>
+        <p><strong>Rental income tax hong kong</strong> is calculated at 15% on the net assessable value after deductions.</p>
+
+        <h3>Property Tax Rate Hong Kong</h3>
+        <ul>
+          <li><strong>Standard rate</strong>: 15% on net assessable rental value</li>
+          <li>Deductions include: irrecoverable rent, government rent, and property management fees</li>
+        </ul>
+
+        <h2 id="tax-brackets">Hong Kong Tax Bracket Structure</h2>
+        <p><strong>Hong kong income tax brackets</strong> (also called <strong>hk tax slab</strong>) for individual taxpayers:</p>
+
+        <h3>2026 Tax Brackets for Individuals</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Income Bracket (HKD)</th>
+              <th>Tax Rate</th>
+              <th>Cumulative Rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0 - 50,000</td>
+              <td>2%</td>
+              <td>2%</td>
+            </tr>
+            <tr>
+              <td>50,001 - 100,000</td>
+              <td>6%</td>
+              <td>4%</td>
+            </tr>
+            <tr>
+              <td>100,001 - 150,000</td>
+              <td>10%</td>
+              <td>7%</td>
+            </tr>
+            <tr>
+              <td>150,001 - 200,000</td>
+              <td>14%</td>
+              <td>10%</td>
+            </tr>
+            <tr>
+              <td>Above 200,000</td>
+              <td>17%</td>
+              <td>17%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 id="deductions-credits">Hong Kong Tax Deductions and Credits</h2>
+        <p>Various deductions reduce your <strong>hk taxable income</strong>.</p>
+
+        <h3>Mandatory Provident Fund (MPF) Deductions</h3>
+        <ul>
+          <li>Employee MPF contributions: Up to HK$18,000 annually</li>
+          <li>Employer MPF contributions: Also deductible</li>
+          <li>Voluntary contributions: May qualify under <strong>loan interest income taxable in hong kong</strong> provisions</li>
+        </ul>
+
+        <h3>Personal Allowances</h3>
+        <ul>
+          <li><strong>Basic allowance</strong>: HK$132,000 for all individuals</li>
+          <li><strong>Married person's allowance</strong>: HK$132,000 (or HK$264,000 if spouse is not assessable)</li>
+          <li><strong>Dependent child allowance</strong>: HK$120,000 per child</li>
+          <li><strong>Elderly parent allowance</strong>: HK$100,000 per parent</li>
+        </ul>
+
+        <h3>Tax Credits for Healthcare</h3>
+        <ul>
+          <li>Mandatory healthcare contributions under MPF</li>
+          <li>Premiums for approved health insurance may be deductible</li>
+        </ul>
+
+        <h2 id="expats">Hong Kong Income Tax for Foreigners</h2>
+        <p>Detailed information about <strong>income tax in hong kong for expats</strong> and the <strong>60-day rule</strong>.</p>
+
+        <h3>60-Day Rule for Foreign Income</h3>
+        <p>Under <strong>hong kong non resident tax</strong> provisions, foreign-source income may be exempt if:</p>
+        <ul>
+          <li>Taxonpayer is present in Hong Kong for 60 days or less in the year</li>
+          <li>Salary from Hong Kong employment is received in the year</li>
+          <li>No other Hong Kong income in the preceding 3 years</li>
+        </ul>
+
+        <h3>Dividend Income and Tax</h3>
+        <p>Dividends from Hong Kong companies are generally not subject to withholding tax under <strong>hong kong withholding tax on dividends</strong>.</p>
+
+        <h3>Capital Gains Tax</h3>
+        <p><strong>Capital gain tax hong kong</strong> does not exist. Profits from the sale of capital assets are generally not taxable unless determined to be revenue by the IRD.</p>
+
+        <h3>Interest Income Taxability</h3>
+        <p><strong>Interest income taxable in hong kong</strong> when sourced from Hong Kong banks or financial institutions. However, foreign interest is generally exempt.</p>
+
+        <h2 id="calculators">Hong Kong Tax Calculators</h2>
+        <p>Use our free tools to calculate your tax liability:</p>
+
+        <h3>Interactive Hong Kong Tax Calculators</h3>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="/countries/hong-kong/salaries-tax/salaries-tax-calculator" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Salaries Tax Calculator</h4>
+            <p class="text-sm text-muted mt-2">Calculate Hong Kong salaries tax at progressive or standard rate.</p>
+          </a>
+          <a href="/countries/hong-kong/profits-tax/profits-tax-calculator" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Profits Tax Calculator</h4>
+            <p class="text-sm text-muted mt-2">Estimate corporate tax for Hong Kong businesses.</p>
+          </a>
+          <a href="/countries/hong-kong/property-tax/property-tax-calculator" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Property Tax Calculator</h4>
+            <p class="text-sm text-muted mt-2">Calculate rental income tax in Hong Kong.</p>
+          </a>
+          <a href="/countries/hong-kong/salaries-tax/hk-net-salary-calculator" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Net Salary Calculator</h4>
+            <p class="text-sm text-muted mt-2">Calculate take-home pay after MPF and tax.</p>
+          </a>
+          <a href="/countries/hong-kong/salaries-tax/hong-kong-tax-calculator-for-expats" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Expats Tax Calculator</h4>
+            <p class="text-sm text-muted mt-2">Tax calculator for foreign workers in Hong Kong.</p>
+          </a>
+          <a href="/countries/hong-kong/stamp-duty/hk-property-stamp-duty-calculator" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Stamp Duty Calculator</h4>
+            <p class="text-sm text-muted mt-2">Calculate property transaction stamp duty.</p>
+          </a>
+        </div>
+
+        <h3>HK Tax Online Filing</h3>
+        <p>Official online tax filing through <a href="https://www.ird.gov.hk/en/e-tax/index.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline dark:text-link">eTax Hong Kong</a> portal.</p>
+
+        <h2 id="faq-section">FAQs: Hong Kong Income Tax</h2>
+        <div class="space-y-6">
+          <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">What is the current income tax rate in Hong Kong for individuals?</h3>
+            <p class="mt-2 text-body dark:text-muted">Hong Kong individual tax rates range from 2% to 17% under the progressive system, or 15% under the standard rate - whichever is lower. The <strong>hk personal income tax rate 2026</strong> provides significant allowances including HK$132,000 basic allowance.</p>
+          </div>
+
+          <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">How do I file Hong Kong income tax as an expat?</h3>
+            <p class="mt-2 text-body dark:text-muted">Expats earning Hong Kong-sourced income must file through the IRD. Use <strong>online tax hk</strong> at eTax portal. Foreign-sourced income is generally exempt under <strong>foreign source income exemption hong kong</strong>.</p>
+          </div>
+
+          <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Is there a capital gains tax in Hong Kong?</h3>
+            <p class="mt-2 text-body dark:text-muted">No, <strong>capital gains hong kong</strong> is not generally taxable. Hong Kong maintains no <strong>capital gain tax hong kong</strong>, unlike many other jurisdictions.</p>
+          </div>
+
+          <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">What is the Hong Kong effective tax rate?</h3>
+            <p class="mt-2 text-body dark:text-muted">The <strong>hong kong effective tax rate</strong> depends on income level, deductions, and choice between progressive vs standard rate. Most taxpayers pay 5-15% effective rate after allowances.</p>
+          </div>
+
+          <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">Can I claim dividend income tax in Hong Kong?</h3>
+            <p class="mt-2 text-body dark:text-muted">Dividends from Hong Kong companies are typically exempt from withholding tax. The <strong>dividend income taxable in hong kong</strong> situation applies primarily to distribution of profits from trading businesses.</p>
+          </div>
+
+          <div class="rounded-lg border border-hairline bg-canvas p-6 dark:border-overlay-lighter dark:bg-surface">
+            <h3 class="font-semibold text-ink dark:text-on-primary">What tax forms do I need for Hong Kong?</h3>
+            <p class="mt-2 text-body dark:text-muted">For individuals: Form BIR50 (individual tax return). For companies: Form IR56B (employer returns) and profits tax return. Access forms through <strong>hk tax ird</strong> portal.</p>
+          </div>
+        </div>
+
+        <h2 id="tax-year">Hong Kong Tax Year and Deadlines</h2>
+        <ul>
+          <li><strong>Tax year</strong>: April 1 to March 31 (Assessment Year)</li>
+          <li><strong>Filing deadline</strong>: April 15 (paper); June 18 (e-filing)</li>
+          <li><strong>Provisional tax</strong>: Paid in installments April, July, November</li>
+        </ul>
+
+        <h2 id="best-practices">Best Practices for Hong Kong Tax Planning</h2>
+        <ul>
+          <li>Choose progressive vs standard rate annually - always pick the lower amount</li>
+          <li>Maximize MPF deductions within legal limits</li>
+          <li>Claim all eligible personal allowances before tax return</li>
+          <li>Maintain records for 5 years for IRD verification</li>
+          <li>File early to avoid late-payment penalties</li>
+          <li>Consider tax implications before salary negotiations or investments</li>
+        </ul>
+
+        <h2 id="related-content">Related Resources</h2>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a href="/countries/hong-kong" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Hong Kong Tax Overview</h4>
+            <p class="text-sm text-muted mt-2">All Hong Kong tax categories, calculators, and rates.</p>
+          </a>
+          <a href="/blogs/hong-kong-salaries-tax-guide" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Salaries Tax Guide</h4>
+            <p class="text-sm text-muted mt-2">Detailed guide to Hong Kong salaries tax calculation.</p>
+          </a>
+          <a href="/blogs/hong-kong-mpf-tax-guide" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">MPF Tax Guide</h4>
+            <p class="text-sm text-muted mt-2">How MPF contributions affect your Hong Kong tax.</p>
+          </a>
+          <a href="/knowledge/hong-kong-corporate-tax" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Corporate Tax Guide</h4>
+            <p class="text-sm text-muted mt-2">Comprehensive guide to Hong Kong profits tax for businesses.</p>
+          </a>
+          <a href="/blogs/hong-kong-tax-allowances-deductions" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Tax Deductions Guide</h4>
+            <p class="text-sm text-muted mt-2">All allowances, deductions, and credits in Hong Kong.</p>
+          </a>
+          <a href="/knowledge/category/income-tax" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+            <h4 class="font-semibold text-ink dark:text-on-primary">Global Income Tax</h4>
+            <p class="text-sm text-muted mt-2">Compare income tax systems across multiple countries.</p>
+          </a>
+        </div>
+
+        <section class="mt-16 border-t border-hairline pt-12 dark:border-overlay-light">
+          <h2 id="official-resources" class="text-3xl font-semibold text-ink mb-6 dark:text-on-primary">Official Resources</h2>
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <a href="https://www.ird.gov.hk" target="_blank" rel="noopener noreferrer" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+              <h3 class="font-semibold text-ink dark:text-on-primary">Inland Revenue Department</h3>
+              <p class="mt-2 text-sm text-body dark:text-muted">Official Hong Kong tax authority website with forms, rates, and e-filing services.</p>
+            </a>
+            <a href="https://www.ird.gov.hk/en/residents/personal-tax/index.html" target="_blank" rel="noopener noreferrer" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+              <h3 class="font-semibold text-ink dark:text-on-primary">Personal Tax Guide</h3>
+              <p class="mt-2 text-sm text-body dark:text-muted">Comprehensive IRD guide to salaries tax and allowances.</p>
+            </a>
+            <a href="https://www.mpf.gov.hk" target="_blank" rel="noopener noreferrer" class="card hover:border-primary transition dark:border-overlay-lighter dark:bg-surface">
+              <h3 class="font-semibold text-ink dark:text-on-primary">MPF Schemes</h3>
+              <p class="mt-2 text-sm text-body dark:text-muted">Mandatory Provident Fund authority for contribution limits and deductions.</p>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <section class="mt-16 border-t border-hairline pt-12 dark:border-overlay-light">
+        <h2 class="text-3xl font-semibold text-ink mb-8 dark:text-on-primary">Additional Hong Kong Tax Resources</h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <a href="/blogs/hong-kong-vs-singapore-tax-guide" class="group rounded-lg border border-hairline p-6 transition-colors hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">Hong Kong vs Singapore Tax</h3>
+            <p class="mt-3 text-sm text-body dark:text-muted">Compare tax systems between Hong Kong's territorial tax and Singapore's progressive rates.</p>
+          </a>
+          <a href="/blogs/hong-kong-tax-calculator-expats-guide" class="group rounded-lg border border-hairline p-6 transition-colors hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">Expats Tax Calculator Guide</h3>
+            <p class="mt-3 text-sm text-body dark:text-muted">How expatriates can use Hong Kong tax calculators effectively.</p>
+          </a>
+          <a href="/blogs/hong-kong-property-tax-guide" class="group rounded-lg border border-hairline p-6 transition-colors hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">Property Tax Guide</h3>
+            <p class="mt-3 text-sm text-body dark:text-muted">Understanding rental income tax and deductions for Hong Kong property owners.</p>
+          </a>
+          <a href="/blogs/hong-kong-profits-tax-guide" class="group rounded-lg border border-hairline p-6 transition-colors hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">Profits Tax Guide</h3>
+            <p class="mt-3 text-sm text-body dark:text-muted">Corporate tax rates, allowances, and computation for Hong Kong businesses.</p>
+          </a>
+          <a href="/blogs/hong-kong-stamp-duty-guide" class="group rounded-lg border border-hairline p-6 transition-colors hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">Stamp Duty Guide</h3>
+            <p class="mt-3 text-sm text-body dark:text-muted">Property transaction stamp duty rates and calculations in Hong Kong.</p>
+          </a>
+          <a href="/blogs/hong-kong-etax-guide" class="group rounded-lg border border-hairline p-6 transition-colors hover:border-primary dark:border-overlay-lighter dark:bg-surface dark:hover:border-primary">
+            <h3 class="font-semibold text-ink group-hover:text-primary dark:text-on-primary dark:group-hover:text-primary">eTAX Online Guide</h3>
+            <p class="mt-3 text-sm text-body dark:text-muted">Step-by-step guide to filing Hong Kong tax returns online.</p>
+          </a>
+        </div>
+      </section>
+    </div>
+  </article>
+</Layout>
+
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+---
+
+</Layout>

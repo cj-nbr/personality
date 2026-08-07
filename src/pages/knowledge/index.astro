@@ -7,14 +7,15 @@ import { getCollection } from "astro:content";
 
 const guides = await getCollection("guides");
 const categories = [
-  { name: "Income Tax", slug: "income-tax", count: guides.filter(g => g.data.category === "Income Tax").length, description: "Learn about income tax basics, rates, and how your taxable income is calculated." },
-  { name: "Tax Deductions", slug: "tax-deductions", count: guides.filter(g => g.data.category === "Tax Deductions").length, description: "Explore deductions that reduce your taxable income and lower your tax bill." },
-  { name: "Tax Credits", slug: "tax-credits", count: guides.filter(g => g.data.category === "Tax Credits").length, description: "Learn about tax credits that directly reduce your tax liability." },
-  { name: "Payroll Taxes", slug: "payroll-taxes", count: guides.filter(g => g.data.category === "Payroll Taxes").length, description: "Understand Social Security, Medicare, and employer payroll tax obligations." },
-  { name: "Capital Gains", slug: "capital-gains", count: guides.filter(g => g.data.category === "Capital Gains").length, description: "Learn about tax on investment gains, short-term vs long-term holding periods." },
-  { name: "GST / VAT", slug: "gst-vat", count: guides.filter(g => g.data.category === "GST / VAT").length, description: "Understand goods and services tax and value-added tax systems." },
-  { name: "Tax Residency", slug: "tax-residency", count: guides.filter(g => g.data.category === "Tax Residency").length, description: "Understand tax residency rules that determine which country taxes your income." },
-  { name: "Tax Planning", slug: "tax-planning", count: guides.filter(g => g.data.category === "Tax Planning").length, description: "Strategies and principles for lawful tax optimization and financial planning." },
+   { name: "Income Tax", slug: "income-tax", count: guides.filter(g => g.data.category === "Income Tax").length, description: "Learn about income tax basics, rates, and how your taxable income is calculated." },
+   { name: "Tax Deductions", slug: "tax-deductions", count: guides.filter(g => g.data.category === "Tax Deductions").length, description: "Explore deductions that reduce your taxable income and lower your tax bill." },
+   { name: "Tax Credits", slug: "tax-credits", count: guides.filter(g => g.data.category === "Tax Credits").length, description: "Learn about tax credits that directly reduce your tax liability." },
+   { name: "Payroll Taxes", slug: "payroll-taxes", count: guides.filter(g => g.data.category === "Payroll Taxes").length, description: "Understand Social Security, Medicare, and employer payroll tax obligations." },
+   { name: "Capital Gains", slug: "capital-gains", count: guides.filter(g => g.data.category === "Capital Gains").length, description: "Learn about tax on investment gains, short-term vs long-term holding periods." },
+   { name: "GST / VAT", slug: "gst-vat", count: guides.filter(g => g.data.category === "GST / VAT").length, description: "Understand goods and services tax and value-added tax systems." },
+   { name: "Tax Residency", slug: "tax-residency", count: guides.filter(g => g.data.category === "Tax Residency").length, description: "Understand tax residency rules that determine which country taxes your income." },
+   { name: "Tax Planning", slug: "tax-planning", count: guides.filter(g => g.data.category === "Tax Planning").length, description: "Strategies and principles for lawful tax optimization and financial planning." },
+   { name: "Hong Kong Income Tax", slug: "hong-kong-income-tax", count: 1, description: "Complete guide to Hong Kong income tax for individuals, businesses, and expatriates." },
 ];
 
 const featuredGuides = guides.filter(g => g.data.featured).slice(0, 3);

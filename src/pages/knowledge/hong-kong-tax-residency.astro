@@ -1,0 +1,104 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+
+const title = "Hong Kong Tax Residency Rules 2026: The 60-Day Exemption Explained";
+const description = "Understand Hong Kong's tax residency rules including the 60-day rule for non-residents. Learn when foreign-sourced income becomes taxable in Hong Kong and how expats can optimize their tax status.";
+const baseUrl = "https://finsiva.com";
+const currentUrl = `${baseUrl}/knowledge/hong-kong-tax-residency`;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What defines tax residency in Hong Kong?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tax residency is determined by physical presence and economic ties. The 60-day rule allows temporary stays without taxing Hong Kong-sourced income unless you meet residency criteria (180+ days/year)."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Does Hong Kong tax foreign-source income?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No under the territorial system. Only Hong Kong-sourced income is taxable. The 60-day rule exempts non-residents from salaries tax on Hong Kong employment income."
+      }
+    }
+  ]
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  canonical={currentUrl}
+  robots="index,follow"
+  schema={faqSchema}
+  image="https://images.unsplash.com/photo-1560695792-9d7d255948f2?w=1200&q=80"
+  imageAlt="Person reviewing tax residency documents in Hong Kong"
+>
+  <article id="main-content" class="min-h-screen bg-canvas dark:bg-canvas">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[
+        { label: "Home", href: "/" },
+        { label: "Knowledge Center", href: "/knowledge" },
+        { label: "Hong Kong Residency Rules" }
+      ]} />
+
+      <header class="pt-8 pb-12">
+        <h1 class="text-4xl font-extrabold tracking-tight text-ink dark:text-on-primary sm:text-5xl">Tax Residency Rules in Hong Kong (2026)</h1>
+        <p class="mt-4 text-xl text-body dark:text-muted">Full guide to</p>
+        <ul class="text-sm space-y-2 text-light-grey">
+          <li>60-day physical presence exemption</li>
+          <li>Economic presence requirements</li>
+          <li>Implications for foreign-sourced income</li>
+        </ul>
+      </header>
+
+      <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+      <!-- CONTENT STARTS -->
+      <div class="prose max-w-none prose-headings:mt-10 prose-h2:text-2xl prose-h2:font-semibold prose-h2:text-ink dark:prose-h2:text-on-primary">
+        <h2 id="tax-residency-basics">Understanding Tax Residency</h2>
+        <p>Hong Kong's tax system distinguishes between tax residents and non-residents. Your tax status determines which income is taxable under the <strong>territorial tax system</strong>.</p>
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div class="card border border-hairline bg-white px-6 py-4 rounded-lg">
+            <h3 class="text-xl font-semibold">Residency Criteria</h3>
+            <ul class="list-disc space-y-2">
+              <li>✓ 180+ days physical presence in Hong Kong during the tax year</li>
+              <li>✓ Permanent home or habitual residence</li>
+              <li>✓ Sufficient economic activities tied to Hong Kong</li>
+          </ul>
+          </div>
+          <div class="card border border-hairline bg-white px-6 py-4 rounded-lg">
+            <h3 class="text-xl font-semibold">60-Day Rule</h3>
+            <p>If you're in Hong Kong for 60 or fewer days in a year and not resident, your Hong Kong employment income is typically exempt unless: <br>
+              - You have previously been resident in Hong Kong
+              - Your employment contract was signed in Hong Kong</p>
+          </div>
+        </div>
+
+        <h2 id="foreign-income-exemption">Foreign-Sourced Income Exemption</h2>
+        <p>Under the <strong>hong kong foreign source income exemption</strong>, you generally don't pay tax on:</p>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Overseas employment income</li>
+          <li>Foreign business profits</li>
+          <li>Rental income from non-Hong Kong properties</li>
+        </ul>
+        <p>Exceptions apply if your Hong Kong employment contract was signed in Hong Kong, even if work occurs overseas.</p>
+
+        <h2 id="expat-considerations">Tax Status for Expats</h2>
+        <p>Expatriates should consider:</p>
+        <ul class="list-disc space-y-2">
+          <li><strong>60-day threshold</strong>: Plan relocations carefully</li>
+          <li><strong>Employment contract location</strong>: Signing contracts in Hong Kong triggers taxation</li>
+          <li><strong>Dual-source income</strong>: May need to file in both countries</li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</Layout>
