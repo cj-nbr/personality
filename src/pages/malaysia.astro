@@ -1,0 +1,179 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getBaseUrl } from "../utils/routing";
+import { countries } from "../data/countries";
+
+const baseUrl = getBaseUrl();
+const country = countries.find(c => c.slug === "malaysia");
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Malaysia Tax Calculators & Guides - Free Online Tools | Finsiva",
+  description: "Free tax calculators and comprehensive guides for Malaysia income tax, SST, filing requirements, reliefs, and tax planning. Get accurate estimates with our Malaysia-specific tax tools.",
+  url: baseUrl + "/malaysia",
+  publisher: {
+    "@type": "Organization",
+    name: "Finsiva",
+    logo: {
+      "@type": "ImageObject",
+      url: baseUrl + "/logo.png"
+    }
+  },
+  datePublished: "2025-01-01",
+  dateModified: "2025-06-30"
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: baseUrl },
+    { "@type": "ListItem", position: 2, name: "Malaysia Tax", item: `${baseUrl}/malaysia` }
+  ]
+};
+---
+
+<Layout
+  title="Malaysia Tax Calculators & Guides - Free Online Tools | Finsiva"
+  description="Free tax calculators and comprehensive guides for Malaysia income tax, SST, filing requirements, reliefs, and tax planning. Get accurate estimates with our Malaysia-specific tax tools."
+  image="/og-image.svg"
+  imageAlt="Malaysia tax calculator dashboard showing income tax, SST, and filing estimates"
+  keywords="Malaysia tax, Malaysia tax calculator, Malaysian income tax, Malaysian SST, tax filing Malaysia, tax reliefs Malaysia, foreign income Malaysia, rental income Malaysia, business income Malaysia, Malaysian tax brackets"
+  canonical={`${baseUrl}/malaysia`}
+  schema={schema}
+  robots="index,follow"
+>
+  <div class="max-w-5xl mx-auto px-4 py-12">
+
+    <section id="hero" class="mb-20">
+      <div class="text-center">
+        <span class="section-label !text-white bg-primary/10 rounded px-3 py-1 inline-block text-sm font-medium">Malaysia Tax Resources</span>
+        <h1 class="text-4xl font-bold text-ink dark:text-on-primary">Malaysia Tax Knowledge Center</h1>
+        <p class="text-lg text-body dark:text-muted mt-3 max-w-2xl mx-auto">
+          Get accurate, up-to-date Malaysia tax estimates with our free online calculators. Calculate income tax, SST, filing requirements, and explore tax planning strategies.
+        </p>
+        <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <a href={`${baseUrl}/countries/malaysia/income-tax`} class="flex flex-col items-center justify-center gap-3 rounded-lg border border-hairline bg-canvas dark:border-primary p-6">
+            <svg class="h-8 w-8 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-sm text-ink dark:text-on-primary">Income Tax Calculator</span>
+          </a>
+          <a href={`${baseUrl}/countries/malaysia/sst`} class="flex flex-col items-center justify-center gap-3 rounded-lg border border-hairline bg-canvas dark:border-primary p-6">
+            <svg class="h-8 w-8 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            <span class="text-sm text-ink dark:text-on-primary">SST Calculator</span>
+          </a>
+          <a href={`${baseUrl}/countries/malaysia/tax-filing`} class="flex flex-col items-center justify-center gap-3 rounded-lg border border-hairline bg-canvas dark:border-primary p-6">
+            <svg class="h-8 w-8 text-primary dark:text-link" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h18M3 18h18" /></svg>
+            <span class="text-sm text-ink dark:text-on-primary">Tax Filing Assistant</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="benefits" class="mb-20">
+      <h2 class="text-3xl font-semibold text-ink dark:text-on-primary mb-8">Why Use Finsiva for Malaysia Taxes?</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="card dark:border-overlay-lighter dark:bg-surface p-6 rounded-lg">
+          <div class="flex flex-col items-center gap-4 mb-4">
+            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Instant Results</h3>
+          <p class="text-body dark:text-muted">Get instant, accurate tax estimates using the latest Malaysian tax rules and thresholds.</p>
+        </div>
+        <div class="card dark:border-overlay-lighter dark:bg-surface p-6 rounded-lg">
+          <div class="flex flex-col items-center gap-4 mb-4">
+            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Privacy First</h3>
+          <p class="text-body dark:text-muted">All calculations run locally in your browser. Your financial data is never collected or stored.</p>
+        </div>
+        <div class="card dark:border-overlay-lighter dark:bg-surface p-6 rounded-lg">
+          <div class="flex flex-col items-center gap-4 mb-4">
+            <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+              <div class="h-6 w-6 text-primary">
+                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold text-ink dark:text-on-primary">Always Updated</h3>
+          <p class="text-body dark:text-muted">We update our tools whenever Malaysian tax rules, slabs, or regulations change.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tax-categories" class="mb-20">
+      <h2 class="text-3xl font-semibold text-ink dark:text-on-primary mb-12">Key Malaysia Tax Categories</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        {country?.taxCategories.map(category => (
+          <a href={`/countries/malaysia/${category.slug}`} class="group hover:shadow-lg transition-all duration-300">
+            <div class="card dark:border-overlay-lighter dark:bg-surface rounded-lg overflow-hidden">
+              <div class="p-4">
+                <h3 class="text-xl font-semibold text-ink dark:text-on-primary mt-2">{category.name}</h3>
+                <p class="text-sm text-body dark:text-muted mt-1">{category.description}</p>
+                {category.calculators.length > 0 && (
+                  <div class="mt-3">
+                    {category.calculators.map(calc => (
+                      <span class="inline-block text-xs bg-primary/10 text-primary px-2 py-1 rounded-full mr-1">{calc.name}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section id="faq" class="mb-20">
+      <h2 class="text-3xl font-semibold text-ink dark:text-on-primary mb-8">Malaysia Tax FAQs</h2>
+      <div class="space-y-4">
+        <details class="group rounded-lg border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface">
+          <summary class="cursor-pointer flex justify-between items-center p-3">
+            <h3 class="text-lg font-semibold text-ink dark:text-on-primary">What are the Malaysia income tax brackets for 2025?</h3>
+            <svg class="h-5 w-5 text-ink dark:text-on-primary flex-shrink-0 transition-transform duration-300 group-open:-rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-3 text-body dark:text-muted">The 2025 income tax brackets range from 0% to 30%, with progressive rates applied to chargeable income after personal reliefs of RM 9,000.</p>
+        </details>
+        <details class="group rounded-lg border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface">
+          <summary class="cursor-pointer flex justify-between items-center p-3">
+            <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How do I reduce my tax liability in Malaysia?</h3>
+            <svg class="h-5 w-5 text-ink dark:text-on-primary flex-shrink-0 transition-transform duration-300 group-open:-rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </summary>
+          <p class="mt-3 text-body dark:text-muted">Claim all eligible deductions including EPF contributions, life insurance premiums, education expenses, and medical costs for parents aged 60+ to reduce your chargeable income.</p>
+        </details>
+        <details class="group rounded-lg border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface">
+          <summary class="cursor-pointer flex justify-between items-center p-3">
+            <h3 class="text-lg font-semibold text-ink dark:text-on-primary">When is the Malaysia tax filing deadline?</h3>
+            <svg class="h-5 w-5 text-ink dark:text-on-primary flex-shrink-0 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-join="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-3 text-body dark:text-muted">Individual tax returns are due by April 30th, while business filings are due by June 30th for the relevant assessment year.</p>
+        </details>
+        <details class="group rounded-lg border border-hairline bg-canvas p-6 transition hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-overlay-lighter dark:bg-surface">
+          <summary class="cursor-pointer flex justify-between items-center p-3">
+            <h3 class="text-lg font-semibold text-ink dark:text-on-primary">How do I file taxes in Malaysia?</h3>
+            <svg class="h-5 w-5 text-ink dark:text-on-primary flex-shrink-0 transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-join="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <p class="mt-3 text-body dark:text-muted">Use the Malaysian e-Filing system (e-filing.hasil.gov.my) to submit your tax return online. You need a valid MyTax account and your Form B/BE ready.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="cta" class="mb-20 bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl p-8 text-center">
+      <h2 class="text-3xl font-semibold text-white dark:text-on-primary mb-4">Start Calculating Your Malaysia Tax Today</h2>
+      <p class="text-lg text-white dark:text-on-primary mb-6">Use our free, privacy-first tax calculators to estimate your tax liability, explore relief options, and plan your finances with confidence.</p>
+      <div class="flex justify-center space-x-4">
+        <a href="/countries/malaysia/income-tax/income-tax-calculator" class="px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition duration-200">
+          Income Tax Calculator
+        </a>
+        <a href="/countries/malaysia/sst/sst-calculator" class="px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition duration-200">
+          SST Calculator
+        </a>
+      </div>
+    </section>
+
+  </div>
+</Layout>
